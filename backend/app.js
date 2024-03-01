@@ -1,5 +1,5 @@
 import express from 'express'
-import{getUsers, getSingleUser, CreateSingleUser, getProducts} from './database.js'
+import{getUsers, getSingleUser, CreateSingleUser, getProducts, getSingleProduct} from './database.js'
 
 const app = express()
 
@@ -35,6 +35,13 @@ app.get("/products", async (req,res)=> {
     const users = await getProducts()
     res.send(users)
 })
+
+app.get("/products/:id", async (req,res)=> {
+    const id = req.params.id
+    const users = await getSingleProduct(id)
+    res.send(users)
+})
+
 
 app.use((err,req,res, next)=>{
     console.error(err.stack)

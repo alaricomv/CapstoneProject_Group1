@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-02-2024 a las 02:41:26
+-- Tiempo de generación: 01-03-2024 a las 09:17:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -77,8 +77,17 @@ CREATE TABLE `product` (
   `price_per_dozen` int(11) NOT NULL,
   `price_box` int(11) DEFAULT NULL,
   `total_pieces` int(11) NOT NULL DEFAULT 0,
-  `pieces_per_box` int(11) DEFAULT NULL
+  `pieces_per_box` int(11) DEFAULT NULL,
+  `imageUrl` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `product`
+--
+
+INSERT INTO `product` (`id`, `storefront_id`, `product_key`, `name`, `description`, `tags`, `price_per_dozen`, `price_box`, `total_pieces`, `pieces_per_box`, `imageUrl`) VALUES
+(1, 1, 'AVGN1234', 'Notebooks', '\"Notebooks multiple colors\"', 'toys', 2, 1, 100, 10, '/assets/products_images/ssh-23029.png'),
+(2, 1, 'SSH-23V22', 'Hair things', 'Hair things multiple colors, ask for more info', 'hair', 1, NULL, 200, NULL, '/assets/products_images/ssh-23v22.png');
 
 -- --------------------------------------------------------
 
@@ -98,6 +107,13 @@ CREATE TABLE `storefront` (
   `number_ratings` int(11) NOT NULL DEFAULT 0 COMMENT 'Number of ratings to the store'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `storefront`
+--
+
+INSERT INTO `storefront` (`id`, `name`, `seller_id`, `logo`, `description`, `tags`, `address`, `rating`, `number_ratings`) VALUES
+(1, 'Store Test 1', 2, NULL, 'Test of a storefront', 'toys', 'Made up address 12345', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -111,9 +127,19 @@ CREATE TABLE `users` (
   `email` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `address` varchar(250) DEFAULT NULL,
-  `phone_number` varchar(250) NOT NULL,
+  `phone_number` varchar(250) DEFAULT NULL,
   `seller` tinyint(1) NOT NULL COMMENT 'Determines if the user is a buyer (0) or a seller (1)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `address`, `phone_number`, `seller`) VALUES
+(1, 'Alarico', 'Mercado', 'alarico.mercado@mail.com', '1210130252523', 'Vancouver place 10', '123456789', 0),
+(2, 'Ramon', 'Gustavo', 'test@mail.com', 'password', 'Address test', '', 1),
+(3, 'Ramon', 'Gustavo', 'test@mail.com', 'password', 'Address test', '', 1),
+(4, 'Ana', 'Lucia', 'prueba2@gmail.com', '12345667', 'Here 12345', '12345656', 0);
 
 --
 -- Índices para tablas volcadas
@@ -188,19 +214,19 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `storefront`
 --
 ALTER TABLE `storefront`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

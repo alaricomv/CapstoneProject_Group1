@@ -32,5 +32,11 @@ export async function getProducts(){
     return rows
 }
 
+export async function getSingleProduct(id){
+    const result = await db.query("SELECT * FROM product WHERE id = ?", [id])
+    const rows = result[0][0]
+    return rows
+}
+
 var users = await getUsers()
 console.log(users)

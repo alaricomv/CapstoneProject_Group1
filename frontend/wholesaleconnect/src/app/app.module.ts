@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { HeaderexampleComponent } from './components/partials/headerexample/headerexample.component';
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
+import { ProductPageComponent } from './components/pages/product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
     HeaderexampleComponent,
     HomeComponent,
     CartPageComponent,
+    ProductPageComponent,
     
   ],
   imports: [

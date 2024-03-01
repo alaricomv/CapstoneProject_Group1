@@ -4,7 +4,7 @@ import { sample_products } from '../../data';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PRODUCTS_URL } from '../shared/urls';
+import { PRODUCTS_URL, PRODUCT_BY_ID_IRL } from '../shared/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,9 @@ export class ProductService {
 
   getAll():Observable<Product[]>{
     return this.http.get<Product[]>(PRODUCTS_URL);
+  }
+
+  getProductById(productId:string):Observable<Product>{
+    return this.http.get<Product>(PRODUCT_BY_ID_IRL + productId);
   }
 }
