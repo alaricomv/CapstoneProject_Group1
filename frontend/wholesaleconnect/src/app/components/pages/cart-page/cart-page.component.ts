@@ -14,8 +14,7 @@ interface Product {
 @Component({
   selector: 'app-cart-root',
   templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.css'],
-  standalone: true
+  styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent {
   products: Product[] = [
