@@ -26,5 +26,11 @@ export async function CreateSingleUser(first_name,last_name,email,password,addre
     return rows
 }
 
+export async function getProducts(){
+    const result = await db.query("SELECT * FROM product")
+    const rows = result[0]
+    return rows
+}
+
 var users = await getUsers()
 console.log(users)
