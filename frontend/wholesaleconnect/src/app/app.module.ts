@@ -8,6 +8,11 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { HeaderexampleComponent } from './components/partials/headerexample/headerexample.component';
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
 import { ProductPageComponent } from './components/pages/product-page/product-page.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { timeout } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -16,12 +21,20 @@ import { ProductPageComponent } from './components/pages/product-page/product-pa
     HomeComponent,
     CartPageComponent,
     ProductPageComponent,
+    LoginPageComponent,
     
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass: 'toast-bottom-right',
+      newestOnTop:false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
