@@ -1,7 +1,7 @@
 import express from 'express'
-import{getUsers, getSingleUser, CreateSingleUser, getProducts, getSingleProduct, findUser} from './database.js'
+import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser} from './database.js'
 import jwt from "jsonwebtoken";
-
+import bcrypt from 'bcryptjs';
 
 const app = express()
 
@@ -28,8 +28,23 @@ app.get("/user/:id", async (req,res)=> {
 
 app.post("/newUser", async (req,res)=> {
     const {first_name,last_name,email,password,address,phone_number,seller} = req.body
-    const users = await CreateSingleUser(first_name,last_name,email,password,address,phone_number,seller)
-    res.status(201).send(users)
+    const user = await getSingleUserbyMail(email);
+    if(user){
+        res.status(400).send("User with this email already exists");
+    }
+    else{
+        const encryptedPassword = await bcrypt.hash(password, 10);
+        const users = await CreateSingleUser(first_name,last_name,email,encryptedPassword,address,phone_number,seller);
+
+        const user = await getSingleUserbyMail(email)
+
+        const token = jwt.sign({
+        email:user.email }, 'secretkey', {expiresIn:60*10})  
+            
+        user.token = token;
+        res.status(201).send(user)
+    }
+    
 })
 
 app.post("/login", async (req,res)=> {
