@@ -36,10 +36,17 @@ app.post("/login", async (req,res)=> {
     const {email,password} = req.body
     const user = await findUser(email,password)
 
-    const token = jwt.sign({
-        email:user.email }, 'secretkey', {expiresIn:60*10})
-    
-    res.status(201).send(token)
+    if(user){
+        const token = jwt.sign({
+        email:user.email }, 'secretkey', {expiresIn:60*10})  
+        
+        user.token = token;
+        res.status(201).send(user)
+    }
+    else{
+        res.status(400).send("Username or password not valid");
+    }
+
 })
 
 
