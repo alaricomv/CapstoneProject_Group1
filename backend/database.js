@@ -38,5 +38,11 @@ export async function getSingleProduct(id){
     return rows
 }
 
+export async function findUser(email,password){
+    const result = await db.query("SELECT * FROM users WHERE email = ? AND password = ?", [email,password])
+    const rows = result[0][0]
+    return rows
+}
+
 var users = await getUsers()
 console.log(users)

@@ -1,5 +1,7 @@
 import express from 'express'
-import{getUsers, getSingleUser, CreateSingleUser, getProducts, getSingleProduct} from './database.js'
+import{getUsers, getSingleUser, CreateSingleUser, getProducts, getSingleProduct, findUser} from './database.js'
+import jwt from "jsonwebtoken";
+
 
 const app = express()
 
@@ -30,6 +32,16 @@ app.post("/newUser", async (req,res)=> {
     res.status(201).send(users)
 })
 
+app.post("/login", async (req,res)=> {
+    const {email,password} = req.body
+    const user = await findUser(email,password)
+
+    const token = jwt.sign({
+        email:user.email }, 'secretkey', {expiresIn:60*10})
+    
+    res.status(201).send(token)
+})
+
 
 app.get("/products", async (req,res)=> {
     const users = await getProducts()
@@ -47,6 +59,7 @@ app.use((err,req,res, next)=>{
     console.error(err.stack)
     res.status(500).send("Error")
 })
+
 
 app.listen(8080,() =>{
     console.log('Server is running on port 8080')
