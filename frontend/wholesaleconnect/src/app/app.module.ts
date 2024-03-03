@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { timeout } from 'rxjs';
+import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { timeout } from 'rxjs';
     CartPageComponent,
     ProductPageComponent,
     LoginPageComponent,
+    RegisterPageComponent,
     
   ],
   imports: [

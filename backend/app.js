@@ -49,17 +49,25 @@ app.post("/newUser", async (req,res)=> {
 
 app.post("/login", async (req,res)=> {
     const {email,password} = req.body
-    const user = await findUser(email,password)
+    const user = await getSingleUserbyMail(email)
 
     if(user){
-        const token = jwt.sign({
-        email:user.email }, 'secretkey', {expiresIn:60*10})  
+        const passwordMatch = await bcrypt.compare(password,user.password);
+
+        if (passwordMatch){
+            const token = jwt.sign({
+            email:user.email }, 'secretkey', {expiresIn:60*10})  
         
-        user.token = token;
-        res.status(201).send(user)
+            user.token = token;
+            res.status(201).send(user)
+        }
+        else{
+            res.status(400).send("Password not valid");
+        }
+        
     }
     else{
-        res.status(400).send("Username or password not valid");
+        res.status(400).send("User not found");
     }
 
 })
