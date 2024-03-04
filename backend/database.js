@@ -16,7 +16,13 @@ export async function getUsers(){
 
 export async function getSingleUser(id){
     const result = await db.query("SELECT * FROM users WHERE id = ?", [id])
-    const rows = result[0]
+    const rows = result[0][0]
+    return rows
+}
+
+export async function getSingleUserbyMail(email){
+    const result = await db.query("SELECT * FROM users WHERE email = ?", [email])
+    const rows = result[0][0]
     return rows
 }
 
