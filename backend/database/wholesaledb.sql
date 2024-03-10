@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2024 a las 09:17:57
+-- Tiempo de generación: 10-03-2024 a las 04:41:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -139,7 +139,11 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `addr
 (1, 'Alarico', 'Mercado', 'alarico.mercado@mail.com', '1210130252523', 'Vancouver place 10', '123456789', 0),
 (2, 'Ramon', 'Gustavo', 'test@mail.com', 'password', 'Address test', '', 1),
 (3, 'Ramon', 'Gustavo', 'test@mail.com', 'password', 'Address test', '', 1),
-(4, 'Ana', 'Lucia', 'prueba2@gmail.com', '12345667', 'Here 12345', '12345656', 0);
+(4, 'Ana', 'Lucia', 'prueba2@gmail.com', '12345667', 'Here 12345', '12345656', 0),
+(8, 'Alarico', 'Mercado', 'alaqr@mail.com', '$2a$10$QVP7p4i4Q3O3WxnRs0YtHOi0xI2Vzxx4.Rk14kmT2HwBPxSmrtkXK', 'ssggeeggse', '123456789', 0),
+(10, 'Alarico', 'Mercado', 'alarico@mail.com', '$2a$10$hl5kjuwsTJRiwnwnIi0L8O1Z2uUUCD542UPCSy3w.X3Boov2czAkC', 'Vista Magna 1443, Fraccionamiento La Vista, false, Fraccionamiento La Vista, Fraccionamiento La Vista', '5518294302', 1),
+(11, 'Alarico', 'Mercado', 'alarico1@mail.com', '$2a$10$ROV1bLnFBu2DeQ9PO/KHDuSpvFrE/r3Whu.13d6UTZKScuTdHkkjO', 'Vista Magna 1443, Fraccionamiento La Vista, false, Fraccionamiento La Vista, Fraccionamiento La Vista', '5518294302', 1),
+(12, 'Alarico', 'Mercado', 'alarico2@mail.com', '$2a$10$r5cO536HsUoY5yLGhN4gseNAV/CZT3Y9aIhYT6wkkh//sAa858Aui', 'Vista Magna 1443, Fraccionamiento La Vista, false, Fraccionamiento La Vista, Fraccionamiento La Vista', '5518294302', 0);
 
 --
 -- Índices para tablas volcadas
@@ -226,7 +230,7 @@ ALTER TABLE `storefront`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
