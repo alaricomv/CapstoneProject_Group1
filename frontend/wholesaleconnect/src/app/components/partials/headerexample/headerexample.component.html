@@ -84,6 +84,7 @@
         </a>
       </td>
       <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/login">Login</a></td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/register">Register</a></td>
       <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.token"><a style="cursor: pointer;" (click)="logout()">Logout</a></td>
       <td style="width: 50%;" align="right"><p><a routerLink="/cart">Cart</a></p></td>
       <td style="width: 50%;" align="right">
