@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { timeout } from 'rxjs';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { StoreCreatePageComponent } from './components/pages/store-create-page/store-create-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RegisterPageComponent } from './components/pages/register-page/register
     ProductPageComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    StoreCreatePageComponent,
     
   ],
   imports: [
