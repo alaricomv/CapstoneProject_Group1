@@ -50,5 +50,12 @@ export async function findUser(email,password){
     return rows
 }
 
+export async function CreateStore(name,seller_id,logo,description,tags,address,rating,number_ratings){
+    const result = await db.query("INSERT INTO storefront (name,seller_id,logo,description,tags,address,rating,number_ratings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [name,seller_id,logo,description,tags,address,rating,number_ratings])
+    const rows = result[0]
+    return rows
+}
+
+
 var users = await getUsers()
 console.log(users)

@@ -1,5 +1,5 @@
 import express from 'express'
-import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser} from './database.js'
+import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore} from './database.js'
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 
@@ -84,6 +84,16 @@ app.get("/products/:id", async (req,res)=> {
     res.send(users)
 })
 
+
+//Create new Storefront
+app.post("/newStore", async (req,res)=> {
+    const {name,seller_id,logo,description,tags,address,rating,number_ratings} = req.body
+
+        const users = await CreateStore(name,seller_id,logo,description,tags,address,rating,number_ratings);
+
+        res.status(201).send(users)
+    
+})
 
 app.use((err,req,res, next)=>{
     console.error(err.stack)
