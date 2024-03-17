@@ -2,8 +2,11 @@ import express from 'express'
 import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore} from './database.js'
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
+import bodyParser from 'body-parser';
 
 const app = express()
+
+app.use(bodyParser.json({ limit: '10mb' }));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
@@ -88,6 +91,8 @@ app.get("/products/:id", async (req,res)=> {
 //Create new Storefront
 app.post("/newStore", async (req,res)=> {
     const {name,seller_id,logo,description,tags,address} = req.body
+
+    console.log("logo:", logo);
 
         const users = await CreateStore(name,seller_id,logo,description,tags,address,0,0);
 

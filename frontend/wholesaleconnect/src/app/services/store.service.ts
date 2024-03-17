@@ -19,6 +19,7 @@ export class StoreService {
   }
 
   register(storeRegister:IStoreRegister): Observable<Storefront>{
+    console.log(storeRegister.logo)
     return this.http.post<Storefront>(STORE_REGISTER_URL,storeRegister).pipe(
       tap({
         next: (user)=>{

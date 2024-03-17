@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { User } from '../../../shared/models/User';
 import { UserService } from '../../../services/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-store-create-page',
@@ -14,6 +15,12 @@ import { UserService } from '../../../services/user.service';
   styleUrl: './store-create-page.component.css'
 })
 export class StoreCreatePageComponent {
+
+  
+  selectedFile: File | undefined;
+  logoBase64: string | undefined;
+
+  
 
   registerForm!:FormGroup;
   isSubmitted = false;
@@ -26,12 +33,23 @@ export class StoreCreatePageComponent {
     private StoreService:StoreService, 
     private activatedRoute:ActivatedRoute,
     private router: Router,
-    private userService:UserService
+    private userService:UserService,
+    private _sanitizer: DomSanitizer
   ){
     userService.userObservable.subscribe((newUser) =>{
       this.user = newUser;
     })
   }
+
+  onFileSelected(event: Event){
+    this.selectedFile = (event.target as HTMLInputElement).files?.[0] as File;
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload = () => {
+      this.logoBase64 = reader.result as string; 
+    };
+}
+
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -61,7 +79,7 @@ export class StoreCreatePageComponent {
     const store:IStoreRegister = {
       name: fv.name,
       seller_id: fv.seller_id,
-      logo: fv.logo,
+      logo: this.logoBase64,
       description:fv.description,
       tags: fv.tags,
       address: fv.address

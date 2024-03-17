@@ -47,10 +47,20 @@
                 </div>
             </div>
 
+            <div class="input-container">
+                <label>Logo</label>
+                <div>
+                    <input type="file" (change)="onFileSelected($event)" /> <!-- Set readonly to prevent user input -->
+                    <img *ngIf="logoBase64" [src]="logoBase64" alt="Selected Logo" style="max-width: 100px;">
+                </div>
+            </div>
+            
+
 
             <div class="button">
                 <button type="submit">Register</button>
             </div>
+
 
 
 
