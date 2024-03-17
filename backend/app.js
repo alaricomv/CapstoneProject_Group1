@@ -87,9 +87,9 @@ app.get("/products/:id", async (req,res)=> {
 
 //Create new Storefront
 app.post("/newStore", async (req,res)=> {
-    const {name,seller_id,logo,description,tags,address,rating,number_ratings} = req.body
+    const {name,seller_id,logo,description,tags,address} = req.body
 
-        const users = await CreateStore(name,seller_id,logo,description,tags,address,rating,number_ratings);
+        const users = await CreateStore(name,seller_id,logo,description,tags,address,0,0);
 
         res.status(201).send(users)
     
