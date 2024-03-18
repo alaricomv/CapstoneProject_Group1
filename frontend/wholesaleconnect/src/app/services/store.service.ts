@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { IStoreRegister } from '../shared/interfaces/IStoreRegister';
 import { Storefront } from '../shared/models/store';
-import { STORE_REGISTER_URL } from '../shared/urls';
+import { STOREFRONT_BY_ID_URL, STOREFRONT_BY_SELLERID_URL, STORE_REGISTER_URL } from '../shared/urls';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -32,6 +32,15 @@ export class StoreService {
         }
       })
     )
+  }
+
+  getStoreById(storeId:number):Observable<Storefront>{
+    return this.http.get<Storefront>(STOREFRONT_BY_ID_URL + storeId);
+  }
+
+  getAllBySellerId(sellerId:number):Observable<Storefront[]>{
+    const stringStoreId = sellerId.toString()
+    return this.http.get<Storefront[]>(STOREFRONT_BY_SELLERID_URL + stringStoreId);
   }
 
 }

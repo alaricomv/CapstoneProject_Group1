@@ -16,6 +16,7 @@ import { timeout } from 'rxjs';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { StoreCreatePageComponent } from './components/pages/store-create-page/store-create-page.component';
 import { FileUploadComponent } from './components/partials/file-upload/file-upload.component';
+import { StorefrontListComponent } from './components/pages/storefront-list/storefront-list.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FileUploadComponent } from './components/partials/file-upload/file-uplo
     RegisterPageComponent,
     StoreCreatePageComponent,
     FileUploadComponent,
+    StorefrontListComponent,
     
   ],
   imports: [

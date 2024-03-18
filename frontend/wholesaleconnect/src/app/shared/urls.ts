@@ -5,3 +5,5 @@ export const PRODUCT_BY_ID_IRL = PRODUCTS_URL + '/';
 export const USER_LOGIN_URL = BASE_URL + '/login';
 export const USER_REGISTER_URL = BASE_URL + '/newUser'
 export const STORE_REGISTER_URL = BASE_URL + '/newStore'
+export const STOREFRONT_BY_SELLERID_URL = BASE_URL + '/storefrontlist/';
+export const STOREFRONT_BY_ID_URL = BASE_URL + '/storefront/';
