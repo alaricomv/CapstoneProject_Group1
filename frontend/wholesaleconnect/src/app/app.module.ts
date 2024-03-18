@@ -17,6 +17,7 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 import { StoreCreatePageComponent } from './components/pages/store-create-page/store-create-page.component';
 import { FileUploadComponent } from './components/partials/file-upload/file-upload.component';
 import { StorefrontListComponent } from './components/pages/storefront-list/storefront-list.component';
+import { StorefrontPageComponent } from './components/pages/storefront-page/storefront-page.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { StorefrontListComponent } from './components/pages/storefront-list/stor
     StoreCreatePageComponent,
     FileUploadComponent,
     StorefrontListComponent,
+    StorefrontPageComponent,
     
   ],
   imports: [
