@@ -1,1 +1,65 @@
-<p>storefront-page works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class = "container">
+    <img class="logo" [src] = "storefront.logo"/>
+
+    <div class ="details">
+        <div class="header">
+            <span class = "name">
+                <strong>{{storefront.name}}</strong>
+            </span>
+        </div>
+        <div class="price">
+            <span>
+                {{storefront.description}}
+            </span>
+        </div>
+        <div *ngIf="storefront.rating == 0">
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            {{storefront.rating}}
+        </div>
+        <div *ngIf="storefront.rating == 1">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </div>
+
+        <div *ngIf="storefront.rating == 2">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </div>
+
+        <div *ngIf="storefront.rating == 3">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </div>
+
+        <div *ngIf="storefront.rating == 4">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+        </div>
+
+        <div *ngIf="storefront.rating == 5">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+        </div>
+
+    </div>
+</div>
