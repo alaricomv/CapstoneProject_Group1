@@ -21,6 +21,7 @@ export class UserService {
     this.userObservable = this.userSubject.asObservable();
   }
 
+  //Login for user
   login(userLogin:IUserLogin):Observable<User>{
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({
@@ -53,6 +54,7 @@ export class UserService {
     return new User();
   }
 
+  //Register for user
   register(userRegister:IUserRegister): Observable<User>{
     return this.http.post<User>(USER_REGISTER_URL,userRegister).pipe(
       tap({

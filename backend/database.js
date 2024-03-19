@@ -44,11 +44,36 @@ export async function getSingleProduct(id){
     return rows
 }
 
+export async function getProductsByStore(id){
+    const result = await db.query("SELECT * FROM product WHERE storefront_id = ?",[id])
+    const rows = result[0]
+    return rows
+}
+
 export async function findUser(email,password){
     const result = await db.query("SELECT * FROM users WHERE email = ? AND password = ?", [email,password])
     const rows = result[0][0]
     return rows
 }
+
+export async function CreateStore(name,seller_id,logo,description,tags,address,rating,number_ratings){
+    const result = await db.query("INSERT INTO storefront (name,seller_id,logo,description,tags,address,rating,number_ratings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [name,seller_id,logo,description,tags,address,rating,number_ratings])
+    const rows = result[0]
+    return rows
+}
+
+export async function getSingleStore(id){
+    const result = await db.query("SELECT * FROM storefront WHERE id = ?", [id])
+    const rows = result[0][0]
+    return rows
+}
+
+export async function getStorefrontList(seller_id){
+    const result = await db.query("SELECT * FROM storefront WHERE seller_id = ?",[seller_id])
+    const rows = result[0]
+    return rows
+}
+
 
 var users = await getUsers()
 console.log(users)

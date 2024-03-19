@@ -15,6 +15,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { timeout } from 'rxjs';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { StoreCreatePageComponent } from './components/pages/store-create-page/store-create-page.component';
+import { FileUploadComponent } from './components/partials/file-upload/file-upload.component';
+import { StorefrontListComponent } from './components/pages/storefront-list/storefront-list.component';
+import { StorefrontPageComponent } from './components/pages/storefront-page/storefront-page.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { StoreCreatePageComponent } from './components/pages/store-create-page/s
     LoginPageComponent,
     RegisterPageComponent,
     StoreCreatePageComponent,
+    FileUploadComponent,
+    StorefrontListComponent,
+    StorefrontPageComponent,
     
   ],
   imports: [

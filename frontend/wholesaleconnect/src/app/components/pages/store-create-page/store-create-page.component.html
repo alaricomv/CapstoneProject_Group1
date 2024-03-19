@@ -1,1 +1,69 @@
-<p>store-create-page works!</p>
+<style>
+    .hidden {
+    display: none;
+}
+</style>
+<div>
+    <div>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
+            <div class="input-container">
+                <label>Name</label>
+                <div>
+                    <input label ="name" type="name" placeholder="name" formControlName="name"/>
+                </div>
+
+                <div class="error-list" *ngIf="fc['name'].errors && isSubmitted">
+                    <div *ngIf="fc['name'].errors['required']">Should not be empty</div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <label>Description</label>
+                <div>
+                    <input label ="description" type="description" placeholder="description" formControlName="description"/>
+                </div>
+
+            </div>
+
+            
+            <div class="input-container">
+                <label>Tags</label>
+                <div>
+                    <input type="tags" placeholder="tags" formControlName="tags"/>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <label>Address</label>
+                <div>
+                    <input type="address" placeholder="address" formControlName="address"/>
+                </div>
+            </div>
+
+            <div class="input-container hidden">
+                <label>Seller ID</label>
+                <div>
+                    <input type="text" formControlName="seller_id" readonly /> <!-- Set readonly to prevent user input -->
+                </div>
+            </div>
+
+            <div class="input-container">
+                <label>Logo</label>
+                <div>
+                    <input type="file" (change)="onFileSelected($event)" /> <!-- Set readonly to prevent user input -->
+                    <img *ngIf="logoBase64" [src]="logoBase64" alt="Selected Logo" style="max-width: 100px;">
+                </div>
+            </div>
+            
+
+
+            <div class="button">
+                <button type="submit">Register</button>
+            </div>
+
+
+
+
+        </form>
+    </div>
+</div>
