@@ -1,5 +1,5 @@
 import express from 'express'
-import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList} from './database.js'
+import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore} from './database.js'
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import bodyParser from 'body-parser';
@@ -109,6 +109,12 @@ app.get("/storefront/:id", async (req,res)=> {
 app.get("/storefrontlist/:id", async (req,res)=> {
     const id = req.params.id
     const users = await getStorefrontList(id)
+    res.send(users)
+})
+
+app.get("/productsbystore/:id", async (req,res)=> {
+    const id = req.params.id
+    const users = await getProductsByStore(id)
     res.send(users)
 })
 

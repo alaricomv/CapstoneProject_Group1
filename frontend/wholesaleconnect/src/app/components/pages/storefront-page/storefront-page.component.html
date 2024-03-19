@@ -1,14 +1,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h1>{{storefront.name}}</h1>
 <div class = "container">
     <img class="logo" [src] = "storefront.logo"/>
 
     <div class ="details">
-        <div class="header">
-            <span class = "name">
-                <strong>{{storefront.name}}</strong>
-            </span>
-        </div>
-        <div class="price">
+        <div class="description">
             <span>
                 {{storefront.description}}
             </span>
@@ -63,3 +60,21 @@
 
     </div>
 </div>
+<h2> Products</h2>
+<td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
+
+    <a routerLink="/product/{{product.id}}">
+      <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1" >
+      <div class="content">
+          <div class="name">
+              {{product.name}}
+              {{product.description}}
+          </div>
+          <div class="name">
+              <span>
+                  {{product.price_per_dozen | currency}}
+              </span>
+          </div>
+      </div>
+  </a>
+</td>
