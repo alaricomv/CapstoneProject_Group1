@@ -1,0 +1,35 @@
+body {
+    align-items: center;
+    text-align: center;
+    background-image: url('../../../../assets/img/bglogin.svg');
+    background-repeat: no-repeat;
+    background-size:cover;
+        
+        justify-content: center;
+       
+        height: 52vh;
+        margin: 1;
+      }
+    
+      table {
+        text-align: center;
+        justify-content: center;
+        border-collapse: collapse;
+        width: 30%;
+        border: 0;
+        align-items: flex-start;
+      }
+    
+      th, td {
+        background-color: #66111179;
+        align-content: center;
+        border: 5px solid #0f0f0f;
+        text-align: center;
+        padding: 3px;
+      }
+    
+      th {
+        background-color: #f2f2f200;
+      }
+
+

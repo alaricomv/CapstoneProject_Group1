@@ -1,66 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-
-  table {
-    margin: auto;
-    border-collapse: collapse;
-    border: 1px solid rgb(255, 255, 255);
-  }
-  td {
-    padding: 10px;
-    border: 1px solid rgb(255, 255, 255);
-  }
-  .background-red {
-    background-color: rgb(255, 255, 255);
-    background-size: cover;
-    background-repeat: no-repeat;
-    size: 121px;
-  }
-  .background-red img {
-    display: block;
-    width: 65%;
-    height: auto;
-  }
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: disc;
-  }
-  li a {
-    display: block;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 5px 0;
-  }
-  li a:hover {
-    background-color: #ccc;
-  }
-  ul {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-  
-</style>
-</head>
-<body>
-  <table align="left" style="width: 50;">
-    <tr>
-      <th style="color: red; width: 30%;text-align: center;"><h4><b>Categories</b></h4></th>
-      <th style="color: red; width: 20%;"></th>
-      <th style="color: red; width: 30%; text-align: right;"></th>
-      <th style="color: red; "></th>
-      <th style="color: red; "><h4><b>New Products</b></h4></th>
-    </tr>
-   
-    </table>
-<table align="left" style="width: 100;">
-  
-  <tr align="left">
+  <head>
+ 
+    <link rel="stylesheet" type="text/css" href="home.component.css">
     
-      <td align="left" style="width:15%; background-color: rgb(255, 255, 255);border:1;">
+  </head>
+<body>
+  
+  
+  <table align="left" style="width:100%;">
+
+   <tr align="left">
+    
+      <td align="left" style="width:20%; border:0;">
 
         <ul>
           <li><a href="#">&nbsp;Automotive</a></li>
@@ -68,20 +20,17 @@
           <li><a href="#">&nbsp;Books &amp; Media</a></li>
           <li><a href="#">&nbsp;Jewelry &amp; Watches</a></li>
           <li><a href="#">&nbsp;Industrial &amp; Scientific</a></li>
-          <li><a href="#">&nbsp;Pet Supplies</a></li>
+          <li><a href="#">&nbsp;Pet Supplie s</a></li>
           <li><a href="#">&nbsp;Baby Products</a></li>
         </ul>
         
     </td>
-    <td style="width: 1%;">
-      <img src="assets\img\barr.svg" width="10" height="300">
-    </td>
    
-    <td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
+    <td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:50%; ">
 
         <a routerLink="/product/{{product.id}}">
           <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1" >
-          <div class="content">
+          <div class="container">
               <div class="name">
                   {{product.name}}
                   {{product.description}}
@@ -118,13 +67,11 @@
     </a>
   
   </td>
-  <tr>
+  
 
-  </tr>
+
+
 </table>
-
-
-
 
 </body>
 </html>
