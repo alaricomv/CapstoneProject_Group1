@@ -1,0 +1,28 @@
+<style>
+    .logo{
+        max-width: 100px;
+    }
+</style>
+
+<td *ngFor="let store of stores; let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
+
+    <a routerLink="/storefront/{{store.id}}">
+      <img class="logo" [src]="store.logo" [alt]="store.name">
+      <div class="content">
+          <div class="name">
+              {{store.name}}
+              {{store.description}}
+          </div>
+      </div>
+  
+</a>
+
+</td>
+
+<a routerLink="/store-create">
+    <div class="content">
+        <div class="name">
+            <button>Create a new storefront</button>
+        </div>
+    </div>
+</a>

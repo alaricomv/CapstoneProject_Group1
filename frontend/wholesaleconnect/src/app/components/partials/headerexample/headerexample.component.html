@@ -18,10 +18,15 @@
           <img id="logo-img" class="img-responsive" src="assets/img/logonew2.svg" width="650" height="250" noborder />
         </a>
       </td>
-      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/login"> <p><img src="assets/img/login.svg" width="220" height="65" ></p> </a></td>
-      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/register"><p><img src="assets/img/register.svg" width="190" height="70" ></p></a></td>
-      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.token"></td>
-      <td style="cursor: pointer;" (click)="logout()">
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/login">Login</a></td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/register">Register</a></td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.token"><a style="cursor: pointer;" (click)="logout()">Logout</a></td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.seller == 1"><a style="cursor: pointer;" routerLink="/storefront-list">Stores</a></td>
+      <td style="width: 50%;" align="right"><p><a routerLink="/cart">Cart</a></p></td>
+      <td style="width: 50%;" align="right">
+      
+       <img src="assets/img/shop.svg" width="60" height="60" >
+    
        </td>
       <td style="width: 50%;" align="right"><p><a routerLink="/cart"><img src="assets/img/cart.svg" width="120" height="80" ></a></p></td>
     
