@@ -1,16 +1,17 @@
-<div class = "container">
-    <img [src] = "product.imageUrl"/>
+<div class="container">
+  <img [src]="product.imageUrl" />
 
-    <div class ="details">
-        <div class="header">
-            <span class = "name">
-                {{product.name}}
-            </span>
-        </div>
-        <div class="price">
-            <span>
-                Price per dozen: <strong>{{product.price_per_dozen | currency}} </strong>
-            </span>
-        </div>
+  <div class="details">
+    <div class="header">
+      {{product.name}}
     </div>
+    <div class="price">
+      <span>
+        Price per dozen: <strong>{{product.price_per_dozen | currency}} </strong>
+      </span>
+    </div>
+  </div>
+
+  <img src="assets/img/cart.svg" width="40" height="30" class="cartIcon" (click)="addToCart()">
+
 </div>

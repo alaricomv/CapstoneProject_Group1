@@ -1,121 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <style>
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #33333300;
-    }
+<div>
 
-    li {
-      float: left;
-    }
+  <head>
 
-    li a {
-      display: block;
-      color: rgb(0, 0, 0);
-      text-align: center;
-      padding: 24px 16px;
-      text-decoration: none;
-    }
+    <link rel="stylesheet" type="text/css" href="headerexample.component.css">
 
-    li a:hover {
-      background-color: #1ebd0d;
-    }
+  </head>
 
-    .search-container {
-      float: right;
-      padding: 10px;
-    }
+  <body>
+    <div class="container">
+      <div class="img-container">
 
-    .search-box {
-      padding: 6px;
-      margin-right: 6px;
-    }
+        <table class="background-table" border="0" style="border-collapse: collapse; width: 100%;" border="0">
+          <tbody>
+            <tr>
+              <td style="width: 50%; ">
+                <a routerLink="/">
+                  <img id="logo-img" class="img-responsive" src="assets/img/logonew2.svg" width="650" height="250"
+                    noborder />
+                </a>
+              </td>
+              <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a
+                  routerLink="/login">Login</a></td>
+              <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a
+                  routerLink="/register">Register</a></td>
+              <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.token"><a style="cursor: pointer;"
+                  (click)="logout()">Logout</a></td>
+              <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.seller == 1"><a
+                  style="cursor: pointer;" routerLink="/storefront-list">Stores</a></td>
+              <td style="width: 50%;" align="right">
+                <p><a routerLink="/cart">Cart</a></p>
+              </td>
+              <td style="width: 50%;" align="right">
 
-    .search-button {
-      background-color: #4caf4f00;
-      color: white;
-      padding: 6px 10px;
-      border: none;
-      cursor: pointer;
-    }
+                <img src="assets/img/shop.svg" width="60" height="60">
 
-    .sign-in {
-      background-color: #4caf4f00;
-      color: white;
-      padding: 6px 12px;
-      border: 1cap;
-      cursor: pointer;
-      margin-left: 10px;
-    }
+              </td>
+              <td style="width: 50%;" align="right">
+                <p><a routerLink="/cart"><img src="assets/img/cart.svg" width="120" height="80"></a></p>
+              </td>
 
-    .sign-up {
-      background-color: #4caf4f00;
-      color: white;
-      padding: 6px 12px;
-      border: 1cap;
-      border: none;
-      cursor: pointer;
-    }
-    .background-table {
-    background-image: url('your-image-url.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-collapse: collapse;
-    width: 100%;      }
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  </style>
-</head>
+      <div>
+        <ul class="menu-container">
+          <li><b><a class="active" href="#home">Home</a></b></li>
+          <li><b><a href="#news">New Products</a></b></li>
+          <li><b><a href="#stores">Stores</a></b></li>
+          <li><b><a href="contact">Contact Us</a></b></li>
+          <li><b><a href="services">Services</a></b></li>
+          <li><b><a href="aboutus">About Us</a></b></li>
+          <!-- <li class="search-container">
+          </li> -->
+        </ul>
 
-<body>
-  <div class="container">
-    <div class="img-container">
-   
-    <table   class="background-table" border="0" style="border-collapse: collapse; width: 100%;" border="0" >
-    <tbody>
-    <tr>
-      <td style="width: 50%;">
-        <a routerLink="/">
-          <img id="logo-img" class="img-responsive" src="assets/img/logonew2.svg" width="600"  />
-        </a>
-      </td>
-      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/login">Login</a></td>
-      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/register">Register</a></td>
-      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.token"><a style="cursor: pointer;" (click)="logout()">Logout</a></td>
-      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.seller == 1"><a style="cursor: pointer;" routerLink="/storefront-list">Stores</a></td>
-      <td style="width: 50%;" align="right"><p><a routerLink="/cart">Cart</a></p></td>
-      <td style="width: 50%;" align="right">
-      
-       <img src="assets/img/shop.svg" width="60" height="60" >
-    
-       </td>
-    </tr>
-    </tbody>
-    </table>
+      </div>
     </div>
-    
-    <div class="menu-container">
-    <ul>
-    <li><b><a class="active" href="#home">Home</a></b></li>
-    <li><b><a href="#news">New Products</a></b></li>
-    <li><b><a href="#stores">Stores</a></b></li>
-    <li><b><a href="contact">Contact Us</a></b></li>
-    <li><b><a href="services">Services</a></b></li>
-    <li><b><a href="aboutus">About Us</a></b></li>
-    <li class="search-container"><input class="search-box" type="text" placeholder="Search..." /> 
-      <button class="search-button"> <p><img src="assets/img/oip.svg" width="40" height="40" ></p></button> <button class="sign-in">
-        <p><img src="assets/img/login.svg" width="160" height="50" ></p> </button> 
-      <button class="sign-up"><p><img src="assets/img/su.svg" width="150" height="50" ></p></button></li>
-    </ul>
-  
-    </div>
-    </div>
-  
-</body>
-</html>
 
-
+  </body>
+</div>
