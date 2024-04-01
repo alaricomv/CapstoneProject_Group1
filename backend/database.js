@@ -50,6 +50,12 @@ export async function getProductsByStore(id){
     return rows
 }
 
+export async function CreateProduct(storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl){
+    const result = await db.query("INSERT INTO product (storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?)", [storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl])
+    const rows = result[0]
+    return rows
+}
+
 export async function findUser(email,password){
     const result = await db.query("SELECT * FROM users WHERE email = ? AND password = ?", [email,password])
     const rows = result[0][0]

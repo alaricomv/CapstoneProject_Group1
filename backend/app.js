@@ -1,5 +1,5 @@
 import express from 'express'
-import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore} from './database.js'
+import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore, CreateProduct} from './database.js'
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import bodyParser from 'body-parser';
@@ -87,12 +87,20 @@ app.get("/products/:id", async (req,res)=> {
     res.send(users)
 })
 
+//Create new Product
+app.post("/newProduct", async (req,res)=> {
+    const {storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl} = req.body
+
+        const users = await CreateProduct(storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl);
+
+        res.status(201).send(users)
+    
+})
 
 //Create new Storefront
 app.post("/newStore", async (req,res)=> {
     const {name,seller_id,logo,description,tags,address} = req.body
 
-    console.log("logo:", logo);
 
         const users = await CreateStore(name,seller_id,logo,description,tags,address,0,0);
 
