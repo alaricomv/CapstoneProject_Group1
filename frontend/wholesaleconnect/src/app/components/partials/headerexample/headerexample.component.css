@@ -1,3 +1,4 @@
+
  
      
        
@@ -6,12 +7,12 @@
         background-color:#9a8e8ea5 ;
       }
        
-          .background-table {
-            
+          .background-table {         
             border-collapse: collapse;
             background-image: url('../../../../assets/img/bg2.svg');
             margin-top: 0%;
           }
+
           
      
         .background-table tr, .background-table td {
@@ -37,6 +38,7 @@
 
     li {
       float: left;
+
       margin:0%;
       padding:2px 6px;
       
@@ -48,6 +50,7 @@
       font-display:initial;
       color: rgb(0, 0, 0);
       text-align: center;
+
      background-color: #b6b5b5;
    
       text-decoration:solid;
@@ -55,13 +58,16 @@
       padding:2px 75px;
      
       
+
     }
 
     li a:hover {
       background-color: #d13535;
       backface-visibility: visible;
+
       padding:2px 75px;
     
+
     }
 
     .search-container {
@@ -74,4 +80,6 @@
       margin-right: 6px;
     }
 
+
     
+
