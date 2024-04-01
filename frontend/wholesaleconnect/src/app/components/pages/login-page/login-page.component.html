@@ -1,8 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ 
+    <link rel="stylesheet" type="text/css" href="login-page.component.css">
+ 
+  </head>
+
+<body>
+
+    <table align="center" style="width:30%;" >
+      
+    
+<tr><td align="center" width="200" height="160">
+   
 <div>
     <div>
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
-            <div class="input-container">
-                <label>Email</label>
+           <div class="input-container">
+                <h3><label>Email</label></h3>
                 <div>
                     <input type="email" placeholder="Email" formControlName="email"/>
                 </div>
@@ -13,7 +29,7 @@
                 </div>
             </div>
             <div class="input-container">
-                <label>Password</label>
+               <h3> <label>Password</label></h3>
                 <div>
                     <input type="password" placeholder="Password" formControlName="password"/>
                 </div>
@@ -23,10 +39,16 @@
                 </div>
             </div>
             <div class="button">
-                <button type="submit">Login</button>
+               
+           <h5> <button type="submit"><b>Login</b></button></h5>
             </div>
             
 
         </form>
+    
     </div>
 </div>
+</td></tr>
+</table>
+</body>
+</html>
