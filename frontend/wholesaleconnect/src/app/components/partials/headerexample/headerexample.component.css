@@ -1,62 +1,63 @@
 
-
-
-
-
-          .background-table {
-
+ 
+     
+       
+      body
+      {
+        background-color:#9a8e8ea5 ;
+      }
+       
+          .background-table {         
             border-collapse: collapse;
             background-image: url('../../../../assets/img/bg2.svg');
             margin-top: 0%;
           }
 
-
+          
+     
         .background-table tr, .background-table td {
-          border: 0px solid #dddddd00;
-          padding: 0px;
+          border: 0px solid #dddddd00; 
+       
         }
           .background-table td {
-
+            
           text-align: center;
         }
-
-
-
-        .menu-container{
-          display: flex;
-          list-style: none;
-          padding: 0;
-          margin-bottom: 10px;
-          margin-top: 10px;
-        }
-
-        li {
-          white-space: nowrap;
-        }
-
+        
+        
+        
+        
         ul {
 
       list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #33333300;
+      margin:0%;
+ 
+      
+      
     }
 
     li {
       float: left;
 
+      margin:0%;
+      padding:2px 6px;
+      
     }
 
     li a {
-      font-size: large;
+      font-size:large;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
       font-display:initial;
       color: rgb(0, 0, 0);
       text-align: center;
-      padding: 10px 40px;
+
+     background-color: #b6b5b5;
+   
       text-decoration:solid;
-      background-color: #615b5bab;
+      margin:0%;
+      padding:2px 75px;
+     
+      
 
     }
 
@@ -64,6 +65,8 @@
       background-color: #d13535;
       backface-visibility: visible;
 
+      padding:2px 75px;
+    
 
     }
 
@@ -77,19 +80,6 @@
       margin-right: 6px;
     }
 
-    .search-button {
-      background-color: #4caf4f00;
-      color: white;
-      padding: 6px 10px;
-      border: none;
-      cursor: pointer;
-    }
 
-    .sign-in {
-      background-color: #4caf4f00;
-      color: white;
-      padding: 6px 12px;
-      border: 1cap;
-      cursor: pointer;
-      margin-left: 10px;
-    }
+    
+

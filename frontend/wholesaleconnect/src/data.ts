@@ -102,4 +102,18 @@ export const sample_products: Product[] = [
         tags: " light and breezy while super-soft",
         imageUrl: "/assets/products_images/ssh-23033.jpg"
     },
+
+    {id: 8,
+    product_key: "SSH-23033",
+    name: " Breaking a sweat never felt so good",
+    description: ". Our Men's Active Long Sleeve Tech Tee feels ",
+    price_per_dozen:19,
+    price_box: 20,
+    pieces_per_box: 18,
+    total_pieces: 30,
+    tags: " light and breezy while super-soft",
+    imageUrl: "/assets/img/bestbuylogo.jpg.jpg"
+},
+
+
 ]

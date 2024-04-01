@@ -1,64 +1,56 @@
 <!DOCTYPE html>
-<div>
+<html>
+<head>
+ 
+  <link rel="stylesheet" type="text/css" href="headerexample.component.css">
 
-  <head>
+</head>
 
-    <link rel="stylesheet" type="text/css" href="headerexample.component.css">
+<body>
+  <div class="container">
+    <div class="img-container">
+   
+    <table   class="background-table" border="0" style="border-collapse: collapse; width: 100%;" border="0" >
+    <tbody>
+    <tr>
+      <td style="width: 50%; ">
+        <a routerLink="/">
+          <img id="logo-img" class="img-responsive" src="assets/img/logonew2.svg" width="650" height="250" noborder />
+        </a>
+      </td>
+      <td style="width: 50%; padding-right: 50px;" align="center" *ngIf="!user.token"><a routerLink="/login"><img src="assets/img/login.svg" width="180" height="120" ></a></td>
+      <td style="width: 50%; padding-right: 50px;" align="center" *ngIf="!user.token"><a routerLink="/register"><img src="assets/img/register.svg" width="180" height="120" ></a></td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.token"><a style="cursor: pointer;" (click)="logout()"><img src="assets/img/logout.svg" width="180" height="120" ></a></td>
 
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="img-container">
-
-        <table class="background-table" border="0" style="border-collapse: collapse; width: 100%;" border="0">
-          <tbody>
-            <tr>
-              <td style="width: 50%; ">
-                <a routerLink="/">
-                  <img id="logo-img" class="img-responsive" src="assets/img/logonew2.svg" width="650" height="250"
-                    noborder />
-                </a>
-              </td>
-              <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a
-                  routerLink="/login">Login</a></td>
-              <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a
-                  routerLink="/register">Register</a></td>
-              <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.token"><a style="cursor: pointer;"
-                  (click)="logout()">Logout</a></td>
-              <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.seller == 1"><a
-                  style="cursor: pointer;" routerLink="/storefront-list">Stores</a></td>
-              <td style="width: 50%;" align="right">
-                <p><a routerLink="/cart">Cart</a></p>
-              </td>
-              <td style="width: 50%;" align="right">
-
-                <img src="assets/img/shop.svg" width="60" height="60">
-
-              </td>
-              <td style="width: 50%;" align="right">
-                <p><a routerLink="/cart"><img src="assets/img/cart.svg" width="120" height="80"></a></p>
-              </td>
-
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div>
-        <ul class="menu-container">
-          <li><b><a class="active" href="#home">Home</a></b></li>
-          <li><b><a href="#news">New Products</a></b></li>
-          <li><b><a href="#stores">Stores</a></b></li>
-          <li><b><a href="contact">Contact Us</a></b></li>
-          <li><b><a href="services">Services</a></b></li>
-          <li><b><a href="aboutus">About Us</a></b></li>
-          <!-- <li class="search-container">
-          </li> -->
-        </ul>
-
-      </div>
+     
+     
+      <td style="width: 50%;" align="right"><p><a routerLink="/cart"><img src="assets/img/cart.svg" width="120" height="80" ></a></p></td>
+    
+    </tr>
+    </tbody>
+    </table>
     </div>
+
+    
+    <div class="menu-container">
+    <ul>
+    <li><b><a class="active" href="#home">Home</a></b></li>
+    <li><b><a href="#news">New Products</a></b></li>
+   
+    <li ><b><a style="cursor: pointer;" routerLink="/storefront-list"    *ngIf="user.seller == 1">Stores</a></b></li>
+    <li><b><a href="contact">Contact Us</a></b></li>
+    <li><b><a href="services">Services</a></b></li>
+    <li><b><a href="aboutus">About Us</a></b></li>
+    <li class="search-container">
+        </li>
+    </ul>
+  
+    </div>
+    </div>
+  
+</body>
+</html>
+
 
   </body>
 </div>

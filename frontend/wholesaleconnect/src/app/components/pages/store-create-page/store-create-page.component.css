@@ -1,0 +1,36 @@
+body {
+  align-items: center;
+  text-align: center;
+  background-image: url('../../../../assets/img/bglogin.svg');
+  background-repeat: no-repeat;
+  background-size:cover;
+      font-size: large;
+      justify-content: center;
+     
+      height: 52vh;
+      margin: 1;
+    }
+  
+    table {
+      text-align: center;
+      justify-content: center;
+      border-collapse: collapse;
+      width: 30%;
+      border: 3;
+     background-color: rgba(165, 42, 42, 0.412);
+      align-items: flex-start;
+    }
+  
+    th, td {
+      background-color: #66111179;
+      align-content: center;
+      border: 5px solid #000000;
+      text-align: center;
+      padding: 3px;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+
+

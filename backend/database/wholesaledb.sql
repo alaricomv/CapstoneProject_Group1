@@ -1,279 +1,4068 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2024 a las 06:43:02
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
---
--- Base de datos: `wholesaledb`
---
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `cart`
---
 
-CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `total` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+<!DOCTYPE html>
+<html
+  lang="en"
+  
+  data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"
+  data-a11y-animated-images="system" data-a11y-link-underlines="true"
+  >
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `cart_product`
---
 
-CREATE TABLE `cart_product` (
-  `id` int(11) NOT NULL,
-  `cart_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+  <head>
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://github.githubassets.com">
+  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+  <link rel="preconnect" href="https://github.githubassets.com" crossorigin>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com">
 
---
--- Estructura de tabla para la tabla `order`
---
+  
 
-CREATE TABLE `order` (
-  `id` int(11) NOT NULL,
-  `storefront_id` int(11) NOT NULL,
-  `cart_id` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  `Status` varchar(250) NOT NULL COMMENT 'Determines the status of the order (Received, shipped, delivered)',
-  `comments` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/light_v2-03f88706c464.css" /><link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dark_v2-b696167b427f.css" /><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed_v2-d6b904d796d4.css" /><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast_v2-dc4aa4cd5df0.css" /><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind_v2-19ddaab5c1c4.css" /><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind_v2-1666accd2117.css" /><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast_v2-ca33d6e1309f.css" /><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia_v2-7aa845dbf204.css" /><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia_v2-fdf143690ff5.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-primitives-366b5c973fad.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-f3607eccaaae.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-2d71b2d638da.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/github-19c85be4af9c.css" />
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/repository-6247ca238fd4.css" />
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/code-ad2fce00d003.css" />
 
---
--- Estructura de tabla para la tabla `product`
---
+  
 
-CREATE TABLE `product` (
-  `id` int(11) NOT NULL,
-  `storefront_id` int(11) NOT NULL,
-  `product_key` varchar(250) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `description` varchar(250) NOT NULL DEFAULT '"No description"',
-  `tags` varchar(250) DEFAULT NULL,
-  `price_per_dozen` int(11) NOT NULL,
-  `price_box` int(11) DEFAULT NULL,
-  `total_pieces` int(11) NOT NULL DEFAULT 0,
-  `pieces_per_box` int(11) DEFAULT NULL,
-  `imageUrl` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `product`
---
+  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["code_vulnerability_scanning","copilot_conversational_ux_history_refs","copilot_smell_icebreaker_ux","copilot_implicit_context","failbot_handle_non_errors","geojson_azure_maps","image_metric_tracking","marketing_forms_api_integration_contact_request","marketing_pages_search_explore_provider","repository_suggester_elastic_search","turbo_experiment_risky","sample_network_conn_type","no_character_key_shortcuts_in_inputs","react_start_transition_for_navigations","custom_inp","remove_child_patch"]}</script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-ff5eee734584.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_dompurify_dist_purify_js-6890e890956f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_stacktrace-parser_dist_stack-trace-parser_esm_js-node_modules_github_bro-a4c183-79f9611c275b.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_oddbird_popover-polyfill_dist_popover_js-7bd350d761f4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_failbot_failbot_ts-5bd9ba639cc0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/environment-27057bd9ed0b.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_selector-observer_dist_index_esm_js-9f960d9b217c.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_focus-zone_js-086f7a27bac0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_relative-time-element_dist_index_js-c76945c5961a.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_auto-complete-element-81d69b-d1813ba335d8.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_text-expander-element_dist_index_js-8a621df59e80.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_filter-input-element_dist_index_js-node_modules_github_remote-inp-b7d8f4-654130b7cde5.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_file-attachment-element_dist_index_js-node_modules_primer_view-co-c238a4-3638b84d381c.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/github-elements-9e1553e513a7.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/element-registry-269d71d53930.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_index_js-node_modules_github_alive-client_dist-bf5aa2-5a0e291a0298.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_lit-html_lit-html_js-5b376145beff.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_morphdom_dist_morphdom-esm_js-5bff297a06de.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_turbo_dist_turbo_es2017-esm_js-c91f4ad18b62.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_remote-form_dist_index_js-node_modules_scroll-anchoring_dist_scro-52dc4b-4fecca2d00e4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_color-convert_index_js-72c9fbde5ad4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_dimensions_js-node_modules_github_jtml_lib_index_js-95b84ee6bc34.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_paste-markdown_dist_index_esm_js-node_modules_github_quote-select-cbac5f-c7885f4526c5.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_updatable-content_ts-ee3fc84d7fb0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_task-list_ts-app_assets_modules_github_onfocus_ts-app_ass-421cec-9de4213015af.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_sticky-scroll-into-view_ts-94209c43e6af.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_ajax-error_ts-app_assets_modules_github_behaviors_include-467754-244ee9d9ed77.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_commenting_edit_ts-app_assets_modules_github_behaviors_ht-83c235-9285faa0e011.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_blob-anchor_ts-app_assets_modules_github_filter-sort_ts-app_assets_-c96432-da3733f430b8.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/behaviors-6679389e13fc.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_catalyst_lib_index_js-d0256ebff5cd.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/notifications-global-352d84c6cc82.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/code-menu-614feb194539.js"></script>
+  
+  <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/react-lib-1fbfc5be2c18.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_octicons-react_dist_index_esm_js-node_modules_primer_react_lib-es-2e8e7c-a58d7c11e858.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Box_Box_js-8f8c5e2a2cbf.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Button_Button_js-d5726d25c548.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_ActionList_index_js-1501d3ef83c2.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Overlay_Overlay_js-node_modules_primer_react_lib-es-fa1130-829932cf63db.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Text_Text_js-node_modules_primer_react_lib-esm_Text-7845da-c300384a527b.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_FormControl_FormControl_js-f17f2abffb7f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_ActionMenu_ActionMenu_js-eaf74522e470.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_catalyst_lib_index_js-node_modules_github_hydro-analytics-client_-978abc0-add939c751ce.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_react-router-dom_dist_index_js-3b41341d50fe.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Label_Label_js-node_modules_primer_react_lib-esm_Oc-8bcf2c-27ccb0703c9c.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_PageLayout_PageLayout_js-f486f91c74fa.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_ConfirmationDialog_ConfirmationDialog_js-ebccde637914.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Dialog_js-node_modules_primer_react_lib-esm_TabNav_-8321f5-2969c7508f3a.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_AvatarStack_AvatarStack_js-node_modules_primer_reac-fad54b-0bc292d7fa7f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Avatar_Avatar_js-node_modules_primer_react_lib-esm_-17c51c-714ab249266d.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_react-core_create-browser-history_ts-ui_packages_react-core_AppContextProvider_ts-809ab9-4a2cf4ad7f60.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_react-core_register-app_ts-3208e4c5b7c1.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_paths_index_ts-4df44d9d6f0a.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_ref-selector_RefSelector_tsx-dbbdef4348e2.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_commit-checks-status_index_ts-ui_packages_use-analytics_use-analytics_ts-ui_packa-51deed-06518674fea2.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_react-shared_hooks_use-canonical-object_ts-ui_packages_code-view-shared_ho-f06b0a-b3ed7448b1be.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/react-code-view-d7ef0b1ac25c.js"></script>
 
-INSERT INTO `product` (`id`, `storefront_id`, `product_key`, `name`, `description`, `tags`, `price_per_dozen`, `price_box`, `total_pieces`, `pieces_per_box`, `imageUrl`) VALUES
-(1, 5, 'AVGN1234', 'Notebooks', '\"Notebooks multiple colors\"', 'toys', 2, 1, 100, 10, '/assets/products_images/ssh-23029.png'),
-(2, 5, 'SSH-23V22', 'Hair things', 'Hair things multiple colors, ask for more info', 'hair', 1, NULL, 200, NULL, '/assets/products_images/ssh-23v22.png');
 
--- --------------------------------------------------------
+  <title>CapstoneProject_Group1/backend/database/wholesaledb.sql at main · alaricomv/CapstoneProject_Group1</title>
 
---
--- Estructura de tabla para la tabla `storefront`
---
 
-CREATE TABLE `storefront` (
-  `id` int(11) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `seller_id` int(11) NOT NULL,
-  `logo` longtext DEFAULT NULL,
-  `description` varchar(1000) DEFAULT NULL,
-  `tags` varchar(250) DEFAULT NULL COMMENT 'Tags are separated with a ","',
-  `address` varchar(250) DEFAULT NULL,
-  `rating` int(11) NOT NULL DEFAULT 0 COMMENT 'Average rating of the store',
-  `number_ratings` int(11) NOT NULL DEFAULT 0 COMMENT 'Number of ratings to the store'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `storefront`
---
+  <meta name="route-pattern" content="/:user_id/:repository/blob/*name(/*path)" data-turbo-transient>
+  <meta name="route-controller" content="blob" data-turbo-transient>
+  <meta name="route-action" content="show" data-turbo-transient>
 
-INSERT INTO `storefront` (`id`, `name`, `seller_id`, `logo`, `description`, `tags`, `address`, `rating`, `number_ratings`) VALUES
-(1, 'Store Test 1', 2, NULL, 'Test of a storefront', 'toys', 'Made up address 12345', 0, 0),
-(2, 'store 1', 10, NULL, 'description', 'toys', 'fake street', 0, 0),
-(3, 'Test 2', 13, NULL, 'adaafwae', 'toys', 'Address1234', 0, 0);
-INSERT INTO `storefront` (`id`, `name`, `seller_id`, `logo`, `description`, `tags`, `address`, `rating`, `number_ratings`) VALUES
-(5, 'Test 3', 13, 'data:image/png;base64,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', 'fsfs', 'toys', 'fafwaw', 0, 0);
+    
+  <meta name="current-catalog-service-hash" content="82c569b93da5c18ed649ebd4c2c79437db4611a6a1373e805a3cb001c64130b7">
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `users`
---
+  <meta name="request-id" content="DF46:4266:15C808:1F63DD:65FBA87E" data-turbo-transient="true" /><meta name="html-safe-nonce" content="98410cbe499435fedfead76078b49b3658b27598316f82509731de7ba52deac1" data-turbo-transient="true" /><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9hbGFyaWNvbXYvQ2Fwc3RvbmVQcm9qZWN0X0dyb3VwMS90cmVlL21haW4vYmFja2VuZC9kYXRhYmFzZSIsInJlcXVlc3RfaWQiOiJERjQ2OjQyNjY6MTVDODA4OjFGNjNERDo2NUZCQTg3RSIsInZpc2l0b3JfaWQiOiI2MTUyODAyOTcyNjUzNTYxNTA2IiwicmVnaW9uX2VkZ2UiOiJpYWQiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-turbo-transient="true" /><meta name="visitor-hmac" content="5c2e9f67ca2560d3d4f1068aada2c6c5d49a4182e47deacafedf0c5792a85c80" data-turbo-transient="true" />
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(250) NOT NULL,
-  `last_name` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `address` varchar(250) DEFAULT NULL,
-  `phone_number` varchar(250) DEFAULT NULL,
-  `seller` tinyint(1) NOT NULL COMMENT 'Determines if the user is a buyer (0) or a seller (1)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `users`
---
+    <meta name="hovercard-subject-tag" content="repository:756745942" data-turbo-transient>
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `address`, `phone_number`, `seller`) VALUES
-(1, 'Alarico', 'Mercado', 'alarico.mercado@mail.com', '1210130252523', 'Vancouver place 10', '123456789', 0),
-(2, 'Ramon', 'Gustavo', 'test@mail.com', 'password', 'Address test', '', 1),
-(3, 'Ramon', 'Gustavo', 'test@mail.com', 'password', 'Address test', '', 1),
-(4, 'Ana', 'Lucia', 'prueba2@gmail.com', '12345667', 'Here 12345', '12345656', 0),
-(8, 'Alarico', 'Mercado', 'alaqr@mail.com', '$2a$10$QVP7p4i4Q3O3WxnRs0YtHOi0xI2Vzxx4.Rk14kmT2HwBPxSmrtkXK', 'ssggeeggse', '123456789', 0),
-(10, 'Alarico', 'Mercado', 'alarico@mail.com', '$2a$10$hl5kjuwsTJRiwnwnIi0L8O1Z2uUUCD542UPCSy3w.X3Boov2czAkC', 'Vista Magna 1443, Fraccionamiento La Vista, false, Fraccionamiento La Vista, Fraccionamiento La Vista', '5518294302', 1),
-(11, 'Alarico', 'Mercado', 'alarico1@mail.com', '$2a$10$ROV1bLnFBu2DeQ9PO/KHDuSpvFrE/r3Whu.13d6UTZKScuTdHkkjO', 'Vista Magna 1443, Fraccionamiento La Vista, false, Fraccionamiento La Vista, Fraccionamiento La Vista', '5518294302', 1),
-(12, 'Alarico', 'Mercado', 'alarico2@mail.com', '$2a$10$r5cO536HsUoY5yLGhN4gseNAV/CZT3Y9aIhYT6wkkh//sAa858Aui', 'Vista Magna 1443, Fraccionamiento La Vista, false, Fraccionamiento La Vista, Fraccionamiento La Vista', '5518294302', 0),
-(13, 'Alarico', 'Mercado', 'alaricotest@mail.com', '$2a$10$GB/CDCWZiYDgD2OC0W1skuVdZe47L8s/Jvi7/jP4UC13d.deFtwau', 'fsfffs', '31212422512', 1);
 
---
--- Índices para tablas volcadas
---
+  <meta name="github-keyboard-shortcuts" content="repository,source-code,file-tree,copilot" data-turbo-transient="true" />
+  
 
---
--- Indices de la tabla `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user id cart` (`user_id`);
+  <meta name="selected-link" value="repo_source" data-turbo-transient>
+  <link rel="assets" href="https://github.githubassets.com/">
 
---
--- Indices de la tabla `cart_product`
---
-ALTER TABLE `cart_product`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cart id cart_product` (`cart_id`),
-  ADD KEY `product id cart_product` (`product_id`);
+    <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+  <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+  <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+  <meta name="google-site-verification" content="Apib7-x98H0j5cPqHWwSMm6dNU4GmODRoqxLiDzdx9I">
 
---
--- Indices de la tabla `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cart id order` (`cart_id`),
-  ADD KEY `storefront id order` (`storefront_id`);
+<meta name="octolytics-url" content="https://collector.github.com/github/collect" /><meta name="octolytics-actor-id" content="159969515" /><meta name="octolytics-actor-login" content="elaheh2024" /><meta name="octolytics-actor-hash" content="36d9b2fb0fd8fc0fc6a449eb7fad8feca2fc6c73062174420ea366bd37c82115" />
 
---
--- Indices de la tabla `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `storefront id` (`storefront_id`);
+  <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-turbo-transient="true" />
 
---
--- Indices de la tabla `storefront`
---
-ALTER TABLE `storefront`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Seller id` (`seller_id`);
+  
 
---
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT de la tabla `cart_product`
---
-ALTER TABLE `cart_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT de la tabla `order`
---
-ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+    <meta name="user-login" content="elaheh2024">
 
---
--- AUTO_INCREMENT de la tabla `product`
---
-ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  <link rel="sudo-modal" href="/sessions/sudo_modal">
 
---
--- AUTO_INCREMENT de la tabla `storefront`
---
-ALTER TABLE `storefront`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+    <meta name="viewport" content="width=device-width">
+    
+      <meta name="description" content="Contribute to alaricomv/CapstoneProject_Group1 development by creating an account on GitHub.">
+      <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <meta property="fb:app_id" content="1401488693436528">
+    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/alaricomv/CapstoneProject_Group1/blob/main/backend/database/wholesaledb.sql" />
+      <meta name="twitter:image:src" content="https://avatars.githubusercontent.com/u/42979623?s=400&amp;v=4" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="CapstoneProject_Group1/backend/database/wholesaledb.sql at main · alaricomv/CapstoneProject_Group1" /><meta name="twitter:description" content="Contribute to alaricomv/CapstoneProject_Group1 development by creating an account on GitHub." />
+      <meta property="og:image" content="https://avatars.githubusercontent.com/u/42979623?s=400&amp;v=4" /><meta property="og:image:alt" content="Contribute to alaricomv/CapstoneProject_Group1 development by creating an account on GitHub." /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="CapstoneProject_Group1/backend/database/wholesaledb.sql at main · alaricomv/CapstoneProject_Group1" /><meta property="og:url" content="https://github.com/alaricomv/CapstoneProject_Group1/blob/main/backend/database/wholesaledb.sql" /><meta property="og:description" content="Contribute to alaricomv/CapstoneProject_Group1 development by creating an account on GitHub." />
+      
 
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+      <link rel="shared-web-socket" href="wss://alive.github.com/_sockets/u/159969515/ws?session=eyJ2IjoiVjMiLCJ1IjoxNTk5Njk1MTUsInMiOjEzNDAzMDI3MTIsImMiOjMwNzU2NDg0ODgsInQiOjE3MTA5OTE0ODd9--8fcc97db8af5d93710adfdc046f7e08b70e007852d199ed1e5820661d752b101" data-refresh-url="/_alive" data-session-id="8d72881cd3b85a37295f11a2da3f91467f77edc32a3222a71da16a54d46c588a">
+      <link rel="shared-web-socket-src" href="/assets-cdn/worker/socket-worker-9cc1149b224c.js">
 
---
--- Restricciones para tablas volcadas
---
 
---
--- Filtros para la tabla `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `user id cart` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+        <meta name="hostname" content="github.com">
 
---
--- Filtros para la tabla `cart_product`
---
-ALTER TABLE `cart_product`
-  ADD CONSTRAINT `cart id cart_product` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),
-  ADD CONSTRAINT `product id cart_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
---
--- Filtros para la tabla `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `cart id order` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),
-  ADD CONSTRAINT `storefront id order` FOREIGN KEY (`storefront_id`) REFERENCES `storefront` (`id`);
+      <meta name="keyboard-shortcuts-preference" content="all">
 
---
--- Filtros para la tabla `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `storefront id` FOREIGN KEY (`storefront_id`) REFERENCES `storefront` (`id`);
+        <meta name="expected-hostname" content="github.com">
 
---
--- Filtros para la tabla `storefront`
---
-ALTER TABLE `storefront`
-  ADD CONSTRAINT `Seller id` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  <meta http-equiv="x-pjax-version" content="075f17da51d968b8b524a9ee561f5a3210cf2a8c9fc5f084550af5c7e3ce00d7" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-csp-version" content="5dcfbec3488c5fd5a334e287ce6a17058b7d4beb91db2d4d184e4d55bbf1d7d7" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-css-version" content="d269a27fcf2de488a9cba030288261bb329d661d39fe1f3676b9f7e95ace63ac" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-js-version" content="bec0d767a8febeee3b0c899d6a0051602e11200923dcc5f4e2a45b26c6ebcfec" data-turbo-track="reload">
+
+  <meta name="turbo-cache-control" content="no-preview" data-turbo-transient="">
+
+      <meta name="turbo-cache-control" content="no-cache" data-turbo-transient>
+    <meta data-hydrostats="publish">
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/react-code-view.959fb0b61e6a1de773e7.module.css" />
+
+  <meta name="go-import" content="github.com/alaricomv/CapstoneProject_Group1 git https://github.com/alaricomv/CapstoneProject_Group1.git">
+
+  <meta name="octolytics-dimension-user_id" content="42979623" /><meta name="octolytics-dimension-user_login" content="alaricomv" /><meta name="octolytics-dimension-repository_id" content="756745942" /><meta name="octolytics-dimension-repository_nwo" content="alaricomv/CapstoneProject_Group1" /><meta name="octolytics-dimension-repository_public" content="false" /><meta name="octolytics-dimension-repository_is_fork" content="false" /><meta name="octolytics-dimension-repository_network_root_id" content="756745942" /><meta name="octolytics-dimension-repository_network_root_nwo" content="alaricomv/CapstoneProject_Group1" />
+
+
+
+  <meta name="turbo-body-classes" content="logged-in env-production page-responsive">
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg" color="#000000">
+  <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
+
+<meta name="theme-color" content="#1e2327">
+<meta name="color-scheme" content="light dark" />
+
+
+  <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
+
+  </head>
+
+  <body class="logged-in env-production page-responsive" style="word-wrap: break-word;">
+    <div data-turbo-body class="logged-in env-production page-responsive" style="word-wrap: break-word;">
+      
+
+
+    <div class="position-relative js-header-wrapper ">
+      <a href="#start-of-content" class="p-3 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus js-skip-to-content">Skip to content</a>
+      <span data-view-component="true" class="progress-pjax-loader Progress position-fixed width-full">
+    <span style="width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar left-0 top-0 color-bg-accent-emphasis"></span>
+</span>      
+      
+  
+
+
+
+
+
+
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Button_IconButton_js-node_modules_primer_react_lib--23bcad-01764c79fa41.js"></script>
+
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/keyboard-shortcuts-dialog-a23eda2bcf8d.js"></script>
+
+<react-partial
+  partial-name="keyboard-shortcuts-dialog"
+  data-ssr="false"
+>
+  
+  <script type="application/json" data-target="react-partial.embeddedData">{"props":{}}</script>
+  <div data-target="react-partial.reactRoot"></div>
+</react-partial>
+
+
+
+      
+
+        <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_allex_crc32_lib_crc32_esm_js-node_modules_github_mini-throttle_dist_deco-b38cad-748e74df23ce.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_clipboard-copy-element_dist_index_esm_js-node_modules_delegated-e-b37f7d-2f24d321a3fb.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_command-palette_items_help-item_ts-app_assets_modules_github_comman-48ad9d-9041b775dcfb.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/command-palette-f620e569db0b.js"></script>
+
+            <header class="AppHeader">
+    
+
+    <div class="AppHeader-globalBar pb-2 js-global-bar">
+      <div class="AppHeader-globalBar-start">
+          <deferred-side-panel data-url="/_side-panels/global">
+  <include-fragment data-target="deferred-side-panel.fragment">
+      <button aria-label="Open global navigation menu" data-action="click:deferred-side-panel#loadPanel click:deferred-side-panel#panelOpened" data-show-dialog-id="dialog-cd2aad8e-9f53-44c2-b3c5-160b01bfb406" id="dialog-show-dialog-cd2aad8e-9f53-44c2-b3c5-160b01bfb406" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium AppHeader-button color-bg-transparent p-0 color-fg-muted">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-three-bars Button-visual">
+    <path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
+</svg>
+</button>
+
+<dialog-helper>
+  <dialog data-target="deferred-side-panel.panel" id="dialog-cd2aad8e-9f53-44c2-b3c5-160b01bfb406" aria-modal="true" aria-labelledby="dialog-cd2aad8e-9f53-44c2-b3c5-160b01bfb406-title" aria-describedby="dialog-cd2aad8e-9f53-44c2-b3c5-160b01bfb406-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait Overlay--motion-scaleFade Overlay--placement-left SidePanel">
+    <div styles="flex-direction: row;" data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title sr-only" id="dialog-cd2aad8e-9f53-44c2-b3c5-160b01bfb406-title">
+        Global navigation
+      </h1>
+            <div data-view-component="true" class="d-flex">
+      <div data-view-component="true" class="AppHeader-logo position-relative">
+        <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
+    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+</svg>
+</div></div>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="dialog-cd2aad8e-9f53-44c2-b3c5-160b01bfb406" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+</div>
+      <scrollable-region data-labelled-by="dialog-cd2aad8e-9f53-44c2-b3c5-160b01bfb406-title">
+        <div data-view-component="true" class="Overlay-body d-flex flex-column px-2">    <div data-view-component="true" class="d-flex flex-column mb-3">
+        <nav aria-label="Site navigation" data-view-component="true" class="ActionList">
+  
+  <nav-list>
+    <ul data-target="nav-list.topLevelList" data-view-component="true" class="ActionListWrap">
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-hotkey="g d" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;HOME&quot;,&quot;label&quot;:null}" id="item-3535fc59-440b-4970-8ac6-10c84b6a72ce" href="/dashboard" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-home">
+    <path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Home
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;ISSUES&quot;,&quot;label&quot;:null}" id="item-aa14cfa7-3693-4fda-9b9b-4ef4d014a0cf" href="/issues" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Issues
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PULL_REQUESTS&quot;,&quot;label&quot;:null}" id="item-3f77102a-fafe-4e8e-a336-dedff824fca1" href="/pulls" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request">
+    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Pull requests
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-item-id="projects" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PROJECTS&quot;,&quot;label&quot;:null}" id="item-3a40321e-5f1a-4230-acf7-e7b5187b9e56" href="/projects" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM6.5 6.5v8h7.75a.25.25 0 0 0 .25-.25V6.5Zm8-1.5V1.75a.25.25 0 0 0-.25-.25H6.5V5Zm-13 1.5v7.75c0 .138.112.25.25.25H5v-8ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Projects
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;DISCUSSIONS&quot;,&quot;label&quot;:null}" id="item-f693ca92-f875-40b8-9029-b4c4c9259a3d" href="/discussions" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment-discussion">
+    <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Discussions
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;CODESPACES&quot;,&quot;label&quot;:null}" id="item-9397ee1a-027e-43c9-9197-71aba26ada31" href="https://github.com/codespaces" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-codespaces">
+    <path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Codespaces
+</span></a>
+  
+  
+</li>
+
+        
+          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;EXPLORE&quot;,&quot;label&quot;:null}" id="item-c6521e14-a16b-44fe-990e-655621a62973" href="/explore" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-telescope">
+    <path d="M14.184 1.143v-.001l1.422 2.464a1.75 1.75 0 0 1-.757 2.451L3.104 11.713a1.75 1.75 0 0 1-2.275-.702l-.447-.775a1.75 1.75 0 0 1 .53-2.32L11.682.573a1.748 1.748 0 0 1 2.502.57Zm-4.709 9.32h-.001l2.644 3.863a.75.75 0 1 1-1.238.848l-1.881-2.75v2.826a.75.75 0 0 1-1.5 0v-2.826l-1.881 2.75a.75.75 0 1 1-1.238-.848l2.049-2.992a.746.746 0 0 1 .293-.253l1.809-.87a.749.749 0 0 1 .944.252ZM9.436 3.92h-.001l-4.97 3.39.942 1.63 5.42-2.61Zm3.091-2.108h.001l-1.85 1.26 1.505 2.605 2.016-.97a.247.247 0 0 0 .13-.151.247.247 0 0 0-.022-.199l-1.422-2.464a.253.253 0 0 0-.161-.119.254.254 0 0 0-.197.038ZM1.756 9.157a.25.25 0 0 0-.075.33l.447.775a.25.25 0 0 0 .325.1l1.598-.769-.83-1.436-1.465 1Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Explore
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;MARKETPLACE&quot;,&quot;label&quot;:null}" id="item-ec4e0eee-2edc-4e53-be3e-6ee06596947e" href="/marketplace" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-gift">
+    <path d="M2 2.75A2.75 2.75 0 0 1 4.75 0c.983 0 1.873.42 2.57 1.232.268.318.497.668.68 1.042.183-.375.411-.725.68-1.044C9.376.42 10.266 0 11.25 0a2.75 2.75 0 0 1 2.45 4h.55c.966 0 1.75.784 1.75 1.75v2c0 .698-.409 1.301-1 1.582v4.918A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V9.332C.409 9.05 0 8.448 0 7.75v-2C0 4.784.784 4 1.75 4h.55c-.192-.375-.3-.8-.3-1.25ZM7.25 9.5H2.5v4.75c0 .138.112.25.25.25h4.5Zm1.5 0v5h4.5a.25.25 0 0 0 .25-.25V9.5Zm0-4V8h5.5a.25.25 0 0 0 .25-.25v-2a.25.25 0 0 0-.25-.25Zm-7 0a.25.25 0 0 0-.25.25v2c0 .138.112.25.25.25h5.5V5.5h-5.5Zm3-4a1.25 1.25 0 0 0 0 2.5h2.309c-.233-.818-.542-1.401-.878-1.793-.43-.502-.915-.707-1.431-.707ZM8.941 4h2.309a1.25 1.25 0 0 0 0-2.5c-.516 0-1 .205-1.43.707-.337.392-.646.975-.879 1.793Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Marketplace
+</span></a>
+  
+  
+</li>
+
+</ul>  </nav-list>
+</nav>
+
+        <div data-view-component="true" class="my-3 d-flex flex-justify-center height-full">
+          <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+</div>
+</div>
+      <div data-view-component="true" class="flex-1"></div>
+
+
+      <div data-view-component="true" class="px-2">      <p class="color-fg-subtle text-small text-light">&copy; 2024 GitHub, Inc.</p>
+
+      <div data-view-component="true" class="d-flex flex-wrap text-small text-light">
+          <a target="_blank" href="https://github.com/about" data-view-component="true" class="Link mr-2">About</a>
+          <a target="_blank" href="https://github.blog" data-view-component="true" class="Link mr-2">Blog</a>
+          <a target="_blank" href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-view-component="true" class="Link mr-2">Terms</a>
+          <a target="_blank" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-view-component="true" class="Link mr-2">Privacy</a>
+          <a target="_blank" href="https://github.com/security" data-view-component="true" class="Link mr-2">Security</a>
+          <a target="_blank" href="https://www.githubstatus.com/" data-view-component="true" class="Link mr-3">Status</a>
+
+</div></div>
+</div>
+      </scrollable-region>
+      
+</dialog></dialog-helper>
+
+  </include-fragment>
+</deferred-side-panel>
+
+        <a
+          class="AppHeader-logo ml-2"
+          href="https://github.com/"
+          data-hotkey="g d"
+          aria-label="Homepage "
+          data-turbo="false"
+          data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"
+        >
+          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle color-fg-default">
+    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+</svg>
+        </a>
+
+          <div class="AppHeader-context" >
+  <div class="AppHeader-context-compact">
+      <button aria-expanded="false" aria-haspopup="dialog" aria-label="Page context: alaricomv / CapstoneProject_Group1" id="dialog-show-context-region-dialog" data-show-dialog-id="context-region-dialog" type="button" data-view-component="true" class="AppHeader-context-compact-trigger Truncate Button--secondary Button--medium Button box-shadow-none">  <span class="Button-content">
+    <span class="Button-label"><span class="AppHeader-context-compact-lead">
+                <span class="AppHeader-context-compact-parentItem">alaricomv</span>
+                <span class="no-wrap">&nbsp;/</span>
+
+            </span>
+
+            <strong class="AppHeader-context-compact-mainItem d-flex flex-items-center Truncate" >
+  <span class="Truncate-text ">CapstoneProject_Group1</span>
+
+    <svg aria-hidden="true" height="12" viewBox="0 0 16 16" version="1.1" width="12" data-view-component="true" class="octicon octicon-lock ml-1">
+    <path d="M4 4a4 4 0 0 1 8 0v2h.25c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 12.25 15h-8.5A1.75 1.75 0 0 1 2 13.25v-5.5C2 6.784 2.784 6 3.75 6H4Zm8.25 3.5h-8.5a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25ZM10.5 6V4a2.5 2.5 0 1 0-5 0v2Z"></path>
+</svg>
+</strong></span>
+  </span>
+</button>
+
+<dialog-helper>
+  <dialog id="context-region-dialog" aria-modal="true" aria-labelledby="context-region-dialog-title" aria-describedby="context-region-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade">
+    <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="context-region-dialog-title">
+        Navigate back to
+      </h1>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="context-region-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+</div>
+      <scrollable-region data-labelled-by="context-region-dialog-title">
+        <div data-view-component="true" class="Overlay-body">          <ul role="list" class="list-style-none" >
+    <li>
+      <a data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;alaricomv&quot;,&quot;screen_size&quot;:&quot;compact&quot;}" href="/alaricomv" data-view-component="true" class="Link--primary Truncate d-flex flex-items-center py-1">
+        <span class="AppHeader-context-item-label Truncate-text ">
+            <svg aria-hidden="true" height="12" viewBox="0 0 16 16" version="1.1" width="12" data-view-component="true" class="octicon octicon-person mr-1">
+    <path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
+</svg>
+
+          alaricomv
+        </span>
+
+</a>
+    </li>
+    <li>
+      <a data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;CapstoneProject_Group1&quot;,&quot;screen_size&quot;:&quot;compact&quot;}" href="/alaricomv/CapstoneProject_Group1" data-view-component="true" class="Link--primary Truncate d-flex flex-items-center py-1">
+        <span class="AppHeader-context-item-label Truncate-text ">
+            <svg aria-hidden="true" height="12" viewBox="0 0 16 16" version="1.1" width="12" data-view-component="true" class="octicon octicon-repo mr-1">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+</svg>
+
+          CapstoneProject_Group1
+        </span>
+
+          <svg aria-hidden="true" height="12" viewBox="0 0 16 16" version="1.1" width="12" data-view-component="true" class="octicon octicon-lock ml-1">
+    <path d="M4 4a4 4 0 0 1 8 0v2h.25c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 12.25 15h-8.5A1.75 1.75 0 0 1 2 13.25v-5.5C2 6.784 2.784 6 3.75 6H4Zm8.25 3.5h-8.5a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25ZM10.5 6V4a2.5 2.5 0 1 0-5 0v2Z"></path>
+</svg>
+</a>
+    </li>
+</ul>
+
+</div>
+      </scrollable-region>
+      
+</dialog></dialog-helper>
+  </div>
+
+  <div class="AppHeader-context-full">
+    <nav role="navigation" aria-label="Page context">
+      <ul role="list" class="list-style-none" >
+    <li>
+      <a data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;alaricomv&quot;,&quot;screen_size&quot;:&quot;full&quot;}" data-hovercard-type="user" data-hovercard-url="/users/alaricomv/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/alaricomv" data-view-component="true" class="AppHeader-context-item">
+        <span class="AppHeader-context-item-label  ">
+
+          alaricomv
+        </span>
+
+</a>
+        <span class="AppHeader-context-item-separator">/</span>
+    </li>
+    <li>
+      <a data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;CapstoneProject_Group1&quot;,&quot;screen_size&quot;:&quot;full&quot;}" href="/alaricomv/CapstoneProject_Group1" data-view-component="true" class="AppHeader-context-item">
+        <span class="AppHeader-context-item-label  ">
+
+          CapstoneProject_Group1
+        </span>
+
+          <svg aria-hidden="true" height="12" viewBox="0 0 16 16" version="1.1" width="12" data-view-component="true" class="octicon octicon-lock ml-1">
+    <path d="M4 4a4 4 0 0 1 8 0v2h.25c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 12.25 15h-8.5A1.75 1.75 0 0 1 2 13.25v-5.5C2 6.784 2.784 6 3.75 6H4Zm8.25 3.5h-8.5a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25ZM10.5 6V4a2.5 2.5 0 1 0-5 0v2Z"></path>
+</svg>
+</a>
+    </li>
+</ul>
+
+    </nav>
+  </div>
+</div>
+
+      </div>
+      <div class="AppHeader-globalBar-end">
+          <div class="AppHeader-search" >
+              
+
+
+<qbsearch-input class="search-input" data-scope="repo:alaricomv/CapstoneProject_Group1" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="MU65IbhmLglJPCg1SVAIpe1Adn0fBR5mnci1jtdqpyymRAJnq0Kql9lMn2fjSnPGDnKrD2NlgpnEHCSPgRBNbw" data-max-custom-scopes="10" data-header-redesign-enabled="true" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="alaricomv/CapstoneProject_Group1" data-current-org="" data-current-owner="alaricomv" data-logged-in="true" data-copilot-chat-enabled="false" data-blackbird-indexed-repo-csrf="<input type=&quot;hidden&quot; value=&quot;TxXsfnlHLI0Rf7dygotWt_xgCl4qGPcYDNgRXskD63_p5BLQoj4SqtGjtY6XIFk_no7ngHAyZ3QN7Gm9Bc4Skg&quot; data-csrf=&quot;true&quot; />">
+  <div
+    class="search-input-container search-with-dialog position-relative d-flex flex-row flex-items-center height-auto color-bg-transparent border-0 color-fg-subtle mx-0"
+    data-action="click:qbsearch-input#searchInputContainerClicked"
+  >
+      
+            <button type="button" data-action="click:qbsearch-input#handleExpand" class="AppHeader-button AppHeader-search-whenNarrow" aria-label="Search or jump to…" aria-expanded="false" aria-haspopup="dialog">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+          </button>
+
+
+<div class="AppHeader-search-whenRegular">
+  <div class="AppHeader-search-wrap AppHeader-search-wrap--hasTrailing">
+    <div class="AppHeader-search-control">
+      <label
+        for="AppHeader-searchInput"
+        aria-label="Search or jump to…"
+        class="AppHeader-search-visual--leading"
+      >
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+      </label>
+
+                <button
+            type="button"
+            data-target="qbsearch-input.inputButton"
+            data-action="click:qbsearch-input#handleExpand"
+            class="AppHeader-searchButton form-control input-contrast text-left color-fg-subtle no-wrap"
+            data-hotkey="s,/"
+            data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;SEARCH&quot;,&quot;label&quot;:null}"
+          >
+            <div class="overflow-hidden">
+              <span id="qb-input-query" data-target="qbsearch-input.inputButtonText">
+                  Type <kbd class="AppHeader-search-kbd">/</kbd> to search
+              </span>
+            </div>
+          </button>
+
+    </div>
+
+
+      <button type="button" id="AppHeader-commandPalette-button" class="AppHeader-search-action--trailing js-activate-command-palette" data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;command_palette&quot;,&quot;label&quot;:&quot;open command palette&quot;}">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-command-palette">
+    <path d="m6.354 8.04-4.773 4.773a.75.75 0 1 0 1.061 1.06L7.945 8.57a.75.75 0 0 0 0-1.06L2.642 2.206a.75.75 0 0 0-1.06 1.061L6.353 8.04ZM8.75 11.5a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5Z"></path>
+</svg>
+      </button>
+
+      <tool-tip id="tooltip-1e0fbabf-0052-482e-b0d8-6084f028a58d" for="AppHeader-commandPalette-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Command palette</tool-tip>
+  </div>
+</div>
+
+    <input type="hidden" name="type" class="js-site-search-type-field">
+
+    
+<div class="Overlay--hidden " data-modal-dialog-overlay>
+  <modal-dialog data-action="close:qbsearch-input#handleClose cancel:qbsearch-input#handleClose" data-target="qbsearch-input.searchSuggestionsDialog" role="dialog" id="search-suggestions-dialog" aria-modal="true" aria-labelledby="search-suggestions-dialog-header" data-view-component="true" class="Overlay Overlay--width-medium Overlay--height-auto">
+      <h1 id="search-suggestions-dialog-header" class="sr-only">Search code, repositories, users, issues, pull requests...</h1>
+    <div class="Overlay-body Overlay-body--paddingNone">
+      
+          <div data-view-component="true">        <div class="search-suggestions position-absolute width-full color-shadow-large border color-fg-default color-bg-default overflow-hidden d-flex flex-column query-builder-container"
+          style="border-radius: 12px;"
+          data-target="qbsearch-input.queryBuilderContainer"
+          hidden
+        >
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="query-builder-test-form" action="" accept-charset="UTF-8" method="get">
+  <query-builder data-target="qbsearch-input.queryBuilder" id="query-builder-query-builder-test" data-filter-key=":" data-view-component="true" class="QueryBuilder search-query-builder">
+    <div class="FormControl FormControl--fullWidth">
+      <label id="query-builder-test-label" for="query-builder-test" class="FormControl-label sr-only">
+        Search
+      </label>
+      <div
+        class="QueryBuilder-StyledInput width-fit "
+        data-target="query-builder.styledInput"
+      >
+          <span id="query-builder-test-leadingvisual-wrap" class="FormControl-input-leadingVisualWrap QueryBuilder-leadingVisualWrap">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search FormControl-input-leadingVisual">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+          </span>
+        <div data-target="query-builder.styledInputContainer" class="QueryBuilder-StyledInputContainer">
+          <div
+            aria-hidden="true"
+            class="QueryBuilder-StyledInputContent"
+            data-target="query-builder.styledInputContent"
+          ></div>
+          <div class="QueryBuilder-InputWrapper">
+            <div aria-hidden="true" class="QueryBuilder-Sizer" data-target="query-builder.sizer"></div>
+            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-b5301522-9796-4dd3-96d5-3e4219c27d2d" data-target="query-builder.input" data-action="
+          input:query-builder#inputChange
+          blur:query-builder#inputBlur
+          keydown:query-builder#inputKeydown
+          focus:query-builder#inputFocus
+        " data-view-component="true" class="FormControl-input QueryBuilder-Input FormControl-medium" />
+          </div>
+        </div>
+          <span class="sr-only" id="query-builder-test-clear">Clear</span>
+          <button role="button" id="query-builder-test-clear-button" aria-labelledby="query-builder-test-clear query-builder-test-label" data-target="query-builder.clearButton" data-action="
+                click:query-builder#clear
+                focus:query-builder#clearButtonFocus
+                blur:query-builder#clearButtonBlur
+              " variant="small" hidden="hidden" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium mr-1 px-2 py-0 d-flex flex-items-center rounded-1 color-fg-muted">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x-circle-fill Button-visual">
+    <path d="M2.343 13.657A8 8 0 1 1 13.658 2.343 8 8 0 0 1 2.343 13.657ZM6.03 4.97a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042L6.94 8 4.97 9.97a.749.749 0 0 0 .326 1.275.749.749 0 0 0 .734-.215L8 9.06l1.97 1.97a.749.749 0 0 0 1.275-.326.749.749 0 0 0-.215-.734L9.06 8l1.97-1.97a.749.749 0 0 0-.326-1.275.749.749 0 0 0-.734.215L8 6.94Z"></path>
+</svg>
+</button>
+
+      </div>
+      <template id="search-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+</template>
+
+<template id="code-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
+    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+</template>
+
+<template id="file-code-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file-code">
+    <path d="M4 1.75C4 .784 4.784 0 5.75 0h5.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v8.586A1.75 1.75 0 0 1 14.25 15h-9a.75.75 0 0 1 0-1.5h9a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 10 4.25V1.5H5.75a.25.25 0 0 0-.25.25v2.5a.75.75 0 0 1-1.5 0Zm1.72 4.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.47-1.47-1.47-1.47a.75.75 0 0 1 0-1.06ZM3.28 7.78 1.81 9.25l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Zm8.22-6.218V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
+</svg>
+</template>
+
+<template id="history-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-history">
+    <path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path>
+</svg>
+</template>
+
+<template id="repo-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+</svg>
+</template>
+
+<template id="bookmark-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bookmark">
+    <path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+</template>
+
+<template id="plus-circle-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus-circle">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7.25-3.25v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 1.5 0Z"></path>
+</svg>
+</template>
+
+<template id="circle-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-dot-fill">
+    <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
+</svg>
+</template>
+
+<template id="trash-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-trash">
+    <path d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75ZM4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.748 1.748 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15ZM6.5 1.75V3h3V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Z"></path>
+</svg>
+</template>
+
+<template id="team-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-people">
+    <path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path>
+</svg>
+</template>
+
+<template id="project-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project">
+    <path d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25ZM11.75 3a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Zm-8.25.75a.75.75 0 0 1 1.5 0v5.5a.75.75 0 0 1-1.5 0ZM8 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 3Z"></path>
+</svg>
+</template>
+
+<template id="pencil-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pencil">
+    <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path>
+</svg>
+</template>
+
+<template id="copilot-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copilot">
+    <path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"></path><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"></path>
+</svg>
+</template>
+
+<template id="workflow-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-workflow">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h3.5C6.216 0 7 .784 7 1.75v3.5A1.75 1.75 0 0 1 5.25 7H4v4a1 1 0 0 0 1 1h4v-1.25C9 9.784 9.784 9 10.75 9h3.5c.966 0 1.75.784 1.75 1.75v3.5A1.75 1.75 0 0 1 14.25 16h-3.5A1.75 1.75 0 0 1 9 14.25v-.75H5A2.5 2.5 0 0 1 2.5 11V7h-.75A1.75 1.75 0 0 1 0 5.25Zm1.75-.25a.25.25 0 0 0-.25.25v3.5c0 .138.112.25.25.25h3.5a.25.25 0 0 0 .25-.25v-3.5a.25.25 0 0 0-.25-.25Zm9 9a.25.25 0 0 0-.25.25v3.5c0 .138.112.25.25.25h3.5a.25.25 0 0 0 .25-.25v-3.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+</template>
+
+<template id="book-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book">
+    <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path>
+</svg>
+</template>
+
+<template id="code-review-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code-review">
+    <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1ZM1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0Zm2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+</template>
+
+<template id="codespaces-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-codespaces">
+    <path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path>
+</svg>
+</template>
+
+<template id="comment-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment">
+    <path d="M1 2.75C1 1.784 1.784 1 2.75 1h10.5c.966 0 1.75.784 1.75 1.75v7.5A1.75 1.75 0 0 1 13.25 12H9.06l-2.573 2.573A1.458 1.458 0 0 1 4 13.543V12H2.75A1.75 1.75 0 0 1 1 10.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h4.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+</template>
+
+<template id="comment-discussion-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment-discussion">
+    <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path>
+</svg>
+</template>
+
+<template id="organization-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-organization">
+    <path d="M1.75 16A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 0 0 .25-.25V8.285a.25.25 0 0 0-.111-.208l-1.055-.703a.749.749 0 1 1 .832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0 1 14.25 16h-3.5a.766.766 0 0 1-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 0 1-.75-.75V14h-1v1.25a.75.75 0 0 1-.75.75Zm-.25-1.75c0 .138.112.25.25.25H4v-1.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 .75.75v1.25h2.25a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM3.75 6h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 3.75A.75.75 0 0 1 3.75 3h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 3.75Zm4 3A.75.75 0 0 1 7.75 6h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 7 6.75ZM7.75 3h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 9.75A.75.75 0 0 1 3.75 9h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 9.75ZM7.75 9h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Z"></path>
+</svg>
+</template>
+
+<template id="rocket-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-rocket">
+    <path d="M14.064 0h.186C15.216 0 16 .784 16 1.75v.186a8.752 8.752 0 0 1-2.564 6.186l-.458.459c-.314.314-.641.616-.979.904v3.207c0 .608-.315 1.172-.833 1.49l-2.774 1.707a.749.749 0 0 1-1.11-.418l-.954-3.102a1.214 1.214 0 0 1-.145-.125L3.754 9.816a1.218 1.218 0 0 1-.124-.145L.528 8.717a.749.749 0 0 1-.418-1.11l1.71-2.774A1.748 1.748 0 0 1 3.31 4h3.204c.288-.338.59-.665.904-.979l.459-.458A8.749 8.749 0 0 1 14.064 0ZM8.938 3.623h-.002l-.458.458c-.76.76-1.437 1.598-2.02 2.5l-1.5 2.317 2.143 2.143 2.317-1.5c.902-.583 1.74-1.26 2.499-2.02l.459-.458a7.25 7.25 0 0 0 2.123-5.127V1.75a.25.25 0 0 0-.25-.25h-.186a7.249 7.249 0 0 0-5.125 2.123ZM3.56 14.56c-.732.732-2.334 1.045-3.005 1.148a.234.234 0 0 1-.201-.064.234.234 0 0 1-.064-.201c.103-.671.416-2.273 1.15-3.003a1.502 1.502 0 1 1 2.12 2.12Zm6.94-3.935c-.088.06-.177.118-.266.175l-2.35 1.521.548 1.783 1.949-1.2a.25.25 0 0 0 .119-.213ZM3.678 8.116 5.2 5.766c.058-.09.117-.178.176-.266H3.309a.25.25 0 0 0-.213.119l-1.2 1.95ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+</template>
+
+<template id="shield-check-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield-check">
+    <path d="m8.533.133 5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667l5.25-1.68a1.748 1.748 0 0 1 1.066 0Zm-.61 1.429.001.001-5.25 1.68a.251.251 0 0 0-.174.237V7c0 1.36.275 2.666 1.057 3.859.784 1.194 2.121 2.342 4.366 3.298a.196.196 0 0 0 .154 0c2.245-.957 3.582-2.103 4.366-3.297C13.225 9.666 13.5 8.358 13.5 7V3.48a.25.25 0 0 0-.174-.238l-5.25-1.68a.25.25 0 0 0-.153 0ZM11.28 6.28l-3.5 3.5a.75.75 0 0 1-1.06 0l-1.5-1.5a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l.97.97 2.97-2.97a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+</template>
+
+<template id="heart-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-heart">
+    <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>
+</svg>
+</template>
+
+<template id="server-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-server">
+    <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v4c0 .372-.116.717-.314 1 .198.283.314.628.314 1v4a1.75 1.75 0 0 1-1.75 1.75H1.75A1.75 1.75 0 0 1 0 12.75v-4c0-.358.109-.707.314-1a1.739 1.739 0 0 1-.314-1v-4C0 1.784.784 1 1.75 1ZM1.5 2.75v4c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-4a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm.25 5.75a.25.25 0 0 0-.25.25v4c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-4a.25.25 0 0 0-.25-.25ZM7 4.75A.75.75 0 0 1 7.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 7 4.75ZM7.75 10h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM3 4.75A.75.75 0 0 1 3.75 4h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 4.75ZM3.75 10h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Z"></path>
+</svg>
+</template>
+
+<template id="globe-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-globe">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM5.78 8.75a9.64 9.64 0 0 0 1.363 4.177c.255.426.542.832.857 1.215.245-.296.551-.705.857-1.215A9.64 9.64 0 0 0 10.22 8.75Zm4.44-1.5a9.64 9.64 0 0 0-1.363-4.177c-.307-.51-.612-.919-.857-1.215a9.927 9.927 0 0 0-.857 1.215A9.64 9.64 0 0 0 5.78 7.25Zm-5.944 1.5H1.543a6.507 6.507 0 0 0 4.666 5.5c-.123-.181-.24-.365-.352-.552-.715-1.192-1.437-2.874-1.581-4.948Zm-2.733-1.5h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.507 6.507 0 0 0-4.666 5.5Zm10.181 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.507 6.507 0 0 0 4.666-5.5Zm2.733-1.5a6.507 6.507 0 0 0-4.666-5.5c.123.181.24.365.353.552.714 1.192 1.436 2.874 1.58 4.948Z"></path>
+</svg>
+</template>
+
+<template id="issue-opened-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+</svg>
+</template>
+
+<template id="device-mobile-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-device-mobile">
+    <path d="M3.75 0h8.5C13.216 0 14 .784 14 1.75v12.5A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25V1.75C2 .784 2.784 0 3.75 0ZM3.5 1.75v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM8 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+</svg>
+</template>
+
+<template id="package-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-package">
+    <path d="m8.878.392 5.25 3.045c.54.314.872.89.872 1.514v6.098a1.75 1.75 0 0 1-.872 1.514l-5.25 3.045a1.75 1.75 0 0 1-1.756 0l-5.25-3.045A1.75 1.75 0 0 1 1 11.049V4.951c0-.624.332-1.201.872-1.514L7.122.392a1.75 1.75 0 0 1 1.756 0ZM7.875 1.69l-4.63 2.685L8 7.133l4.755-2.758-4.63-2.685a.248.248 0 0 0-.25 0ZM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432Zm6.25 8.271 4.625-2.683a.25.25 0 0 0 .125-.216V5.677L8.75 8.432Z"></path>
+</svg>
+</template>
+
+<template id="credit-card-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-credit-card">
+    <path d="M10.75 9a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Z"></path><path d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25ZM14.5 6.5h-13v5.75c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Zm0-2.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25V5h13Z"></path>
+</svg>
+</template>
+
+<template id="play-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path>
+</svg>
+</template>
+
+<template id="gift-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-gift">
+    <path d="M2 2.75A2.75 2.75 0 0 1 4.75 0c.983 0 1.873.42 2.57 1.232.268.318.497.668.68 1.042.183-.375.411-.725.68-1.044C9.376.42 10.266 0 11.25 0a2.75 2.75 0 0 1 2.45 4h.55c.966 0 1.75.784 1.75 1.75v2c0 .698-.409 1.301-1 1.582v4.918A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V9.332C.409 9.05 0 8.448 0 7.75v-2C0 4.784.784 4 1.75 4h.55c-.192-.375-.3-.8-.3-1.25ZM7.25 9.5H2.5v4.75c0 .138.112.25.25.25h4.5Zm1.5 0v5h4.5a.25.25 0 0 0 .25-.25V9.5Zm0-4V8h5.5a.25.25 0 0 0 .25-.25v-2a.25.25 0 0 0-.25-.25Zm-7 0a.25.25 0 0 0-.25.25v2c0 .138.112.25.25.25h5.5V5.5h-5.5Zm3-4a1.25 1.25 0 0 0 0 2.5h2.309c-.233-.818-.542-1.401-.878-1.793-.43-.502-.915-.707-1.431-.707ZM8.941 4h2.309a1.25 1.25 0 0 0 0-2.5c-.516 0-1 .205-1.43.707-.337.392-.646.975-.879 1.793Z"></path>
+</svg>
+</template>
+
+<template id="code-square-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code-square">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+</template>
+
+<template id="device-desktop-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-device-desktop">
+    <path d="M14.25 1c.966 0 1.75.784 1.75 1.75v7.5A1.75 1.75 0 0 1 14.25 12h-3.727c.099 1.041.52 1.872 1.292 2.757A.752.752 0 0 1 11.25 16h-6.5a.75.75 0 0 1-.565-1.243c.772-.885 1.192-1.716 1.292-2.757H1.75A1.75 1.75 0 0 1 0 10.25v-7.5C0 1.784.784 1 1.75 1ZM1.75 2.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25ZM9.018 12H6.982a5.72 5.72 0 0 1-.765 2.5h3.566a5.72 5.72 0 0 1-.765-2.5Z"></path>
+</svg>
+</template>
+
+        <div class="position-relative">
+                <ul
+                  role="listbox"
+                  class="ActionListWrap QueryBuilder-ListWrap"
+                  aria-label="Suggestions"
+                  data-action="
+                    combobox-commit:query-builder#comboboxCommit
+                    mousedown:query-builder#resultsMousedown
+                  "
+                  data-target="query-builder.resultsList"
+                  data-persist-list=false
+                  id="query-builder-test-results"
+                ></ul>
+        </div>
+      <div class="FormControl-inlineValidation" id="validation-b5301522-9796-4dd3-96d5-3e4219c27d2d" hidden="hidden">
+        <span class="FormControl-inlineValidation--visual">
+          <svg aria-hidden="true" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
+    <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+</svg>
+        </span>
+        <span></span>
+</div>    </div>
+    <div data-target="query-builder.screenReaderFeedback" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+</query-builder></form>
+          <div class="d-flex flex-row color-fg-muted px-3 text-small color-bg-default search-feedback-prompt">
+            <a target="_blank" href="https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax" data-view-component="true" class="Link color-fg-accent text-normal ml-2">
+              Search syntax tips
+</a>            <div class="d-flex flex-1"></div>
+              <button data-action="click:qbsearch-input#showFeedbackDialog" type="button" data-view-component="true" class="Button--link Button--medium Button color-fg-accent text-normal ml-2">  <span class="Button-content">
+    <span class="Button-label">Give feedback</span>
+  </span>
+</button>
+          </div>
+        </div>
+</div>
+
+    </div>
+</modal-dialog></div>
+  </div>
+  <div data-action="click:qbsearch-input#retract" class="dark-backdrop position-fixed" hidden data-target="qbsearch-input.darkBackdrop"></div>
+  <div class="color-fg-default">
+    
+<dialog-helper>
+  <dialog data-target="qbsearch-input.feedbackDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" id="feedback-dialog" aria-modal="true" aria-labelledby="feedback-dialog-title" aria-describedby="feedback-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade">
+    <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="feedback-dialog-title">
+        Provide feedback
+      </h1>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="feedback-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+</div>
+      <scrollable-region data-labelled-by="feedback-dialog-title">
+        <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="1TLGgtgAy18aLJr9-SF4bD2H3zy4vm5AuKaGTN4iK5r-mHcAfdRtW9Zb4lDWkgNlGgksmFUgC6sUfOmqADDH8g" />
+          <p>We read every piece of feedback, and take your input very seriously.</p>
+          <textarea name="feedback" class="form-control width-full mb-2" style="height: 120px" id="feedback"></textarea>
+          <input name="include_email" id="include_email" aria-label="Include my email address so I can be contacted" class="form-control mr-2" type="checkbox">
+          <label for="include_email" style="font-weight: normal">Include my email address so I can be contacted</label>
+</form></div>
+      </scrollable-region>
+      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">          <button data-close-dialog-id="feedback-dialog" type="button" data-view-component="true" class="btn">    Cancel
+</button>
+          <button form="code-search-feedback-form" data-action="click:qbsearch-input#submitFeedback" type="submit" data-view-component="true" class="btn-primary btn">    Submit feedback
+</button>
+</div>
+</dialog></dialog-helper>
+
+    <custom-scopes data-target="qbsearch-input.customScopesManager">
+    
+<dialog-helper>
+  <dialog data-target="custom-scopes.customScopesModalDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" id="custom-scopes-dialog" aria-modal="true" aria-labelledby="custom-scopes-dialog-title" aria-describedby="custom-scopes-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade">
+    <div data-view-component="true" class="Overlay-header Overlay-header--divided">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="custom-scopes-dialog-title">
+        Saved searches
+      </h1>
+        <h2 id="custom-scopes-dialog-description" class="Overlay-description">Use saved searches to filter your results more quickly</h2>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="custom-scopes-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+</div>
+      <scrollable-region data-labelled-by="custom-scopes-dialog-title">
+        <div data-view-component="true" class="Overlay-body">        <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
+
+        <div hidden class="create-custom-scope-form" data-target="custom-scopes.createCustomScopeForm">
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="sPhz1MT2435lcLm3yRGpOZZxuR6ZC5R9kfsJKziDbWyjijmiIRJu6o3SHmobcBO0aD9COeLayIqF18Ol2miWZg" />
+          <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
+
+          <input type="hidden" id="custom_scope_id" name="custom_scope_id" data-target="custom-scopes.customScopesIdField">
+
+          <div class="form-group">
+            <label for="custom_scope_name">Name</label>
+            <auto-check src="/search/custom_scopes/check_name" required>
+              <input
+                type="text"
+                name="custom_scope_name"
+                id="custom_scope_name"
+                data-target="custom-scopes.customScopesNameField"
+                class="form-control"
+                autocomplete="off"
+                placeholder="github-ruby"
+                required
+                maxlength="50">
+              <input type="hidden" value="ul5-zkrnKdQheMFTVSJ5X36M2lcOHlTylIyaXwGDXGNo0vzQadaUQNFkdXFF4uhBYA6HlVcbUXKHJY0Od8w4kg" data-csrf="true" />
+            </auto-check>
+          </div>
+
+          <div class="form-group">
+            <label for="custom_scope_query">Query</label>
+            <input
+              type="text"
+              name="custom_scope_query"
+              id="custom_scope_query"
+              data-target="custom-scopes.customScopesQueryField"
+              class="form-control"
+              autocomplete="off"
+              placeholder="(repo:mona/a OR repo:mona/b) AND lang:python"
+              required
+              maxlength="500">
+          </div>
+
+          <p class="text-small color-fg-muted">
+            To see all available qualifiers, see our <a class="Link--inTextBlock" href="https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax">documentation</a>.
+          </p>
+</form>        </div>
+
+        <div data-target="custom-scopes.manageCustomScopesForm">
+          <div data-target="custom-scopes.list"></div>
+        </div>
+
+</div>
+      </scrollable-region>
+      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd Overlay-footer--divided">          <button data-action="click:custom-scopes#customScopesCancel" type="button" data-view-component="true" class="btn">    Cancel
+</button>
+          <button form="custom-scopes-dialog-form" data-action="click:custom-scopes#customScopesSubmit" data-target="custom-scopes.customScopesSubmitButton" type="submit" data-view-component="true" class="btn-primary btn">    Create saved search
+</button>
+</div>
+</dialog></dialog-helper>
+    </custom-scopes>
+  </div>
+</qbsearch-input><input type="hidden" value="dPO86VZDaB_t_Td10H0QvFfIV0CjJJAmdJSvGXx28Ssyd2tQrduSnxO29qo1j3rTo0o4jzzp21d65-cRnKAPeQ" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" />
+
+          </div>
+
+        <div class="AppHeader-actions position-relative">
+            <action-menu data-select-variant="none" data-view-component="true">
+  <focus-group direction="vertical" mnemonics retain>
+    <button id="global-create-menu-button" popovertarget="global-create-menu-overlay" aria-label="Create something new" aria-controls="global-create-menu-list" aria-haspopup="true" type="button" data-view-component="true" class="AppHeader-button Button--secondary Button--small Button width-auto color-fg-muted">  <span class="Button-content">
+      <span class="Button-visual Button-leadingVisual">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus">
+    <path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path>
+</svg>
+      </span>
+    <span class="Button-label"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+</svg></span>
+  </span>
+</button><tool-tip id="tooltip-b23f4709-eea0-4705-b26d-c4a7ab8a8a42" for="global-create-menu-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">Create new...</tool-tip>
+
+
+<anchored-position id="global-create-menu-overlay" anchor="global-create-menu-button" align="end" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true">
+  <div data-view-component="true" class="Overlay Overlay--size-auto">
+    
+      <div data-view-component="true" class="Overlay-body Overlay-body--paddingNone">          <action-list>
+  <div data-view-component="true">
+    <ul aria-labelledby="global-create-menu-button" id="global-create-menu-list" role="menu" data-view-component="true" class="ActionListWrap--inset ActionListWrap">
+        <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new repository&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="/new" tabindex="-1" id="item-a852d994-714a-46ab-9d8d-5a02901ef499" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                New repository
+
+</span></a>
+  
+  
+</li>
+        <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;import repository&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="/new/import" tabindex="-1" id="item-3166ed4f-5fdf-4059-b750-ebd4fbf208f7" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-push">
+    <path d="M1 2.5A2.5 2.5 0 0 1 3.5 0h8.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0V1.5h-8a1 1 0 0 0-1 1v6.708A2.493 2.493 0 0 1 3.5 9h3.25a.75.75 0 0 1 0 1.5H3.5a1 1 0 0 0 0 2h5.75a.75.75 0 0 1 0 1.5H3.5A2.5 2.5 0 0 1 1 11.5Zm13.23 7.79h-.001l-1.224-1.224v6.184a.75.75 0 0 1-1.5 0V9.066L10.28 10.29a.75.75 0 0 1-1.06-1.061l2.505-2.504a.75.75 0 0 1 1.06 0L15.29 9.23a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                  Import repository
+
+</span></a>
+  
+  
+</li>
+        <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new codespace&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="/codespaces/new" tabindex="-1" id="item-41592366-98cd-4c9a-a0f3-8583515b9696" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-codespaces">
+    <path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                  New codespace
+
+</span></a>
+  
+  
+</li>
+        <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new gist&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="https://gist.github.com/" tabindex="-1" id="item-8fc5e9a8-93d4-401f-9163-052d89abb5f2" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
+    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                  New gist
+
+</span></a>
+  
+  
+</li>
+        <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        <li data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="/account/organizations/new" tabindex="-1" data-dont-follow-via-test="true" data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new organization&quot;}" id="item-ee097f3d-8b11-481a-97ce-3886aa685f3f" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-organization">
+    <path d="M1.75 16A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 0 0 .25-.25V8.285a.25.25 0 0 0-.111-.208l-1.055-.703a.749.749 0 1 1 .832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0 1 14.25 16h-3.5a.766.766 0 0 1-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 0 1-.75-.75V14h-1v1.25a.75.75 0 0 1-.75.75Zm-.25-1.75c0 .138.112.25.25.25H4v-1.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 .75.75v1.25h2.25a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM3.75 6h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 3.75A.75.75 0 0 1 3.75 3h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 3.75Zm4 3A.75.75 0 0 1 7.75 6h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 7 6.75ZM7.75 3h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 9.75A.75.75 0 0 1 3.75 9h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 9.75ZM7.75 9h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                  New organization
+
+</span></a>
+  
+  
+</li>
+</ul>    
+</div></action-list>
+
+
+</div>
+      
+</div></anchored-position>  </focus-group>
+</action-menu>
+
+
+          <a href="/issues" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;ISSUES_HEADER&quot;,&quot;label&quot;:null}" id="icon-button-a933e0f4-b20b-4669-9de6-c6862c586989" aria-labelledby="tooltip-f5f6be0a-8e58-43da-8b07-9567204ef87a" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium AppHeader-button color-fg-muted">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened Button-visual">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+</svg>
+</a><tool-tip id="tooltip-f5f6be0a-8e58-43da-8b07-9567204ef87a" for="icon-button-a933e0f4-b20b-4669-9de6-c6862c586989" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Issues</tool-tip>
+
+          <a href="/pulls" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PULL_REQUESTS_HEADER&quot;,&quot;label&quot;:null}" id="icon-button-19d0e299-408b-4591-aac1-cf308366cc22" aria-labelledby="tooltip-d95aa7d3-6224-4451-8f29-a94927370aa9" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium AppHeader-button color-fg-muted">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request Button-visual">
+    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
+</svg>
+</a><tool-tip id="tooltip-d95aa7d3-6224-4451-8f29-a94927370aa9" for="icon-button-19d0e299-408b-4591-aac1-cf308366cc22" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Pull requests</tool-tip>
+
+        </div>
+
+        
+<notification-indicator data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6MTU5OTY5NTE1IiwidCI6MTcxMDk5MTQ4N30=--4625b316c308bacc89c40e5b7c928b626e3020adb6a89f8e38d972ac30451a58" data-indicator-mode="none" data-tooltip-global="You have unread notifications" data-tooltip-unavailable="Notifications are unavailable at the moment." data-tooltip-none="You have no unread notifications" data-header-redesign-enabled="true" data-fetch-indicator-src="/notifications/indicator" data-fetch-indicator-enabled="true" data-view-component="true" class="js-socket-channel">
+    <a id="AppHeader-notifications-button" href="/notifications" aria-label="Notifications" data-hotkey="g n" data-target="notification-indicator.link" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;NOTIFICATIONS_HEADER&quot;,&quot;label&quot;:null}" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium AppHeader-button  color-fg-muted">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-inbox Button-visual">
+    <path d="M2.8 2.06A1.75 1.75 0 0 1 4.41 1h7.18c.7 0 1.333.417 1.61 1.06l2.74 6.395c.04.093.06.194.06.295v4.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25v-4.5c0-.101.02-.202.06-.295Zm1.61.44a.25.25 0 0 0-.23.152L1.887 8H4.75a.75.75 0 0 1 .6.3L6.625 10h2.75l1.275-1.7a.75.75 0 0 1 .6-.3h2.863L11.82 2.652a.25.25 0 0 0-.23-.152Zm10.09 7h-2.875l-1.275 1.7a.75.75 0 0 1-.6.3h-3.5a.75.75 0 0 1-.6-.3L4.375 9.5H1.5v3.75c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Z"></path>
+</svg>
+</a>
+
+    <tool-tip data-target="notification-indicator.tooltip" id="tooltip-a0413eed-1874-4ea4-afab-f837fdab271c" for="AppHeader-notifications-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">Notifications</tool-tip>
+</notification-indicator>
+
+        
+
+        <div class="AppHeader-user">
+          <deferred-side-panel data-url="/_side-panels/user?repository_id=756745942">
+  <include-fragment data-target="deferred-side-panel.fragment">
+      <user-drawer-side-panel>
+    <button aria-label="Open user account menu" data-action="click:deferred-side-panel#loadPanel click:deferred-side-panel#panelOpened" data-show-dialog-id="dialog-2c7f9c5a-ac59-4d25-8982-13e5b7c28213" id="dialog-show-dialog-2c7f9c5a-ac59-4d25-8982-13e5b7c28213" type="button" data-view-component="true" class="AppHeader-logo Button--invisible Button--medium Button Button--invisible-noVisuals color-bg-transparent p-0">  <span class="Button-content">
+    <span class="Button-label"><img src="https://avatars.githubusercontent.com/u/159969515?v=4" alt="" size="32" height="32" width="32" data-view-component="true" class="avatar circle" /></span>
+  </span>
+</button>
+
+<dialog-helper>
+  <dialog data-target="deferred-side-panel.panel" id="dialog-2c7f9c5a-ac59-4d25-8982-13e5b7c28213" aria-modal="true" aria-labelledby="dialog-2c7f9c5a-ac59-4d25-8982-13e5b7c28213-title" aria-describedby="dialog-2c7f9c5a-ac59-4d25-8982-13e5b7c28213-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait Overlay--motion-scaleFade Overlay--placement-right SidePanel">
+    <div styles="flex-direction: row;" data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title sr-only" id="dialog-2c7f9c5a-ac59-4d25-8982-13e5b7c28213-title">
+        Account menu
+      </h1>
+            <div data-view-component="true" class="d-flex">
+      <div data-view-component="true" class="AppHeader-logo position-relative">
+        <img src="https://avatars.githubusercontent.com/u/159969515?v=4" alt="" size="32" height="32" width="32" data-view-component="true" class="avatar circle" />
+</div>        <div data-view-component="true" class="overflow-hidden d-flex width-full">        <div data-view-component="true" class="lh-condensed overflow-hidden d-flex flex-column flex-justify-center ml-2 f5 mr-auto width-full">
+          <span data-view-component="true" class="Truncate text-bold">
+    <span data-view-component="true" class="Truncate-text">
+            elaheh2024
+</span>
+</span>          <span data-view-component="true" class="Truncate color-fg-subtle">
+    <span data-view-component="true" class="Truncate-text">
+            Elaheh Dehghan
+</span>
+</span></div>
+          <action-menu data-select-variant="none" data-view-component="true" class="d-sm-none d-md-none d-lg-none">
+  <focus-group direction="vertical" mnemonics retain>
+    <button id="user-create-menu-button" popovertarget="user-create-menu-overlay" aria-label="Create something new" aria-controls="user-create-menu-list" aria-haspopup="true" type="button" data-view-component="true" class="AppHeader-button Button--secondary Button--small Button width-auto color-fg-muted">  <span class="Button-content">
+      <span class="Button-visual Button-leadingVisual">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus">
+    <path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path>
+</svg>
+      </span>
+    <span class="Button-label"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+</svg></span>
+  </span>
+</button><tool-tip id="tooltip-c49b5855-8e4f-4f41-8e63-83d7bbfba701" for="user-create-menu-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">Create new...</tool-tip>
+
+
+<anchored-position id="user-create-menu-overlay" anchor="user-create-menu-button" align="end" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true">
+  <div data-view-component="true" class="Overlay Overlay--size-auto">
+    
+      <div data-view-component="true" class="Overlay-body Overlay-body--paddingNone">          <action-list>
+  <div data-view-component="true">
+    <ul aria-labelledby="user-create-menu-button" id="user-create-menu-list" role="menu" data-view-component="true" class="ActionListWrap--inset ActionListWrap">
+        <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new repository&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="/new" tabindex="-1" id="item-e4e7919f-79ec-4fac-a6cf-640c6510d516" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                New repository
+
+</span></a>
+  
+  
+</li>
+        <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;import repository&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="/new/import" tabindex="-1" id="item-6bc05f2f-4af0-4ed1-98a3-0332bbfe890c" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-push">
+    <path d="M1 2.5A2.5 2.5 0 0 1 3.5 0h8.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0V1.5h-8a1 1 0 0 0-1 1v6.708A2.493 2.493 0 0 1 3.5 9h3.25a.75.75 0 0 1 0 1.5H3.5a1 1 0 0 0 0 2h5.75a.75.75 0 0 1 0 1.5H3.5A2.5 2.5 0 0 1 1 11.5Zm13.23 7.79h-.001l-1.224-1.224v6.184a.75.75 0 0 1-1.5 0V9.066L10.28 10.29a.75.75 0 0 1-1.06-1.061l2.505-2.504a.75.75 0 0 1 1.06 0L15.29 9.23a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                  Import repository
+
+</span></a>
+  
+  
+</li>
+        <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new codespace&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="/codespaces/new" tabindex="-1" id="item-f527b37e-9b99-40f1-86d2-e7e6b0a6a5ee" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-codespaces">
+    <path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                  New codespace
+
+</span></a>
+  
+  
+</li>
+        <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new gist&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="https://gist.github.com/" tabindex="-1" id="item-460100ca-e8ce-4c28-a877-802688f86202" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
+    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                  New gist
+
+</span></a>
+  
+  
+</li>
+        <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        <li data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a href="/account/organizations/new" tabindex="-1" data-dont-follow-via-test="true" data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new organization&quot;}" id="item-cfa4088c-e5b3-467c-a778-41729f031bfc" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-organization">
+    <path d="M1.75 16A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 0 0 .25-.25V8.285a.25.25 0 0 0-.111-.208l-1.055-.703a.749.749 0 1 1 .832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0 1 14.25 16h-3.5a.766.766 0 0 1-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 0 1-.75-.75V14h-1v1.25a.75.75 0 0 1-.75.75Zm-.25-1.75c0 .138.112.25.25.25H4v-1.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 .75.75v1.25h2.25a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM3.75 6h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 3.75A.75.75 0 0 1 3.75 3h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 3.75Zm4 3A.75.75 0 0 1 7.75 6h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 7 6.75ZM7.75 3h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 9.75A.75.75 0 0 1 3.75 9h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 9.75ZM7.75 9h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+                  New organization
+
+</span></a>
+  
+  
+</li>
+</ul>    
+</div></action-list>
+
+
+</div>
+      
+</div></anchored-position>  </focus-group>
+</action-menu>
+
+</div>
+</div>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="dialog-2c7f9c5a-ac59-4d25-8982-13e5b7c28213" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+</div>
+      <scrollable-region data-labelled-by="dialog-2c7f9c5a-ac59-4d25-8982-13e5b7c28213-title">
+        <div data-view-component="true" class="Overlay-body d-flex flex-column px-2">    <div data-view-component="true" class="d-flex flex-column mb-3">
+        <nav aria-label="User navigation" data-view-component="true" class="ActionList">
+  
+  <nav-list>
+    <ul data-target="nav-list.topLevelList" data-view-component="true" class="ActionListWrap">
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <button id="item-8f72d74f-337a-4807-91f1-c575776f8667" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+</span>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          
+
+  <span class="color-fg-muted">
+    Loading...
+  </span>
+
+</span></button>
+  
+  
+</li>
+
+        
+          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PROFILE&quot;,&quot;label&quot;:null}" id="item-1135b5f0-6e35-46e9-ba1b-f28b257d83d7" href="https://github.com/elaheh2024" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-person">
+    <path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Your profile
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <button id="item-ebaf9275-aca2-4930-b488-d32d8618168d" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+</span>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          
+
+  <span class="color-fg-muted">
+    Loading...
+  </span>
+
+</span></button>
+  
+  
+</li>
+
+        
+          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;YOUR_REPOSITORIES&quot;,&quot;label&quot;:null}" id="item-05773090-3e34-4cab-95fa-bb1b3f715eec" href="/elaheh2024?tab=repositories" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Your repositories
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;YOUR_PROJECTS&quot;,&quot;label&quot;:null}" id="item-c92ece0a-2f5f-4e14-888e-5998bad9d0c3" href="/elaheh2024?tab=projects" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project">
+    <path d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25ZM11.75 3a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Zm-8.25.75a.75.75 0 0 1 1.5 0v5.5a.75.75 0 0 1-1.5 0ZM8 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 3Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Your projects
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <button id="item-91809a74-23a2-4aa5-92a2-5fdd87f1349e" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+</span>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          
+
+  <span class="color-fg-muted">
+    Loading...
+  </span>
+
+</span></button>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <button id="item-7cd28176-b207-477d-8f14-fcc97d25bee2" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+</span>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          
+
+  <span class="color-fg-muted">
+    Loading...
+  </span>
+
+</span></button>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;YOUR_STARS&quot;,&quot;label&quot;:null}" id="item-1c2db928-1d8b-472d-8dbd-41d73d4a4bc0" href="/elaheh2024?tab=stars" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
+    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Your stars
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;SPONSORS&quot;,&quot;label&quot;:null}" id="item-2b6d4439-265b-4899-adf8-2ed65d5991b2" href="/sponsors/accounts" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-heart">
+    <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Your sponsors
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;YOUR_GISTS&quot;,&quot;label&quot;:null}" id="item-ea948c65-aa49-45d1-937a-d5388ff7ac17" href="https://gist.github.com/mine" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code-square">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Your gists
+</span></a>
+  
+  
+</li>
+
+        
+          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <button id="item-8dd866ae-2586-4b2d-acde-0ca33cabdcdd" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+</span>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          
+
+  <span class="color-fg-muted">
+    Loading...
+  </span>
+
+</span></button>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <button id="item-aa5d249d-3d16-4bb9-bb33-0cb0a732039e" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
+  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+</svg>
+</span>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          
+
+  <span class="color-fg-muted">
+    Loading...
+  </span>
+
+</span></button>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;SETTINGS&quot;,&quot;label&quot;:null}" id="item-2e22f9d3-a5f6-417d-81ab-7d60e22cd3b9" href="/settings/profile" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-gear">
+    <path d="M8 0a8.2 8.2 0 0 1 .701.031C9.444.095 9.99.645 10.16 1.29l.288 1.107c.018.066.079.158.212.224.231.114.454.243.668.386.123.082.233.09.299.071l1.103-.303c.644-.176 1.392.021 1.82.63.27.385.506.792.704 1.218.315.675.111 1.422-.364 1.891l-.814.806c-.049.048-.098.147-.088.294.016.257.016.515 0 .772-.01.147.038.246.088.294l.814.806c.475.469.679 1.216.364 1.891a7.977 7.977 0 0 1-.704 1.217c-.428.61-1.176.807-1.82.63l-1.102-.302c-.067-.019-.177-.011-.3.071a5.909 5.909 0 0 1-.668.386c-.133.066-.194.158-.211.224l-.29 1.106c-.168.646-.715 1.196-1.458 1.26a8.006 8.006 0 0 1-1.402 0c-.743-.064-1.289-.614-1.458-1.26l-.289-1.106c-.018-.066-.079-.158-.212-.224a5.738 5.738 0 0 1-.668-.386c-.123-.082-.233-.09-.299-.071l-1.103.303c-.644.176-1.392-.021-1.82-.63a8.12 8.12 0 0 1-.704-1.218c-.315-.675-.111-1.422.363-1.891l.815-.806c.05-.048.098-.147.088-.294a6.214 6.214 0 0 1 0-.772c.01-.147-.038-.246-.088-.294l-.815-.806C.635 6.045.431 5.298.746 4.623a7.92 7.92 0 0 1 .704-1.217c.428-.61 1.176-.807 1.82-.63l1.102.302c.067.019.177.011.3-.071.214-.143.437-.272.668-.386.133-.066.194-.158.211-.224l.29-1.106C6.009.645 6.556.095 7.299.03 7.53.01 7.764 0 8 0Zm-.571 1.525c-.036.003-.108.036-.137.146l-.289 1.105c-.147.561-.549.967-.998 1.189-.173.086-.34.183-.5.29-.417.278-.97.423-1.529.27l-1.103-.303c-.109-.03-.175.016-.195.045-.22.312-.412.644-.573.99-.014.031-.021.11.059.19l.815.806c.411.406.562.957.53 1.456a4.709 4.709 0 0 0 0 .582c.032.499-.119 1.05-.53 1.456l-.815.806c-.081.08-.073.159-.059.19.162.346.353.677.573.989.02.03.085.076.195.046l1.102-.303c.56-.153 1.113-.008 1.53.27.161.107.328.204.501.29.447.222.85.629.997 1.189l.289 1.105c.029.109.101.143.137.146a6.6 6.6 0 0 0 1.142 0c.036-.003.108-.036.137-.146l.289-1.105c.147-.561.549-.967.998-1.189.173-.086.34-.183.5-.29.417-.278.97-.423 1.529-.27l1.103.303c.109.029.175-.016.195-.045.22-.313.411-.644.573-.99.014-.031.021-.11-.059-.19l-.815-.806c-.411-.406-.562-.957-.53-1.456a4.709 4.709 0 0 0 0-.582c-.032-.499.119-1.05.53-1.456l.815-.806c.081-.08.073-.159.059-.19a6.464 6.464 0 0 0-.573-.989c-.02-.03-.085-.076-.195-.046l-1.102.303c-.56.153-1.113.008-1.53-.27a4.44 4.44 0 0 0-.501-.29c-.447-.222-.85-.629-.997-1.189l-.289-1.105c-.029-.11-.101-.143-.137-.146a6.6 6.6 0 0 0-1.142 0ZM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM9.5 8a1.5 1.5 0 1 0-3.001.001A1.5 1.5 0 0 0 9.5 8Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Settings
+</span></a>
+  
+  
+</li>
+
+        
+          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;DOCS&quot;,&quot;label&quot;:null}" id="item-a2df3d7e-4817-4fdb-b9ba-a4a8d1f08c45" href="https://docs.github.com" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book">
+    <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          GitHub Docs
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;SUPPORT&quot;,&quot;label&quot;:null}" id="item-75063e7f-eef4-4bbc-9155-eeb262dee972" href="https://support.github.com" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-people">
+    <path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          GitHub Support
+</span></a>
+  
+  
+</li>
+
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;COMMUNITY&quot;,&quot;label&quot;:null}" id="item-516889fa-a5df-4f22-96d2-134123b3e47d" href="https://community.github.com" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment-discussion">
+    <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          GitHub Community
+</span></a>
+  
+  
+</li>
+
+        
+          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
+        
+          
+<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
+    
+    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;LOGOUT&quot;,&quot;label&quot;:null}" id="item-2033a115-830b-4992-8a39-0e64dac62046" href="/logout" data-view-component="true" class="ActionListContent">
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Sign out
+</span></a>
+  
+  
+</li>
+
+</ul>  </nav-list>
+</nav>
+
+
+</div>
+</div>
+      </scrollable-region>
+      
+</dialog></dialog-helper>
+  </user-drawer-side-panel>
+
+  </include-fragment>
+</deferred-side-panel>
+          
+        </div>
+
+        <div class="position-absolute mt-2">
+            
+<site-header-logged-in-user-menu>
+
+</site-header-logged-in-user-menu>
+
+        </div>
+      </div>
+    </div>
+
+
+      <div class="AppHeader-localBar" >
+        <nav data-pjax="#js-repo-pjax-container" aria-label="Repository" data-view-component="true" class="js-repo-nav js-sidenav-container-pjax js-responsive-underlinenav overflow-hidden UnderlineNav">
+
+  <ul data-view-component="true" class="UnderlineNav-body list-style-none">
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="code-tab" href="/alaricomv/CapstoneProject_Group1" data-tab-item="i0code-tab" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments repo_attestations /alaricomv/CapstoneProject_Group1" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g c" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Code&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code UnderlineNav-octicon d-none d-sm-inline">
+    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+        <span data-content="Code">Code</span>
+          <span id="code-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="issues-tab" href="/alaricomv/CapstoneProject_Group1/issues" data-tab-item="i1issues-tab" data-selected-links="repo_issues repo_labels repo_milestones /alaricomv/CapstoneProject_Group1/issues" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Issues&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+</svg>
+        <span data-content="Issues">Issues</span>
+          <span id="issues-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="pull-requests-tab" href="/alaricomv/CapstoneProject_Group1/pulls" data-tab-item="i2pull-requests-tab" data-selected-links="repo_pulls checks /alaricomv/CapstoneProject_Group1/pulls" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Pull requests&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
+</svg>
+        <span data-content="Pull requests">Pull requests</span>
+          <span id="pull-requests-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="actions-tab" href="/alaricomv/CapstoneProject_Group1/actions" data-tab-item="i3actions-tab" data-selected-links="repo_actions /alaricomv/CapstoneProject_Group1/actions" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g a" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Actions&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path>
+</svg>
+        <span data-content="Actions">Actions</span>
+          <span id="actions-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="projects-tab" href="/alaricomv/CapstoneProject_Group1/projects" data-tab-item="i4projects-tab" data-selected-links="repo_projects new_repo_project repo_project /alaricomv/CapstoneProject_Group1/projects" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g b" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Projects&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM6.5 6.5v8h7.75a.25.25 0 0 0 .25-.25V6.5Zm8-1.5V1.75a.25.25 0 0 0-.25-.25H6.5V5Zm-13 1.5v7.75c0 .138.112.25.25.25H5v-8ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path>
+</svg>
+        <span data-content="Projects">Projects</span>
+          <span id="projects-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="security-tab" href="/alaricomv/CapstoneProject_Group1/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /alaricomv/CapstoneProject_Group1/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.196.196 0 0 0 .154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68ZM8.75 4.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0ZM9 10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+        <span data-content="Security">Security</span>
+          <include-fragment src="/alaricomv/CapstoneProject_Group1/security/overall-count" accept="text/fragment+html"></include-fragment>
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="insights-tab" href="/alaricomv/CapstoneProject_Group1/network/dependencies" data-tab-item="i6insights-tab" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /alaricomv/CapstoneProject_Group1/network/dependencies" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Insights&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+        <span data-content="Insights">Insights</span>
+          <span id="insights-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+</ul>
+    <div style="visibility:hidden;" data-view-component="true" class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">      <action-menu data-select-variant="none" data-view-component="true">
+  <focus-group direction="vertical" mnemonics retain>
+    <button id="action-menu-b6194ed2-f901-4946-8574-652b87b8b0c5-button" popovertarget="action-menu-b6194ed2-f901-4946-8574-652b87b8b0c5-overlay" aria-controls="action-menu-b6194ed2-f901-4946-8574-652b87b8b0c5-list" aria-haspopup="true" aria-labelledby="tooltip-c15d7cf9-2541-44f6-9461-4afada6dd071" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium UnderlineNav-item">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal Button-visual">
+    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+</svg>
+</button><tool-tip id="tooltip-c15d7cf9-2541-44f6-9461-4afada6dd071" for="action-menu-b6194ed2-f901-4946-8574-652b87b8b0c5-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Additional navigation options</tool-tip>
+
+
+<anchored-position id="action-menu-b6194ed2-f901-4946-8574-652b87b8b0c5-overlay" anchor="action-menu-b6194ed2-f901-4946-8574-652b87b8b0c5-button" align="start" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true">
+  <div data-view-component="true" class="Overlay Overlay--size-auto">
+    
+      <div data-view-component="true" class="Overlay-body Overlay-body--paddingNone">          <action-list>
+  <div data-view-component="true">
+    <ul aria-labelledby="action-menu-b6194ed2-f901-4946-8574-652b87b8b0c5-button" id="action-menu-b6194ed2-f901-4946-8574-652b87b8b0c5-list" role="menu" data-view-component="true" class="ActionListWrap--inset ActionListWrap">
+        <li hidden="hidden" data-menu-item="i0code-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a tabindex="-1" id="item-0ff96bf7-7582-40ae-a3ba-10633ef55b37" href="/alaricomv/CapstoneProject_Group1" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
+    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Code
+</span></a>
+  
+  
+</li>
+        <li hidden="hidden" data-menu-item="i1issues-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a tabindex="-1" id="item-0212d75a-2405-4d85-b6ed-f1bab5dc0456" href="/alaricomv/CapstoneProject_Group1/issues" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Issues
+</span></a>
+  
+  
+</li>
+        <li hidden="hidden" data-menu-item="i2pull-requests-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a tabindex="-1" id="item-0f30db29-9df8-4091-88bc-0b09733e8b67" href="/alaricomv/CapstoneProject_Group1/pulls" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request">
+    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Pull requests
+</span></a>
+  
+  
+</li>
+        <li hidden="hidden" data-menu-item="i3actions-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a tabindex="-1" id="item-cbd596f5-155c-4e5c-8486-9e7e6318f4a6" href="/alaricomv/CapstoneProject_Group1/actions" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Actions
+</span></a>
+  
+  
+</li>
+        <li hidden="hidden" data-menu-item="i4projects-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a tabindex="-1" id="item-cd66e1de-4201-4b4e-b9ed-0289601c92a7" href="/alaricomv/CapstoneProject_Group1/projects" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM6.5 6.5v8h7.75a.25.25 0 0 0 .25-.25V6.5Zm8-1.5V1.75a.25.25 0 0 0-.25-.25H6.5V5Zm-13 1.5v7.75c0 .138.112.25.25.25H5v-8ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Projects
+</span></a>
+  
+  
+</li>
+        <li hidden="hidden" data-menu-item="i5security-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a tabindex="-1" id="item-9973981a-1ec3-40b0-a43d-7b4785ff6195" href="/alaricomv/CapstoneProject_Group1/security" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield">
+    <path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.196.196 0 0 0 .154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68ZM8.75 4.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0ZM9 10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Security
+</span></a>
+  
+  
+</li>
+        <li hidden="hidden" data-menu-item="i6insights-tab" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
+    
+    <a tabindex="-1" id="item-56f9090a-eb84-403d-a61e-9a0f0f8a96cc" href="/alaricomv/CapstoneProject_Group1/network/dependencies" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
+        <span class="ActionListItem-visual ActionListItem-visual--leading">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph">
+    <path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+        </span>
+      
+        <span data-view-component="true" class="ActionListItem-label">
+          Insights
+</span></a>
+  
+  
+</li>
+</ul>    
+</div></action-list>
+
+
+</div>
+      
+</div></anchored-position>  </focus-group>
+</action-menu></div>
+</nav>
+      </div>
+</header>
+
+
+      <div hidden="hidden" data-view-component="true" class="js-stale-session-flash stale-session-flash flash flash-warn flash-full mb-3">
+  
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+        <span class="js-stale-session-flash-signed-in" hidden>You signed in with another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
+        <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
+        <span class="js-stale-session-flash-switched" hidden>You switched accounts on another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
+
+    <button id="icon-button-f61a7e22-f7e9-4e6d-b1db-a80e0330342b" aria-labelledby="tooltip-437b2ec1-b12a-41e7-8017-6133d7378be0" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium flash-close js-flash-close">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+</button><tool-tip id="tooltip-437b2ec1-b12a-41e7-8017-6133d7378be0" for="icon-button-f61a7e22-f7e9-4e6d-b1db-a80e0330342b" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
+
+
+  
+</div>
+          
+    </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+
+
+
+
+
+
+    <div id="js-flash-container" data-turbo-replace>
+
+
+
+
+
+  <template class="js-flash-template">
+    
+<div class="flash flash-full   {{ className }}">
+  <div >
+    <button autofocus class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+    </button>
+    <div aria-atomic="true" role="alert" class="js-flash-alert">
+      
+      <div>{{ message }}</div>
+
+    </div>
+  </div>
+</div>
+  </template>
+</div>
+
+
+    
+    <notification-shelf-watcher data-base-url="https://github.com/notifications/beta/shelf" data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6MTU5OTY5NTE1IiwidCI6MTcxMDk5MTQ4N30=--4625b316c308bacc89c40e5b7c928b626e3020adb6a89f8e38d972ac30451a58" data-view-component="true" class="js-socket-channel"></notification-shelf-watcher>
+  <div hidden data-initial data-target="notification-shelf-watcher.placeholder"></div>
+
+
+
+
+
+      <details
+  class="details-reset details-overlay details-overlay-dark js-command-palette-dialog"
+  id="command-palette-pjax-container"
+  data-turbo-replace
+>
+  <summary aria-label="Command palette trigger" tabindex="-1"></summary>
+  <details-dialog class="command-palette-details-dialog d-flex flex-column flex-justify-center height-fit" aria-label="Command palette">
+    <command-palette
+      class="command-palette color-bg-default rounded-3 border color-shadow-small"
+      return-to=/alaricomv/CapstoneProject_Group1/blob/main/backend/database/wholesaledb.sql
+      user-id="159969515"
+      activation-hotkey="Mod+k,Mod+Alt+k"
+      command-mode-hotkey="Mod+Shift+K"
+      data-action="
+        command-palette-input-ready:command-palette#inputReady
+        command-palette-page-stack-updated:command-palette#updateInputScope
+        itemsUpdated:command-palette#itemsUpdated
+        keydown:command-palette#onKeydown
+        loadingStateChanged:command-palette#loadingStateChanged
+        selectedItemChanged:command-palette#selectedItemChanged
+        pageFetchError:command-palette#pageFetchError
+      ">
+
+        <command-palette-mode
+          data-char="#"
+            data-scope-types="[&quot;&quot;]"
+            data-placeholder="Search issues and pull requests"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="#"
+            data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-placeholder="Search issues, pull requests, discussions, and projects"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="!"
+            data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-placeholder="Search projects"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="@"
+            data-scope-types="[&quot;&quot;]"
+            data-placeholder="Search or jump to a user, organization, or repository"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="@"
+            data-scope-types="[&quot;owner&quot;]"
+            data-placeholder="Search or jump to a repository"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="/"
+            data-scope-types="[&quot;repository&quot;]"
+            data-placeholder="Search files"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="?"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char="&gt;"
+            data-placeholder="Run a command"
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char=""
+            data-scope-types="[&quot;&quot;]"
+            data-placeholder="Search or jump to..."
+        ></command-palette-mode>
+        <command-palette-mode
+          data-char=""
+            data-scope-types="[&quot;owner&quot;]"
+            data-placeholder="Search or jump to..."
+        ></command-palette-mode>
+      <command-palette-mode
+        class="js-command-palette-default-mode"
+        data-char=""
+        data-placeholder="Search or jump to..."
+      ></command-palette-mode>
+
+      <command-palette-input placeholder="Search or jump to..."
+
+        data-action="
+          command-palette-input:command-palette#onInput
+          command-palette-select:command-palette#onSelect
+          command-palette-descope:command-palette#onDescope
+          command-palette-cleared:command-palette#onInputClear
+        "
+      >
+        <div class="js-search-icon d-flex flex-items-center mr-2" style="height: 26px">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search color-fg-muted">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+        </div>
+        <div class="js-spinner d-flex flex-items-center mr-2 color-fg-muted" hidden>
+          <svg aria-label="Loading" class="anim-rotate" viewBox="0 0 16 16" fill="none" width="16" height="16">
+            <circle
+              cx="8"
+              cy="8"
+              r="7"
+              stroke="currentColor"
+              stroke-opacity="0.25"
+              stroke-width="2"
+              vector-effect="non-scaling-stroke"
+            ></circle>
+            <path
+              d="M15 8a7.002 7.002 0 00-7-7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              vector-effect="non-scaling-stroke"
+            ></path>
+          </svg>
+        </div>
+        <command-palette-scope >
+          <div data-target="command-palette-scope.placeholder" hidden class="color-fg-subtle">/&nbsp;&nbsp;<span class="text-semibold color-fg-default">...</span>&nbsp;&nbsp;/&nbsp;&nbsp;</div>
+              <command-palette-token
+                data-text="alaricomv"
+                data-id="MDQ6VXNlcjQyOTc5NjIz"
+                data-type="owner"
+                data-value="alaricomv"
+                data-targets="command-palette-scope.tokens"
+                class="color-fg-default text-semibold"
+                style="white-space:nowrap;line-height:20px;"
+                >alaricomv<span class="color-fg-subtle text-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
+              <command-palette-token
+                data-text="CapstoneProject_Group1"
+                data-id="R_kgDOLRsG1g"
+                data-type="repository"
+                data-value="CapstoneProject_Group1"
+                data-targets="command-palette-scope.tokens"
+                class="color-fg-default text-semibold"
+                style="white-space:nowrap;line-height:20px;"
+                >CapstoneProject_G...<span class="color-fg-subtle text-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
+        </command-palette-scope>
+        <div class="command-palette-input-group flex-1 form-control border-0 box-shadow-none" style="z-index: 0">
+          <div class="command-palette-typeahead position-absolute d-flex flex-items-center Truncate">
+            <span class="typeahead-segment input-mirror" data-target="command-palette-input.mirror"></span>
+            <span class="Truncate-text" data-target="command-palette-input.typeaheadText"></span>
+            <span class="typeahead-segment" data-target="command-palette-input.typeaheadPlaceholder"></span>
+          </div>
+          <input
+            class="js-overlay-input typeahead-input d-none"
+            disabled
+            tabindex="-1"
+            aria-label="Hidden input for typeahead"
+          >
+          <input
+            type="text"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            class="js-input typeahead-input form-control border-0 box-shadow-none input-block width-full no-focus-indicator"
+            aria-label="Command palette input"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-autocomplete="list"
+            aria-controls="command-palette-page-stack"
+            role="combobox"
+            data-action="
+              input:command-palette-input#onInput
+              keydown:command-palette-input#onKeydown
+            "
+          >
+        </div>
+          <div data-view-component="true" class="position-relative d-inline-block">
+    <button aria-keyshortcuts="Control+Backspace" data-action="click:command-palette-input#onClear keypress:command-palette-input#onClear" data-target="command-palette-input.clearButton" id="command-palette-clear-button" hidden="hidden" type="button" data-view-component="true" class="btn-octicon command-palette-input-clear-button">      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x-circle-fill">
+    <path d="M2.343 13.657A8 8 0 1 1 13.658 2.343 8 8 0 0 1 2.343 13.657ZM6.03 4.97a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042L6.94 8 4.97 9.97a.749.749 0 0 0 .326 1.275.749.749 0 0 0 .734-.215L8 9.06l1.97 1.97a.749.749 0 0 0 1.275-.326.749.749 0 0 0-.215-.734L9.06 8l1.97-1.97a.749.749 0 0 0-.326-1.275.749.749 0 0 0-.734.215L8 6.94Z"></path>
+</svg>
+</button>    <tool-tip id="tooltip-50cd7277-9303-4db9-9e40-0ce9805c75a7" for="command-palette-clear-button" popover="manual" data-direction="w" data-type="label" data-view-component="true" class="sr-only position-absolute">Clear Command Palette</tool-tip>
+</div>
+      </command-palette-input>
+
+      <command-palette-page-stack
+        data-default-scope-id="R_kgDOLRsG1g"
+        data-default-scope-type="Repository"
+        data-action="command-palette-page-octicons-cached:command-palette-page-stack#cacheOcticons"
+      >
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">#</kbd> to search pull requests
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">#</kbd> to search issues
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">#</kbd> to search discussions
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">!</kbd> to search projects
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;owner&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">@</kbd> to search teams
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">@</kbd> to search people and organizations
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type <kbd class="hx_kbd">&gt;</kbd> to activate command mode
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode=""
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Go to your accessibility settings to change your keyboard shortcuts
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type author:@me to search your content
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type is:pr to filter to pull requests
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type is:issue to filter to issues
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type is:project to filter to projects
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+          <command-palette-tip
+            class="color-fg-muted f6 px-3 py-1 my-2"
+              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+            data-mode="#"
+            data-value="">
+            <div class="d-flex flex-items-start flex-justify-between">
+              <div>
+                <span class="text-bold">Tip:</span>
+                  Type is:open to filter to open content
+              </div>
+              <div class="ml-2 flex-shrink-0">
+                Type <kbd class="hx_kbd">?</kbd> for help and tips
+              </div>
+            </div>
+          </command-palette-tip>
+        <command-palette-tip class="mx-3 my-2 flash flash-error d-flex flex-items-center" data-scope-types="*" data-on-error>
+          <div>
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+          </div>
+          <div class="px-2">
+            We’ve encountered an error and some results aren't available at this time. Type a new search or try again later.
+          </div>
+        </command-palette-tip>
+        <command-palette-tip class="h4 color-fg-default pl-3 pb-2 pt-3" data-on-empty data-scope-types="*" data-match-mode="[^?]|^$">
+          No results matched your search
+        </command-palette-tip>
+
+        <div hidden>
+
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="arrow-right-color-fg-muted">
+              <svg height="16" class="octicon octicon-arrow-right color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="arrow-right-color-fg-default">
+              <svg height="16" class="octicon octicon-arrow-right color-fg-default" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="codespaces-color-fg-muted">
+              <svg height="16" class="octicon octicon-codespaces color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="copy-color-fg-muted">
+              <svg height="16" class="octicon octicon-copy color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="dash-color-fg-muted">
+              <svg height="16" class="octicon octicon-dash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M2 7.75A.75.75 0 0 1 2.75 7h10a.75.75 0 0 1 0 1.5h-10A.75.75 0 0 1 2 7.75Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="file-color-fg-muted">
+              <svg height="16" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="gear-color-fg-muted">
+              <svg height="16" class="octicon octicon-gear color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 0a8.2 8.2 0 0 1 .701.031C9.444.095 9.99.645 10.16 1.29l.288 1.107c.018.066.079.158.212.224.231.114.454.243.668.386.123.082.233.09.299.071l1.103-.303c.644-.176 1.392.021 1.82.63.27.385.506.792.704 1.218.315.675.111 1.422-.364 1.891l-.814.806c-.049.048-.098.147-.088.294.016.257.016.515 0 .772-.01.147.038.246.088.294l.814.806c.475.469.679 1.216.364 1.891a7.977 7.977 0 0 1-.704 1.217c-.428.61-1.176.807-1.82.63l-1.102-.302c-.067-.019-.177-.011-.3.071a5.909 5.909 0 0 1-.668.386c-.133.066-.194.158-.211.224l-.29 1.106c-.168.646-.715 1.196-1.458 1.26a8.006 8.006 0 0 1-1.402 0c-.743-.064-1.289-.614-1.458-1.26l-.289-1.106c-.018-.066-.079-.158-.212-.224a5.738 5.738 0 0 1-.668-.386c-.123-.082-.233-.09-.299-.071l-1.103.303c-.644.176-1.392-.021-1.82-.63a8.12 8.12 0 0 1-.704-1.218c-.315-.675-.111-1.422.363-1.891l.815-.806c.05-.048.098-.147.088-.294a6.214 6.214 0 0 1 0-.772c.01-.147-.038-.246-.088-.294l-.815-.806C.635 6.045.431 5.298.746 4.623a7.92 7.92 0 0 1 .704-1.217c.428-.61 1.176-.807 1.82-.63l1.102.302c.067.019.177.011.3-.071.214-.143.437-.272.668-.386.133-.066.194-.158.211-.224l.29-1.106C6.009.645 6.556.095 7.299.03 7.53.01 7.764 0 8 0Zm-.571 1.525c-.036.003-.108.036-.137.146l-.289 1.105c-.147.561-.549.967-.998 1.189-.173.086-.34.183-.5.29-.417.278-.97.423-1.529.27l-1.103-.303c-.109-.03-.175.016-.195.045-.22.312-.412.644-.573.99-.014.031-.021.11.059.19l.815.806c.411.406.562.957.53 1.456a4.709 4.709 0 0 0 0 .582c.032.499-.119 1.05-.53 1.456l-.815.806c-.081.08-.073.159-.059.19.162.346.353.677.573.989.02.03.085.076.195.046l1.102-.303c.56-.153 1.113-.008 1.53.27.161.107.328.204.501.29.447.222.85.629.997 1.189l.289 1.105c.029.109.101.143.137.146a6.6 6.6 0 0 0 1.142 0c.036-.003.108-.036.137-.146l.289-1.105c.147-.561.549-.967.998-1.189.173-.086.34-.183.5-.29.417-.278.97-.423 1.529-.27l1.103.303c.109.029.175-.016.195-.045.22-.313.411-.644.573-.99.014-.031.021-.11-.059-.19l-.815-.806c-.411-.406-.562-.957-.53-1.456a4.709 4.709 0 0 0 0-.582c-.032-.499.119-1.05.53-1.456l.815-.806c.081-.08.073-.159.059-.19a6.464 6.464 0 0 0-.573-.989c-.02-.03-.085-.076-.195-.046l-1.102.303c-.56.153-1.113.008-1.53-.27a4.44 4.44 0 0 0-.501-.29c-.447-.222-.85-.629-.997-1.189l-.289-1.105c-.029-.11-.101-.143-.137-.146a6.6 6.6 0 0 0-1.142 0ZM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM9.5 8a1.5 1.5 0 1 0-3.001.001A1.5 1.5 0 0 0 9.5 8Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="lock-color-fg-muted">
+              <svg height="16" class="octicon octicon-lock color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M4 4a4 4 0 0 1 8 0v2h.25c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 12.25 15h-8.5A1.75 1.75 0 0 1 2 13.25v-5.5C2 6.784 2.784 6 3.75 6H4Zm8.25 3.5h-8.5a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25ZM10.5 6V4a2.5 2.5 0 1 0-5 0v2Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="moon-color-fg-muted">
+              <svg height="16" class="octicon octicon-moon color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786Zm1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="person-color-fg-muted">
+              <svg height="16" class="octicon octicon-person color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="pencil-color-fg-muted">
+              <svg height="16" class="octicon octicon-pencil color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="issue-opened-open">
+              <svg height="16" class="octicon octicon-issue-opened open" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="git-pull-request-draft-color-fg-muted">
+              <svg height="16" class="octicon octicon-git-pull-request-draft color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M3.25 1A2.25 2.25 0 0 1 4 5.372v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.251 2.251 0 0 1 3.25 1Zm9.5 14a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5ZM2.5 3.25a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0ZM3.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm9.5 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM14 7.5a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Zm0-4.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="search-color-fg-muted">
+              <svg height="16" class="octicon octicon-search color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="sun-color-fg-muted">
+              <svg height="16" class="octicon octicon-sun color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm5.657-8.157a.75.75 0 0 1 0 1.061l-1.061 1.06a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.06-1.06a.75.75 0 0 1 1.06 0Zm-9.193 9.193a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 1 1-1.061-1.06l1.06-1.061a.75.75 0 0 1 1.061 0ZM8 0a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 8 0ZM3 8a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 3 8Zm13 0a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 16 8Zm-8 5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 13Zm3.536-1.464a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 0-1.061ZM2.343 2.343a.75.75 0 0 1 1.061 0l1.06 1.061a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.06-1.06a.75.75 0 0 1 0-1.06Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="sync-color-fg-muted">
+              <svg height="16" class="octicon octicon-sync color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="trash-color-fg-muted">
+              <svg height="16" class="octicon octicon-trash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75ZM4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.748 1.748 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15ZM6.5 1.75V3h3V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="key-color-fg-muted">
+              <svg height="16" class="octicon octicon-key color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M10.5 0a5.499 5.499 0 1 1-1.288 10.848l-.932.932a.749.749 0 0 1-.53.22H7v.75a.749.749 0 0 1-.22.53l-.5.5a.749.749 0 0 1-.53.22H5v.75a.749.749 0 0 1-.22.53l-.5.5a.749.749 0 0 1-.53.22h-2A1.75 1.75 0 0 1 0 14.25v-2c0-.199.079-.389.22-.53l4.932-4.932A5.5 5.5 0 0 1 10.5 0Zm-4 5.5c-.001.431.069.86.205 1.269a.75.75 0 0 1-.181.768L1.5 12.56v1.69c0 .138.112.25.25.25h1.69l.06-.06v-1.19a.75.75 0 0 1 .75-.75h1.19l.06-.06v-1.19a.75.75 0 0 1 .75-.75h1.19l1.023-1.025a.75.75 0 0 1 .768-.18A4 4 0 1 0 6.5 5.5ZM11 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="comment-discussion-color-fg-muted">
+              <svg height="16" class="octicon octicon-comment-discussion color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="bell-color-fg-muted">
+              <svg height="16" class="octicon octicon-bell color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 16a2 2 0 0 0 1.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 0 0 8 16ZM3 5a5 5 0 0 1 10 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.519 1.519 0 0 1 13.482 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947Zm5-3.5A3.5 3.5 0 0 0 4.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01l.001.006c0 .002.002.004.004.006l.006.004.007.001h10.964l.007-.001.006-.004.004-.006.001-.007a.017.017 0 0 0-.003-.01l-1.703-2.554a1.745 1.745 0 0 1-.294-.97V5A3.5 3.5 0 0 0 8 1.5Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="bell-slash-color-fg-muted">
+              <svg height="16" class="octicon octicon-bell-slash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="m4.182 4.31.016.011 10.104 7.316.013.01 1.375.996a.75.75 0 1 1-.88 1.214L13.626 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947V5.305L.31 3.357a.75.75 0 1 1 .88-1.214Zm7.373 7.19L4.5 6.391v1.556c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01c0 .005.002.009.005.012l.006.004.007.001ZM8 1.5c-.997 0-1.895.416-2.534 1.086A.75.75 0 1 1 4.38 1.55 5 5 0 0 1 13 5v2.373a.75.75 0 0 1-1.5 0V5A3.5 3.5 0 0 0 8 1.5ZM8 16a2 2 0 0 1-1.985-1.75c-.017-.137.097-.25.235-.25h3.5c.138 0 .252.113.235.25A2 2 0 0 1 8 16Z"></path></svg>
+            </div>
+            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="paintbrush-color-fg-muted">
+              <svg height="16" class="octicon octicon-paintbrush color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M11.134 1.535c.7-.509 1.416-.942 2.076-1.155.649-.21 1.463-.267 2.069.34.603.601.568 1.411.368 2.07-.202.668-.624 1.39-1.125 2.096-1.011 1.424-2.496 2.987-3.775 4.249-1.098 1.084-2.132 1.839-3.04 2.3a3.744 3.744 0 0 1-1.055 3.217c-.431.431-1.065.691-1.657.861-.614.177-1.294.287-1.914.357A21.151 21.151 0 0 1 .797 16H.743l.007-.75H.749L.742 16a.75.75 0 0 1-.743-.742l.743-.008-.742.007v-.054a21.25 21.25 0 0 1 .13-2.284c.067-.647.187-1.287.358-1.914.17-.591.43-1.226.86-1.657a3.746 3.746 0 0 1 3.227-1.054c.466-.893 1.225-1.907 2.314-2.982 1.271-1.255 2.833-2.75 4.245-3.777ZM1.62 13.089c-.051.464-.086.929-.104 1.395.466-.018.932-.053 1.396-.104a10.511 10.511 0 0 0 1.668-.309c.526-.151.856-.325 1.011-.48a2.25 2.25 0 1 0-3.182-3.182c-.155.155-.329.485-.48 1.01a10.515 10.515 0 0 0-.309 1.67Zm10.396-10.34c-1.224.89-2.605 2.189-3.822 3.384l1.718 1.718c1.21-1.205 2.51-2.597 3.387-3.833.47-.662.78-1.227.912-1.662.134-.444.032-.551.009-.575h-.001V1.78c-.014-.014-.113-.113-.548.027-.432.14-.995.462-1.655.942Zm-4.832 7.266-.001.001a9.859 9.859 0 0 0 1.63-1.142L7.155 7.216a9.7 9.7 0 0 0-1.161 1.607c.482.302.889.71 1.19 1.192Z"></path></svg>
+            </div>
+
+            <command-palette-item-group
+              data-group-id="top"
+              data-group-title="Top result"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="0"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="commands"
+              data-group-title="Commands"
+              data-group-hint="Type &gt; to filter"
+              data-group-limits="{&quot;static_items_page&quot;:50,&quot;issue&quot;:50,&quot;pull_request&quot;:50,&quot;discussion&quot;:50}"
+              data-default-priority="1"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="global_commands"
+              data-group-title="Global Commands"
+              data-group-hint="Type &gt; to filter"
+              data-group-limits="{&quot;issue&quot;:0,&quot;pull_request&quot;:0,&quot;discussion&quot;:0}"
+              data-default-priority="2"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="this_page"
+              data-group-title="This Page"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="3"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="files"
+              data-group-title="Files"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="4"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="default"
+              data-group-title="Default"
+              data-group-hint=""
+              data-group-limits="{&quot;static_items_page&quot;:50}"
+              data-default-priority="5"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="pages"
+              data-group-title="Pages"
+              data-group-hint=""
+              data-group-limits="{&quot;repository&quot;:10}"
+              data-default-priority="6"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="access_policies"
+              data-group-title="Access Policies"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="7"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="organizations"
+              data-group-title="Organizations"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="8"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="repositories"
+              data-group-title="Repositories"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="9"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="references"
+              data-group-title="Issues, pull requests, and discussions"
+              data-group-hint="Type # to filter"
+              data-group-limits="{}"
+              data-default-priority="10"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="teams"
+              data-group-title="Teams"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="11"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="users"
+              data-group-title="Users"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="12"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="memex_projects"
+              data-group-title="Projects"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="13"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="projects"
+              data-group-title="Projects (classic)"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="14"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="footer"
+              data-group-title="Footer"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="15"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="modes_help"
+              data-group-title="Modes"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="16"
+            >
+            </command-palette-item-group>
+            <command-palette-item-group
+              data-group-id="filters_help"
+              data-group-title="Use filters in issues, pull requests, discussions, and projects"
+              data-group-hint=""
+              data-group-limits="{}"
+              data-default-priority="17"
+            >
+            </command-palette-item-group>
+
+            <command-palette-page
+              data-page-title="alaricomv"
+              data-scope-id="MDQ6VXNlcjQyOTc5NjIz"
+              data-scope-type="owner"
+              data-targets="command-palette-page-stack.defaultPages"
+              hidden
+            >
+            </command-palette-page>
+            <command-palette-page
+              data-page-title="CapstoneProject_Group1"
+              data-scope-id="R_kgDOLRsG1g"
+              data-scope-type="repository"
+              data-targets="command-palette-page-stack.defaultPages"
+              hidden
+            >
+            </command-palette-page>
+        </div>
+
+        <command-palette-page data-is-root>
+        </command-palette-page>
+          <command-palette-page
+            data-page-title="alaricomv"
+            data-scope-id="MDQ6VXNlcjQyOTc5NjIz"
+            data-scope-type="owner"
+          >
+          </command-palette-page>
+          <command-palette-page
+            data-page-title="CapstoneProject_Group1"
+            data-scope-id="R_kgDOLRsG1g"
+            data-scope-type="repository"
+          >
+          </command-palette-page>
+      </command-palette-page-stack>
+
+      <server-defined-provider data-type="search-links" data-targets="command-palette.serverDefinedProviderElements"></server-defined-provider>
+      <server-defined-provider data-type="help" data-targets="command-palette.serverDefinedProviderElements">
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="#"
+              data-scope-types="[&quot;&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>issues</strong> and <strong>pull requests</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">#</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="#"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>issues, pull requests, discussions,</strong> and <strong>projects</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">#</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="@"
+              data-scope-types="[&quot;&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>organizations, repositories,</strong> and <strong>users</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">@</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="!"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>projects</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">!</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="/"
+              data-scope-types="[&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Search for <strong>files</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">/</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="modes_help"
+              data-prefix="&gt;"
+          >
+            <span data-target="command-palette-help.titleElement">Activate <strong>command mode</strong></span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd">&gt;</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# author:@me"
+          >
+            <span data-target="command-palette-help.titleElement">Search your issues, pull requests, and discussions</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># author:@me</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# author:@me"
+          >
+            <span data-target="command-palette-help.titleElement">Search your issues, pull requests, and discussions</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># author:@me</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:pr"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to pull requests</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:pr</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:issue"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to issues</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:issue</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:discussion"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to discussions</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:discussion</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:project"
+              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to projects</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:project</kbd>
+              </span>
+          </command-palette-help>
+          <command-palette-help
+            data-group="filters_help"
+              data-prefix="# is:open"
+          >
+            <span data-target="command-palette-help.titleElement">Filter to open issues, pull requests, and discussions</span>
+              <span data-target="command-palette-help.hintElement">
+                <kbd class="hx_kbd"># is:open</kbd>
+              </span>
+          </command-palette-help>
+      </server-defined-provider>
+
+        <server-defined-provider
+          data-type="commands"
+          data-fetch-debounce="0"
+            data-src="/command_palette/commands"
+          data-supported-modes="[]"
+            data-supports-commands
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="prefetched"
+          data-fetch-debounce="0"
+            data-src="/command_palette/jump_to_page_navigation"
+          data-supported-modes="[&quot;&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/issues"
+          data-supported-modes="[&quot;#&quot;,&quot;#&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;,&quot;&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/jump_to"
+          data-supported-modes="[&quot;@&quot;,&quot;@&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/jump_to_members_only"
+          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="prefetched"
+          data-fetch-debounce="0"
+            data-src="/command_palette/jump_to_members_only_prefetched"
+          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="files"
+          data-fetch-debounce="0"
+            data-src="/command_palette/files"
+          data-supported-modes="[&quot;/&quot;]"
+            data-supported-scope-types="[&quot;repository&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/discussions"
+          data-supported-modes="[&quot;#&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/projects"
+          data-supported-modes="[&quot;#&quot;,&quot;!&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="prefetched"
+          data-fetch-debounce="0"
+            data-src="/command_palette/recent_issues"
+          data-supported-modes="[&quot;#&quot;,&quot;#&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;,&quot;&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/teams"
+          data-supported-modes="[&quot;@&quot;,&quot;&quot;]"
+            data-supported-scope-types="[&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+        <server-defined-provider
+          data-type="remote"
+          data-fetch-debounce="200"
+            data-src="/command_palette/name_with_owner_repository"
+          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
+            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
+          
+          data-targets="command-palette.serverDefinedProviderElements"
+          ></server-defined-provider>
+    </command-palette>
+  </details-dialog>
+</details>
+
+<div class="position-fixed bottom-0 left-0 ml-5 mb-5 js-command-palette-toasts" style="z-index: 1000">
+  <div hidden class="Toast Toast--loading">
+    <span class="Toast-icon">
+      <svg class="Toast--spinner" viewBox="0 0 32 32" width="18" height="18" aria-hidden="true">
+        <path
+          fill="#959da5"
+          d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
+        />
+        <path fill="#ffffff" d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"></path>
+      </svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+
+  <div hidden class="anim-fade-in fast Toast Toast--error">
+    <span class="Toast-icon">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-stop">
+    <path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+</svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+
+  <div hidden class="anim-fade-in fast Toast Toast--warning">
+    <span class="Toast-icon">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+
+
+  <div hidden class="anim-fade-in fast Toast Toast--success">
+    <span class="Toast-icon">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+
+  <div hidden class="anim-fade-in fast Toast">
+    <span class="Toast-icon">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-info">
+    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+</svg>
+    </span>
+    <span class="Toast-content"></span>
+  </div>
+</div>
+
+
+  <div
+    class="application-main "
+    data-commit-hovercards-enabled
+    data-discussion-hovercards-enabled
+    data-issue-and-pr-hovercards-enabled
+  >
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <main id="js-repo-pjax-container" >
+      
+      
+
+
+
+
+
+
+    
+  <div id="repository-container-header" data-turbo-replace hidden></div>
+
+
+
+
+<turbo-frame id="repo-content-turbo-frame" target="_top" data-turbo-action="advance" class="">
+    <div id="repo-content-pjax-container" class="repository-content " >
+      <a href="https://github.dev/" class="d-none js-github-dev-shortcut" data-hotkey=".,Mod+Alt+.">Open in github.dev</a>
+  <a href="https://github.dev/" class="d-none js-github-dev-new-tab-shortcut" data-hotkey="Shift+.,Shift+&gt;,&gt;" target="_blank" rel="noopener noreferrer">Open in a new github.dev tab</a>
+    <a class="d-none" data-hotkey=",,Mod+Alt+," target="_blank" href="/codespaces/new/alaricomv/CapstoneProject_Group1/tree/main?resume=1">Open in codespace</a>
+
+
+
+
+    
+      
+    
+
+
+
+
+
+<react-app
+  app-name="react-code-view"
+  initial-path="/alaricomv/CapstoneProject_Group1/blob/main/backend/database/wholesaledb.sql"
+  style="min-height: calc(100vh - 64px)" 
+  data-ssr="true"
+  data-lazy="false"
+  data-alternate="false"
+>
+  
+  <script type="application/json" data-target="react-app.embeddedData">{"payload":{"allShortcutsEnabled":true,"fileTree":{"backend/database":{"items":[{"name":"wholesaledb.sql","path":"backend/database/wholesaledb.sql","contentType":"file"}],"totalCount":1},"backend":{"items":[{"name":"database","path":"backend/database","contentType":"directory"},{"name":"node_modules","path":"backend/node_modules","contentType":"directory"},{"name":"app.js","path":"backend/app.js","contentType":"file"},{"name":"database.js","path":"backend/database.js","contentType":"file"},{"name":"package-lock.json","path":"backend/package-lock.json","contentType":"file"},{"name":"package.json","path":"backend/package.json","contentType":"file"}],"totalCount":6},"":{"items":[{"name":"backend","path":"backend","contentType":"directory"},{"name":"frontend","path":"frontend","contentType":"directory"}],"totalCount":2}},"fileTreeProcessingTime":10.611354,"foldersToFetch":[],"repo":{"id":756745942,"defaultBranch":"main","name":"CapstoneProject_Group1","ownerLogin":"alaricomv","currentUserCanPush":true,"isFork":false,"isEmpty":false,"createdAt":"2024-02-13T00:23:27.000-08:00","ownerAvatar":"https://avatars.githubusercontent.com/u/42979623?v=4","public":false,"private":true,"isOrgOwned":false},"codeLineWrapEnabled":false,"symbolsExpanded":false,"treeExpanded":true,"refInfo":{"name":"main","listCacheKey":"v0:1710828461.0","canEdit":true,"refType":"branch","currentOid":"b4f01e0695a1dd9f0275bef6d1df9115fb853fed"},"path":"backend/database/wholesaledb.sql","currentUser":{"id":159969515,"login":"elaheh2024","userEmail":"e.dehghan@student.fdu.edu"},"blob":{"rawLines":["-- phpMyAdmin SQL Dump","-- version 5.2.1","-- https://www.phpmyadmin.net/","--","-- Servidor: 127.0.0.1","-- Tiempo de generación: 17-02-2024 a las 02:41:26","-- Versión del servidor: 10.4.32-MariaDB","-- Versión de PHP: 8.2.12","","SET SQL_MODE = \"NO_AUTO_VALUE_ON_ZERO\";","START TRANSACTION;","SET time_zone = \"+00:00\";","","","/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;","/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;","/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;","/*!40101 SET NAMES utf8mb4 */;","","--","-- Base de datos: `wholesaledb`","--","","-- --------------------------------------------------------","","--","-- Estructura de tabla para la tabla `cart`","--","","CREATE TABLE `cart` (","  `id` int(11) NOT NULL,","  `user_id` int(11) NOT NULL,","  `total` double NOT NULL",") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;","","-- --------------------------------------------------------","","--","-- Estructura de tabla para la tabla `cart_product`","--","","CREATE TABLE `cart_product` (","  `id` int(11) NOT NULL,","  `cart_id` int(11) NOT NULL,","  `product_id` int(11) NOT NULL,","  `quantity` int(11) NOT NULL",") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;","","-- --------------------------------------------------------","","--","-- Estructura de tabla para la tabla `order`","--","","CREATE TABLE `order` (","  `id` int(11) NOT NULL,","  `storefront_id` int(11) NOT NULL,","  `cart_id` int(11) NOT NULL,","  `date` datetime NOT NULL,","  `Status` varchar(250) NOT NULL COMMENT 'Determines the status of the order (Received, shipped, delivered)',","  `comments` varchar(1000) NOT NULL",") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;","","-- --------------------------------------------------------","","--","-- Estructura de tabla para la tabla `product`","--","","CREATE TABLE `product` (","  `id` int(11) NOT NULL,","  `storefront_id` int(11) NOT NULL,","  `product_key` varchar(250) NOT NULL,","  `name` varchar(250) NOT NULL,","  `description` varchar(250) NOT NULL DEFAULT '\"No description\"',","  `tags` varchar(250) DEFAULT NULL,","  `price_per_dozen` int(11) NOT NULL,","  `price_box` int(11) DEFAULT NULL,","  `total_pieces` int(11) NOT NULL DEFAULT 0,","  `pieces_per_box` int(11) DEFAULT NULL",") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;","","-- --------------------------------------------------------","","--","-- Estructura de tabla para la tabla `storefront`","--","","CREATE TABLE `storefront` (","  `id` int(11) NOT NULL,","  `name` varchar(250) NOT NULL,","  `seller_id` int(11) NOT NULL,","  `logo` varchar(250) DEFAULT NULL,","  `description` varchar(1000) DEFAULT NULL,","  `tags` varchar(250) DEFAULT NULL COMMENT 'Tags are separated with a \",\"',","  `address` varchar(250) DEFAULT NULL,","  `rating` int(11) NOT NULL DEFAULT 0 COMMENT 'Average rating of the store',","  `number_ratings` int(11) NOT NULL DEFAULT 0 COMMENT 'Number of ratings to the store'",") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;","","-- --------------------------------------------------------","","--","-- Estructura de tabla para la tabla `users`","--","","CREATE TABLE `users` (","  `id` int(11) NOT NULL,","  `first_name` varchar(250) NOT NULL,","  `last_name` varchar(250) NOT NULL,","  `email` varchar(250) NOT NULL,","  `password` varchar(250) NOT NULL,","  `address` varchar(250) DEFAULT NULL,","  `phone_number` varchar(250) NOT NULL,","  `seller` tinyint(1) NOT NULL COMMENT 'Determines if the user is a buyer (0) or a seller (1)'",") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;","","--","-- Índices para tablas volcadas","--","","--","-- Indices de la tabla `cart`","--","ALTER TABLE `cart`","  ADD PRIMARY KEY (`id`),","  ADD KEY `user id cart` (`user_id`);","","--","-- Indices de la tabla `cart_product`","--","ALTER TABLE `cart_product`","  ADD PRIMARY KEY (`id`),","  ADD KEY `cart id cart_product` (`cart_id`),","  ADD KEY `product id cart_product` (`product_id`);","","--","-- Indices de la tabla `order`","--","ALTER TABLE `order`","  ADD PRIMARY KEY (`id`),","  ADD KEY `cart id order` (`cart_id`),","  ADD KEY `storefront id order` (`storefront_id`);","","--","-- Indices de la tabla `product`","--","ALTER TABLE `product`","  ADD PRIMARY KEY (`id`),","  ADD KEY `storefront id` (`storefront_id`);","","--","-- Indices de la tabla `storefront`","--","ALTER TABLE `storefront`","  ADD PRIMARY KEY (`id`),","  ADD KEY `Seller id` (`seller_id`);","","--","-- Indices de la tabla `users`","--","ALTER TABLE `users`","  ADD PRIMARY KEY (`id`);","","--","-- AUTO_INCREMENT de las tablas volcadas","--","","--","-- AUTO_INCREMENT de la tabla `cart`","--","ALTER TABLE `cart`","  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;","","--","-- AUTO_INCREMENT de la tabla `cart_product`","--","ALTER TABLE `cart_product`","  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;","","--","-- AUTO_INCREMENT de la tabla `order`","--","ALTER TABLE `order`","  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;","","--","-- AUTO_INCREMENT de la tabla `product`","--","ALTER TABLE `product`","  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;","","--","-- AUTO_INCREMENT de la tabla `storefront`","--","ALTER TABLE `storefront`","  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;","","--","-- AUTO_INCREMENT de la tabla `users`","--","ALTER TABLE `users`","  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;","","--","-- Restricciones para tablas volcadas","--","","--","-- Filtros para la tabla `cart`","--","ALTER TABLE `cart`","  ADD CONSTRAINT `user id cart` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);","","--","-- Filtros para la tabla `cart_product`","--","ALTER TABLE `cart_product`","  ADD CONSTRAINT `cart id cart_product` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),","  ADD CONSTRAINT `product id cart_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);","","--","-- Filtros para la tabla `order`","--","ALTER TABLE `order`","  ADD CONSTRAINT `cart id order` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),","  ADD CONSTRAINT `storefront id order` FOREIGN KEY (`storefront_id`) REFERENCES `storefront` (`id`);","","--","-- Filtros para la tabla `product`","--","ALTER TABLE `product`","  ADD CONSTRAINT `storefront id` FOREIGN KEY (`storefront_id`) REFERENCES `storefront` (`id`);","","--","-- Filtros para la tabla `storefront`","--","ALTER TABLE `storefront`","  ADD CONSTRAINT `Seller id` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`);","COMMIT;","","/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;","/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;","/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;"],"stylingDirectives":[[{"start":0,"end":22,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":16,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":30,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":22,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":50,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":40,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":25,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":3,"cssClass":"pl-k"},{"start":13,"end":14,"cssClass":"pl-k"},{"start":15,"end":38,"cssClass":"pl-s"},{"start":15,"end":16,"cssClass":"pl-pds"},{"start":37,"end":38,"cssClass":"pl-pds"}],[{"start":0,"end":17,"cssClass":"pl-k"}],[{"start":0,"end":3,"cssClass":"pl-k"},{"start":14,"end":15,"cssClass":"pl-k"},{"start":16,"end":24,"cssClass":"pl-s"},{"start":16,"end":17,"cssClass":"pl-pds"},{"start":23,"end":24,"cssClass":"pl-pds"}],[],[],[{"start":0,"end":64,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"},{"start":62,"end":64,"cssClass":"pl-c"}],[{"start":0,"end":66,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"},{"start":64,"end":66,"cssClass":"pl-c"}],[{"start":0,"end":64,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"},{"start":62,"end":64,"cssClass":"pl-c"}],[{"start":0,"end":29,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"},{"start":27,"end":29,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":31,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":59,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":43,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":6,"cssClass":"pl-k"},{"start":7,"end":12,"cssClass":"pl-k"},{"start":14,"end":18,"cssClass":"pl-en"}],[{"start":2,"end":6,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":5,"end":6,"cssClass":"pl-pds"},{"start":7,"end":10,"cssClass":"pl-k"},{"start":11,"end":13,"cssClass":"pl-c1"},{"start":15,"end":23,"cssClass":"pl-k"}],[{"start":2,"end":11,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":12,"end":15,"cssClass":"pl-k"},{"start":16,"end":18,"cssClass":"pl-c1"},{"start":20,"end":28,"cssClass":"pl-k"}],[{"start":2,"end":9,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":8,"end":9,"cssClass":"pl-pds"},{"start":17,"end":25,"cssClass":"pl-k"}],[{"start":8,"end":9,"cssClass":"pl-k"},{"start":31,"end":32,"cssClass":"pl-k"},{"start":47,"end":48,"cssClass":"pl-k"}],[],[{"start":0,"end":59,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":51,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":6,"cssClass":"pl-k"},{"start":7,"end":12,"cssClass":"pl-k"},{"start":14,"end":26,"cssClass":"pl-en"}],[{"start":2,"end":6,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":5,"end":6,"cssClass":"pl-pds"},{"start":7,"end":10,"cssClass":"pl-k"},{"start":11,"end":13,"cssClass":"pl-c1"},{"start":15,"end":23,"cssClass":"pl-k"}],[{"start":2,"end":11,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":12,"end":15,"cssClass":"pl-k"},{"start":16,"end":18,"cssClass":"pl-c1"},{"start":20,"end":28,"cssClass":"pl-k"}],[{"start":2,"end":14,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":13,"end":14,"cssClass":"pl-pds"},{"start":15,"end":18,"cssClass":"pl-k"},{"start":19,"end":21,"cssClass":"pl-c1"},{"start":23,"end":31,"cssClass":"pl-k"}],[{"start":2,"end":12,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":11,"end":12,"cssClass":"pl-pds"},{"start":13,"end":16,"cssClass":"pl-k"},{"start":17,"end":19,"cssClass":"pl-c1"},{"start":21,"end":29,"cssClass":"pl-k"}],[{"start":8,"end":9,"cssClass":"pl-k"},{"start":31,"end":32,"cssClass":"pl-k"},{"start":47,"end":48,"cssClass":"pl-k"}],[],[{"start":0,"end":59,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":44,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":6,"cssClass":"pl-k"},{"start":7,"end":12,"cssClass":"pl-k"},{"start":14,"end":19,"cssClass":"pl-en"}],[{"start":2,"end":6,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":5,"end":6,"cssClass":"pl-pds"},{"start":7,"end":10,"cssClass":"pl-k"},{"start":11,"end":13,"cssClass":"pl-c1"},{"start":15,"end":23,"cssClass":"pl-k"}],[{"start":2,"end":17,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":16,"end":17,"cssClass":"pl-pds"},{"start":18,"end":21,"cssClass":"pl-k"},{"start":22,"end":24,"cssClass":"pl-c1"},{"start":26,"end":34,"cssClass":"pl-k"}],[{"start":2,"end":11,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":12,"end":15,"cssClass":"pl-k"},{"start":16,"end":18,"cssClass":"pl-c1"},{"start":20,"end":28,"cssClass":"pl-k"}],[{"start":2,"end":8,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":7,"end":8,"cssClass":"pl-pds"},{"start":18,"end":26,"cssClass":"pl-k"}],[{"start":2,"end":10,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":11,"end":18,"cssClass":"pl-k"},{"start":19,"end":22,"cssClass":"pl-c1"},{"start":24,"end":32,"cssClass":"pl-k"},{"start":41,"end":108,"cssClass":"pl-s"},{"start":41,"end":42,"cssClass":"pl-pds"},{"start":107,"end":108,"cssClass":"pl-pds"}],[{"start":2,"end":12,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":11,"end":12,"cssClass":"pl-pds"},{"start":13,"end":20,"cssClass":"pl-k"},{"start":21,"end":25,"cssClass":"pl-c1"},{"start":27,"end":35,"cssClass":"pl-k"}],[{"start":8,"end":9,"cssClass":"pl-k"},{"start":31,"end":32,"cssClass":"pl-k"},{"start":47,"end":48,"cssClass":"pl-k"}],[],[{"start":0,"end":59,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":46,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":6,"cssClass":"pl-k"},{"start":7,"end":12,"cssClass":"pl-k"},{"start":14,"end":21,"cssClass":"pl-en"}],[{"start":2,"end":6,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":5,"end":6,"cssClass":"pl-pds"},{"start":7,"end":10,"cssClass":"pl-k"},{"start":11,"end":13,"cssClass":"pl-c1"},{"start":15,"end":23,"cssClass":"pl-k"}],[{"start":2,"end":17,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":16,"end":17,"cssClass":"pl-pds"},{"start":18,"end":21,"cssClass":"pl-k"},{"start":22,"end":24,"cssClass":"pl-c1"},{"start":26,"end":34,"cssClass":"pl-k"}],[{"start":2,"end":15,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":14,"end":15,"cssClass":"pl-pds"},{"start":16,"end":23,"cssClass":"pl-k"},{"start":24,"end":27,"cssClass":"pl-c1"},{"start":29,"end":37,"cssClass":"pl-k"}],[{"start":2,"end":8,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":7,"end":8,"cssClass":"pl-pds"},{"start":9,"end":16,"cssClass":"pl-k"},{"start":17,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[{"start":2,"end":15,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":14,"end":15,"cssClass":"pl-pds"},{"start":16,"end":23,"cssClass":"pl-k"},{"start":24,"end":27,"cssClass":"pl-c1"},{"start":29,"end":37,"cssClass":"pl-k"},{"start":46,"end":64,"cssClass":"pl-s"},{"start":46,"end":47,"cssClass":"pl-pds"},{"start":63,"end":64,"cssClass":"pl-pds"}],[{"start":2,"end":8,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":7,"end":8,"cssClass":"pl-pds"},{"start":9,"end":16,"cssClass":"pl-k"},{"start":17,"end":20,"cssClass":"pl-c1"},{"start":30,"end":34,"cssClass":"pl-k"}],[{"start":2,"end":19,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":18,"end":19,"cssClass":"pl-pds"},{"start":20,"end":23,"cssClass":"pl-k"},{"start":24,"end":26,"cssClass":"pl-c1"},{"start":28,"end":36,"cssClass":"pl-k"}],[{"start":2,"end":13,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":17,"cssClass":"pl-k"},{"start":18,"end":20,"cssClass":"pl-c1"},{"start":30,"end":34,"cssClass":"pl-k"}],[{"start":2,"end":16,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":15,"end":16,"cssClass":"pl-pds"},{"start":17,"end":20,"cssClass":"pl-k"},{"start":21,"end":23,"cssClass":"pl-c1"},{"start":25,"end":33,"cssClass":"pl-k"},{"start":42,"end":43,"cssClass":"pl-c1"}],[{"start":2,"end":18,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":19,"end":22,"cssClass":"pl-k"},{"start":23,"end":25,"cssClass":"pl-c1"},{"start":35,"end":39,"cssClass":"pl-k"}],[{"start":8,"end":9,"cssClass":"pl-k"},{"start":31,"end":32,"cssClass":"pl-k"},{"start":47,"end":48,"cssClass":"pl-k"}],[],[{"start":0,"end":59,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":49,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":6,"cssClass":"pl-k"},{"start":7,"end":12,"cssClass":"pl-k"},{"start":14,"end":24,"cssClass":"pl-en"}],[{"start":2,"end":6,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":5,"end":6,"cssClass":"pl-pds"},{"start":7,"end":10,"cssClass":"pl-k"},{"start":11,"end":13,"cssClass":"pl-c1"},{"start":15,"end":23,"cssClass":"pl-k"}],[{"start":2,"end":8,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":7,"end":8,"cssClass":"pl-pds"},{"start":9,"end":16,"cssClass":"pl-k"},{"start":17,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[{"start":2,"end":13,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":17,"cssClass":"pl-k"},{"start":18,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[{"start":2,"end":8,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":7,"end":8,"cssClass":"pl-pds"},{"start":9,"end":16,"cssClass":"pl-k"},{"start":17,"end":20,"cssClass":"pl-c1"},{"start":30,"end":34,"cssClass":"pl-k"}],[{"start":2,"end":15,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":14,"end":15,"cssClass":"pl-pds"},{"start":16,"end":23,"cssClass":"pl-k"},{"start":24,"end":28,"cssClass":"pl-c1"},{"start":38,"end":42,"cssClass":"pl-k"}],[{"start":2,"end":8,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":7,"end":8,"cssClass":"pl-pds"},{"start":9,"end":16,"cssClass":"pl-k"},{"start":17,"end":20,"cssClass":"pl-c1"},{"start":30,"end":34,"cssClass":"pl-k"},{"start":43,"end":74,"cssClass":"pl-s"},{"start":43,"end":44,"cssClass":"pl-pds"},{"start":73,"end":74,"cssClass":"pl-pds"}],[{"start":2,"end":11,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":12,"end":19,"cssClass":"pl-k"},{"start":20,"end":23,"cssClass":"pl-c1"},{"start":33,"end":37,"cssClass":"pl-k"}],[{"start":2,"end":10,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":11,"end":14,"cssClass":"pl-k"},{"start":15,"end":17,"cssClass":"pl-c1"},{"start":19,"end":27,"cssClass":"pl-k"},{"start":36,"end":37,"cssClass":"pl-c1"},{"start":46,"end":75,"cssClass":"pl-s"},{"start":46,"end":47,"cssClass":"pl-pds"},{"start":74,"end":75,"cssClass":"pl-pds"}],[{"start":2,"end":18,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":19,"end":22,"cssClass":"pl-k"},{"start":23,"end":25,"cssClass":"pl-c1"},{"start":27,"end":35,"cssClass":"pl-k"},{"start":44,"end":45,"cssClass":"pl-c1"},{"start":54,"end":86,"cssClass":"pl-s"},{"start":54,"end":55,"cssClass":"pl-pds"},{"start":85,"end":86,"cssClass":"pl-pds"}],[{"start":8,"end":9,"cssClass":"pl-k"},{"start":31,"end":32,"cssClass":"pl-k"},{"start":47,"end":48,"cssClass":"pl-k"}],[],[{"start":0,"end":59,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":44,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":6,"cssClass":"pl-k"},{"start":7,"end":12,"cssClass":"pl-k"},{"start":14,"end":19,"cssClass":"pl-en"}],[{"start":2,"end":6,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":5,"end":6,"cssClass":"pl-pds"},{"start":7,"end":10,"cssClass":"pl-k"},{"start":11,"end":13,"cssClass":"pl-c1"},{"start":15,"end":23,"cssClass":"pl-k"}],[{"start":2,"end":14,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":13,"end":14,"cssClass":"pl-pds"},{"start":15,"end":22,"cssClass":"pl-k"},{"start":23,"end":26,"cssClass":"pl-c1"},{"start":28,"end":36,"cssClass":"pl-k"}],[{"start":2,"end":13,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":21,"cssClass":"pl-k"},{"start":22,"end":25,"cssClass":"pl-c1"},{"start":27,"end":35,"cssClass":"pl-k"}],[{"start":2,"end":9,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":8,"end":9,"cssClass":"pl-pds"},{"start":10,"end":17,"cssClass":"pl-k"},{"start":18,"end":21,"cssClass":"pl-c1"},{"start":23,"end":31,"cssClass":"pl-k"}],[{"start":2,"end":12,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":11,"end":12,"cssClass":"pl-pds"},{"start":13,"end":20,"cssClass":"pl-k"},{"start":21,"end":24,"cssClass":"pl-c1"},{"start":26,"end":34,"cssClass":"pl-k"}],[{"start":2,"end":11,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":12,"end":19,"cssClass":"pl-k"},{"start":20,"end":23,"cssClass":"pl-c1"},{"start":33,"end":37,"cssClass":"pl-k"}],[{"start":2,"end":16,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":15,"end":16,"cssClass":"pl-pds"},{"start":17,"end":24,"cssClass":"pl-k"},{"start":25,"end":28,"cssClass":"pl-c1"},{"start":30,"end":38,"cssClass":"pl-k"}],[{"start":2,"end":10,"cssClass":"pl-s"},{"start":2,"end":3,"cssClass":"pl-pds"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":11,"end":18,"cssClass":"pl-k"},{"start":19,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"},{"start":39,"end":94,"cssClass":"pl-s"},{"start":39,"end":40,"cssClass":"pl-pds"},{"start":93,"end":94,"cssClass":"pl-pds"}],[{"start":8,"end":9,"cssClass":"pl-k"},{"start":31,"end":32,"cssClass":"pl-k"},{"start":47,"end":48,"cssClass":"pl-k"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":31,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":29,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":18,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":17,"end":18,"cssClass":"pl-pds"}],[{"start":6,"end":17,"cssClass":"pl-k"},{"start":19,"end":23,"cssClass":"pl-s"},{"start":19,"end":20,"cssClass":"pl-pds"},{"start":22,"end":23,"cssClass":"pl-pds"}],[{"start":10,"end":24,"cssClass":"pl-s"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":23,"end":24,"cssClass":"pl-pds"},{"start":26,"end":35,"cssClass":"pl-s"},{"start":26,"end":27,"cssClass":"pl-pds"},{"start":34,"end":35,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":37,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":26,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":25,"end":26,"cssClass":"pl-pds"}],[{"start":6,"end":17,"cssClass":"pl-k"},{"start":19,"end":23,"cssClass":"pl-s"},{"start":19,"end":20,"cssClass":"pl-pds"},{"start":22,"end":23,"cssClass":"pl-pds"}],[{"start":10,"end":32,"cssClass":"pl-s"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":31,"end":32,"cssClass":"pl-pds"},{"start":34,"end":43,"cssClass":"pl-s"},{"start":34,"end":35,"cssClass":"pl-pds"},{"start":42,"end":43,"cssClass":"pl-pds"}],[{"start":10,"end":35,"cssClass":"pl-s"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":34,"end":35,"cssClass":"pl-pds"},{"start":37,"end":49,"cssClass":"pl-s"},{"start":37,"end":38,"cssClass":"pl-pds"},{"start":48,"end":49,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":30,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":19,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":18,"end":19,"cssClass":"pl-pds"}],[{"start":6,"end":17,"cssClass":"pl-k"},{"start":19,"end":23,"cssClass":"pl-s"},{"start":19,"end":20,"cssClass":"pl-pds"},{"start":22,"end":23,"cssClass":"pl-pds"}],[{"start":10,"end":25,"cssClass":"pl-s"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":24,"end":25,"cssClass":"pl-pds"},{"start":27,"end":36,"cssClass":"pl-s"},{"start":27,"end":28,"cssClass":"pl-pds"},{"start":35,"end":36,"cssClass":"pl-pds"}],[{"start":10,"end":31,"cssClass":"pl-s"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":30,"end":31,"cssClass":"pl-pds"},{"start":33,"end":48,"cssClass":"pl-s"},{"start":33,"end":34,"cssClass":"pl-pds"},{"start":47,"end":48,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":32,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":21,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":20,"end":21,"cssClass":"pl-pds"}],[{"start":6,"end":17,"cssClass":"pl-k"},{"start":19,"end":23,"cssClass":"pl-s"},{"start":19,"end":20,"cssClass":"pl-pds"},{"start":22,"end":23,"cssClass":"pl-pds"}],[{"start":10,"end":25,"cssClass":"pl-s"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":24,"end":25,"cssClass":"pl-pds"},{"start":27,"end":42,"cssClass":"pl-s"},{"start":27,"end":28,"cssClass":"pl-pds"},{"start":41,"end":42,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":35,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":24,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":23,"end":24,"cssClass":"pl-pds"}],[{"start":6,"end":17,"cssClass":"pl-k"},{"start":19,"end":23,"cssClass":"pl-s"},{"start":19,"end":20,"cssClass":"pl-pds"},{"start":22,"end":23,"cssClass":"pl-pds"}],[{"start":10,"end":21,"cssClass":"pl-s"},{"start":10,"end":11,"cssClass":"pl-pds"},{"start":20,"end":21,"cssClass":"pl-pds"},{"start":23,"end":34,"cssClass":"pl-s"},{"start":23,"end":24,"cssClass":"pl-pds"},{"start":33,"end":34,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":30,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":19,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":18,"end":19,"cssClass":"pl-pds"}],[{"start":6,"end":17,"cssClass":"pl-k"},{"start":19,"end":23,"cssClass":"pl-s"},{"start":19,"end":20,"cssClass":"pl-pds"},{"start":22,"end":23,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":40,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":36,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":18,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":17,"end":18,"cssClass":"pl-pds"}],[{"start":9,"end":13,"cssClass":"pl-s"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":17,"cssClass":"pl-k"},{"start":18,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":44,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":26,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":25,"end":26,"cssClass":"pl-pds"}],[{"start":9,"end":13,"cssClass":"pl-s"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":17,"cssClass":"pl-k"},{"start":18,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":37,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":19,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":18,"end":19,"cssClass":"pl-pds"}],[{"start":9,"end":13,"cssClass":"pl-s"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":17,"cssClass":"pl-k"},{"start":18,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":39,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":21,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":20,"end":21,"cssClass":"pl-pds"}],[{"start":9,"end":13,"cssClass":"pl-s"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":17,"cssClass":"pl-k"},{"start":18,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":42,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":24,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":23,"end":24,"cssClass":"pl-pds"}],[{"start":9,"end":13,"cssClass":"pl-s"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":17,"cssClass":"pl-k"},{"start":18,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":37,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":19,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":18,"end":19,"cssClass":"pl-pds"}],[{"start":9,"end":13,"cssClass":"pl-s"},{"start":9,"end":10,"cssClass":"pl-pds"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":14,"end":17,"cssClass":"pl-k"},{"start":18,"end":20,"cssClass":"pl-c1"},{"start":22,"end":30,"cssClass":"pl-k"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":37,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":31,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":18,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":17,"end":18,"cssClass":"pl-pds"}],[{"start":6,"end":16,"cssClass":"pl-k"},{"start":17,"end":31,"cssClass":"pl-s"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":30,"end":31,"cssClass":"pl-pds"},{"start":32,"end":43,"cssClass":"pl-k"},{"start":45,"end":54,"cssClass":"pl-s"},{"start":45,"end":46,"cssClass":"pl-pds"},{"start":53,"end":54,"cssClass":"pl-pds"},{"start":56,"end":66,"cssClass":"pl-k"},{"start":67,"end":74,"cssClass":"pl-s"},{"start":67,"end":68,"cssClass":"pl-pds"},{"start":73,"end":74,"cssClass":"pl-pds"},{"start":76,"end":80,"cssClass":"pl-s"},{"start":76,"end":77,"cssClass":"pl-pds"},{"start":79,"end":80,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":39,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":26,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":25,"end":26,"cssClass":"pl-pds"}],[{"start":6,"end":16,"cssClass":"pl-k"},{"start":17,"end":39,"cssClass":"pl-s"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":38,"end":39,"cssClass":"pl-pds"},{"start":40,"end":51,"cssClass":"pl-k"},{"start":53,"end":62,"cssClass":"pl-s"},{"start":53,"end":54,"cssClass":"pl-pds"},{"start":61,"end":62,"cssClass":"pl-pds"},{"start":64,"end":74,"cssClass":"pl-k"},{"start":75,"end":81,"cssClass":"pl-s"},{"start":75,"end":76,"cssClass":"pl-pds"},{"start":80,"end":81,"cssClass":"pl-pds"},{"start":83,"end":87,"cssClass":"pl-s"},{"start":83,"end":84,"cssClass":"pl-pds"},{"start":86,"end":87,"cssClass":"pl-pds"}],[{"start":6,"end":16,"cssClass":"pl-k"},{"start":17,"end":42,"cssClass":"pl-s"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":41,"end":42,"cssClass":"pl-pds"},{"start":43,"end":54,"cssClass":"pl-k"},{"start":56,"end":68,"cssClass":"pl-s"},{"start":56,"end":57,"cssClass":"pl-pds"},{"start":67,"end":68,"cssClass":"pl-pds"},{"start":70,"end":80,"cssClass":"pl-k"},{"start":81,"end":90,"cssClass":"pl-s"},{"start":81,"end":82,"cssClass":"pl-pds"},{"start":89,"end":90,"cssClass":"pl-pds"},{"start":92,"end":96,"cssClass":"pl-s"},{"start":92,"end":93,"cssClass":"pl-pds"},{"start":95,"end":96,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":32,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":19,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":18,"end":19,"cssClass":"pl-pds"}],[{"start":6,"end":16,"cssClass":"pl-k"},{"start":17,"end":32,"cssClass":"pl-s"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":31,"end":32,"cssClass":"pl-pds"},{"start":33,"end":44,"cssClass":"pl-k"},{"start":46,"end":55,"cssClass":"pl-s"},{"start":46,"end":47,"cssClass":"pl-pds"},{"start":54,"end":55,"cssClass":"pl-pds"},{"start":57,"end":67,"cssClass":"pl-k"},{"start":68,"end":74,"cssClass":"pl-s"},{"start":68,"end":69,"cssClass":"pl-pds"},{"start":73,"end":74,"cssClass":"pl-pds"},{"start":76,"end":80,"cssClass":"pl-s"},{"start":76,"end":77,"cssClass":"pl-pds"},{"start":79,"end":80,"cssClass":"pl-pds"}],[{"start":6,"end":16,"cssClass":"pl-k"},{"start":17,"end":38,"cssClass":"pl-s"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":37,"end":38,"cssClass":"pl-pds"},{"start":39,"end":50,"cssClass":"pl-k"},{"start":52,"end":67,"cssClass":"pl-s"},{"start":52,"end":53,"cssClass":"pl-pds"},{"start":66,"end":67,"cssClass":"pl-pds"},{"start":69,"end":79,"cssClass":"pl-k"},{"start":80,"end":92,"cssClass":"pl-s"},{"start":80,"end":81,"cssClass":"pl-pds"},{"start":91,"end":92,"cssClass":"pl-pds"},{"start":94,"end":98,"cssClass":"pl-s"},{"start":94,"end":95,"cssClass":"pl-pds"},{"start":97,"end":98,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":34,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":21,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":20,"end":21,"cssClass":"pl-pds"}],[{"start":6,"end":16,"cssClass":"pl-k"},{"start":17,"end":32,"cssClass":"pl-s"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":31,"end":32,"cssClass":"pl-pds"},{"start":33,"end":44,"cssClass":"pl-k"},{"start":46,"end":61,"cssClass":"pl-s"},{"start":46,"end":47,"cssClass":"pl-pds"},{"start":60,"end":61,"cssClass":"pl-pds"},{"start":63,"end":73,"cssClass":"pl-k"},{"start":74,"end":86,"cssClass":"pl-s"},{"start":74,"end":75,"cssClass":"pl-pds"},{"start":85,"end":86,"cssClass":"pl-pds"},{"start":88,"end":92,"cssClass":"pl-s"},{"start":88,"end":89,"cssClass":"pl-pds"},{"start":91,"end":92,"cssClass":"pl-pds"}],[],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":37,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":2,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"}],[{"start":0,"end":5,"cssClass":"pl-k"},{"start":6,"end":11,"cssClass":"pl-k"},{"start":12,"end":24,"cssClass":"pl-s"},{"start":12,"end":13,"cssClass":"pl-pds"},{"start":23,"end":24,"cssClass":"pl-pds"}],[{"start":6,"end":16,"cssClass":"pl-k"},{"start":17,"end":28,"cssClass":"pl-s"},{"start":17,"end":18,"cssClass":"pl-pds"},{"start":27,"end":28,"cssClass":"pl-pds"},{"start":29,"end":40,"cssClass":"pl-k"},{"start":42,"end":53,"cssClass":"pl-s"},{"start":42,"end":43,"cssClass":"pl-pds"},{"start":52,"end":53,"cssClass":"pl-pds"},{"start":55,"end":65,"cssClass":"pl-k"},{"start":66,"end":73,"cssClass":"pl-s"},{"start":66,"end":67,"cssClass":"pl-pds"},{"start":72,"end":73,"cssClass":"pl-pds"},{"start":75,"end":79,"cssClass":"pl-s"},{"start":75,"end":76,"cssClass":"pl-pds"},{"start":78,"end":79,"cssClass":"pl-pds"}],[{"start":0,"end":6,"cssClass":"pl-k"}],[],[{"start":0,"end":62,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"},{"start":60,"end":62,"cssClass":"pl-c"}],[{"start":0,"end":64,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"},{"start":62,"end":64,"cssClass":"pl-c"}],[{"start":0,"end":62,"cssClass":"pl-c"},{"start":0,"end":2,"cssClass":"pl-c"},{"start":60,"end":62,"cssClass":"pl-c"}]],"colorizedLines":null,"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":null,"configFilePath":null,"networkDependabotPath":"/alaricomv/CapstoneProject_Group1/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":false},"displayName":"wholesaledb.sql","displayUrl":"https://github.com/alaricomv/CapstoneProject_Group1/blob/main/backend/database/wholesaledb.sql?raw=true","headerInfo":{"blobSize":"6.16 KB","deleteTooltip":"Delete this file","editTooltip":"Edit this file","ghDesktopPath":"https://desktop.github.com","isGitLfs":false,"onBranch":true,"shortPath":"e0e832f","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Falaricomv%2FCapstoneProject_Group1%2Fblob%2Fmain%2Fbackend%2Fdatabase%2Fwholesaledb.sql","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"244","truncatedSloc":"201"},"mode":"file"},"image":false,"isCodeownersFile":null,"isPlain":false,"isValidLegacyIssueTemplate":false,"issueTemplate":null,"discussionTemplate":null,"language":"SQL","languageID":333,"large":false,"planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/alaricomv/CapstoneProject_Group1/blob/main/backend/database/wholesaledb.sql","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","releasePath":"/alaricomv/CapstoneProject_Group1/releases/new?marketplace=true","showPublishActionBanner":false},"rawBlobUrl":"https://github.com/alaricomv/CapstoneProject_Group1/raw/main/backend/database/wholesaledb.sql","renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"shortPath":null,"symbolsEnabled":true,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timed_out":false,"not_analyzed":true,"symbols":[]}},"copilotInfo":{"documentationUrl":"https://docs.github.com/copilot/overview-of-github-copilot/about-github-copilot-for-individuals","notices":{"codeViewPopover":{"dismissed":false,"dismissPath":"/settings/dismiss-notice/code_view_copilot_popover"}},"userAccess":{"hasSubscriptionEnded":false,"orgHasCFBAccess":false,"userHasCFIAccess":false,"userHasOrgs":false,"userIsOrgAdmin":false,"userIsOrgMember":false,"business":null,"featureRequestInfo":null}},"copilotAccessAllowed":false,"csrf_tokens":{"/alaricomv/CapstoneProject_Group1/branches":{"post":"iTMPwexyJtJ4osuURNvx7RSMz9Mb6ivsSnNUNjsJjf82H_voWD9opVPidCirXSSTLIcsdTwLXH2GQHiKevBHJw"},"/repos/preferences":{"post":"d2Sakf9NAWurgruGP7YSNM5o6casphKLKQgxmTPi4Paf4ITBUzeZIhBq-qZvaNujDBLRFgMtTfjsz4uRb6_PzQ"}}},"title":"CapstoneProject_Group1/backend/database/wholesaledb.sql at main · alaricomv/CapstoneProject_Group1","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-a007d7f370d6.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-d0f0ff069004.js","githubDevUrl":"https://github.dev/","enabled_features":{"code_nav_ui_events":false,"copilot_conversational_ux":false,"react_blob_overlay":false,"copilot_conversational_ux_embedding_update":false,"copilot_popover_file_editor_header":true,"copilot_smell_icebreaker_ux":true,"copilot_workspace":false,"codeview_firefox_inert":true,"overview_async_data_channel":true}}}</script>
+  <div data-target="react-app.reactRoot"><style data-styled="true" data-styled-version="5.3.6">.jUriTl{font-weight:600;font-size:32px;margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-size:14px;}/*!sc*/
+.imcwCi{font-weight:600;font-size:32px;margin:0;font-size:16px;margin-left:8px;}/*!sc*/
+.cgQnMS{font-weight:600;font-size:32px;margin:0;}/*!sc*/
+.diwsLq{font-weight:600;font-size:32px;margin:0;font-weight:600;display:inline-block;max-width:100%;font-size:16px;}/*!sc*/
+.jAEDJk{font-weight:600;font-size:32px;margin:0;font-weight:600;display:inline-block;max-width:100%;font-size:14px;}/*!sc*/
+data-styled.g1[id="Heading__StyledHeading-sc-1c1dgg0-0"]{content:"jUriTl,imcwCi,cgQnMS,diwsLq,jAEDJk,"}/*!sc*/
+.fSWWem{padding:0;}/*!sc*/
+.kPPmzM{max-width:100%;margin-left:auto;margin-right:auto;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}/*!sc*/
+.cIAPDV{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex:1 1 100%;-ms-flex:1 1 100%;flex:1 1 100%;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;max-width:100%;}/*!sc*/
+.gvCnwW{width:100%;}/*!sc*/
+@media screen and (min-width:544px){.gvCnwW{width:100%;}}/*!sc*/
+@media screen and (min-width:768px){.gvCnwW{width:auto;}}/*!sc*/
+.xEgty{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-order:1;-ms-flex-order:1;order:1;width:100%;margin-left:0;margin-right:0;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin-bottom:0;min-width:0;}/*!sc*/
+@media screen and (min-width:544px){.xEgty{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}}/*!sc*/
+@media screen and (min-width:768px){.xEgty{width:auto;margin-top:0 !important;margin-bottom:0 !important;position:-webkit-sticky;position:sticky;top:0px;max-height:var(--sticky-pane-height);-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-right:0;}}/*!sc*/
+@media screen and (min-width:769px){.xEgty{height:100vh;max-height:100vh !important;}}/*!sc*/
+@media print,screen and (max-width:1011px) and (min-width:768px){.xEgty{display:none;}}/*!sc*/
+.eUyHuk{margin-left:0;margin-right:0;display:none;margin-top:0;}/*!sc*/
+@media screen and (min-width:768px){.eUyHuk{margin-left:0 !important;margin-right:0 !important;}}/*!sc*/
+.gNdDUH{--pane-min-width:256px;--pane-max-width-diff:511px;--pane-max-width:calc(100vw - var(--pane-max-width-diff));width:100%;padding:0;}/*!sc*/
+@media screen and (min-width:544px){}/*!sc*/
+@media screen and (min-width:768px){.gNdDUH{width:clamp(var(--pane-min-width),var(--pane-width),var(--pane-max-width));overflow:auto;}}/*!sc*/
+@media screen and (min-width:1280px){.gNdDUH{--pane-max-width-diff:959px;}}/*!sc*/
+.jywUSN{max-height:100%;height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
+@media screen and (max-width:768px){.jywUSN{display:none;}}/*!sc*/
+@media screen and (min-width:768px){.jywUSN{max-height:100vh;height:100vh;}}/*!sc*/
+.hBSSUC{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-left:16px;padding-right:16px;padding-bottom:8px;padding-top:16px;}/*!sc*/
+.iPurHz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;margin-bottom:16px;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.kkrdEu{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}/*!sc*/
+.trpoQ{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;pointer-events:none;}/*!sc*/
+.hVHHYa{margin-left:24px;margin-right:24px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;}/*!sc*/
+.idZfsJ{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}/*!sc*/
+.bKgizp{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;}/*!sc*/
+.iPGYsi{margin-right:4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.caeYDk{font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}/*!sc*/
+.jahcnb{margin-left:8px;white-space:nowrap;}/*!sc*/
+.jahcnb:hover button:not(:hover){border-left-color:var(--button-default-borderColor-hover,var(--color-btn-hover-border));}/*!sc*/
+.ccToMy{margin-left:16px;margin-right:16px;margin-bottom:12px;}/*!sc*/
+@media screen and (max-width:768px){.ccToMy{display:none;}}/*!sc*/
+.cNvKlH{margin-right:-6px;}/*!sc*/
+.cLfAnm{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-height:100% !important;overflow-y:auto;-webkit-scrollbar-gutter:stable;-moz-scrollbar-gutter:stable;-ms-scrollbar-gutter:stable;scrollbar-gutter:stable;}/*!sc*/
+@media screen and (max-width:768px){.cLfAnm{display:none;}}/*!sc*/
+.erWCJP{padding-left:16px;padding-right:16px;padding-bottom:8px;}/*!sc*/
+.hAeDYA{height:100%;position:relative;display:none;margin-left:0;}/*!sc*/
+.fjdBNx{position:absolute;inset:0 -2px;cursor:col-resize;background-color:transparent;-webkit-transition-delay:0.1s;transition-delay:0.1s;}/*!sc*/
+.fjdBNx:hover{background-color:var(--bgColor-neutral-muted,var(--color-neutral-muted,rgba(175,184,193,0.2)));}/*!sc*/
+.emFMJu{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-order:2;-ms-flex-order:2;order:2;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-shrink:1;-ms-flex-negative:1;flex-shrink:1;min-width:1px;margin-right:auto;}/*!sc*/
+@media print{.emFMJu{display:-webkit-box !important;display:-webkit-flex !important;display:-ms-flexbox !important;display:flex !important;}}/*!sc*/
+.hlUAHL{width:100%;max-width:100%;margin-left:auto;margin-right:auto;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;padding:0;}/*!sc*/
+.iStsmI{margin-left:auto;margin-right:auto;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding-bottom:40px;max-width:100%;margin-top:0;}/*!sc*/
+.eIgvIk{display:inherit;}/*!sc*/
+.eVFfWF{width:100%;}/*!sc*/
+.fywjmm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;gap:8px;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;}/*!sc*/
+.dyczTK{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:start;-webkit-box-align:start;-ms-flex-align:start;align-items:start;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;gap:8px;}/*!sc*/
+.kszRgZ{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;padding-right:8px;min-width:0;}/*!sc*/
+.eTvGbF{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;font-size:16px;min-width:0;-webkit-flex-shrink:1;-ms-flex-negative:1;flex-shrink:1;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;max-width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.kzRgrI{max-width:100%;}/*!sc*/
+.cmAPIB{max-width:100%;list-style:none;display:inline-block;}/*!sc*/
+.jwXCBK{display:inline-block;max-width:100%;}/*!sc*/
+.gtBUEp{min-height:32px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:start;-webkit-box-align:start;-ms-flex-align:start;align-items:start;}/*!sc*/
+.hVZtwF{margin-left:16px;margin-right:16px;}/*!sc*/
+.cMYnca{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
+.jQCQnS{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;border:1px solid;border-color:var(--borderColor-default,var(--color-border-default,#d0d7de));border-radius:6px;margin-bottom:16px;}/*!sc*/
+.eYedVD{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:8px;min-width:273px;padding-right:8px;padding-left:16px;padding-top:8px;padding-bottom:8px;}/*!sc*/
+.lhFvfi{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.jGfYmh{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;gap:8px;}/*!sc*/
+.bqgLjk{display:inherit;}/*!sc*/
+@media screen and (min-width:544px){.bqgLjk{display:none;}}/*!sc*/
+@media screen and (min-width:768px){.bqgLjk{display:none;}}/*!sc*/
+.iJmJly{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}/*!sc*/
+.jACbi{width:100%;height:-webkit-fit-content;height:-moz-fit-content;height:fit-content;min-width:0;margin-right:0;}/*!sc*/
+.gIJuDf{height:40px;padding-left:4px;padding-bottom:16px;}/*!sc*/
+.fleZSW{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.BnySK{font-size:12px;-webkit-flex:auto;-ms-flex:auto;flex:auto;padding-right:16px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));min-width:0;}/*!sc*/
+.VHzRk{top:0px;z-index:4;background:var(--bgColor-default,var(--color-canvas-default));position:-webkit-sticky;position:sticky;}/*!sc*/
+.ePiodO{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;position:absolute;}/*!sc*/
+.kQJlnf{display:none;min-width:0;padding-top:8px;padding-bottom:8px;}/*!sc*/
+.gJICKO{margin-right:8px;margin-left:16px;text-overflow:ellipsis;overflow:hidden;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;}/*!sc*/
+.iZJewz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;font-size:14px;min-width:0;-webkit-flex-shrink:1;-ms-flex-negative:1;flex-shrink:1;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;max-width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.jfjHXm{padding-left:8px;padding-top:8px;padding-bottom:8px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex:1;-ms-flex:1;flex:1;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;background-color:var(--bgColor-muted,var(--color-canvas-subtle,#f6f8fa));border:1px solid var(--borderColor-default,var(--color-border-default));border-radius:6px 6px 0px 0px;}/*!sc*/
+.bfkNRF{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:8px;min-width:0;}/*!sc*/
+.fXBLEV{display:block;position:relative;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;margin-top:-1px;margin-bottom:-1px;--separator-color:transparent;}/*!sc*/
+.fXBLEV:not(:last-child){margin-right:1px;}/*!sc*/
+.fXBLEV:not(:last-child):after{background-color:var(--separator-color);content:"";position:absolute;right:-2px;top:8px;bottom:8px;width:1px;}/*!sc*/
+.fXBLEV:focus-within:has(:focus-visible){--separator-color:transparent;}/*!sc*/
+.fXBLEV:first-child{margin-left:-1px;}/*!sc*/
+.fXBLEV:last-child{margin-right:-1px;}/*!sc*/
+.gMPsNT{display:block;position:relative;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;margin-top:-1px;margin-bottom:-1px;--separator-color:var(--borderColor-default,var(--color-border-default,#d0d7de));}/*!sc*/
+.gMPsNT:not(:last-child){margin-right:1px;}/*!sc*/
+.gMPsNT:not(:last-child):after{background-color:var(--separator-color);content:"";position:absolute;right:-2px;top:8px;bottom:8px;width:1px;}/*!sc*/
+.gMPsNT:focus-within:has(:focus-visible){--separator-color:transparent;}/*!sc*/
+.gMPsNT:first-child{margin-left:-1px;}/*!sc*/
+.gMPsNT:last-child{margin-right:-1px;}/*!sc*/
+.iBylDf{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:8px;margin-right:8px;}/*!sc*/
+.kSGBPx{gap:8px;}/*!sc*/
+.ytOJl{border:1px solid;border-top:none;border-color:var(--borderColor-default,var(--color-border-default,#d0d7de));border-radius:0px 0px 6px 6px;min-width:273px;}/*!sc*/
+.jWnGGx{background-color:var(--bgColor-default,var(--color-canvas-default));border:0px;border-width:0;border-radius:0px 0px 6px 6px;padding:0;min-width:0;margin-top:46px;}/*!sc*/
+.TCenl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex:1;-ms-flex:1;flex:1;padding-top:8px;padding-bottom:8px;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;min-width:0;position:relative;}/*!sc*/
+.cluMzC{position:relative;}/*!sc*/
+.eRkHwF{-webkit-flex:1;-ms-flex:1;flex:1;position:relative;min-width:0;}/*!sc*/
+.knCTAx{tab-size:8;isolation:isolate;position:relative;overflow:auto;max-width:unset;}/*!sc*/
+.aZrVR{position:fixed;top:0;right:0;height:100%;width:15px;-webkit-transition:-webkit-transform 0.3s;-webkit-transition:transform 0.3s;transition:transform 0.3s;z-index:1;}/*!sc*/
+.aZrVR:hover{-webkit-transform:scaleX(1.5);-ms-transform:scaleX(1.5);transform:scaleX(1.5);}/*!sc*/
+data-styled.g2[id="Box-sc-g0xbh4-0"]{content:"fSWWem,kPPmzM,cIAPDV,gvCnwW,xEgty,eUyHuk,gNdDUH,jywUSN,hBSSUC,iPurHz,kkrdEu,trpoQ,hVHHYa,idZfsJ,bKgizp,iPGYsi,caeYDk,jahcnb,ccToMy,cNvKlH,cLfAnm,erWCJP,hAeDYA,fjdBNx,emFMJu,hlUAHL,iStsmI,eIgvIk,eVFfWF,fywjmm,dyczTK,kszRgZ,eTvGbF,kzRgrI,cmAPIB,jwXCBK,gtBUEp,hVZtwF,cMYnca,jQCQnS,eYedVD,lhFvfi,jGfYmh,bqgLjk,iJmJly,jACbi,gIJuDf,fleZSW,BnySK,VHzRk,ePiodO,kQJlnf,gJICKO,iZJewz,jfjHXm,bfkNRF,fXBLEV,gMPsNT,iBylDf,kSGBPx,ytOJl,jWnGGx,TCenl,cluMzC,eRkHwF,knCTAx,aZrVR,"}/*!sc*/
+body[data-page-layout-dragging="true"]{cursor:col-resize;}/*!sc*/
+body[data-page-layout-dragging="true"] *{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}/*!sc*/
+data-styled.g3[id="sc-global-gbKrvU1"]{content:"sc-global-gbKrvU1,"}/*!sc*/
+.bOMzPg{min-width:0;}/*!sc*/
+.fIsVJr{padding-left:4px;padding-right:4px;font-weight:400;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));font-size:16px;}/*!sc*/
+.dALsKK{color:var(--fgColor-default,var(--color-fg-default,#1F2328));}/*!sc*/
+.cYjMDB{padding-left:4px;padding-right:4px;font-weight:400;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));font-size:14px;}/*!sc*/
+data-styled.g6[id="Text-sc-17v1xeu-0"]{content:"bOMzPg,fIsVJr,dALsKK,gPDEWA,cYjMDB,"}/*!sc*/
+.ipyMWB{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));-webkit-text-decoration:none;text-decoration:none;font-weight:600;}/*!sc*/
+[data-a11y-link-underlines='true'] .Link__StyledLink-sc-14289xe-0[data-inline='true']{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.ipyMWB:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.ipyMWB:is(button){display:inline-block;padding:0;font-size:inherit;white-space:nowrap;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-color:transparent;border:0;-webkit-appearance:none;-moz-appearance:none;appearance:none;}/*!sc*/
+.jmkYvv{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));-webkit-text-decoration:none;text-decoration:none;font-weight:400;}/*!sc*/
+[data-a11y-link-underlines='true'] .Link__StyledLink-sc-14289xe-0[data-inline='true']{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.jmkYvv:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.jmkYvv:is(button){display:inline-block;padding:0;font-size:inherit;white-space:nowrap;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-color:transparent;border:0;-webkit-appearance:none;-moz-appearance:none;appearance:none;}/*!sc*/
+.dheQRw{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+[data-a11y-link-underlines='true'] .Link__StyledLink-sc-14289xe-0[data-inline='true']{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.dheQRw:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.dheQRw:is(button){display:inline-block;padding:0;font-size:inherit;white-space:nowrap;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-color:transparent;border:0;-webkit-appearance:none;-moz-appearance:none;appearance:none;}/*!sc*/
+data-styled.g8[id="Link__StyledLink-sc-14289xe-0"]{content:"ipyMWB,jmkYvv,dheQRw,"}/*!sc*/
+.blmaBs{border-radius:6px;border:1px solid;border-color:transparent;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:transparent;box-shadow:none;}/*!sc*/
+.blmaBs:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.blmaBs:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.blmaBs:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.blmaBs[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.blmaBs[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.blmaBs:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.blmaBs:active{-webkit-transition:none;transition:none;}/*!sc*/
+.blmaBs[data-inactive]{cursor:auto;}/*!sc*/
+.blmaBs:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.blmaBs:disabled [data-component=ButtonCounter],.blmaBs:disabled [data-component="leadingVisual"],.blmaBs:disabled [data-component="trailingAction"]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.blmaBs:focus{outline:solid 1px transparent;}}/*!sc*/
+.blmaBs [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.blmaBs[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.blmaBs[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.blmaBs[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.blmaBs[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.blmaBs[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.blmaBs[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.blmaBs[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.blmaBs[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.blmaBs[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.blmaBs[data-block="block"]{width:100%;}/*!sc*/
+.blmaBs[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.blmaBs[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.blmaBs [data-component="leadingVisual"]{grid-area:leadingVisual;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.blmaBs [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.blmaBs [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.blmaBs [data-component="trailingAction"]{margin-right:-4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.blmaBs [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.blmaBs [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.blmaBs:hover:not([disabled]){background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+.blmaBs:active:not([disabled]){background-color:var(--control-transparent-bgColor-active,var(--color-action-list-item-default-active-bg,rgba(208,215,222,0.48)));}/*!sc*/
+.blmaBs[aria-expanded=true]{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.blmaBs[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.blmaBs[data-no-visuals]{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));}/*!sc*/
+.blmaBs:has([data-component="ButtonCounter"]){color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));}/*!sc*/
+.blmaBs:disabled[data-no-visuals]{color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.blmaBs:disabled[data-no-visuals] [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+.blmaBs{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));padding-left:8px;padding-right:8px;display:none;}/*!sc*/
+@media screen and (max-width:768px){.blmaBs{display:block;}}/*!sc*/
+.hkJzmn{border-radius:6px;border:1px solid;border-color:transparent;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:transparent;box-shadow:none;}/*!sc*/
+.hkJzmn:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.hkJzmn:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.hkJzmn:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.hkJzmn[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.hkJzmn[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.hkJzmn:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.hkJzmn:active{-webkit-transition:none;transition:none;}/*!sc*/
+.hkJzmn[data-inactive]{cursor:auto;}/*!sc*/
+.hkJzmn:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.hkJzmn:disabled [data-component=ButtonCounter],.hkJzmn:disabled [data-component="leadingVisual"],.hkJzmn:disabled [data-component="trailingAction"]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.hkJzmn:focus{outline:solid 1px transparent;}}/*!sc*/
+.hkJzmn [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.hkJzmn[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.hkJzmn[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.hkJzmn[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.hkJzmn[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.hkJzmn[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.hkJzmn[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.hkJzmn[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.hkJzmn[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.hkJzmn[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.hkJzmn[data-block="block"]{width:100%;}/*!sc*/
+.hkJzmn[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.hkJzmn[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.hkJzmn [data-component="leadingVisual"]{grid-area:leadingVisual;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.hkJzmn [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.hkJzmn [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.hkJzmn [data-component="trailingAction"]{margin-right:-4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.hkJzmn [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.hkJzmn [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.hkJzmn:hover:not([disabled]){background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+.hkJzmn:active:not([disabled]){background-color:var(--control-transparent-bgColor-active,var(--color-action-list-item-default-active-bg,rgba(208,215,222,0.48)));}/*!sc*/
+.hkJzmn[aria-expanded=true]{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.hkJzmn[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.hkJzmn[data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));height:32px;position:relative;}/*!sc*/
+@media screen and (max-width:768px){.hkJzmn[data-no-visuals]{display:none;}}/*!sc*/
+.hkJzmn:has([data-component="ButtonCounter"]){color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));}/*!sc*/
+.hkJzmn:disabled[data-no-visuals]{color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.hkJzmn:disabled[data-no-visuals] [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+.fruYDV{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));}/*!sc*/
+.fruYDV:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.fruYDV:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.fruYDV:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.fruYDV[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.fruYDV[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.fruYDV:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.fruYDV:active{-webkit-transition:none;transition:none;}/*!sc*/
+.fruYDV[data-inactive]{cursor:auto;}/*!sc*/
+.fruYDV:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.fruYDV:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.fruYDV:focus{outline:solid 1px transparent;}}/*!sc*/
+.fruYDV [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.fruYDV[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.fruYDV[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.fruYDV[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.fruYDV[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.fruYDV[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.fruYDV[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.fruYDV[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.fruYDV[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.fruYDV[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.fruYDV[data-block="block"]{width:100%;}/*!sc*/
+.fruYDV[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.fruYDV[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.fruYDV [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.fruYDV [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.fruYDV [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.fruYDV [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.fruYDV [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.fruYDV [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.fruYDV:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.fruYDV:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.fruYDV[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.fruYDV [data-component="leadingVisual"],.fruYDV [data-component="trailingVisual"],.fruYDV [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.fruYDV[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fruYDV{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;min-width:0;}/*!sc*/
+.fruYDV svg{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fruYDV > span{width:inherit;}/*!sc*/
+.jrLMah{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));}/*!sc*/
+.jrLMah:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.jrLMah:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.jrLMah:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.jrLMah[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.jrLMah[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.jrLMah:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.jrLMah:active{-webkit-transition:none;transition:none;}/*!sc*/
+.jrLMah[data-inactive]{cursor:auto;}/*!sc*/
+.jrLMah:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.jrLMah:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.jrLMah:focus{outline:solid 1px transparent;}}/*!sc*/
+.jrLMah [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.jrLMah[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.jrLMah[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.jrLMah[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.jrLMah[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.jrLMah[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.jrLMah[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.jrLMah[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.jrLMah[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.jrLMah[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.jrLMah[data-block="block"]{width:100%;}/*!sc*/
+.jrLMah[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.jrLMah[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.jrLMah [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.jrLMah [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.jrLMah [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.jrLMah [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.jrLMah [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.jrLMah [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.jrLMah:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.jrLMah:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.jrLMah[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.jrLMah [data-component="leadingVisual"],.jrLMah [data-component="trailingVisual"],.jrLMah [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.jrLMah[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.jrLMah[data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-subtle,#6e7781));border-top-right-radius:0;border-bottom-right-radius:0;border-right:0;}/*!sc*/
+.cQeCID{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));}/*!sc*/
+.cQeCID:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.cQeCID:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.cQeCID:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.cQeCID[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.cQeCID[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.cQeCID:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.cQeCID:active{-webkit-transition:none;transition:none;}/*!sc*/
+.cQeCID[data-inactive]{cursor:auto;}/*!sc*/
+.cQeCID:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.cQeCID:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.cQeCID:focus{outline:solid 1px transparent;}}/*!sc*/
+.cQeCID [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.cQeCID[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.cQeCID[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.cQeCID[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.cQeCID[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.cQeCID[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.cQeCID[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.cQeCID[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.cQeCID[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.cQeCID[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.cQeCID[data-block="block"]{width:100%;}/*!sc*/
+.cQeCID[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.cQeCID[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.cQeCID [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.cQeCID [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.cQeCID [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.cQeCID [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.cQeCID [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.cQeCID [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.cQeCID:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.cQeCID:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.cQeCID[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.cQeCID [data-component="leadingVisual"],.cQeCID [data-component="trailingVisual"],.cQeCID [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.cQeCID[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.cQeCID[data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-subtle,#6e7781));font-size:14px;font-weight:400;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;border-top-left-radius:0;border-bottom-left-radius:0;}/*!sc*/
+.ivbpoP{border-radius:6px;border:1px solid;border-color:transparent;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:transparent;box-shadow:none;}/*!sc*/
+.ivbpoP:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.ivbpoP:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.ivbpoP:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.ivbpoP[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.ivbpoP[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.ivbpoP:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.ivbpoP:active{-webkit-transition:none;transition:none;}/*!sc*/
+.ivbpoP[data-inactive]{cursor:auto;}/*!sc*/
+.ivbpoP:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.ivbpoP:disabled [data-component=ButtonCounter],.ivbpoP:disabled [data-component="leadingVisual"],.ivbpoP:disabled [data-component="trailingAction"]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.ivbpoP:focus{outline:solid 1px transparent;}}/*!sc*/
+.ivbpoP [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.ivbpoP[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.ivbpoP[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.ivbpoP[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.ivbpoP[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.ivbpoP[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.ivbpoP[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.ivbpoP[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.ivbpoP[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.ivbpoP[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.ivbpoP[data-block="block"]{width:100%;}/*!sc*/
+.ivbpoP[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.ivbpoP[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.ivbpoP [data-component="leadingVisual"]{grid-area:leadingVisual;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.ivbpoP [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.ivbpoP [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.ivbpoP [data-component="trailingAction"]{margin-right:-4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.ivbpoP [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.ivbpoP [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.ivbpoP:hover:not([disabled]){background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+.ivbpoP:active:not([disabled]){background-color:var(--control-transparent-bgColor-active,var(--color-action-list-item-default-active-bg,rgba(208,215,222,0.48)));}/*!sc*/
+.ivbpoP[aria-expanded=true]{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.ivbpoP[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.ivbpoP[data-no-visuals]{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));}/*!sc*/
+.ivbpoP:has([data-component="ButtonCounter"]){color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));}/*!sc*/
+.ivbpoP:disabled[data-no-visuals]{color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.ivbpoP:disabled[data-no-visuals] [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+.ivbpoP[data-size="small"][data-no-visuals]{margin-left:8px;}/*!sc*/
+.hviaoI{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));}/*!sc*/
+.hviaoI:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.hviaoI:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.hviaoI:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.hviaoI[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.hviaoI[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.hviaoI:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.hviaoI:active{-webkit-transition:none;transition:none;}/*!sc*/
+.hviaoI[data-inactive]{cursor:auto;}/*!sc*/
+.hviaoI:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.hviaoI:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.hviaoI:focus{outline:solid 1px transparent;}}/*!sc*/
+.hviaoI [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.hviaoI[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.hviaoI[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.hviaoI[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.hviaoI[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.hviaoI[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.hviaoI[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.hviaoI[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.hviaoI[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.hviaoI[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.hviaoI[data-block="block"]{width:100%;}/*!sc*/
+.hviaoI[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.hviaoI[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.hviaoI [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.hviaoI [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.hviaoI [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.hviaoI [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.hviaoI [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.hviaoI [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.hviaoI:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.hviaoI:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.hviaoI[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.hviaoI [data-component="leadingVisual"],.hviaoI [data-component="trailingVisual"],.hviaoI [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.hviaoI[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.hviaoI[data-no-visuals]{border-top-left-radius:0;border-bottom-left-radius:0;display:none;}/*!sc*/
+.jXTShb{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));}/*!sc*/
+.jXTShb:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.jXTShb:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.jXTShb:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.jXTShb[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.jXTShb[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.jXTShb:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.jXTShb:active{-webkit-transition:none;transition:none;}/*!sc*/
+.jXTShb[data-inactive]{cursor:auto;}/*!sc*/
+.jXTShb:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.jXTShb:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.jXTShb:focus{outline:solid 1px transparent;}}/*!sc*/
+.jXTShb [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.jXTShb[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.jXTShb[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.jXTShb[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.jXTShb[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.jXTShb[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.jXTShb[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.jXTShb[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.jXTShb[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.jXTShb[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.jXTShb[data-block="block"]{width:100%;}/*!sc*/
+.jXTShb[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.jXTShb[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.jXTShb [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.jXTShb [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.jXTShb [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.jXTShb [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.jXTShb [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.jXTShb [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.jXTShb:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.jXTShb:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.jXTShb[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.jXTShb [data-component="leadingVisual"],.jXTShb [data-component="trailingVisual"],.jXTShb [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.jXTShb[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.jXTShb[data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fAkXQN{border-radius:6px;border:1px solid;border-color:transparent;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--fgColor-default,var(--color-fg-default,#1F2328));background-color:transparent;box-shadow:none;}/*!sc*/
+.fAkXQN:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.fAkXQN:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.fAkXQN:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.fAkXQN[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.fAkXQN[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.fAkXQN:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.fAkXQN:active{-webkit-transition:none;transition:none;}/*!sc*/
+.fAkXQN[data-inactive]{cursor:auto;}/*!sc*/
+.fAkXQN:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.fAkXQN:disabled [data-component=ButtonCounter],.fAkXQN:disabled [data-component="leadingVisual"],.fAkXQN:disabled [data-component="trailingAction"]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.fAkXQN:focus{outline:solid 1px transparent;}}/*!sc*/
+.fAkXQN [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.fAkXQN[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.fAkXQN[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.fAkXQN[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.fAkXQN[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.fAkXQN[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.fAkXQN[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.fAkXQN[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.fAkXQN[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.fAkXQN[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.fAkXQN[data-block="block"]{width:100%;}/*!sc*/
+.fAkXQN[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.fAkXQN[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.fAkXQN [data-component="leadingVisual"]{grid-area:leadingVisual;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fAkXQN [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.fAkXQN [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.fAkXQN [data-component="trailingAction"]{margin-right:-4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fAkXQN [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.fAkXQN [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.fAkXQN:hover:not([disabled]){background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.fAkXQN:active:not([disabled]){background-color:var(--control-transparent-bgColor-active,var(--color-action-list-item-default-active-bg,rgba(208,215,222,0.48)));-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.fAkXQN[aria-expanded=true]{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.fAkXQN[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fAkXQN[data-no-visuals]{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));}/*!sc*/
+.fAkXQN:has([data-component="ButtonCounter"]){color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));}/*!sc*/
+.fAkXQN:disabled[data-no-visuals]{color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.fAkXQN:disabled[data-no-visuals] [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+.fAkXQN:focus:not([disabled]){-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.frAFhH{border-radius:6px;border:1px solid;border-color:transparent;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:transparent;box-shadow:none;}/*!sc*/
+.frAFhH:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.frAFhH:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.frAFhH:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.frAFhH[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.frAFhH[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.frAFhH:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.frAFhH:active{-webkit-transition:none;transition:none;}/*!sc*/
+.frAFhH[data-inactive]{cursor:auto;}/*!sc*/
+.frAFhH:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.frAFhH:disabled [data-component=ButtonCounter],.frAFhH:disabled [data-component="leadingVisual"],.frAFhH:disabled [data-component="trailingAction"]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.frAFhH:focus{outline:solid 1px transparent;}}/*!sc*/
+.frAFhH [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.frAFhH[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.frAFhH[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;color:var(--fgColor-default,var(--color-fg-default,#1F2328));display:none;}/*!sc*/
+.frAFhH[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.frAFhH[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.frAFhH[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.frAFhH[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+@media screen and (min-width:544px){.frAFhH[data-size="small"]{display:none;}}/*!sc*/
+@media screen and (min-width:768px){.frAFhH[data-size="small"]{display:none;}}/*!sc*/
+@media screen and (min-width:1012px){.frAFhH[data-size="small"]{display:none;}}/*!sc*/
+@media screen and (min-width:1280px){.frAFhH[data-size="small"]{display:block;}}/*!sc*/
+.frAFhH[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.frAFhH[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.frAFhH[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.frAFhH[data-block="block"]{width:100%;}/*!sc*/
+.frAFhH[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.frAFhH[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.frAFhH [data-component="leadingVisual"]{grid-area:leadingVisual;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.frAFhH [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.frAFhH [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.frAFhH [data-component="trailingAction"]{margin-right:-4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.frAFhH [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.frAFhH [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.frAFhH:hover:not([disabled]){background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+.frAFhH:active:not([disabled]){background-color:var(--control-transparent-bgColor-active,var(--color-action-list-item-default-active-bg,rgba(208,215,222,0.48)));}/*!sc*/
+.frAFhH[aria-expanded=true]{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.frAFhH[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.frAFhH[data-no-visuals]{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));}/*!sc*/
+.frAFhH:has([data-component="ButtonCounter"]){color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));}/*!sc*/
+.frAFhH:disabled[data-no-visuals]{color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.frAFhH:disabled[data-no-visuals] [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+.gfKkfV{border-radius:6px;border:1px solid;border-color:transparent;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:transparent;box-shadow:none;}/*!sc*/
+.gfKkfV:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.gfKkfV:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.gfKkfV:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.gfKkfV[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.gfKkfV[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.gfKkfV:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.gfKkfV:active{-webkit-transition:none;transition:none;}/*!sc*/
+.gfKkfV[data-inactive]{cursor:auto;}/*!sc*/
+.gfKkfV:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.gfKkfV:disabled [data-component=ButtonCounter],.gfKkfV:disabled [data-component="leadingVisual"],.gfKkfV:disabled [data-component="trailingAction"]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.gfKkfV:focus{outline:solid 1px transparent;}}/*!sc*/
+.gfKkfV [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.gfKkfV[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.gfKkfV[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;color:var(--fgColor-default,var(--color-fg-default,#1F2328));margin-left:8px;}/*!sc*/
+.gfKkfV[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.gfKkfV[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.gfKkfV[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.gfKkfV[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.gfKkfV[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.gfKkfV[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.gfKkfV[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.gfKkfV[data-block="block"]{width:100%;}/*!sc*/
+.gfKkfV[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.gfKkfV[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.gfKkfV [data-component="leadingVisual"]{grid-area:leadingVisual;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.gfKkfV [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.gfKkfV [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.gfKkfV [data-component="trailingAction"]{margin-right:-4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.gfKkfV [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.gfKkfV [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.gfKkfV:hover:not([disabled]){background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+.gfKkfV:active:not([disabled]){background-color:var(--control-transparent-bgColor-active,var(--color-action-list-item-default-active-bg,rgba(208,215,222,0.48)));}/*!sc*/
+.gfKkfV[aria-expanded=true]{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.gfKkfV[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.gfKkfV[data-no-visuals]{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));}/*!sc*/
+.gfKkfV:has([data-component="ButtonCounter"]){color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));}/*!sc*/
+.gfKkfV:disabled[data-no-visuals]{color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.gfKkfV:disabled[data-no-visuals] [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+.dTgfec{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));padding-left:8px;padding-right:8px;}/*!sc*/
+.dTgfec:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.dTgfec:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.dTgfec:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.dTgfec[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.dTgfec[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.dTgfec:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.dTgfec:active{-webkit-transition:none;transition:none;}/*!sc*/
+.dTgfec[data-inactive]{cursor:auto;}/*!sc*/
+.dTgfec:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.dTgfec:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.dTgfec:focus{outline:solid 1px transparent;}}/*!sc*/
+.dTgfec [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.dTgfec[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.dTgfec[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.dTgfec[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.dTgfec[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.dTgfec[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.dTgfec[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.dTgfec[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.dTgfec[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.dTgfec[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.dTgfec[data-block="block"]{width:100%;}/*!sc*/
+.dTgfec[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.dTgfec[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.dTgfec [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.dTgfec [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.dTgfec [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.dTgfec [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.dTgfec [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.dTgfec [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.dTgfec:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.dTgfec:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.dTgfec[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.dTgfec [data-component="leadingVisual"],.dTgfec [data-component="trailingVisual"],.dTgfec [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.dTgfec[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.dTgfec linkButtonSx:hover:not([disabled]){-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.dTgfec linkButtonSx:focus:not([disabled]){-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.dTgfec linkButtonSx:active:not([disabled]){-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.pyyxt{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));}/*!sc*/
+.pyyxt:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.pyyxt:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.pyyxt:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.pyyxt[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.pyyxt[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.pyyxt:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.pyyxt:active{-webkit-transition:none;transition:none;}/*!sc*/
+.pyyxt[data-inactive]{cursor:auto;}/*!sc*/
+.pyyxt:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.pyyxt:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.pyyxt:focus{outline:solid 1px transparent;}}/*!sc*/
+.pyyxt [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.pyyxt[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.pyyxt[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.pyyxt[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.pyyxt[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.pyyxt[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.pyyxt[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.pyyxt[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.pyyxt[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.pyyxt[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.pyyxt[data-block="block"]{width:100%;}/*!sc*/
+.pyyxt[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.pyyxt[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.pyyxt [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.pyyxt [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.pyyxt [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.pyyxt [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.pyyxt [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.pyyxt [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.pyyxt:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.pyyxt:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.pyyxt[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.pyyxt [data-component="leadingVisual"],.pyyxt [data-component="trailingVisual"],.pyyxt [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.pyyxt[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fmvlPZ{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));}/*!sc*/
+.fmvlPZ:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.fmvlPZ:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.fmvlPZ:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.fmvlPZ[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.fmvlPZ[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.fmvlPZ:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.fmvlPZ:active{-webkit-transition:none;transition:none;}/*!sc*/
+.fmvlPZ[data-inactive]{cursor:auto;}/*!sc*/
+.fmvlPZ:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.fmvlPZ:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.fmvlPZ:focus{outline:solid 1px transparent;}}/*!sc*/
+.fmvlPZ [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.fmvlPZ[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.fmvlPZ[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.fmvlPZ[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.fmvlPZ[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.fmvlPZ[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.fmvlPZ[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.fmvlPZ[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.fmvlPZ[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.fmvlPZ[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.fmvlPZ[data-block="block"]{width:100%;}/*!sc*/
+.fmvlPZ[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.fmvlPZ[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.fmvlPZ [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.fmvlPZ [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.fmvlPZ [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.fmvlPZ [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.fmvlPZ [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.fmvlPZ [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.fmvlPZ:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.fmvlPZ:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.fmvlPZ[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.fmvlPZ [data-component="leadingVisual"],.fmvlPZ [data-component="trailingVisual"],.fmvlPZ [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.fmvlPZ[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fmvlPZ[data-size="small"][data-no-visuals]{border-top-left-radius:0;border-bottom-left-radius:0;}/*!sc*/
+.bDhqXD{border-radius:6px;border:1px solid;border-color:var(--button-default-borderColor-rest,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:var(--button-default-bgColor-rest,var(--color-btn-bg,#f6f8fa));box-shadow:var(--button-default-shadow-resting,var(--color-btn-shadow,0 1px 0 rgba(31,35,40,0.04))),var(--button-default-shadow-inset,var(--color-btn-inset-shadow,inset 0 1px 0 rgba(255,255,255,0.25)));}/*!sc*/
+.bDhqXD:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.bDhqXD:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.bDhqXD:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.bDhqXD[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.bDhqXD[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.bDhqXD:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.bDhqXD:active{-webkit-transition:none;transition:none;}/*!sc*/
+.bDhqXD[data-inactive]{cursor:auto;}/*!sc*/
+.bDhqXD:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));border-color:var(--button-default-borderColor-disabled,var(--button-default-borderColor-rest,var(--color-btn-border,rgba(31,35,40,0.15))));background-color:var(--button-default-bgColor-disabled,var(--control-bgColor-disabled,var(--color-input-disabled-bg,rgba(175,184,193,0.2))));}/*!sc*/
+.bDhqXD:disabled [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.bDhqXD:focus{outline:solid 1px transparent;}}/*!sc*/
+.bDhqXD [data-component=ButtonCounter]{font-size:12px;background-color:var(--buttonCounter-default-bgColor-rest,var(--color-btn-counter-bg,rgba(31,35,40,0.08)));}/*!sc*/
+.bDhqXD[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.bDhqXD[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.bDhqXD[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.bDhqXD[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.bDhqXD[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.bDhqXD[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.bDhqXD[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.bDhqXD[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.bDhqXD[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.bDhqXD[data-block="block"]{width:100%;}/*!sc*/
+.bDhqXD[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.bDhqXD[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.bDhqXD [data-component="leadingVisual"]{grid-area:leadingVisual;}/*!sc*/
+.bDhqXD [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.bDhqXD [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.bDhqXD [data-component="trailingAction"]{margin-right:-4px;}/*!sc*/
+.bDhqXD [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.bDhqXD [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.bDhqXD:hover:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg,#f3f4f6));border-color:var(--button-default-borderColor-hover,var(--button-default-borderColor-hover,var(--color-btn-hover-border,rgba(31,35,40,0.15))));}/*!sc*/
+.bDhqXD:active:not([disabled]):not([data-inactive]){background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.bDhqXD[aria-expanded=true]{background-color:var(--button-default-bgColor-active,var(--color-btn-active-bg,hsla(220,14%,93%,1)));border-color:var(--button-default-borderColor-active,var(--button-default-borderColor-active,var(--color-btn-active-border,rgba(31,35,40,0.15))));}/*!sc*/
+.bDhqXD [data-component="leadingVisual"],.bDhqXD [data-component="trailingVisual"],.bDhqXD [data-component="trailingAction"]{color:var(--button-color,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.bDhqXD[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.bDhqXD[data-size="small"][data-no-visuals]{border-top-right-radius:0;border-bottom-right-radius:0;border-right-width:0;}/*!sc*/
+.bDhqXD[data-size="small"][data-no-visuals]:hover:not([disabled]){-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.bDhqXD[data-size="small"][data-no-visuals]:focus:not([disabled]){-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.bDhqXD[data-size="small"][data-no-visuals]:active:not([disabled]){-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.bcQZPI{border-radius:6px;border:1px solid;border-color:transparent;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:transparent;box-shadow:none;}/*!sc*/
+.bcQZPI:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.bcQZPI:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.bcQZPI:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.bcQZPI[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.bcQZPI[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.bcQZPI:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.bcQZPI:active{-webkit-transition:none;transition:none;}/*!sc*/
+.bcQZPI[data-inactive]{cursor:auto;}/*!sc*/
+.bcQZPI:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.bcQZPI:disabled [data-component=ButtonCounter],.bcQZPI:disabled [data-component="leadingVisual"],.bcQZPI:disabled [data-component="trailingAction"]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.bcQZPI:focus{outline:solid 1px transparent;}}/*!sc*/
+.bcQZPI [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.bcQZPI[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.bcQZPI[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.bcQZPI[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.bcQZPI[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.bcQZPI[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.bcQZPI[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.bcQZPI[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.bcQZPI[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.bcQZPI[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.bcQZPI[data-block="block"]{width:100%;}/*!sc*/
+.bcQZPI[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.bcQZPI[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.bcQZPI [data-component="leadingVisual"]{grid-area:leadingVisual;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.bcQZPI [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.bcQZPI [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.bcQZPI [data-component="trailingAction"]{margin-right:-4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.bcQZPI [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.bcQZPI [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.bcQZPI:hover:not([disabled]){background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+.bcQZPI:active:not([disabled]){background-color:var(--control-transparent-bgColor-active,var(--color-action-list-item-default-active-bg,rgba(208,215,222,0.48)));}/*!sc*/
+.bcQZPI[aria-expanded=true]{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.bcQZPI[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.bcQZPI[data-no-visuals]{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));}/*!sc*/
+.bcQZPI:has([data-component="ButtonCounter"]){color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));}/*!sc*/
+.bcQZPI:disabled[data-no-visuals]{color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.bcQZPI:disabled[data-no-visuals] [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+.bcQZPI[data-size="small"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));position:relative;}/*!sc*/
+.dGDIQc{border-radius:6px;border:1px solid;border-color:transparent;font-family:inherit;font-weight:500;font-size:14px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-decoration:none;text-decoration:none;text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:32px;padding:0 12px;gap:8px;min-width:-webkit-max-content;min-width:-moz-max-content;min-width:max-content;-webkit-transition:80ms cubic-bezier(0.65,0,0.35,1);transition:80ms cubic-bezier(0.65,0,0.35,1);-webkit-transition-property:color,fill,background-color,border-color;transition-property:color,fill,background-color,border-color;color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));background-color:transparent;box-shadow:none;}/*!sc*/
+.dGDIQc:focus:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.dGDIQc:focus:not(:disabled):not(:focus-visible){outline:solid 1px transparent;}/*!sc*/
+.dGDIQc:focus-visible:not(:disabled){box-shadow:none;outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-2px;}/*!sc*/
+.dGDIQc[href]{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}/*!sc*/
+.dGDIQc[href]:hover{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.dGDIQc:hover{-webkit-transition-duration:80ms;transition-duration:80ms;}/*!sc*/
+.dGDIQc:active{-webkit-transition:none;transition:none;}/*!sc*/
+.dGDIQc[data-inactive]{cursor:auto;}/*!sc*/
+.dGDIQc:disabled{cursor:not-allowed;box-shadow:none;color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.dGDIQc:disabled [data-component=ButtonCounter],.dGDIQc:disabled [data-component="leadingVisual"],.dGDIQc:disabled [data-component="trailingAction"]{color:inherit;}/*!sc*/
+@media (forced-colors:active){.dGDIQc:focus{outline:solid 1px transparent;}}/*!sc*/
+.dGDIQc [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.dGDIQc[data-component=IconButton]{display:inline-grid;padding:unset;place-content:center;width:32px;min-width:unset;}/*!sc*/
+.dGDIQc[data-size="small"]{padding:0 8px;height:28px;gap:4px;font-size:12px;}/*!sc*/
+.dGDIQc[data-size="small"] [data-component="text"]{line-height:calc(20 / 12);}/*!sc*/
+.dGDIQc[data-size="small"] [data-component=ButtonCounter]{font-size:12px;}/*!sc*/
+.dGDIQc[data-size="small"] [data-component="buttonContent"] > :not(:last-child){margin-right:4px;}/*!sc*/
+.dGDIQc[data-size="small"][data-component=IconButton]{width:28px;padding:unset;}/*!sc*/
+.dGDIQc[data-size="large"]{padding:0 16px;height:40px;gap:8px;}/*!sc*/
+.dGDIQc[data-size="large"] [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.dGDIQc[data-size="large"][data-component=IconButton]{width:40px;padding:unset;}/*!sc*/
+.dGDIQc[data-block="block"]{width:100%;}/*!sc*/
+.dGDIQc[data-inactive]:not([disabled]){background-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));border-color:var(--button-inactive-bgColor,var(--button-inactive-bgColor-rest,var(--color-btn-inactive-bg,#eaeef2)));color:var(--button-inactive-fgColor,var(--button-inactive-fgColor-rest,var(--color-btn-inactive-text,#57606a)));}/*!sc*/
+.dGDIQc[data-inactive]:not([disabled]):focus-visible{box-shadow:none;}/*!sc*/
+.dGDIQc [data-component="leadingVisual"]{grid-area:leadingVisual;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.dGDIQc [data-component="text"]{grid-area:text;line-height:calc(20/14);white-space:nowrap;}/*!sc*/
+.dGDIQc [data-component="trailingVisual"]{grid-area:trailingVisual;}/*!sc*/
+.dGDIQc [data-component="trailingAction"]{margin-right:-4px;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.dGDIQc [data-component="buttonContent"]{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;display:grid;grid-template-areas:"leadingVisual text trailingVisual";grid-template-columns:min-content minmax(0,auto) min-content;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;}/*!sc*/
+.dGDIQc [data-component="buttonContent"] > :not(:last-child){margin-right:8px;}/*!sc*/
+.dGDIQc:hover:not([disabled]){background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+.dGDIQc:active:not([disabled]){background-color:var(--control-transparent-bgColor-active,var(--color-action-list-item-default-active-bg,rgba(208,215,222,0.48)));}/*!sc*/
+.dGDIQc[aria-expanded=true]{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.dGDIQc[data-component="IconButton"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.dGDIQc[data-no-visuals]{color:var(--fgColor-accent,var(--color-accent-fg,#0969da));}/*!sc*/
+.dGDIQc:has([data-component="ButtonCounter"]){color:var(--button-default-fgColor-rest,var(--color-btn-text,#24292f));}/*!sc*/
+.dGDIQc:disabled[data-no-visuals]{color:var(--fgColor-disabled,var(--color-primer-fg-disabled,#8c959f));}/*!sc*/
+.dGDIQc:disabled[data-no-visuals] [data-component=ButtonCounter]{color:inherit;}/*!sc*/
+.dGDIQc[data-size="small"][data-no-visuals]{color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+data-styled.g9[id="types__StyledButton-sc-ws60qy-0"]{content:"blmaBs,hkJzmn,fruYDV,jrLMah,cQeCID,ivbpoP,hviaoI,jXTShb,fAkXQN,frAFhH,gfKkfV,dTgfec,pyyxt,fmvlPZ,bDhqXD,bcQZPI,dGDIQc,"}/*!sc*/
+.rTZSs{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;-webkit-clip:rect(0,0,0,0);clip:rect(0,0,0,0);white-space:nowrap;border-width:0;}/*!sc*/
+data-styled.g10[id="_VisuallyHidden__VisuallyHidden-sc-11jhm7a-0"]{content:"rTZSs,"}/*!sc*/
+.fUpWeN{display:inline-block;overflow:hidden;text-overflow:ellipsis;vertical-align:top;white-space:nowrap;max-width:125px;max-width:100%;}/*!sc*/
+data-styled.g15[id="Truncate__StyledTruncate-sc-23o1d2-0"]{content:"fUpWeN,"}/*!sc*/
+.gNgnVl{position:relative;display:inline-block;}/*!sc*/
+.gNgnVl::after{position:absolute;z-index:1000000;display:none;padding:0.5em 0.75em;font:normal normal 11px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";-webkit-font-smoothing:subpixel-antialiased;color:var(--fgColor-onEmphasis,var(--color-fg-on-emphasis,#ffffff));text-align:center;-webkit-text-decoration:none;text-decoration:none;text-shadow:none;text-transform:none;-webkit-letter-spacing:normal;-moz-letter-spacing:normal;-ms-letter-spacing:normal;letter-spacing:normal;word-wrap:break-word;white-space:pre;pointer-events:none;content:attr(aria-label);background:var(--bgColor-emphasis,var(--color-neutral-emphasis-plus,#24292f));border-radius:6px;opacity:0;}/*!sc*/
+@-webkit-keyframes tooltip-appear{from{opacity:0;}to{opacity:1;}}/*!sc*/
+@keyframes tooltip-appear{from{opacity:0;}to{opacity:1;}}/*!sc*/
+.gNgnVl:hover::after,.gNgnVl:active::after,.gNgnVl:focus::after,.gNgnVl:focus-within::after{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-animation-name:tooltip-appear;animation-name:tooltip-appear;-webkit-animation-duration:0.1s;animation-duration:0.1s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in;-webkit-animation-delay:0s;animation-delay:0s;}/*!sc*/
+.gNgnVl.tooltipped-no-delay:hover::after,.gNgnVl.tooltipped-no-delay:active::after,.gNgnVl.tooltipped-no-delay:focus::after,.gNgnVl.tooltipped-no-delay:focus-within::after{-webkit-animation-delay:0s;animation-delay:0s;}/*!sc*/
+.gNgnVl.tooltipped-multiline:hover::after,.gNgnVl.tooltipped-multiline:active::after,.gNgnVl.tooltipped-multiline:focus::after,.gNgnVl.tooltipped-multiline:focus-within::after{display:table-cell;}/*!sc*/
+.gNgnVl.tooltipped-s::after,.gNgnVl.tooltipped-se::after,.gNgnVl.tooltipped-sw::after{top:100%;right:50%;margin-top:6px;}/*!sc*/
+.gNgnVl.tooltipped-se::after{right:auto;left:50%;margin-left:-16px;}/*!sc*/
+.gNgnVl.tooltipped-sw::after{margin-right:-16px;}/*!sc*/
+.gNgnVl.tooltipped-n::after,.gNgnVl.tooltipped-ne::after,.gNgnVl.tooltipped-nw::after{right:50%;bottom:100%;margin-bottom:6px;}/*!sc*/
+.gNgnVl.tooltipped-ne::after{right:auto;left:50%;margin-left:-16px;}/*!sc*/
+.gNgnVl.tooltipped-nw::after{margin-right:-16px;}/*!sc*/
+.gNgnVl.tooltipped-s::after,.gNgnVl.tooltipped-n::after{-webkit-transform:translateX(50%);-ms-transform:translateX(50%);transform:translateX(50%);}/*!sc*/
+.gNgnVl.tooltipped-w::after{right:100%;bottom:50%;margin-right:6px;-webkit-transform:translateY(50%);-ms-transform:translateY(50%);transform:translateY(50%);}/*!sc*/
+.gNgnVl.tooltipped-e::after{bottom:50%;left:100%;margin-left:6px;-webkit-transform:translateY(50%);-ms-transform:translateY(50%);transform:translateY(50%);}/*!sc*/
+.gNgnVl.tooltipped-multiline::after{width:-webkit-max-content;width:-moz-max-content;width:max-content;max-width:250px;word-wrap:break-word;white-space:pre-line;border-collapse:separate;}/*!sc*/
+.gNgnVl.tooltipped-multiline.tooltipped-s::after,.gNgnVl.tooltipped-multiline.tooltipped-n::after{right:auto;left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);}/*!sc*/
+.gNgnVl.tooltipped-multiline.tooltipped-w::after,.gNgnVl.tooltipped-multiline.tooltipped-e::after{right:100%;}/*!sc*/
+.gNgnVl.tooltipped-align-right-2::after{right:0;margin-right:0;}/*!sc*/
+.gNgnVl.tooltipped-align-left-2::after{left:0;margin-left:0;}/*!sc*/
+data-styled.g18[id="Tooltip__TooltipBase-sc-17tf59c-0"]{content:"gNgnVl,"}/*!sc*/
+.cXNreu{font-size:14px;line-height:20px;color:var(--fgColor-default,var(--color-fg-default,#1F2328));vertical-align:middle;background-color:var(--bgColor-default,var(--color-canvas-default,#ffffff));border:1px solid var(--control-borderColor-rest,var(--borderColor-default,var(--color-border-default,#d0d7de)));border-radius:6px;outline:none;box-shadow:var(--shadow-inset,var(--color-primer-shadow-inset,inset 0 1px 0 rgba(208,215,222,0.2)));display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:stretch;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;min-height:32px;overflow:hidden;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;min-width:160px;}/*!sc*/
+.cXNreu input,.cXNreu textarea{cursor:text;}/*!sc*/
+.cXNreu select{cursor:pointer;}/*!sc*/
+.cXNreu input::-webkit-input-placeholder,.cXNreu textarea::-webkit-input-placeholder,.cXNreu select::-webkit-input-placeholder{color:var(---control-fgColor-placeholder,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.cXNreu input::-moz-placeholder,.cXNreu textarea::-moz-placeholder,.cXNreu select::-moz-placeholder{color:var(---control-fgColor-placeholder,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.cXNreu input:-ms-input-placeholder,.cXNreu textarea:-ms-input-placeholder,.cXNreu select:-ms-input-placeholder{color:var(---control-fgColor-placeholder,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.cXNreu input::placeholder,.cXNreu textarea::placeholder,.cXNreu select::placeholder{color:var(---control-fgColor-placeholder,var(--fgColor-muted,var(--color-fg-muted,#656d76)));}/*!sc*/
+.cXNreu:focus-within{border-color:var(--fgColor-accent,var(--color-accent-fg,#0969da));outline:2px solid var(--fgColor-accent,var(--color-accent-fg,#0969da));outline-offset:-1px;}/*!sc*/
+.cXNreu > textarea{padding:12px;}/*!sc*/
+@media (min-width:768px){.cXNreu{font-size:14px;}}/*!sc*/
+data-styled.g37[id="TextInputWrapper__TextInputBaseWrapper-sc-1mqhpbi-0"]{content:"cXNreu,"}/*!sc*/
+.jbzqwE{background-repeat:no-repeat;background-position:right 8px center;padding-left:12px;padding-right:12px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;min-width:160px;}/*!sc*/
+.jbzqwE > :not(:last-child){margin-right:8px;}/*!sc*/
+.jbzqwE .TextInput-icon,.jbzqwE .TextInput-action{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}/*!sc*/
+.jbzqwE > input,.jbzqwE > select{padding-left:0;padding-right:0;}/*!sc*/
+data-styled.g38[id="TextInputWrapper-sc-1mqhpbi-1"]{content:"jbzqwE,"}/*!sc*/
+.cDLBls{border:0;font-size:inherit;font-family:inherit;background-color:transparent;-webkit-appearance:none;color:inherit;width:100%;}/*!sc*/
+.cDLBls:focus{outline:0;}/*!sc*/
+data-styled.g39[id="UnstyledTextInput-sc-14ypya-0"]{content:"cDLBls,"}/*!sc*/
+.dAjliH{--segmented-control-button-inner-padding:12px;--segmented-control-button-bg-inset:4px;--segmented-control-outer-radius:6px;background-color:transparent;border-color:transparent;border-radius:var(--segmented-control-outer-radius);border-width:0;color:currentColor;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:600;padding:0;height:100%;width:100%;}/*!sc*/
+.dAjliH .segmentedControl-content{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:var(--controlKnob-bgColor-rest,var(--color-segmented-control-button-bg,#ffffff));border-color:var(--controlKnob-borderColor-rest,var(--color-segmented-control-button-hover-active-selected-border,#8c959f));border-style:solid;border-width:1px;border-radius:var(--segmented-control-outer-radius);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding-left:var(--segmented-control-button-inner-padding);padding-right:var(--segmented-control-button-inner-padding);}/*!sc*/
+.dAjliH svg{fill:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.dAjliH:focus:focus-visible:not(:last-child):after{width:0;}/*!sc*/
+.dAjliH .segmentedControl-text:after{content:"Code";display:block;font-weight:600;height:0;overflow:hidden;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;visibility:hidden;}/*!sc*/
+@media (pointer:coarse){.dAjliH:before{content:"";position:absolute;left:0;right:0;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);top:50%;min-height:44px;}}/*!sc*/
+.fIktcg{--segmented-control-button-inner-padding:12px;--segmented-control-button-bg-inset:4px;--segmented-control-outer-radius:6px;background-color:transparent;border-color:transparent;border-radius:var(--segmented-control-outer-radius);border-width:0;color:currentColor;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:400;padding:var(--segmented-control-button-bg-inset);height:100%;width:100%;}/*!sc*/
+.fIktcg .segmentedControl-content{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:transparent;border-color:transparent;border-style:solid;border-width:1px;border-radius:calc(var(--segmented-control-outer-radius) - var(--segmented-control-button-bg-inset) / 2);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;padding-left:calc(var(--segmented-control-button-inner-padding) - var(--segmented-control-button-bg-inset));padding-right:calc(var(--segmented-control-button-inner-padding) - var(--segmented-control-button-bg-inset));}/*!sc*/
+.fIktcg svg{fill:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.fIktcg:hover .segmentedControl-content{background-color:var(--controlTrack-bgColor-hover,var(--color-segmented-control-button-hover-bg,rgba(175,184,193,0.2)));}/*!sc*/
+.fIktcg:active .segmentedControl-content{background-color:var(--controlTrack-bgColor-active,var(--color-segmented-control-button-hover-active-bg,rgba(175,184,193,0.4)));}/*!sc*/
+.fIktcg:focus:focus-visible:not(:last-child):after{width:0;}/*!sc*/
+.fIktcg .segmentedControl-text:after{content:"Blame";display:block;font-weight:600;height:0;overflow:hidden;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;visibility:hidden;}/*!sc*/
+@media (pointer:coarse){.fIktcg:before{content:"";position:absolute;left:0;right:0;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);top:50%;min-height:44px;}}/*!sc*/
+data-styled.g69[id="SegmentedControlButton__SegmentedControlButtonStyled-sc-8lkgxl-0"]{content:"dAjliH,fIktcg,"}/*!sc*/
+.huxtnT{background-color:var(--controlTrack-bgColor-rest,var(--color-segmented-control-bg,#eaeef2));border-radius:6px;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;font-size:14px;height:28px;margin:0;padding:0;}/*!sc*/
+data-styled.g71[id="SegmentedControl__SegmentedControlList-sc-1rzig82-0"]{content:"huxtnT,"}/*!sc*/
+.TIGQC{list-style:none;padding:0;margin:0;}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item{outline:none;}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item:focus-visible > div,.TIGQC .PRIVATE_TreeView-item.focus-visible > div{box-shadow:inset 0 0 0 2px var(--fgColor-accent,var(--color-accent-fg,#0969da));}/*!sc*/
+@media (forced-colors:active){.TIGQC .PRIVATE_TreeView-item:focus-visible > div,.TIGQC .PRIVATE_TreeView-item.focus-visible > div{outline:2px solid HighlightText;outline-offset:-2;}}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-container{--level:1;--toggle-width:1rem;position:relative;display:grid;grid-template-columns:calc(calc(var(--level) - 1) * (var(--toggle-width) / 2)) var(--toggle-width) 1fr;grid-template-areas:'spacer toggle content';width:100%;min-height:2rem;font-size:14px;color:var(--fgColor-default,var(--color-fg-default,#1F2328));border-radius:6px;cursor:pointer;}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-container:hover{background-color:var(--control-transparent-bgColor-hover,var(--color-action-list-item-default-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+@media (forced-colors:active){.TIGQC .PRIVATE_TreeView-item-container:hover{outline:2px solid transparent;outline-offset:-2px;}}/*!sc*/
+@media (pointer:coarse){.TIGQC .PRIVATE_TreeView-item-container{--toggle-width:1.5rem;min-height:2.75rem;}}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-container:has(.PRIVATE_TreeView-item-skeleton):hover{background-color:transparent;cursor:default;}/*!sc*/
+@media (forced-colors:active){.TIGQC .PRIVATE_TreeView-item-container:has(.PRIVATE_TreeView-item-skeleton):hover{outline:none;}}/*!sc*/
+.TIGQC[data-omit-spacer='true'] .PRIVATE_TreeView-item-container{grid-template-columns:0 0 1fr;}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item[aria-current='true'] > .PRIVATE_TreeView-item-container{background-color:var(--control-transparent-bgColor-selected,var(--color-action-list-item-default-selected-bg,rgba(208,215,222,0.24)));}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item[aria-current='true'] > .PRIVATE_TreeView-item-container::after{content:'';position:absolute;top:calc(50% - 0.75rem);left:-8px;width:0.25rem;height:1.5rem;background-color:var(--fgColor-accent,var(--color-accent-fg,#0969da));border-radius:6px;}/*!sc*/
+@media (forced-colors:active){.TIGQC .PRIVATE_TreeView-item[aria-current='true'] > .PRIVATE_TreeView-item-container::after{background-color:HighlightText;}}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-toggle{grid-area:toggle;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;height:100%;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-toggle--hover:hover{background-color:var(--control-transparent-bgColor-hover,var(--color-tree-view-item-chevron-hover-bg,rgba(208,215,222,0.32)));}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-toggle--end{border-top-left-radius:6px;border-bottom-left-radius:6px;}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-content{grid-area:content;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;padding:0 8px;gap:8px;}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-content-text{-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-visual{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;color:var(--fgColor-muted,var(--color-fg-muted,#656d76));}/*!sc*/
+.TIGQC .PRIVATE_TreeView-item-level-line{width:100%;height:100%;border-right:1px solid;border-color:var(--borderColor-muted,var(--color-border-subtle,rgba(31,35,40,0.15)));}/*!sc*/
+@media (hover:hover){.TIGQC .PRIVATE_TreeView-item-level-line{border-color:transparent;}.TIGQC:hover .PRIVATE_TreeView-item-level-line,.TIGQC:focus-within .PRIVATE_TreeView-item-level-line{border-color:var(--borderColor-muted,var(--color-border-subtle,rgba(31,35,40,0.15)));}}/*!sc*/
+.TIGQC .PRIVATE_TreeView-directory-icon{display:grid;color:var(--treeViewItem-leadingVisual-bgColor-rest,var(--color-tree-view-item-chevron-directory-fill,#54aeff));}/*!sc*/
+.TIGQC .PRIVATE_VisuallyHidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;-webkit-clip:rect(0,0,0,0);clip:rect(0,0,0,0);white-space:nowrap;border-width:0;}/*!sc*/
+data-styled.g84[id="TreeView__UlBox-sc-4ex6b6-0"]{content:"TIGQC,"}/*!sc*/
+.cjbBGq{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;vertical-align:middle;isolation:isolate;}/*!sc*/
+.cjbBGq.cjbBGq > *{margin-inline-end:-1px;position:relative;border-radius:0;}/*!sc*/
+.cjbBGq.cjbBGq > *:first-child{border-top-left-radius:6px;border-bottom-left-radius:6px;}/*!sc*/
+.cjbBGq.cjbBGq > *:last-child{border-top-right-radius:6px;border-bottom-right-radius:6px;}/*!sc*/
+.cjbBGq.cjbBGq > *:focus,.cjbBGq.cjbBGq > *:active,.cjbBGq.cjbBGq > *:hover{z-index:1;}/*!sc*/
+data-styled.g86[id="ButtonGroup-sc-1gxhls1-0"]{content:"cjbBGq,"}/*!sc*/
+</style><meta data-hydrostats="publish"/> <!-- --> <!-- --> <!-- --> <button hidden="" data-testid="header-permalink-button" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden=""></button><div><div style="--sticky-pane-height:100vh" class="Box-sc-g0xbh4-0 fSWWem"><div class="Box-sc-g0xbh4-0 kPPmzM"><div class="Box-sc-g0xbh4-0 cIAPDV"><div tabindex="0" class="Box-sc-g0xbh4-0 gvCnwW"><div class="Box-sc-g0xbh4-0 xEgty"><div class="Box-sc-g0xbh4-0 eUyHuk"></div><div style="--pane-width:320px" class="Box-sc-g0xbh4-0 gNdDUH"><div class="Box-sc-g0xbh4-0 react-tree-pane-contents"><div id="repos-file-tree" class="Box-sc-g0xbh4-0 jywUSN"><div class="Box-sc-g0xbh4-0 hBSSUC"><div class="Box-sc-g0xbh4-0 iPurHz"><h2 class="Heading__StyledHeading-sc-1c1dgg0-0 jUriTl"><button style="--button-color:fg.muted" type="button" aria-label="Expand file tree" data-testid="expand-file-tree-button-mobile" class="types__StyledButton-sc-ws60qy-0 blmaBs"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="leadingVisual" class="Box-sc-g0xbh4-0 trpoQ"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-arrow-left" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path></svg></span><span data-component="text">Files</span></span></button><span role="tooltip" aria-label="Collapse file tree" id="expand-button-file-tree-button" class="Tooltip__TooltipBase-sc-17tf59c-0 gNgnVl tooltipped-se"><button data-component="IconButton" type="button" data-testid="collapse-file-tree-button" aria-labelledby="expand-button-file-tree-button" aria-expanded="true" aria-controls="repos-file-tree" class="types__StyledButton-sc-ws60qy-0 hkJzmn" data-no-visuals="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-sidebar-expand" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="m4.177 7.823 2.396-2.396A.25.25 0 0 1 7 5.604v4.792a.25.25 0 0 1-.427.177L4.177 8.177a.25.25 0 0 1 0-.354Z"></path><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25H9.5v-13Zm12.5 13a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H11v13Z"></path></svg></button></span><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button></h2><h2 class="Heading__StyledHeading-sc-1c1dgg0-0 imcwCi">Files</h2></div><div class="Box-sc-g0xbh4-0 hVHHYa"><div class="Box-sc-g0xbh4-0 idZfsJ"><button type="button" id="branch-picker-repos-header-ref-selector" aria-haspopup="true" tabindex="0" aria-label="main branch" data-testid="anchor-button" class="types__StyledButton-sc-ws60qy-0 fruYDV react-repos-tree-pane-ref-selector width-full ref-selector-class"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="text"><div class="Box-sc-g0xbh4-0 bKgizp"><div class="Box-sc-g0xbh4-0 iPGYsi"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-git-branch" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"></path></svg></div><div class="Box-sc-g0xbh4-0 caeYDk ref-selector-button-text-container"><span class="Text-sc-17v1xeu-0 bOMzPg"> <!-- -->main</span></div></div></span><span data-component="trailingVisual" class="Box-sc-g0xbh4-0 trpoQ"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></span></button><button hidden="" data-hotkey-scope="read-only-cursor-text-area"></button></div><div class="Box-sc-g0xbh4-0 jahcnb"><span role="tooltip" aria-label="Add file" class="Tooltip__TooltipBase-sc-17tf59c-0 gNgnVl tooltipped-s"><a sx="[object Object]" data-component="IconButton" type="button" aria-label="Add file" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 jrLMah" href="/alaricomv/CapstoneProject_Group1/new/main/backend/database"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-plus" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path></svg></a></span><button data-component="IconButton" type="button" aria-label="Search this repository" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 cQeCID"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-search" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></button><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button></div></div></div><div class="Box-sc-g0xbh4-0 ccToMy"><span class="TextInputWrapper__TextInputBaseWrapper-sc-1mqhpbi-0 TextInputWrapper-sc-1mqhpbi-1 cXNreu jbzqwE TextInput-wrapper" aria-busy="false"><span class="TextInput-icon"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-search" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></span><input type="text" aria-label="Go to file" role="combobox" aria-controls="file-results-list" aria-expanded="false" aria-haspopup="dialog" autoCorrect="off" spellcheck="false" placeholder="Go to file" data-component="input" class="UnstyledTextInput-sc-14ypya-0 cDLBls" value=""/><span class="TextInput-icon"><div class="Box-sc-g0xbh4-0 cNvKlH"><kbd>t</kbd></div></span></span></div><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden=""></button><div class="Box-sc-g0xbh4-0 cLfAnm"><div class="react-tree-show-tree-items"><div data-testid="repos-file-tree-container" class="Box-sc-g0xbh4-0 erWCJP"><nav aria-label="File Tree Navigation"><span role="status" aria-live="polite" aria-atomic="true" class="_VisuallyHidden__VisuallyHidden-sc-11jhm7a-0 rTZSs"></span><ul role="tree" aria-label="Files" class="TreeView__UlBox-sc-4ex6b6-0 TIGQC"><li class="PRIVATE_TreeView-item" tabindex="0" id="backend-item" role="treeitem" aria-labelledby=":Rqclmdaj5:" aria-describedby=":Rqclmdaj5H1: :Rqclmdaj5H2:" aria-level="1" aria-expanded="true" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:1;content-visibility:auto;contain-intrinsic-size:auto 2rem"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"></div></div><div class="PRIVATE_TreeView-item-toggle PRIVATE_TreeView-item-toggle--hover PRIVATE_TreeView-item-toggle--end"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-chevron-down" viewBox="0 0 12 12" width="12" height="12" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l2.7 2.7 2.7-2.7c.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1l-3.2 3.2c-.2.2-.4.3-.6.3Z"></path></svg></div><div id=":Rqclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":Rqclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><div class="PRIVATE_TreeView-directory-icon"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file-directory-open-fill" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M.513 1.513A1.75 1.75 0 0 1 1.75 1h3.5c.55 0 1.07.26 1.4.7l.9 1.2a.25.25 0 0 0 .2.1H13a1 1 0 0 1 1 1v.5H2.75a.75.75 0 0 0 0 1.5h11.978a1 1 0 0 1 .994 1.117L15 13.25A1.75 1.75 0 0 1 13.25 15H1.75A1.75 1.75 0 0 1 0 13.25V2.75c0-.464.184-.91.513-1.237Z"></path></svg></div></div><span class="PRIVATE_TreeView-item-content-text"><span>backend</span></span></div></div><ul role="group" style="list-style:none;padding:0;margin:0"><li class="PRIVATE_TreeView-item" tabindex="0" id="backend/database-item" role="treeitem" aria-labelledby=":R2qqclmdaj5:" aria-describedby=":R2qqclmdaj5H1: :R2qqclmdaj5H2:" aria-level="2" aria-expanded="true" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:2;content-visibility:auto;contain-intrinsic-size:auto 2rem"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"><div class="PRIVATE_TreeView-item-level-line"></div></div></div><div class="PRIVATE_TreeView-item-toggle PRIVATE_TreeView-item-toggle--hover"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-chevron-down" viewBox="0 0 12 12" width="12" height="12" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l2.7 2.7 2.7-2.7c.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1l-3.2 3.2c-.2.2-.4.3-.6.3Z"></path></svg></div><div id=":R2qqclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":R2qqclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><div class="PRIVATE_TreeView-directory-icon"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file-directory-open-fill" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M.513 1.513A1.75 1.75 0 0 1 1.75 1h3.5c.55 0 1.07.26 1.4.7l.9 1.2a.25.25 0 0 0 .2.1H13a1 1 0 0 1 1 1v.5H2.75a.75.75 0 0 0 0 1.5h11.978a1 1 0 0 1 .994 1.117L15 13.25A1.75 1.75 0 0 1 13.25 15H1.75A1.75 1.75 0 0 1 0 13.25V2.75c0-.464.184-.91.513-1.237Z"></path></svg></div></div><span class="PRIVATE_TreeView-item-content-text"><span>database</span></span></div></div><ul role="group" style="list-style:none;padding:0;margin:0"><li class="PRIVATE_TreeView-item" tabindex="0" id="backend/database/wholesaledb.sql-item" role="treeitem" aria-labelledby=":Rmiqqclmdaj5:" aria-describedby=":Rmiqqclmdaj5H1: :Rmiqqclmdaj5H2:" aria-level="3" aria-current="true" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:3"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"><div class="PRIVATE_TreeView-item-level-line"></div><div class="PRIVATE_TreeView-item-level-line"></div></div></div><div id=":Rmiqqclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":Rmiqqclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></div><span class="PRIVATE_TreeView-item-content-text"><span>wholesaledb.sql</span></span></div></div></li></ul></li><li class="PRIVATE_TreeView-item" tabindex="0" id="backend/node_modules-item" role="treeitem" aria-labelledby=":R4qqclmdaj5:" aria-describedby=":R4qqclmdaj5H1: :R4qqclmdaj5H2:" aria-level="2" aria-expanded="false" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:2;content-visibility:auto;contain-intrinsic-size:auto 2rem"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"><div class="PRIVATE_TreeView-item-level-line"></div></div></div><div class="PRIVATE_TreeView-item-toggle PRIVATE_TreeView-item-toggle--hover"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-chevron-right" viewBox="0 0 12 12" width="12" height="12" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></div><div id=":R4qqclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":R4qqclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><div class="PRIVATE_TreeView-directory-icon"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file-directory-fill" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25v-8.5A1.75 1.75 0 0 0 14.25 3H7.5a.25.25 0 0 1-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75Z"></path></svg></div></div><span class="PRIVATE_TreeView-item-content-text"><span>node_modules</span></span></div></div></li><li class="PRIVATE_TreeView-item" tabindex="0" id="backend/app.js-item" role="treeitem" aria-labelledby=":R6qqclmdaj5:" aria-describedby=":R6qqclmdaj5H1: :R6qqclmdaj5H2:" aria-level="2" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:2;content-visibility:auto;contain-intrinsic-size:auto 2rem"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"><div class="PRIVATE_TreeView-item-level-line"></div></div></div><div id=":R6qqclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":R6qqclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></div><span class="PRIVATE_TreeView-item-content-text"><span>app.js</span></span></div></div></li><li class="PRIVATE_TreeView-item" tabindex="0" id="backend/database.js-item" role="treeitem" aria-labelledby=":R8qqclmdaj5:" aria-describedby=":R8qqclmdaj5H1: :R8qqclmdaj5H2:" aria-level="2" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:2;content-visibility:auto;contain-intrinsic-size:auto 2rem"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"><div class="PRIVATE_TreeView-item-level-line"></div></div></div><div id=":R8qqclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":R8qqclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></div><span class="PRIVATE_TreeView-item-content-text"><span>database.js</span></span></div></div></li><li class="PRIVATE_TreeView-item" tabindex="0" id="backend/package-lock.json-item" role="treeitem" aria-labelledby=":Raqqclmdaj5:" aria-describedby=":Raqqclmdaj5H1: :Raqqclmdaj5H2:" aria-level="2" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:2;content-visibility:auto;contain-intrinsic-size:auto 2rem"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"><div class="PRIVATE_TreeView-item-level-line"></div></div></div><div id=":Raqqclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":Raqqclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></div><span class="PRIVATE_TreeView-item-content-text"><span>package-lock.json</span></span></div></div></li><li class="PRIVATE_TreeView-item" tabindex="0" id="backend/package.json-item" role="treeitem" aria-labelledby=":Rcqqclmdaj5:" aria-describedby=":Rcqqclmdaj5H1: :Rcqqclmdaj5H2:" aria-level="2" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:2;content-visibility:auto;contain-intrinsic-size:auto 2rem"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"><div class="PRIVATE_TreeView-item-level-line"></div></div></div><div id=":Rcqqclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":Rcqqclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg></div><span class="PRIVATE_TreeView-item-content-text"><span>package.json</span></span></div></div></li></ul></li><li class="PRIVATE_TreeView-item" tabindex="0" id="frontend-item" role="treeitem" aria-labelledby=":R1aclmdaj5:" aria-describedby=":R1aclmdaj5H1: :R1aclmdaj5H2:" aria-level="1" aria-expanded="false" aria-selected="false"><div class="PRIVATE_TreeView-item-container" style="--level:1;content-visibility:auto;contain-intrinsic-size:auto 2rem"><div style="grid-area:spacer;display:flex"><div style="width:100%;display:flex"></div></div><div class="PRIVATE_TreeView-item-toggle PRIVATE_TreeView-item-toggle--hover PRIVATE_TreeView-item-toggle--end"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-chevron-right" viewBox="0 0 12 12" width="12" height="12" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M4.7 10c-.2 0-.4-.1-.5-.2-.3-.3-.3-.8 0-1.1L6.9 6 4.2 3.3c-.3-.3-.3-.8 0-1.1.3-.3.8-.3 1.1 0l3.3 3.2c.3.3.3.8 0 1.1L5.3 9.7c-.2.2-.4.3-.6.3Z"></path></svg></div><div id=":R1aclmdaj5:" class="PRIVATE_TreeView-item-content"><div class="PRIVATE_VisuallyHidden" aria-hidden="true" id=":R1aclmdaj5H1:"></div><div class="PRIVATE_TreeView-item-visual" aria-hidden="true"><div class="PRIVATE_TreeView-directory-icon"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-file-directory-fill" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25v-8.5A1.75 1.75 0 0 0 14.25 3H7.5a.25.25 0 0 1-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75Z"></path></svg></div></div><span class="PRIVATE_TreeView-item-content-text"><span>frontend</span></span></div></div></li></ul></nav></div></div></div></div></div></div><div class="Box-sc-g0xbh4-0 hAeDYA"><div role="slider" aria-label="Draggable pane splitter" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="Pane width 0 pixels" tabindex="0" class="Box-sc-g0xbh4-0 fjdBNx"></div></div></div></div><div class="Box-sc-g0xbh4-0 emFMJu"><div class="Box-sc-g0xbh4-0"></div><div class="Box-sc-g0xbh4-0 hlUAHL"><div data-selector="repos-split-pane-content" tabindex="0" class="Box-sc-g0xbh4-0 iStsmI"><div class="Box-sc-g0xbh4-0 eIgvIk"><div class="Box-sc-g0xbh4-0 eVFfWF container"><div class="px-3 pt-3 pb-0" id="StickyHeader"><div class="Box-sc-g0xbh4-0 fywjmm"><div class="Box-sc-g0xbh4-0 dyczTK"><div class="Box-sc-g0xbh4-0 kszRgZ"><div class="Box-sc-g0xbh4-0 eTvGbF"><nav data-testid="breadcrumbs" aria-labelledby="repos-header-breadcrumb--wide-heading" id="repos-header-breadcrumb--wide" class="Box-sc-g0xbh4-0 kzRgrI"><h2 class="Heading__StyledHeading-sc-1c1dgg0-0 cgQnMS sr-only" data-testid="screen-reader-heading" id="repos-header-breadcrumb--wide-heading">Breadcrumbs</h2><ol class="Box-sc-g0xbh4-0 cmAPIB"><li class="Box-sc-g0xbh4-0 jwXCBK"><a sx="[object Object]" data-testid="breadcrumbs-repo-link" class="Link__StyledLink-sc-14289xe-0 ipyMWB" href="/alaricomv/CapstoneProject_Group1/tree/main">CapstoneProject_Group1</a></li><li class="Box-sc-g0xbh4-0 jwXCBK"><span aria-hidden="true" class="Text-sc-17v1xeu-0 fIsVJr">/</span><a sx="[object Object]" class="Link__StyledLink-sc-14289xe-0 jmkYvv" href="/alaricomv/CapstoneProject_Group1/tree/main/backend">backend</a></li><li class="Box-sc-g0xbh4-0 jwXCBK"><span aria-hidden="true" class="Text-sc-17v1xeu-0 fIsVJr">/</span><a sx="[object Object]" class="Link__StyledLink-sc-14289xe-0 jmkYvv" href="/alaricomv/CapstoneProject_Group1/tree/main/backend/database">database</a></li></ol></nav><div data-testid="breadcrumbs-filename" class="Box-sc-g0xbh4-0 jwXCBK"><span aria-hidden="true" class="Text-sc-17v1xeu-0 fIsVJr">/</span><h1 tabindex="-1" id="file-name-id-wide" class="Heading__StyledHeading-sc-1c1dgg0-0 diwsLq">wholesaledb.sql</h1></div><button data-component="IconButton" type="button" aria-label="Copy path" data-testid="breadcrumb-copy-path-button" data-size="small" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 ivbpoP"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-copy" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg></button></div></div><div class="react-code-view-header-element--wide"><div class="Box-sc-g0xbh4-0 gtBUEp"><div class="d-flex gap-2"> <button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden=""></button><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden=""></button><button type="button" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 hviaoI"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="text">Blame</span></span></button><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button data-component="IconButton" type="button" aria-label="More file actions" class="types__StyledButton-sc-ws60qy-0 jXTShb js-blob-dropdown-click" title="More file actions" data-testid="more-file-actions-button-nav-menu-wide" id=":R99jadaj5:" aria-haspopup="true" tabindex="0" data-no-visuals="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-kebab-horizontal" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path></svg></button> </div></div></div><div class="react-code-view-header-element--narrow"><div class="Box-sc-g0xbh4-0 gtBUEp"><div class="d-flex gap-2"> <button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden=""></button><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden=""></button><button type="button" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 hviaoI"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="text">Blame</span></span></button><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button data-component="IconButton" type="button" aria-label="More file actions" class="types__StyledButton-sc-ws60qy-0 jXTShb js-blob-dropdown-click" title="More file actions" data-testid="more-file-actions-button-nav-menu-narrow" id=":R99radaj5:" aria-haspopup="true" tabindex="0" data-no-visuals="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-kebab-horizontal" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path></svg></button> </div></div></div></div></div></div></div></div><div class="Box-sc-g0xbh4-0 hVZtwF react-code-view-bottom-padding"> <div class="Box-sc-g0xbh4-0 cMYnca"></div> <!-- --> <!-- --> </div><div class="Box-sc-g0xbh4-0 hVZtwF"> <!-- --> <!-- --> <div class="Box-sc-g0xbh4-0 jQCQnS"><div class="Box-sc-g0xbh4-0 eYedVD"><h2 class="Heading__StyledHeading-sc-1c1dgg0-0 cgQnMS sr-only" data-testid="screen-reader-heading">Latest commit</h2><div style="width:120px" class="Skeleton Skeleton--text" data-testid="loading"> </div><div data-testid="latest-commit-details" class="Box-sc-g0xbh4-0 lhFvfi"></div><div class="Box-sc-g0xbh4-0 jGfYmh"><h2 class="Heading__StyledHeading-sc-1c1dgg0-0 cgQnMS sr-only" data-testid="screen-reader-heading">History</h2><a class="types__StyledButton-sc-ws60qy-0 fAkXQN react-last-commit-history-group" href="/alaricomv/CapstoneProject_Group1/commits/main/backend/database/wholesaledb.sql" data-size="small"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="leadingVisual" class="Box-sc-g0xbh4-0 trpoQ"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-history" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path></svg></span><span data-component="text"><span class="Text-sc-17v1xeu-0 dALsKK">History</span></span></span></a><div class="Box-sc-g0xbh4-0 bqgLjk"></div><span role="tooltip" aria-label="Commit history" class="Tooltip__TooltipBase-sc-17tf59c-0 gNgnVl tooltipped-n"><a class="types__StyledButton-sc-ws60qy-0 fAkXQN react-last-commit-history-icon" href="/alaricomv/CapstoneProject_Group1/commits/main/backend/database/wholesaledb.sql"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="leadingVisual" class="Box-sc-g0xbh4-0 trpoQ"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-history" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path></svg></span></span></a></span></div></div></div><div class="Box-sc-g0xbh4-0 iJmJly"><div class="Box-sc-g0xbh4-0 jACbi container"><div class="Box-sc-g0xbh4-0 gIJuDf react-code-size-details-banner"><div class="Box-sc-g0xbh4-0 fleZSW react-code-size-details-banner"><div class="Box-sc-g0xbh4-0 BnySK text-mono"><div title="6.16 KB" data-testid="blob-size" class="Truncate__StyledTruncate-sc-23o1d2-0 fUpWeN"><span class="Text-sc-17v1xeu-0 gPDEWA">244 lines (201 loc) · 6.16 KB</span></div></div></div><div class="Box-sc-g0xbh4-0 react-code-size-details-banner"><button style="--button-color:fg.default" type="button" id=":R9faladaj5:" aria-haspopup="true" tabindex="0" data-testid="copilot-popover-button" data-size="small" class="types__StyledButton-sc-ws60qy-0 frAFhH"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="leadingVisual" class="Box-sc-g0xbh4-0 trpoQ"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-copilot" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"></path><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"></path></svg></span><span data-component="text">Code 55% faster with GitHub Copilot</span></span></button></div></div><div class="Box-sc-g0xbh4-0 VHzRk react-blob-view-header-sticky" id="repos-sticky-header"><div class="Box-sc-g0xbh4-0 ePiodO"><div class="Box-sc-g0xbh4-0 react-blob-sticky-header"><div class="Box-sc-g0xbh4-0 kQJlnf"><div class="Box-sc-g0xbh4-0 gJICKO"><div class="Box-sc-g0xbh4-0 iZJewz"><nav data-testid="breadcrumbs" aria-labelledby="sticky-breadcrumb-heading" id="sticky-breadcrumb" class="Box-sc-g0xbh4-0 kzRgrI"><h2 class="Heading__StyledHeading-sc-1c1dgg0-0 cgQnMS sr-only" data-testid="screen-reader-heading" id="sticky-breadcrumb-heading">Breadcrumbs</h2><ol class="Box-sc-g0xbh4-0 cmAPIB"><li class="Box-sc-g0xbh4-0 jwXCBK"><a sx="[object Object]" data-testid="breadcrumbs-repo-link" class="Link__StyledLink-sc-14289xe-0 ipyMWB" href="/alaricomv/CapstoneProject_Group1/tree/main">CapstoneProject_Group1</a></li><li class="Box-sc-g0xbh4-0 jwXCBK"><span aria-hidden="true" class="Text-sc-17v1xeu-0 cYjMDB">/</span><a sx="[object Object]" class="Link__StyledLink-sc-14289xe-0 jmkYvv" href="/alaricomv/CapstoneProject_Group1/tree/main/backend">backend</a></li><li class="Box-sc-g0xbh4-0 jwXCBK"><span aria-hidden="true" class="Text-sc-17v1xeu-0 cYjMDB">/</span><a sx="[object Object]" class="Link__StyledLink-sc-14289xe-0 jmkYvv" href="/alaricomv/CapstoneProject_Group1/tree/main/backend/database">database</a></li></ol></nav><div data-testid="breadcrumbs-filename" class="Box-sc-g0xbh4-0 jwXCBK"><span aria-hidden="true" class="Text-sc-17v1xeu-0 cYjMDB">/</span><h1 tabindex="-1" id="sticky-file-name-id" class="Heading__StyledHeading-sc-1c1dgg0-0 jAEDJk">wholesaledb.sql</h1></div></div><button style="--button-color:fg.default" type="button" data-size="small" class="types__StyledButton-sc-ws60qy-0 gfKkfV"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="leadingVisual" class="Box-sc-g0xbh4-0 trpoQ"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-arrow-up" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M3.47 7.78a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0l4.25 4.25a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018L9 4.81v7.44a.75.75 0 0 1-1.5 0V4.81L4.53 7.78a.75.75 0 0 1-1.06 0Z"></path></svg></span><span data-component="text">Top</span></span></button></div></div></div><div class="Box-sc-g0xbh4-0 jfjHXm"><h2 class="Heading__StyledHeading-sc-1c1dgg0-0 cgQnMS sr-only" data-testid="screen-reader-heading">File metadata and controls</h2><div class="Box-sc-g0xbh4-0 bfkNRF"><ul aria-label="File view" class="SegmentedControl__SegmentedControlList-sc-1rzig82-0 huxtnT"><li class="Box-sc-g0xbh4-0 fXBLEV"><button aria-current="true" class="SegmentedControlButton__SegmentedControlButtonStyled-sc-8lkgxl-0 dAjliH"><span class="segmentedControl-content"><div class="Box-sc-g0xbh4-0 segmentedControl-text">Code</div></span></button></li><li class="Box-sc-g0xbh4-0 gMPsNT"><button aria-current="false" class="SegmentedControlButton__SegmentedControlButtonStyled-sc-8lkgxl-0 fIktcg"><span class="segmentedControl-content"><div class="Box-sc-g0xbh4-0 segmentedControl-text">Blame</div></span></button></li></ul><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><div class="Box-sc-g0xbh4-0 fleZSW react-code-size-details-in-header"><div class="Box-sc-g0xbh4-0 BnySK text-mono"><div title="6.16 KB" data-testid="blob-size" class="Truncate__StyledTruncate-sc-23o1d2-0 fUpWeN"><span class="Text-sc-17v1xeu-0 gPDEWA">244 lines (201 loc) · 6.16 KB</span></div></div></div><div class="Box-sc-g0xbh4-0 react-code-size-details-in-header"><button style="--button-color:fg.default" type="button" id=":Rt6faladaj5:" aria-haspopup="true" tabindex="0" data-testid="copilot-popover-button" data-size="small" class="types__StyledButton-sc-ws60qy-0 frAFhH"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="leadingVisual" class="Box-sc-g0xbh4-0 trpoQ"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-copilot" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"></path><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"></path></svg></span><span data-component="text">Code 55% faster with GitHub Copilot</span></span></button></div></div><div class="Box-sc-g0xbh4-0 iBylDf"><div class="Box-sc-g0xbh4-0 kSGBPx react-blob-header-edit-and-raw-actions"><div class="ButtonGroup-sc-1gxhls1-0 cjbBGq"><a href="https://github.com/alaricomv/CapstoneProject_Group1/raw/main/backend/database/wholesaledb.sql" data-testid="raw-button" data-size="small" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 dTgfec"><span data-component="buttonContent" class="Box-sc-g0xbh4-0 kkrdEu"><span data-component="text">Raw</span></span></a><button data-component="IconButton" type="button" aria-label="Copy raw content" data-testid="copy-raw-button" data-size="small" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 pyyxt"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-copy" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg></button><span role="tooltip" aria-label="Download raw file" class="Tooltip__TooltipBase-sc-17tf59c-0 gNgnVl tooltipped-n"><button data-component="IconButton" type="button" aria-label="Download raw content" data-testid="download-raw-button" data-size="small" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 fmvlPZ"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-download" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"></path><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z"></path></svg></button></span></div><button hidden="" data-testid="raw-button-shortcut" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden="" data-testid="copy-raw-button-shortcut" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden="" data-testid="download-raw-button-shortcut" data-hotkey-scope="read-only-cursor-text-area"></button><a class="Link__StyledLink-sc-14289xe-0 dheQRw js-github-dev-shortcut d-none" href="https://github.dev/"></a><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><a class="Link__StyledLink-sc-14289xe-0 dheQRw js-github-dev-new-tab-shortcut d-none" href="https://github.dev/" target="_blank"></a><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><div class="ButtonGroup-sc-1gxhls1-0 cjbBGq"><span role="tooltip" aria-label="Edit this file" class="Tooltip__TooltipBase-sc-17tf59c-0 gNgnVl tooltipped-nw"><a sx="[object Object]" data-component="IconButton" type="button" aria-label="Edit file" data-testid="edit-button" data-size="small" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 bDhqXD" href="/alaricomv/CapstoneProject_Group1/edit/main/backend/database/wholesaledb.sql"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-pencil" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path></svg></a></span><button data-component="IconButton" type="button" aria-label="More edit options" data-testid="more-edit-button" id=":R2l76faladaj5:" aria-haspopup="true" tabindex="0" data-size="small" data-no-visuals="true" class="types__StyledButton-sc-ws60qy-0 pyyxt"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></button></div><button hidden="" data-testid="" data-hotkey="e,Shift+E" data-hotkey-scope="read-only-cursor-text-area"></button></div><span role="tooltip" aria-label="Open symbols panel" class="Tooltip__TooltipBase-sc-17tf59c-0 gNgnVl tooltipped-nw"><button data-component="IconButton" type="button" aria-label="Symbols" aria-pressed="false" aria-expanded="false" aria-controls="symbols-pane" class="types__StyledButton-sc-ws60qy-0 bcQZPI" data-testid="symbols-button" id="symbols-button" data-size="small" data-no-visuals="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-code-square" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></button></span><div class="Box-sc-g0xbh4-0 react-blob-header-edit-and-raw-actions-combined"><button data-component="IconButton" type="button" aria-label="Edit and raw actions" class="types__StyledButton-sc-ws60qy-0 dGDIQc js-blob-dropdown-click" title="More file actions" data-testid="more-file-actions-button" id=":R5v6faladaj5:" aria-haspopup="true" tabindex="0" data-size="small" data-no-visuals="true"><svg aria-hidden="true" focusable="false" role="img" class="octicon octicon-kebab-horizontal" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path></svg></button></div></div></div></div><div></div></div><div class="Box-sc-g0xbh4-0 ytOJl"><section aria-labelledby="file-name-id-wide file-name-id-mobile" class="Box-sc-g0xbh4-0 jWnGGx"><div class="Box-sc-g0xbh4-0 TCenl"><div id="highlighted-line-menu-positioner" class="position-relative"><div id="copilot-button-positioner" class="Box-sc-g0xbh4-0 cluMzC"><div class="Box-sc-g0xbh4-0 eRkHwF"><div class="Box-sc-g0xbh4-0 knCTAx react-code-file-contents" role="presentation" aria-hidden="true" data-tab-size="8" data-paste-markdown-skip="true" data-hpc="true"><div class="react-line-numbers" style="pointer-events:auto"><div data-line-number="1" class="react-line-number react-code-text" style="padding-right:16px">1</div><div data-line-number="2" class="react-line-number react-code-text" style="padding-right:16px">2</div><div data-line-number="3" class="react-line-number react-code-text" style="padding-right:16px">3</div><div data-line-number="4" class="react-line-number react-code-text" style="padding-right:16px">4</div><div data-line-number="5" class="react-line-number react-code-text" style="padding-right:16px">5</div><div data-line-number="6" class="react-line-number react-code-text" style="padding-right:16px">6</div><div data-line-number="7" class="react-line-number react-code-text" style="padding-right:16px">7</div><div data-line-number="8" class="react-line-number react-code-text" style="padding-right:16px">8</div><div data-line-number="9" class="react-line-number react-code-text" style="padding-right:16px">9</div><div data-line-number="10" class="react-line-number react-code-text" style="padding-right:16px">10</div><div data-line-number="11" class="react-line-number react-code-text" style="padding-right:16px">11</div><div data-line-number="12" class="react-line-number react-code-text" style="padding-right:16px">12</div><div data-line-number="13" class="react-line-number react-code-text" style="padding-right:16px">13</div><div data-line-number="14" class="react-line-number react-code-text" style="padding-right:16px">14</div><div data-line-number="15" class="react-line-number react-code-text" style="padding-right:16px">15</div><div data-line-number="16" class="react-line-number react-code-text" style="padding-right:16px">16</div><div data-line-number="17" class="react-line-number react-code-text" style="padding-right:16px">17</div><div data-line-number="18" class="react-line-number react-code-text" style="padding-right:16px">18</div><div data-line-number="19" class="react-line-number react-code-text" style="padding-right:16px">19</div><div data-line-number="20" class="react-line-number react-code-text" style="padding-right:16px">20</div><div data-line-number="21" class="react-line-number react-code-text" style="padding-right:16px">21</div><div data-line-number="22" class="react-line-number react-code-text" style="padding-right:16px">22</div><div data-line-number="23" class="react-line-number react-code-text" style="padding-right:16px">23</div><div data-line-number="24" class="react-line-number react-code-text" style="padding-right:16px">24</div><div data-line-number="25" class="react-line-number react-code-text" style="padding-right:16px">25</div><div data-line-number="26" class="react-line-number react-code-text" style="padding-right:16px">26</div><div data-line-number="27" class="react-line-number react-code-text" style="padding-right:16px">27</div><div data-line-number="28" class="react-line-number react-code-text" style="padding-right:16px">28</div><div data-line-number="29" class="react-line-number react-code-text" style="padding-right:16px">29</div><div data-line-number="30" class="react-line-number react-code-text" style="padding-right:16px">30</div><div data-line-number="31" class="react-line-number react-code-text" style="padding-right:16px">31</div><div data-line-number="32" class="react-line-number react-code-text" style="padding-right:16px">32</div><div data-line-number="33" class="react-line-number react-code-text" style="padding-right:16px">33</div><div data-line-number="34" class="react-line-number react-code-text" style="padding-right:16px">34</div><div data-line-number="35" class="react-line-number react-code-text" style="padding-right:16px">35</div><div data-line-number="36" class="react-line-number react-code-text" style="padding-right:16px">36</div><div data-line-number="37" class="react-line-number react-code-text" style="padding-right:16px">37</div><div data-line-number="38" class="react-line-number react-code-text" style="padding-right:16px">38</div><div data-line-number="39" class="react-line-number react-code-text" style="padding-right:16px">39</div><div data-line-number="40" class="react-line-number react-code-text" style="padding-right:16px">40</div><div data-line-number="41" class="react-line-number react-code-text" style="padding-right:16px">41</div><div data-line-number="42" class="react-line-number react-code-text" style="padding-right:16px">42</div><div data-line-number="43" class="react-line-number react-code-text" style="padding-right:16px">43</div><div data-line-number="44" class="react-line-number react-code-text" style="padding-right:16px">44</div><div data-line-number="45" class="react-line-number react-code-text" style="padding-right:16px">45</div><div data-line-number="46" class="react-line-number react-code-text" style="padding-right:16px">46</div><div data-line-number="47" class="react-line-number react-code-text" style="padding-right:16px">47</div><div data-line-number="48" class="react-line-number react-code-text" style="padding-right:16px">48</div><div data-line-number="49" class="react-line-number react-code-text" style="padding-right:16px">49</div><div data-line-number="50" class="react-line-number react-code-text" style="padding-right:16px">50</div><div data-line-number="51" class="react-line-number react-code-text" style="padding-right:16px">51</div><div data-line-number="52" class="react-line-number react-code-text" style="padding-right:16px">52</div><div data-line-number="53" class="react-line-number react-code-text" style="padding-right:16px">53</div><div data-line-number="54" class="react-line-number react-code-text" style="padding-right:16px">54</div><div data-line-number="55" class="react-line-number react-code-text" style="padding-right:16px">55</div><div data-line-number="56" class="react-line-number react-code-text" style="padding-right:16px">56</div><div data-line-number="57" class="react-line-number react-code-text" style="padding-right:16px">57</div><div data-line-number="58" class="react-line-number react-code-text" style="padding-right:16px">58</div><div data-line-number="59" class="react-line-number react-code-text" style="padding-right:16px">59</div><div data-line-number="60" class="react-line-number react-code-text" style="padding-right:16px">60</div><div data-line-number="61" class="react-line-number react-code-text" style="padding-right:16px">61</div><div data-line-number="62" class="react-line-number react-code-text" style="padding-right:16px">62</div><div data-line-number="63" class="react-line-number react-code-text" style="padding-right:16px">63</div><div data-line-number="64" class="react-line-number react-code-text" style="padding-right:16px">64</div><div data-line-number="65" class="react-line-number react-code-text" style="padding-right:16px">65</div><div data-line-number="66" class="react-line-number react-code-text" style="padding-right:16px">66</div><div data-line-number="67" class="react-line-number react-code-text" style="padding-right:16px">67</div><div data-line-number="68" class="react-line-number react-code-text" style="padding-right:16px">68</div><div data-line-number="69" class="react-line-number react-code-text" style="padding-right:16px">69</div><div data-line-number="70" class="react-line-number react-code-text" style="padding-right:16px">70</div><div data-line-number="71" class="react-line-number react-code-text" style="padding-right:16px">71</div><div data-line-number="72" class="react-line-number react-code-text" style="padding-right:16px">72</div><div data-line-number="73" class="react-line-number react-code-text" style="padding-right:16px">73</div><div data-line-number="74" class="react-line-number react-code-text" style="padding-right:16px">74</div><div data-line-number="75" class="react-line-number react-code-text" style="padding-right:16px">75</div><div data-line-number="76" class="react-line-number react-code-text" style="padding-right:16px">76</div><div data-line-number="77" class="react-line-number react-code-text" style="padding-right:16px">77</div><div data-line-number="78" class="react-line-number react-code-text" style="padding-right:16px">78</div><div data-line-number="79" class="react-line-number react-code-text" style="padding-right:16px">79</div><div data-line-number="80" class="react-line-number react-code-text" style="padding-right:16px">80</div><div data-line-number="81" class="react-line-number react-code-text" style="padding-right:16px">81</div><div data-line-number="82" class="react-line-number react-code-text" style="padding-right:16px">82</div><div data-line-number="83" class="react-line-number react-code-text" style="padding-right:16px">83</div><div data-line-number="84" class="react-line-number react-code-text" style="padding-right:16px">84</div><div data-line-number="85" class="react-line-number react-code-text" style="padding-right:16px">85</div><div data-line-number="86" class="react-line-number react-code-text" style="padding-right:16px">86</div><div data-line-number="87" class="react-line-number react-code-text" style="padding-right:16px">87</div><div data-line-number="88" class="react-line-number react-code-text" style="padding-right:16px">88</div><div data-line-number="89" class="react-line-number react-code-text" style="padding-right:16px">89</div><div data-line-number="90" class="react-line-number react-code-text" style="padding-right:16px">90</div><div data-line-number="91" class="react-line-number react-code-text" style="padding-right:16px">91</div><div data-line-number="92" class="react-line-number react-code-text" style="padding-right:16px">92</div><div data-line-number="93" class="react-line-number react-code-text" style="padding-right:16px">93</div><div data-line-number="94" class="react-line-number react-code-text" style="padding-right:16px">94</div><div data-line-number="95" class="react-line-number react-code-text" style="padding-right:16px">95</div><div data-line-number="96" class="react-line-number react-code-text" style="padding-right:16px">96</div><div data-line-number="97" class="react-line-number react-code-text" style="padding-right:16px">97</div><div data-line-number="98" class="react-line-number react-code-text" style="padding-right:16px">98</div><div data-line-number="99" class="react-line-number react-code-text" style="padding-right:16px">99</div><div data-line-number="100" class="react-line-number react-code-text" style="padding-right:16px">100</div><div data-line-number="101" class="react-line-number react-code-text" style="padding-right:16px">101</div><div data-line-number="102" class="react-line-number react-code-text" style="padding-right:16px">102</div><div data-line-number="103" class="react-line-number react-code-text" style="padding-right:16px">103</div><div data-line-number="104" class="react-line-number react-code-text" style="padding-right:16px">104</div><div data-line-number="105" class="react-line-number react-code-text" style="padding-right:16px">105</div><div data-line-number="106" class="react-line-number react-code-text" style="padding-right:16px">106</div><div data-line-number="107" class="react-line-number react-code-text" style="padding-right:16px">107</div><div data-line-number="108" class="react-line-number react-code-text" style="padding-right:16px">108</div><div data-line-number="109" class="react-line-number react-code-text" style="padding-right:16px">109</div><div data-line-number="110" class="react-line-number react-code-text" style="padding-right:16px">110</div><div data-line-number="111" class="react-line-number react-code-text" style="padding-right:16px">111</div><div data-line-number="112" class="react-line-number react-code-text" style="padding-right:16px">112</div><div data-line-number="113" class="react-line-number react-code-text" style="padding-right:16px">113</div><div data-line-number="114" class="react-line-number react-code-text" style="padding-right:16px">114</div><div data-line-number="115" class="react-line-number react-code-text" style="padding-right:16px">115</div><div data-line-number="116" class="react-line-number react-code-text" style="padding-right:16px">116</div><div data-line-number="117" class="react-line-number react-code-text" style="padding-right:16px">117</div><div data-line-number="118" class="react-line-number react-code-text" style="padding-right:16px">118</div><div data-line-number="119" class="react-line-number react-code-text" style="padding-right:16px">119</div><div data-line-number="120" class="react-line-number react-code-text" style="padding-right:16px">120</div><div data-line-number="121" class="react-line-number react-code-text" style="padding-right:16px">121</div><div data-line-number="122" class="react-line-number react-code-text" style="padding-right:16px">122</div><div data-line-number="123" class="react-line-number react-code-text" style="padding-right:16px">123</div><div data-line-number="124" class="react-line-number react-code-text" style="padding-right:16px">124</div><div data-line-number="125" class="react-line-number react-code-text" style="padding-right:16px">125</div><div data-line-number="126" class="react-line-number react-code-text" style="padding-right:16px">126</div><div data-line-number="127" class="react-line-number react-code-text" style="padding-right:16px">127</div><div data-line-number="128" class="react-line-number react-code-text" style="padding-right:16px">128</div><div data-line-number="129" class="react-line-number react-code-text" style="padding-right:16px">129</div><div data-line-number="130" class="react-line-number react-code-text" style="padding-right:16px">130</div><div data-line-number="131" class="react-line-number react-code-text" style="padding-right:16px">131</div><div data-line-number="132" class="react-line-number react-code-text" style="padding-right:16px">132</div><div data-line-number="133" class="react-line-number react-code-text" style="padding-right:16px">133</div><div data-line-number="134" class="react-line-number react-code-text" style="padding-right:16px">134</div><div data-line-number="135" class="react-line-number react-code-text" style="padding-right:16px">135</div><div data-line-number="136" class="react-line-number react-code-text" style="padding-right:16px">136</div><div data-line-number="137" class="react-line-number react-code-text" style="padding-right:16px">137</div><div data-line-number="138" class="react-line-number react-code-text" style="padding-right:16px">138</div><div data-line-number="139" class="react-line-number react-code-text" style="padding-right:16px">139</div><div data-line-number="140" class="react-line-number react-code-text" style="padding-right:16px">140</div><div data-line-number="141" class="react-line-number react-code-text" style="padding-right:16px">141</div><div data-line-number="142" class="react-line-number react-code-text" style="padding-right:16px">142</div><div data-line-number="143" class="react-line-number react-code-text" style="padding-right:16px">143</div><div data-line-number="144" class="react-line-number react-code-text" style="padding-right:16px">144</div><div data-line-number="145" class="react-line-number react-code-text" style="padding-right:16px">145</div><div data-line-number="146" class="react-line-number react-code-text" style="padding-right:16px">146</div><div data-line-number="147" class="react-line-number react-code-text" style="padding-right:16px">147</div><div data-line-number="148" class="react-line-number react-code-text" style="padding-right:16px">148</div><div data-line-number="149" class="react-line-number react-code-text" style="padding-right:16px">149</div><div data-line-number="150" class="react-line-number react-code-text" style="padding-right:16px">150</div><div data-line-number="151" class="react-line-number react-code-text" style="padding-right:16px">151</div><div data-line-number="152" class="react-line-number react-code-text" style="padding-right:16px">152</div><div data-line-number="153" class="react-line-number react-code-text" style="padding-right:16px">153</div><div data-line-number="154" class="react-line-number react-code-text" style="padding-right:16px">154</div><div data-line-number="155" class="react-line-number react-code-text" style="padding-right:16px">155</div><div data-line-number="156" class="react-line-number react-code-text" style="padding-right:16px">156</div><div data-line-number="157" class="react-line-number react-code-text" style="padding-right:16px">157</div><div data-line-number="158" class="react-line-number react-code-text" style="padding-right:16px">158</div><div data-line-number="159" class="react-line-number react-code-text" style="padding-right:16px">159</div><div data-line-number="160" class="react-line-number react-code-text" style="padding-right:16px">160</div><div data-line-number="161" class="react-line-number react-code-text" style="padding-right:16px">161</div><div data-line-number="162" class="react-line-number react-code-text" style="padding-right:16px">162</div><div data-line-number="163" class="react-line-number react-code-text" style="padding-right:16px">163</div><div data-line-number="164" class="react-line-number react-code-text" style="padding-right:16px">164</div><div data-line-number="165" class="react-line-number react-code-text" style="padding-right:16px">165</div><div data-line-number="166" class="react-line-number react-code-text" style="padding-right:16px">166</div><div data-line-number="167" class="react-line-number react-code-text" style="padding-right:16px">167</div><div data-line-number="168" class="react-line-number react-code-text" style="padding-right:16px">168</div><div data-line-number="169" class="react-line-number react-code-text" style="padding-right:16px">169</div><div data-line-number="170" class="react-line-number react-code-text" style="padding-right:16px">170</div><div data-line-number="171" class="react-line-number react-code-text" style="padding-right:16px">171</div><div data-line-number="172" class="react-line-number react-code-text" style="padding-right:16px">172</div><div data-line-number="173" class="react-line-number react-code-text" style="padding-right:16px">173</div><div data-line-number="174" class="react-line-number react-code-text" style="padding-right:16px">174</div><div data-line-number="175" class="react-line-number react-code-text" style="padding-right:16px">175</div><div data-line-number="176" class="react-line-number react-code-text" style="padding-right:16px">176</div><div data-line-number="177" class="react-line-number react-code-text" style="padding-right:16px">177</div><div data-line-number="178" class="react-line-number react-code-text" style="padding-right:16px">178</div><div data-line-number="179" class="react-line-number react-code-text" style="padding-right:16px">179</div><div data-line-number="180" class="react-line-number react-code-text" style="padding-right:16px">180</div><div data-line-number="181" class="react-line-number react-code-text" style="padding-right:16px">181</div><div data-line-number="182" class="react-line-number react-code-text" style="padding-right:16px">182</div><div data-line-number="183" class="react-line-number react-code-text" style="padding-right:16px">183</div><div data-line-number="184" class="react-line-number react-code-text" style="padding-right:16px">184</div><div data-line-number="185" class="react-line-number react-code-text" style="padding-right:16px">185</div><div data-line-number="186" class="react-line-number react-code-text" style="padding-right:16px">186</div><div data-line-number="187" class="react-line-number react-code-text" style="padding-right:16px">187</div><div data-line-number="188" class="react-line-number react-code-text" style="padding-right:16px">188</div><div data-line-number="189" class="react-line-number react-code-text" style="padding-right:16px">189</div><div data-line-number="190" class="react-line-number react-code-text" style="padding-right:16px">190</div><div data-line-number="191" class="react-line-number react-code-text" style="padding-right:16px">191</div><div data-line-number="192" class="react-line-number react-code-text" style="padding-right:16px">192</div><div data-line-number="193" class="react-line-number react-code-text" style="padding-right:16px">193</div><div data-line-number="194" class="react-line-number react-code-text" style="padding-right:16px">194</div><div data-line-number="195" class="react-line-number react-code-text" style="padding-right:16px">195</div><div data-line-number="196" class="react-line-number react-code-text" style="padding-right:16px">196</div><div data-line-number="197" class="react-line-number react-code-text" style="padding-right:16px">197</div><div data-line-number="198" class="react-line-number react-code-text" style="padding-right:16px">198</div><div data-line-number="199" class="react-line-number react-code-text" style="padding-right:16px">199</div><div data-line-number="200" class="react-line-number react-code-text" style="padding-right:16px">200</div><div data-line-number="201" class="react-line-number react-code-text" style="padding-right:16px">201</div><div data-line-number="202" class="react-line-number react-code-text" style="padding-right:16px">202</div><div data-line-number="203" class="react-line-number react-code-text" style="padding-right:16px">203</div><div data-line-number="204" class="react-line-number react-code-text" style="padding-right:16px">204</div><div data-line-number="205" class="react-line-number react-code-text" style="padding-right:16px">205</div><div data-line-number="206" class="react-line-number react-code-text" style="padding-right:16px">206</div><div data-line-number="207" class="react-line-number react-code-text" style="padding-right:16px">207</div><div data-line-number="208" class="react-line-number react-code-text" style="padding-right:16px">208</div><div data-line-number="209" class="react-line-number react-code-text" style="padding-right:16px">209</div><div data-line-number="210" class="react-line-number react-code-text" style="padding-right:16px">210</div><div data-line-number="211" class="react-line-number react-code-text" style="padding-right:16px">211</div><div data-line-number="212" class="react-line-number react-code-text" style="padding-right:16px">212</div><div data-line-number="213" class="react-line-number react-code-text" style="padding-right:16px">213</div><div data-line-number="214" class="react-line-number react-code-text" style="padding-right:16px">214</div><div data-line-number="215" class="react-line-number react-code-text" style="padding-right:16px">215</div><div data-line-number="216" class="react-line-number react-code-text" style="padding-right:16px">216</div><div data-line-number="217" class="react-line-number react-code-text" style="padding-right:16px">217</div><div data-line-number="218" class="react-line-number react-code-text" style="padding-right:16px">218</div><div data-line-number="219" class="react-line-number react-code-text" style="padding-right:16px">219</div><div data-line-number="220" class="react-line-number react-code-text" style="padding-right:16px">220</div><div data-line-number="221" class="react-line-number react-code-text" style="padding-right:16px">221</div><div data-line-number="222" class="react-line-number react-code-text" style="padding-right:16px">222</div><div data-line-number="223" class="react-line-number react-code-text" style="padding-right:16px">223</div><div data-line-number="224" class="react-line-number react-code-text" style="padding-right:16px">224</div><div data-line-number="225" class="react-line-number react-code-text" style="padding-right:16px">225</div><div data-line-number="226" class="react-line-number react-code-text" style="padding-right:16px">226</div><div data-line-number="227" class="react-line-number react-code-text" style="padding-right:16px">227</div><div data-line-number="228" class="react-line-number react-code-text" style="padding-right:16px">228</div><div data-line-number="229" class="react-line-number react-code-text" style="padding-right:16px">229</div><div data-line-number="230" class="react-line-number react-code-text" style="padding-right:16px">230</div><div data-line-number="231" class="react-line-number react-code-text" style="padding-right:16px">231</div><div data-line-number="232" class="react-line-number react-code-text" style="padding-right:16px">232</div><div data-line-number="233" class="react-line-number react-code-text" style="padding-right:16px">233</div><div data-line-number="234" class="react-line-number react-code-text" style="padding-right:16px">234</div><div data-line-number="235" class="react-line-number react-code-text" style="padding-right:16px">235</div><div data-line-number="236" class="react-line-number react-code-text" style="padding-right:16px">236</div><div data-line-number="237" class="react-line-number react-code-text" style="padding-right:16px">237</div><div data-line-number="238" class="react-line-number react-code-text" style="padding-right:16px">238</div><div data-line-number="239" class="react-line-number react-code-text" style="padding-right:16px">239</div><div data-line-number="240" class="react-line-number react-code-text" style="padding-right:16px">240</div><div data-line-number="241" class="react-line-number react-code-text" style="padding-right:16px">241</div><div data-line-number="242" class="react-line-number react-code-text" style="padding-right:16px">242</div><div data-line-number="243" class="react-line-number react-code-text" style="padding-right:16px">243</div><div data-line-number="244" class="react-line-number react-code-text" style="padding-right:16px">244</div></div><div class="react-code-lines"><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC1" class="react-file-line html-div" data-testid="code-cell" data-line-number="1" style="position:relative"><span class="pl-c">--</span> phpMyAdmin SQL Dump</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC2" class="react-file-line html-div" data-testid="code-cell" data-line-number="2" style="position:relative"><span class="pl-c">--</span> version 5.2.1</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC3" class="react-file-line html-div" data-testid="code-cell" data-line-number="3" style="position:relative"><span class="pl-c">--</span> https://www.phpmyadmin.net/</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC4" class="react-file-line html-div" data-testid="code-cell" data-line-number="4" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC5" class="react-file-line html-div" data-testid="code-cell" data-line-number="5" style="position:relative"><span class="pl-c">--</span> Servidor: 127.0.0.1</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC6" class="react-file-line html-div" data-testid="code-cell" data-line-number="6" style="position:relative"><span class="pl-c">--</span> Tiempo de generación: 17-02-2024 a las 02:41:26</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC7" class="react-file-line html-div" data-testid="code-cell" data-line-number="7" style="position:relative"><span class="pl-c">--</span> Versión del servidor: 10.4.32-MariaDB</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC8" class="react-file-line html-div" data-testid="code-cell" data-line-number="8" style="position:relative"><span class="pl-c">--</span> Versión de PHP: 8.2.12</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC9" class="react-file-line html-div" data-testid="code-cell" data-line-number="9" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC10" class="react-file-line html-div" data-testid="code-cell" data-line-number="10" style="position:relative"><span class="pl-k">SET</span> SQL_MODE <span class="pl-k">=</span> <span class="pl-pds">&quot;</span>NO_AUTO_VALUE_ON_ZERO<span class="pl-pds">&quot;</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC11" class="react-file-line html-div" data-testid="code-cell" data-line-number="11" style="position:relative"><span class="pl-k">START TRANSACTION</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC12" class="react-file-line html-div" data-testid="code-cell" data-line-number="12" style="position:relative"><span class="pl-k">SET</span> time_zone <span class="pl-k">=</span> <span class="pl-pds">&quot;</span>+00:00<span class="pl-pds">&quot;</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC13" class="react-file-line html-div" data-testid="code-cell" data-line-number="13" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC14" class="react-file-line html-div" data-testid="code-cell" data-line-number="14" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC15" class="react-file-line html-div" data-testid="code-cell" data-line-number="15" style="position:relative"><span class="pl-c">/*</span>!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT <span class="pl-c">*/</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC16" class="react-file-line html-div" data-testid="code-cell" data-line-number="16" style="position:relative"><span class="pl-c">/*</span>!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS <span class="pl-c">*/</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC17" class="react-file-line html-div" data-testid="code-cell" data-line-number="17" style="position:relative"><span class="pl-c">/*</span>!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION <span class="pl-c">*/</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC18" class="react-file-line html-div" data-testid="code-cell" data-line-number="18" style="position:relative"><span class="pl-c">/*</span>!40101 SET NAMES utf8mb4 <span class="pl-c">*/</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC19" class="react-file-line html-div" data-testid="code-cell" data-line-number="19" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC20" class="react-file-line html-div" data-testid="code-cell" data-line-number="20" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC21" class="react-file-line html-div" data-testid="code-cell" data-line-number="21" style="position:relative"><span class="pl-c">--</span> Base de datos: `wholesaledb`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC22" class="react-file-line html-div" data-testid="code-cell" data-line-number="22" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC23" class="react-file-line html-div" data-testid="code-cell" data-line-number="23" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC24" class="react-file-line html-div" data-testid="code-cell" data-line-number="24" style="position:relative"><span class="pl-c">--</span> --------------------------------------------------------</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC25" class="react-file-line html-div" data-testid="code-cell" data-line-number="25" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC26" class="react-file-line html-div" data-testid="code-cell" data-line-number="26" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC27" class="react-file-line html-div" data-testid="code-cell" data-line-number="27" style="position:relative"><span class="pl-c">--</span> Estructura de tabla para la tabla `cart`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC28" class="react-file-line html-div" data-testid="code-cell" data-line-number="28" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC29" class="react-file-line html-div" data-testid="code-cell" data-line-number="29" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC30" class="react-file-line html-div" data-testid="code-cell" data-line-number="30" style="position:relative"><span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> `<span class="pl-en">cart</span>` (</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC31" class="react-file-line html-div" data-testid="code-cell" data-line-number="31" style="position:relative">  <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC32" class="react-file-line html-div" data-testid="code-cell" data-line-number="32" style="position:relative">  <span class="pl-pds">`</span>user_id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC33" class="react-file-line html-div" data-testid="code-cell" data-line-number="33" style="position:relative">  <span class="pl-pds">`</span>total<span class="pl-pds">`</span> double <span class="pl-k">NOT NULL</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC34" class="react-file-line html-div" data-testid="code-cell" data-line-number="34" style="position:relative">) ENGINE<span class="pl-k">=</span>InnoDB DEFAULT CHARSET<span class="pl-k">=</span>utf8mb4 COLLATE<span class="pl-k">=</span>utf8mb4_general_ci;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC35" class="react-file-line html-div" data-testid="code-cell" data-line-number="35" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC36" class="react-file-line html-div" data-testid="code-cell" data-line-number="36" style="position:relative"><span class="pl-c">--</span> --------------------------------------------------------</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC37" class="react-file-line html-div" data-testid="code-cell" data-line-number="37" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC38" class="react-file-line html-div" data-testid="code-cell" data-line-number="38" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC39" class="react-file-line html-div" data-testid="code-cell" data-line-number="39" style="position:relative"><span class="pl-c">--</span> Estructura de tabla para la tabla `cart_product`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC40" class="react-file-line html-div" data-testid="code-cell" data-line-number="40" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC41" class="react-file-line html-div" data-testid="code-cell" data-line-number="41" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC42" class="react-file-line html-div" data-testid="code-cell" data-line-number="42" style="position:relative"><span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> `<span class="pl-en">cart_product</span>` (</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC43" class="react-file-line html-div" data-testid="code-cell" data-line-number="43" style="position:relative">  <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC44" class="react-file-line html-div" data-testid="code-cell" data-line-number="44" style="position:relative">  <span class="pl-pds">`</span>cart_id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC45" class="react-file-line html-div" data-testid="code-cell" data-line-number="45" style="position:relative">  <span class="pl-pds">`</span>product_id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC46" class="react-file-line html-div" data-testid="code-cell" data-line-number="46" style="position:relative">  <span class="pl-pds">`</span>quantity<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC47" class="react-file-line html-div" data-testid="code-cell" data-line-number="47" style="position:relative">) ENGINE<span class="pl-k">=</span>InnoDB DEFAULT CHARSET<span class="pl-k">=</span>utf8mb4 COLLATE<span class="pl-k">=</span>utf8mb4_general_ci;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC48" class="react-file-line html-div" data-testid="code-cell" data-line-number="48" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC49" class="react-file-line html-div" data-testid="code-cell" data-line-number="49" style="position:relative"><span class="pl-c">--</span> --------------------------------------------------------</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC50" class="react-file-line html-div" data-testid="code-cell" data-line-number="50" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC51" class="react-file-line html-div" data-testid="code-cell" data-line-number="51" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC52" class="react-file-line html-div" data-testid="code-cell" data-line-number="52" style="position:relative"><span class="pl-c">--</span> Estructura de tabla para la tabla `order`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC53" class="react-file-line html-div" data-testid="code-cell" data-line-number="53" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC54" class="react-file-line html-div" data-testid="code-cell" data-line-number="54" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC55" class="react-file-line html-div" data-testid="code-cell" data-line-number="55" style="position:relative"><span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> `<span class="pl-en">order</span>` (</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC56" class="react-file-line html-div" data-testid="code-cell" data-line-number="56" style="position:relative">  <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC57" class="react-file-line html-div" data-testid="code-cell" data-line-number="57" style="position:relative">  <span class="pl-pds">`</span>storefront_id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC58" class="react-file-line html-div" data-testid="code-cell" data-line-number="58" style="position:relative">  <span class="pl-pds">`</span>cart_id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC59" class="react-file-line html-div" data-testid="code-cell" data-line-number="59" style="position:relative">  <span class="pl-pds">`</span>date<span class="pl-pds">`</span> datetime <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC60" class="react-file-line html-div" data-testid="code-cell" data-line-number="60" style="position:relative">  <span class="pl-pds">`</span>Status<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span> COMMENT <span class="pl-pds">&#039;</span>Determines the status of the order (Received, shipped, delivered)<span class="pl-pds">&#039;</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC61" class="react-file-line html-div" data-testid="code-cell" data-line-number="61" style="position:relative">  <span class="pl-pds">`</span>comments<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">1000</span>) <span class="pl-k">NOT NULL</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC62" class="react-file-line html-div" data-testid="code-cell" data-line-number="62" style="position:relative">) ENGINE<span class="pl-k">=</span>InnoDB DEFAULT CHARSET<span class="pl-k">=</span>utf8mb4 COLLATE<span class="pl-k">=</span>utf8mb4_general_ci;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC63" class="react-file-line html-div" data-testid="code-cell" data-line-number="63" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC64" class="react-file-line html-div" data-testid="code-cell" data-line-number="64" style="position:relative"><span class="pl-c">--</span> --------------------------------------------------------</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC65" class="react-file-line html-div" data-testid="code-cell" data-line-number="65" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC66" class="react-file-line html-div" data-testid="code-cell" data-line-number="66" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC67" class="react-file-line html-div" data-testid="code-cell" data-line-number="67" style="position:relative"><span class="pl-c">--</span> Estructura de tabla para la tabla `product`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC68" class="react-file-line html-div" data-testid="code-cell" data-line-number="68" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC69" class="react-file-line html-div" data-testid="code-cell" data-line-number="69" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC70" class="react-file-line html-div" data-testid="code-cell" data-line-number="70" style="position:relative"><span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> `<span class="pl-en">product</span>` (</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC71" class="react-file-line html-div" data-testid="code-cell" data-line-number="71" style="position:relative">  <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC72" class="react-file-line html-div" data-testid="code-cell" data-line-number="72" style="position:relative">  <span class="pl-pds">`</span>storefront_id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC73" class="react-file-line html-div" data-testid="code-cell" data-line-number="73" style="position:relative">  <span class="pl-pds">`</span>product_key<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC74" class="react-file-line html-div" data-testid="code-cell" data-line-number="74" style="position:relative">  <span class="pl-pds">`</span>name<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC75" class="react-file-line html-div" data-testid="code-cell" data-line-number="75" style="position:relative">  <span class="pl-pds">`</span>description<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span> DEFAULT <span class="pl-pds">&#039;</span>&quot;No description&quot;<span class="pl-pds">&#039;</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC76" class="react-file-line html-div" data-testid="code-cell" data-line-number="76" style="position:relative">  <span class="pl-pds">`</span>tags<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) DEFAULT <span class="pl-k">NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC77" class="react-file-line html-div" data-testid="code-cell" data-line-number="77" style="position:relative">  <span class="pl-pds">`</span>price_per_dozen<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC78" class="react-file-line html-div" data-testid="code-cell" data-line-number="78" style="position:relative">  <span class="pl-pds">`</span>price_box<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) DEFAULT <span class="pl-k">NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC79" class="react-file-line html-div" data-testid="code-cell" data-line-number="79" style="position:relative">  <span class="pl-pds">`</span>total_pieces<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> DEFAULT <span class="pl-c1">0</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC80" class="react-file-line html-div" data-testid="code-cell" data-line-number="80" style="position:relative">  <span class="pl-pds">`</span>pieces_per_box<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) DEFAULT <span class="pl-k">NULL</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC81" class="react-file-line html-div" data-testid="code-cell" data-line-number="81" style="position:relative">) ENGINE<span class="pl-k">=</span>InnoDB DEFAULT CHARSET<span class="pl-k">=</span>utf8mb4 COLLATE<span class="pl-k">=</span>utf8mb4_general_ci;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC82" class="react-file-line html-div" data-testid="code-cell" data-line-number="82" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC83" class="react-file-line html-div" data-testid="code-cell" data-line-number="83" style="position:relative"><span class="pl-c">--</span> --------------------------------------------------------</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC84" class="react-file-line html-div" data-testid="code-cell" data-line-number="84" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC85" class="react-file-line html-div" data-testid="code-cell" data-line-number="85" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC86" class="react-file-line html-div" data-testid="code-cell" data-line-number="86" style="position:relative"><span class="pl-c">--</span> Estructura de tabla para la tabla `storefront`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC87" class="react-file-line html-div" data-testid="code-cell" data-line-number="87" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC88" class="react-file-line html-div" data-testid="code-cell" data-line-number="88" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC89" class="react-file-line html-div" data-testid="code-cell" data-line-number="89" style="position:relative"><span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> `<span class="pl-en">storefront</span>` (</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC90" class="react-file-line html-div" data-testid="code-cell" data-line-number="90" style="position:relative">  <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC91" class="react-file-line html-div" data-testid="code-cell" data-line-number="91" style="position:relative">  <span class="pl-pds">`</span>name<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC92" class="react-file-line html-div" data-testid="code-cell" data-line-number="92" style="position:relative">  <span class="pl-pds">`</span>seller_id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC93" class="react-file-line html-div" data-testid="code-cell" data-line-number="93" style="position:relative">  <span class="pl-pds">`</span>logo<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) DEFAULT <span class="pl-k">NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC94" class="react-file-line html-div" data-testid="code-cell" data-line-number="94" style="position:relative">  <span class="pl-pds">`</span>description<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">1000</span>) DEFAULT <span class="pl-k">NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC95" class="react-file-line html-div" data-testid="code-cell" data-line-number="95" style="position:relative">  <span class="pl-pds">`</span>tags<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) DEFAULT <span class="pl-k">NULL</span> COMMENT <span class="pl-pds">&#039;</span>Tags are separated with a &quot;,&quot;<span class="pl-pds">&#039;</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC96" class="react-file-line html-div" data-testid="code-cell" data-line-number="96" style="position:relative">  <span class="pl-pds">`</span>address<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) DEFAULT <span class="pl-k">NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC97" class="react-file-line html-div" data-testid="code-cell" data-line-number="97" style="position:relative">  <span class="pl-pds">`</span>rating<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> DEFAULT <span class="pl-c1">0</span> COMMENT <span class="pl-pds">&#039;</span>Average rating of the store<span class="pl-pds">&#039;</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC98" class="react-file-line html-div" data-testid="code-cell" data-line-number="98" style="position:relative">  <span class="pl-pds">`</span>number_ratings<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> DEFAULT <span class="pl-c1">0</span> COMMENT <span class="pl-pds">&#039;</span>Number of ratings to the store<span class="pl-pds">&#039;</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC99" class="react-file-line html-div" data-testid="code-cell" data-line-number="99" style="position:relative">) ENGINE<span class="pl-k">=</span>InnoDB DEFAULT CHARSET<span class="pl-k">=</span>utf8mb4 COLLATE<span class="pl-k">=</span>utf8mb4_general_ci;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC100" class="react-file-line html-div" data-testid="code-cell" data-line-number="100" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC101" class="react-file-line html-div" data-testid="code-cell" data-line-number="101" style="position:relative"><span class="pl-c">--</span> --------------------------------------------------------</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC102" class="react-file-line html-div" data-testid="code-cell" data-line-number="102" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC103" class="react-file-line html-div" data-testid="code-cell" data-line-number="103" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC104" class="react-file-line html-div" data-testid="code-cell" data-line-number="104" style="position:relative"><span class="pl-c">--</span> Estructura de tabla para la tabla `users`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC105" class="react-file-line html-div" data-testid="code-cell" data-line-number="105" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC106" class="react-file-line html-div" data-testid="code-cell" data-line-number="106" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC107" class="react-file-line html-div" data-testid="code-cell" data-line-number="107" style="position:relative"><span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> `<span class="pl-en">users</span>` (</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC108" class="react-file-line html-div" data-testid="code-cell" data-line-number="108" style="position:relative">  <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC109" class="react-file-line html-div" data-testid="code-cell" data-line-number="109" style="position:relative">  <span class="pl-pds">`</span>first_name<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC110" class="react-file-line html-div" data-testid="code-cell" data-line-number="110" style="position:relative">  <span class="pl-pds">`</span>last_name<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC111" class="react-file-line html-div" data-testid="code-cell" data-line-number="111" style="position:relative">  <span class="pl-pds">`</span>email<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC112" class="react-file-line html-div" data-testid="code-cell" data-line-number="112" style="position:relative">  <span class="pl-pds">`</span>password<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC113" class="react-file-line html-div" data-testid="code-cell" data-line-number="113" style="position:relative">  <span class="pl-pds">`</span>address<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) DEFAULT <span class="pl-k">NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC114" class="react-file-line html-div" data-testid="code-cell" data-line-number="114" style="position:relative">  <span class="pl-pds">`</span>phone_number<span class="pl-pds">`</span> <span class="pl-k">varchar</span>(<span class="pl-c1">250</span>) <span class="pl-k">NOT NULL</span>,</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC115" class="react-file-line html-div" data-testid="code-cell" data-line-number="115" style="position:relative">  <span class="pl-pds">`</span>seller<span class="pl-pds">`</span> <span class="pl-k">tinyint</span>(<span class="pl-c1">1</span>) <span class="pl-k">NOT NULL</span> COMMENT <span class="pl-pds">&#039;</span>Determines if the user is a buyer (0) or a seller (1)<span class="pl-pds">&#039;</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC116" class="react-file-line html-div" data-testid="code-cell" data-line-number="116" style="position:relative">) ENGINE<span class="pl-k">=</span>InnoDB DEFAULT CHARSET<span class="pl-k">=</span>utf8mb4 COLLATE<span class="pl-k">=</span>utf8mb4_general_ci;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC117" class="react-file-line html-div" data-testid="code-cell" data-line-number="117" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC118" class="react-file-line html-div" data-testid="code-cell" data-line-number="118" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC119" class="react-file-line html-div" data-testid="code-cell" data-line-number="119" style="position:relative"><span class="pl-c">--</span> Índices para tablas volcadas</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC120" class="react-file-line html-div" data-testid="code-cell" data-line-number="120" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC121" class="react-file-line html-div" data-testid="code-cell" data-line-number="121" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC122" class="react-file-line html-div" data-testid="code-cell" data-line-number="122" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC123" class="react-file-line html-div" data-testid="code-cell" data-line-number="123" style="position:relative"><span class="pl-c">--</span> Indices de la tabla `cart`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC124" class="react-file-line html-div" data-testid="code-cell" data-line-number="124" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC125" class="react-file-line html-div" data-testid="code-cell" data-line-number="125" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>cart<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC126" class="react-file-line html-div" data-testid="code-cell" data-line-number="126" style="position:relative">  ADD <span class="pl-k">PRIMARY KEY</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC127" class="react-file-line html-div" data-testid="code-cell" data-line-number="127" style="position:relative">  ADD KEY <span class="pl-pds">`</span>user id cart<span class="pl-pds">`</span> (<span class="pl-pds">`</span>user_id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC128" class="react-file-line html-div" data-testid="code-cell" data-line-number="128" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC129" class="react-file-line html-div" data-testid="code-cell" data-line-number="129" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC130" class="react-file-line html-div" data-testid="code-cell" data-line-number="130" style="position:relative"><span class="pl-c">--</span> Indices de la tabla `cart_product`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC131" class="react-file-line html-div" data-testid="code-cell" data-line-number="131" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC132" class="react-file-line html-div" data-testid="code-cell" data-line-number="132" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>cart_product<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC133" class="react-file-line html-div" data-testid="code-cell" data-line-number="133" style="position:relative">  ADD <span class="pl-k">PRIMARY KEY</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC134" class="react-file-line html-div" data-testid="code-cell" data-line-number="134" style="position:relative">  ADD KEY <span class="pl-pds">`</span>cart id cart_product<span class="pl-pds">`</span> (<span class="pl-pds">`</span>cart_id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC135" class="react-file-line html-div" data-testid="code-cell" data-line-number="135" style="position:relative">  ADD KEY <span class="pl-pds">`</span>product id cart_product<span class="pl-pds">`</span> (<span class="pl-pds">`</span>product_id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC136" class="react-file-line html-div" data-testid="code-cell" data-line-number="136" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC137" class="react-file-line html-div" data-testid="code-cell" data-line-number="137" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC138" class="react-file-line html-div" data-testid="code-cell" data-line-number="138" style="position:relative"><span class="pl-c">--</span> Indices de la tabla `order`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC139" class="react-file-line html-div" data-testid="code-cell" data-line-number="139" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC140" class="react-file-line html-div" data-testid="code-cell" data-line-number="140" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>order<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC141" class="react-file-line html-div" data-testid="code-cell" data-line-number="141" style="position:relative">  ADD <span class="pl-k">PRIMARY KEY</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC142" class="react-file-line html-div" data-testid="code-cell" data-line-number="142" style="position:relative">  ADD KEY <span class="pl-pds">`</span>cart id order<span class="pl-pds">`</span> (<span class="pl-pds">`</span>cart_id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC143" class="react-file-line html-div" data-testid="code-cell" data-line-number="143" style="position:relative">  ADD KEY <span class="pl-pds">`</span>storefront id order<span class="pl-pds">`</span> (<span class="pl-pds">`</span>storefront_id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC144" class="react-file-line html-div" data-testid="code-cell" data-line-number="144" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC145" class="react-file-line html-div" data-testid="code-cell" data-line-number="145" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC146" class="react-file-line html-div" data-testid="code-cell" data-line-number="146" style="position:relative"><span class="pl-c">--</span> Indices de la tabla `product`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC147" class="react-file-line html-div" data-testid="code-cell" data-line-number="147" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC148" class="react-file-line html-div" data-testid="code-cell" data-line-number="148" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>product<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC149" class="react-file-line html-div" data-testid="code-cell" data-line-number="149" style="position:relative">  ADD <span class="pl-k">PRIMARY KEY</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC150" class="react-file-line html-div" data-testid="code-cell" data-line-number="150" style="position:relative">  ADD KEY <span class="pl-pds">`</span>storefront id<span class="pl-pds">`</span> (<span class="pl-pds">`</span>storefront_id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC151" class="react-file-line html-div" data-testid="code-cell" data-line-number="151" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC152" class="react-file-line html-div" data-testid="code-cell" data-line-number="152" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC153" class="react-file-line html-div" data-testid="code-cell" data-line-number="153" style="position:relative"><span class="pl-c">--</span> Indices de la tabla `storefront`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC154" class="react-file-line html-div" data-testid="code-cell" data-line-number="154" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC155" class="react-file-line html-div" data-testid="code-cell" data-line-number="155" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>storefront<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC156" class="react-file-line html-div" data-testid="code-cell" data-line-number="156" style="position:relative">  ADD <span class="pl-k">PRIMARY KEY</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC157" class="react-file-line html-div" data-testid="code-cell" data-line-number="157" style="position:relative">  ADD KEY <span class="pl-pds">`</span>Seller id<span class="pl-pds">`</span> (<span class="pl-pds">`</span>seller_id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC158" class="react-file-line html-div" data-testid="code-cell" data-line-number="158" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC159" class="react-file-line html-div" data-testid="code-cell" data-line-number="159" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC160" class="react-file-line html-div" data-testid="code-cell" data-line-number="160" style="position:relative"><span class="pl-c">--</span> Indices de la tabla `users`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC161" class="react-file-line html-div" data-testid="code-cell" data-line-number="161" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC162" class="react-file-line html-div" data-testid="code-cell" data-line-number="162" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>users<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC163" class="react-file-line html-div" data-testid="code-cell" data-line-number="163" style="position:relative">  ADD <span class="pl-k">PRIMARY KEY</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC164" class="react-file-line html-div" data-testid="code-cell" data-line-number="164" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC165" class="react-file-line html-div" data-testid="code-cell" data-line-number="165" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC166" class="react-file-line html-div" data-testid="code-cell" data-line-number="166" style="position:relative"><span class="pl-c">--</span> AUTO_INCREMENT de las tablas volcadas</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC167" class="react-file-line html-div" data-testid="code-cell" data-line-number="167" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC168" class="react-file-line html-div" data-testid="code-cell" data-line-number="168" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC169" class="react-file-line html-div" data-testid="code-cell" data-line-number="169" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC170" class="react-file-line html-div" data-testid="code-cell" data-line-number="170" style="position:relative"><span class="pl-c">--</span> AUTO_INCREMENT de la tabla `cart`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC171" class="react-file-line html-div" data-testid="code-cell" data-line-number="171" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC172" class="react-file-line html-div" data-testid="code-cell" data-line-number="172" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>cart<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC173" class="react-file-line html-div" data-testid="code-cell" data-line-number="173" style="position:relative">  MODIFY <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> AUTO_INCREMENT;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC174" class="react-file-line html-div" data-testid="code-cell" data-line-number="174" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC175" class="react-file-line html-div" data-testid="code-cell" data-line-number="175" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC176" class="react-file-line html-div" data-testid="code-cell" data-line-number="176" style="position:relative"><span class="pl-c">--</span> AUTO_INCREMENT de la tabla `cart_product`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC177" class="react-file-line html-div" data-testid="code-cell" data-line-number="177" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC178" class="react-file-line html-div" data-testid="code-cell" data-line-number="178" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>cart_product<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC179" class="react-file-line html-div" data-testid="code-cell" data-line-number="179" style="position:relative">  MODIFY <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> AUTO_INCREMENT;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC180" class="react-file-line html-div" data-testid="code-cell" data-line-number="180" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC181" class="react-file-line html-div" data-testid="code-cell" data-line-number="181" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC182" class="react-file-line html-div" data-testid="code-cell" data-line-number="182" style="position:relative"><span class="pl-c">--</span> AUTO_INCREMENT de la tabla `order`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC183" class="react-file-line html-div" data-testid="code-cell" data-line-number="183" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC184" class="react-file-line html-div" data-testid="code-cell" data-line-number="184" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>order<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC185" class="react-file-line html-div" data-testid="code-cell" data-line-number="185" style="position:relative">  MODIFY <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> AUTO_INCREMENT;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC186" class="react-file-line html-div" data-testid="code-cell" data-line-number="186" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC187" class="react-file-line html-div" data-testid="code-cell" data-line-number="187" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC188" class="react-file-line html-div" data-testid="code-cell" data-line-number="188" style="position:relative"><span class="pl-c">--</span> AUTO_INCREMENT de la tabla `product`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC189" class="react-file-line html-div" data-testid="code-cell" data-line-number="189" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC190" class="react-file-line html-div" data-testid="code-cell" data-line-number="190" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>product<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC191" class="react-file-line html-div" data-testid="code-cell" data-line-number="191" style="position:relative">  MODIFY <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> AUTO_INCREMENT;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC192" class="react-file-line html-div" data-testid="code-cell" data-line-number="192" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC193" class="react-file-line html-div" data-testid="code-cell" data-line-number="193" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC194" class="react-file-line html-div" data-testid="code-cell" data-line-number="194" style="position:relative"><span class="pl-c">--</span> AUTO_INCREMENT de la tabla `storefront`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC195" class="react-file-line html-div" data-testid="code-cell" data-line-number="195" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC196" class="react-file-line html-div" data-testid="code-cell" data-line-number="196" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>storefront<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC197" class="react-file-line html-div" data-testid="code-cell" data-line-number="197" style="position:relative">  MODIFY <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> AUTO_INCREMENT;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC198" class="react-file-line html-div" data-testid="code-cell" data-line-number="198" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC199" class="react-file-line html-div" data-testid="code-cell" data-line-number="199" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC200" class="react-file-line html-div" data-testid="code-cell" data-line-number="200" style="position:relative"><span class="pl-c">--</span> AUTO_INCREMENT de la tabla `users`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC201" class="react-file-line html-div" data-testid="code-cell" data-line-number="201" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC202" class="react-file-line html-div" data-testid="code-cell" data-line-number="202" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>users<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC203" class="react-file-line html-div" data-testid="code-cell" data-line-number="203" style="position:relative">  MODIFY <span class="pl-pds">`</span>id<span class="pl-pds">`</span> <span class="pl-k">int</span>(<span class="pl-c1">11</span>) <span class="pl-k">NOT NULL</span> AUTO_INCREMENT;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC204" class="react-file-line html-div" data-testid="code-cell" data-line-number="204" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC205" class="react-file-line html-div" data-testid="code-cell" data-line-number="205" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC206" class="react-file-line html-div" data-testid="code-cell" data-line-number="206" style="position:relative"><span class="pl-c">--</span> Restricciones para tablas volcadas</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC207" class="react-file-line html-div" data-testid="code-cell" data-line-number="207" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC208" class="react-file-line html-div" data-testid="code-cell" data-line-number="208" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC209" class="react-file-line html-div" data-testid="code-cell" data-line-number="209" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC210" class="react-file-line html-div" data-testid="code-cell" data-line-number="210" style="position:relative"><span class="pl-c">--</span> Filtros para la tabla `cart`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC211" class="react-file-line html-div" data-testid="code-cell" data-line-number="211" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC212" class="react-file-line html-div" data-testid="code-cell" data-line-number="212" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>cart<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC213" class="react-file-line html-div" data-testid="code-cell" data-line-number="213" style="position:relative">  ADD <span class="pl-k">CONSTRAINT</span> <span class="pl-pds">`</span>user id cart<span class="pl-pds">`</span> <span class="pl-k">FOREIGN KEY</span> (<span class="pl-pds">`</span>user_id<span class="pl-pds">`</span>) <span class="pl-k">REFERENCES</span> <span class="pl-pds">`</span>users<span class="pl-pds">`</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC214" class="react-file-line html-div" data-testid="code-cell" data-line-number="214" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC215" class="react-file-line html-div" data-testid="code-cell" data-line-number="215" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC216" class="react-file-line html-div" data-testid="code-cell" data-line-number="216" style="position:relative"><span class="pl-c">--</span> Filtros para la tabla `cart_product`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC217" class="react-file-line html-div" data-testid="code-cell" data-line-number="217" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC218" class="react-file-line html-div" data-testid="code-cell" data-line-number="218" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>cart_product<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC219" class="react-file-line html-div" data-testid="code-cell" data-line-number="219" style="position:relative">  ADD <span class="pl-k">CONSTRAINT</span> <span class="pl-pds">`</span>cart id cart_product<span class="pl-pds">`</span> <span class="pl-k">FOREIGN KEY</span> (<span class="pl-pds">`</span>cart_id<span class="pl-pds">`</span>) <span class="pl-k">REFERENCES</span> <span class="pl-pds">`</span>cart<span class="pl-pds">`</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC220" class="react-file-line html-div" data-testid="code-cell" data-line-number="220" style="position:relative">  ADD <span class="pl-k">CONSTRAINT</span> <span class="pl-pds">`</span>product id cart_product<span class="pl-pds">`</span> <span class="pl-k">FOREIGN KEY</span> (<span class="pl-pds">`</span>product_id<span class="pl-pds">`</span>) <span class="pl-k">REFERENCES</span> <span class="pl-pds">`</span>product<span class="pl-pds">`</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC221" class="react-file-line html-div" data-testid="code-cell" data-line-number="221" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC222" class="react-file-line html-div" data-testid="code-cell" data-line-number="222" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC223" class="react-file-line html-div" data-testid="code-cell" data-line-number="223" style="position:relative"><span class="pl-c">--</span> Filtros para la tabla `order`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC224" class="react-file-line html-div" data-testid="code-cell" data-line-number="224" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC225" class="react-file-line html-div" data-testid="code-cell" data-line-number="225" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>order<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC226" class="react-file-line html-div" data-testid="code-cell" data-line-number="226" style="position:relative">  ADD <span class="pl-k">CONSTRAINT</span> <span class="pl-pds">`</span>cart id order<span class="pl-pds">`</span> <span class="pl-k">FOREIGN KEY</span> (<span class="pl-pds">`</span>cart_id<span class="pl-pds">`</span>) <span class="pl-k">REFERENCES</span> <span class="pl-pds">`</span>cart<span class="pl-pds">`</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>),</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC227" class="react-file-line html-div" data-testid="code-cell" data-line-number="227" style="position:relative">  ADD <span class="pl-k">CONSTRAINT</span> <span class="pl-pds">`</span>storefront id order<span class="pl-pds">`</span> <span class="pl-k">FOREIGN KEY</span> (<span class="pl-pds">`</span>storefront_id<span class="pl-pds">`</span>) <span class="pl-k">REFERENCES</span> <span class="pl-pds">`</span>storefront<span class="pl-pds">`</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC228" class="react-file-line html-div" data-testid="code-cell" data-line-number="228" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC229" class="react-file-line html-div" data-testid="code-cell" data-line-number="229" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC230" class="react-file-line html-div" data-testid="code-cell" data-line-number="230" style="position:relative"><span class="pl-c">--</span> Filtros para la tabla `product`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC231" class="react-file-line html-div" data-testid="code-cell" data-line-number="231" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC232" class="react-file-line html-div" data-testid="code-cell" data-line-number="232" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>product<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC233" class="react-file-line html-div" data-testid="code-cell" data-line-number="233" style="position:relative">  ADD <span class="pl-k">CONSTRAINT</span> <span class="pl-pds">`</span>storefront id<span class="pl-pds">`</span> <span class="pl-k">FOREIGN KEY</span> (<span class="pl-pds">`</span>storefront_id<span class="pl-pds">`</span>) <span class="pl-k">REFERENCES</span> <span class="pl-pds">`</span>storefront<span class="pl-pds">`</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC234" class="react-file-line html-div" data-testid="code-cell" data-line-number="234" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC235" class="react-file-line html-div" data-testid="code-cell" data-line-number="235" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC236" class="react-file-line html-div" data-testid="code-cell" data-line-number="236" style="position:relative"><span class="pl-c">--</span> Filtros para la tabla `storefront`</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC237" class="react-file-line html-div" data-testid="code-cell" data-line-number="237" style="position:relative"><span class="pl-c">--</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC238" class="react-file-line html-div" data-testid="code-cell" data-line-number="238" style="position:relative"><span class="pl-k">ALTER</span> <span class="pl-k">TABLE</span> <span class="pl-pds">`</span>storefront<span class="pl-pds">`</span></div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC239" class="react-file-line html-div" data-testid="code-cell" data-line-number="239" style="position:relative">  ADD <span class="pl-k">CONSTRAINT</span> <span class="pl-pds">`</span>Seller id<span class="pl-pds">`</span> <span class="pl-k">FOREIGN KEY</span> (<span class="pl-pds">`</span>seller_id<span class="pl-pds">`</span>) <span class="pl-k">REFERENCES</span> <span class="pl-pds">`</span>users<span class="pl-pds">`</span> (<span class="pl-pds">`</span>id<span class="pl-pds">`</span>);</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC240" class="react-file-line html-div" data-testid="code-cell" data-line-number="240" style="position:relative"><span class="pl-k">COMMIT</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC241" class="react-file-line html-div" data-testid="code-cell" data-line-number="241" style="position:relative">
+</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC242" class="react-file-line html-div" data-testid="code-cell" data-line-number="242" style="position:relative"><span class="pl-c">/*</span>!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT <span class="pl-c">*/</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC243" class="react-file-line html-div" data-testid="code-cell" data-line-number="243" style="position:relative"><span class="pl-c">/*</span>!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS <span class="pl-c">*/</span>;</div></div></div><div class="react-code-text react-code-line-contents" style="min-height:auto"><div><div id="LC244" class="react-file-line html-div" data-testid="code-cell" data-line-number="244" style="position:relative"><span class="pl-c">/*</span>!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION <span class="pl-c">*/</span>;</div></div></div></div></div></div><div id="copilot-button-container"></div></div><div id="highlighted-line-menu-container"></div></div></div><button hidden="" data-testid="hotkey-button" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden=""></button></section></div></div></div> <!-- --> <!-- --> </div></div></div><div class="Box-sc-g0xbh4-0"></div></div></div></div></div><div id="find-result-marks-container" class="Box-sc-g0xbh4-0 aZrVR"></div><button hidden="" data-testid="" data-hotkey-scope="read-only-cursor-text-area"></button><button hidden=""></button></div> <!-- --> <!-- --> <!-- --> <script type="application/json" id="__PRIMER_DATA__">{"resolvedServerColorMode":"day"}</script></div>
+</react-app>
+</turbo-frame>
+
+
+
+  </div>
+
+</turbo-frame>
+
+    </main>
+  </div>
+
+  </div>
+
+          <footer class="footer pt-8 pb-6 f6 color-fg-muted p-responsive" role="contentinfo" >
+  <h2 class='sr-only'>Footer</h2>
+
+  
+
+
+  <div class="d-flex flex-justify-center flex-items-center flex-column-reverse flex-lg-row flex-wrap flex-lg-nowrap">
+    <div class="d-flex flex-items-center flex-shrink-0 mx-2">
+      <a aria-label="Homepage" title="GitHub" class="footer-octicon mr-2" href="https://github.com">
+        <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
+    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+</svg>
+</a>
+      <span>
+        &copy; 2024 GitHub,&nbsp;Inc.
+      </span>
+    </div>
+
+    <nav aria-label="Footer">
+      <h3 class="sr-only" id="sr-footer-heading">Footer navigation</h3>
+
+      <ul class="list-style-none d-flex flex-justify-center flex-wrap mb-2 mb-lg-0" aria-labelledby="sr-footer-heading">
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}" href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-view-component="true" class="Link--secondary Link">Terms</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-view-component="true" class="Link--secondary Link">Privacy</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="/security" data-view-component="true" class="Link--secondary Link">Security</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}" href="https://www.githubstatus.com/" data-view-component="true" class="Link--secondary Link">Status</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to docs&quot;,&quot;label&quot;:&quot;text:docs&quot;}" href="https://docs.github.com/" data-view-component="true" class="Link--secondary Link">Docs</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}" href="https://support.github.com?tags=dotcom-footer" data-view-component="true" class="Link--secondary Link">Contact</a>
+          </li>
+
+          <li class="mx-2" >
+  <cookie-consent-link>
+    <button type="button" class="Link--secondary underline-on-hover border-0 p-0 color-bg-transparent" data-action="click:cookie-consent-link#showConsentManagement">
+      Manage cookies
+    </button>
+  </cookie-consent-link>
+</li>
+
+<li class="mx-2">
+  <cookie-consent-link>
+    <button type="button" class="Link--secondary underline-on-hover border-0 p-0 color-bg-transparent" data-action="click:cookie-consent-link#showConsentManagement">
+      Do not share my personal information
+    </button>
+  </cookie-consent-link>
+</li>
+
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+
+
+    <cookie-consent id="cookie-consent-banner" class="position-fixed bottom-0 left-0" style="z-index: 999999" data-initial-cookie-consent-allowed="" data-cookie-consent-required="true"></cookie-consent>
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error" hidden>
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+    </button>
+    You can’t perform that action at this time.
+  </div>
+
+    <template id="site-details-dialog">
+  <details class="details-reset details-overlay details-overlay-dark lh-default color-fg-default hx_rsm" open>
+    <summary role="button" aria-label="Close dialog"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
+      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog>
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+      </button>
+      <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
+    </details-dialog>
+  </details>
+</template>
+
+    <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box color-shadow-large" style="width:360px;">
+  </div>
+</div>
+
+    <template id="snippet-clipboard-copy-button">
+  <div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div>
+</template>
+<template id="snippet-clipboard-copy-button-unpositioned">
+  <div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div>
+</template>
+
+
+    <style>
+      .user-mention[href$="/elaheh2024"] {
+        color: var(--color-user-mention-fg);
+        background-color: var(--color-user-mention-bg);
+        border-radius: 2px;
+        margin-left: -2px;
+        margin-right: -2px;
+        padding: 0 2px;
+      }
+    </style>
+
+
+    </div>
+
+    <div id="js-global-screen-reader-notice" class="sr-only" aria-live="polite" aria-atomic="true" ></div>
+    <div id="js-global-screen-reader-notice-assertive" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+  </body>
+</html>
+
