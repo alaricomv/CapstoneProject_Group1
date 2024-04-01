@@ -18,6 +18,7 @@ import { StoreCreatePageComponent } from './components/pages/store-create-page/s
 import { FileUploadComponent } from './components/partials/file-upload/file-upload.component';
 import { StorefrontListComponent } from './components/pages/storefront-list/storefront-list.component';
 import { StorefrontPageComponent } from './components/pages/storefront-page/storefront-page.component';
+import { ProductCreatePageComponent } from './components/pages/product-create-page/product-create-page.component';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -37,6 +38,7 @@ registerLocaleData(en);
     FileUploadComponent,
     StorefrontListComponent,
     StorefrontPageComponent,
+    ProductCreatePageComponent,
     
   ],
   imports: [
