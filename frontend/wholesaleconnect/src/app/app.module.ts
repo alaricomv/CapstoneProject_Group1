@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -9,7 +9,7 @@ import { HeaderexampleComponent } from './components/partials/headerexample/head
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
 import { ProductPageComponent } from './components/pages/product-page/product-page.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { timeout } from 'rxjs';
@@ -19,6 +19,11 @@ import { FileUploadComponent } from './components/partials/file-upload/file-uplo
 import { StorefrontListComponent } from './components/pages/storefront-list/storefront-list.component';
 import { StorefrontPageComponent } from './components/pages/storefront-page/storefront-page.component';
 import { ProductCreatePageComponent } from './components/pages/product-create-page/product-create-page.component';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -46,9 +51,13 @@ import { ProductCreatePageComponent } from './components/pages/product-create-pa
       timeOut:3000,
       positionClass: 'toast-bottom-right',
       newestOnTop:false
-    })
+    }),
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
