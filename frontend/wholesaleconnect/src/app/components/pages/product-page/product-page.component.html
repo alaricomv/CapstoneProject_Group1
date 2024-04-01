@@ -1,0 +1,16 @@
+<div class = "container">
+    <img [src] = "product.imageUrl"/>
+
+    <div class ="details">
+        <div class="header">
+            <span class = "name">
+                {{product.name}}
+            </span>
+        </div>
+        <div class="price">
+            <span>
+                Price per dozen: <strong>{{product.price_per_dozen | currency}} </strong>
+            </span>
+        </div>
+    </div>
+</div>

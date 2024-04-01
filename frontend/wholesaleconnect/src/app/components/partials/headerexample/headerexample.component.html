@@ -79,13 +79,20 @@
     <tbody>
     <tr>
       <td style="width: 50%;">
-        <img  id="logo-img" class="img-responsive" src="assets/img/logonew2.svg" width="600"  /></td>
-        <td style="width: 50%;" align="right"><p><b>Add to Card</b></p></td>
-    <td style="width: 50%;" align="right">
+        <a routerLink="/">
+          <img id="logo-img" class="img-responsive" src="assets/img/logonew2.svg" width="600"  />
+        </a>
+      </td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/login">Login</a></td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="!user.token"><a routerLink="/register">Register</a></td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.token"><a style="cursor: pointer;" (click)="logout()">Logout</a></td>
+      <td style="width: 50%; padding-right: 50px;" align="right" *ngIf="user.seller == 1"><a style="cursor: pointer;" routerLink="/storefront-list">Stores</a></td>
+      <td style="width: 50%;" align="right"><p><a routerLink="/cart">Cart</a></p></td>
+      <td style="width: 50%;" align="right">
       
-    <img src="assets/img/shop.svg" width="60" height="60" >
+       <img src="assets/img/shop.svg" width="60" height="60" >
     
-    </td>
+       </td>
     </tr>
     </tbody>
     </table>
