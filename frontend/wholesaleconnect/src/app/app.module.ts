@@ -18,8 +18,6 @@ import { StoreCreatePageComponent } from './components/pages/store-create-page/s
 import { FileUploadComponent } from './components/partials/file-upload/file-upload.component';
 import { StorefrontListComponent } from './components/pages/storefront-list/storefront-list.component';
 import { StorefrontPageComponent } from './components/pages/storefront-page/storefront-page.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -55,7 +53,6 @@ registerLocaleData(en);
     FormsModule
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US },
     provideAnimationsAsync(),
     provideHttpClient()
   ],

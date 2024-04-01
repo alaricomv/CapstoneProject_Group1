@@ -3,7 +3,6 @@ import { Product } from '../../../shared/models/product';
 import { ProductService } from '../../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-product-page',
@@ -14,8 +13,7 @@ export class ProductPageComponent implements OnInit {
   product!: Product;
   constructor(
     activatedRoute: ActivatedRoute,
-    productService: ProductService,
-    private message: NzMessageService
+    productService: ProductService
   ) {
     activatedRoute.params.subscribe((params) => {
       productService.getProductById(params['id']).subscribe((serverProduct) => {
@@ -28,7 +26,4 @@ export class ProductPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addToCart() {
-    this.message.info('In development');
-  }
 }
