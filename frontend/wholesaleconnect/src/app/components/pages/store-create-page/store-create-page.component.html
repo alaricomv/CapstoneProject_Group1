@@ -34,6 +34,9 @@
                     <input label ="name" type="name" placeholder="name" formControlName="name"/>
 
                 </div>
+                <div class="error-list" *ngIf="fc['name'].errors && isSubmitted">
+                    <div *ngIf="fc['name'].errors['required']">Should not be empty</div>
+                </div>
               
               
           </div>

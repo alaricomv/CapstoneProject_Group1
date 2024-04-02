@@ -8,6 +8,7 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 import { StoreCreatePageComponent } from './components/pages/store-create-page/store-create-page.component';
 import { StorefrontListComponent } from './components/pages/storefront-list/storefront-list.component';
 import { StorefrontPageComponent } from './components/pages/storefront-page/storefront-page.component';
+import { ProductCreatePageComponent } from './components/pages/product-create-page/product-create-page.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterPageComponent},
   {path: 'store-create', component: StoreCreatePageComponent},
   {path: 'storefront-list', component: StorefrontListComponent},
-  {path: 'storefront/:id', component: StorefrontPageComponent}
+  {path: 'storefront/:id', component: StorefrontPageComponent},
+  {path: 'product-create/:id', component: ProductCreatePageComponent}
 ];
 
 @NgModule({
