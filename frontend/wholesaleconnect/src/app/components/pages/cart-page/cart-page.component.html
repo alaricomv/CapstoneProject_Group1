@@ -105,12 +105,13 @@
         <thead>
             <tr>
                 <th>Product Name</th>
-                <th>Description</th>
+                <th>Product Key</th>
                 <th>Price Single Dozen</th>
                 <th>Amount Single Dozen</th>
                 <th>Total Price of Dozens</th>
                 <th>Price dozen in Box</th>
                 <th>Price of Box </th>
+                <th>Amount of Boxes</th>
                 <th>Total Price of Boxes </th>
                 <th>Image</th>
                 <th>Price</th>
@@ -119,12 +120,13 @@
         </thead>
         <tbody id="productList" *ngFor="let cartItem of cart.items">
                 <td> {{cartItem.product.name}}</td>
-                <td> {{cartItem.product.description}}</td>
+                <td> {{cartItem.product.product_key}}</td>
                 <td> {{cartItem.product.price_per_dozen | currency}}</td>
                 <td> {{cartItem.quantity}}</td>
                 <td> {{ cartItem.quantity * cartItem.product.price_per_dozen | currency}}</td>
                 <td> {{cartItem.product.price_box | currency}}</td>
                 <td> {{(cartItem.product.price_box || 0) * (cartItem.product.pieces_per_box || 0) | currency }} (Per Box of {{(cartItem.product.pieces_per_box || 0)}} Products)</td>
+                <td> {{cartItem.quantity_box}}</td>
                 <td> {{(cartItem.product.price_box || 0) * (cartItem.product.pieces_per_box || 0) * (cartItem.quantity_box || 0) | currency }}  </td>
                 <td> <img [src]="cartItem.product.imageUrl" [alt]="cartItem.product.name" class="img-cart"></td>
                 <td> {{ cartItem.quantity * cartItem.product.price_per_dozen  + ((cartItem.product.price_box || 0) * (cartItem.product.pieces_per_box || 0) * (cartItem.quantity_box || 0)) | currency}}</td>
@@ -135,6 +137,7 @@
             <tr>
                 <td colspan="4">Total</td>
                 <td>{{ getTotalPrice() | currency}}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>{{getTotalPriceBox() | currency}}</td>

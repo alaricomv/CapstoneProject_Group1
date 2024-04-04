@@ -9,16 +9,23 @@
       <span>
         Price per dozen: <strong>{{product.price_per_dozen | currency}} </strong>
       </span>
+      <span *ngIf="product.total_boxes !== 0">
+        Price per dozen in box: <strong>{{product.price_box | currency}} (Box contains {{product.pieces_per_box}} dozens) </strong>
+      </span>
     </div>
   </div>
 
   <div>
-    <label>
-      <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per dozen"> Buy per dozen
-    </label>
-    <label>
-      <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per Box"> Buy per Box
-    </label>
+    <div *ngIf="product.total_pieces !== 0">
+      <label>
+        <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per dozen"> Buy per dozen
+      </label>
+    </div>
+    <div *ngIf="product.total_boxes !== 0">
+      <label >
+        <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per Box"> Buy per Box
+      </label>
+    </div>
   </div>
 
   <div *ngIf="selectedOption === 'Buy per dozen'">
@@ -36,7 +43,9 @@
       <option *ngFor="let number of generateNumbersBox()">{{ number }}</option>
     </select>
 
-    <img src="assets/img/cart.svg" width="40" height="30" class="cartIcon" (click)="addToCart('0',quantitySelectBox.value)">
+    
+    <img *ngIf="product.total_boxes !== 0 && product.total_pieces !== 0  " src="assets/img/cart.svg" width="40" height="30" class="cartIcon" (click)="addToCart('0',quantitySelectBox.value)">
+    <p *ngIf="product.total_boxes == 0 && product.total_pieces == 0 "> Out of Stock </p>
   </div>
 
 </div>
