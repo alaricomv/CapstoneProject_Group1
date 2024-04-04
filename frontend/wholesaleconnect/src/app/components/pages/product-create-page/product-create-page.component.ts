@@ -60,7 +60,8 @@ export class ProductCreatePageComponent {
       price_per_dozen: ['',[Validators.required]],
       price_box: [''],
       total_pieces: ['',[Validators.required]],
-      pieces_per_box: ['',[Validators.required]],
+      pieces_per_box: [''],
+      total_boxes: [''],
       imageUrl: ['']
     });
 
@@ -89,6 +90,7 @@ export class ProductCreatePageComponent {
       price_box: fv.price_box,
       total_pieces: fv.total_pieces,
       pieces_per_box: fv.pieces_per_box,
+      total_boxes: fv.total_boxes,
       imageUrl: this.logoBase64
     };
 

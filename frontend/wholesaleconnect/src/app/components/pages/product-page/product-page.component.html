@@ -12,6 +12,31 @@
     </div>
   </div>
 
-  <img src="assets/img/cart.svg" width="40" height="30" class="cartIcon">
+  <div>
+    <label>
+      <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per dozen"> Buy per dozen
+    </label>
+    <label>
+      <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per Box"> Buy per Box
+    </label>
+  </div>
+
+  <div *ngIf="selectedOption === 'Buy per dozen'">
+    <label for="quantitySelect">Select Quantity:</label>
+    <select #quantitySelect>
+      <option *ngFor="let number of generateNumbers()">{{ number }}</option>
+    </select>
+
+    <img src="assets/img/cart.svg" width="40" height="30" class="cartIcon" (click)="addToCart(quantitySelect.value,'0')">
+  </div>
+
+  <div *ngIf="selectedOption === 'Buy per Box'">
+    <label for="quantitySelectBox">Select Quantity of Boxes:</label>
+    <select #quantitySelectBox>
+      <option *ngFor="let number of generateNumbersBox()">{{ number }}</option>
+    </select>
+
+    <img src="assets/img/cart.svg" width="40" height="30" class="cartIcon" (click)="addToCart('0',quantitySelectBox.value)">
+  </div>
 
 </div>

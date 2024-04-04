@@ -50,8 +50,8 @@ export async function getProductsByStore(id){
     return rows
 }
 
-export async function CreateProduct(storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl){
-    const result = await db.query("INSERT INTO product (storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?)", [storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl])
+export async function CreateProduct(storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl){
+    const result = await db.query("INSERT INTO product (storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?)", [storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl])
     const rows = result[0]
     return rows
 }

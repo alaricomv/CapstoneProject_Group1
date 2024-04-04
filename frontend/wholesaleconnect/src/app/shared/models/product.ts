@@ -7,6 +7,7 @@ export class Product{
     price_box?:number;
     pieces_per_box?:number;
     total_pieces!: number;
+    total_boxes?: number;
     tags!: string;
     imageUrl?:string;
 }
