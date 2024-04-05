@@ -85,6 +85,10 @@
             width: 100%;
             bottom: 0;
         }
+
+        .img-cart{
+            max-width: 100px;
+        }
     </style>
 
 <body>
@@ -100,61 +104,53 @@
     <table>
         <thead>
             <tr>
-                <th>Product ID</th>
-                <th>Description</th>
-                <th>Boxes Ordered</th>
-                <th>Unit per Dozen</th>
-                <th>Amount</th>
+                <th>Product Name</th>
+                <th>Product Key</th>
+                <th>Price Single Dozen</th>
+                <th>Amount Single Dozen</th>
+                <th>Total Price of Dozens</th>
+                <th>Price dozen in Box</th>
+                <th>Price of Box </th>
+                <th>Amount of Boxes</th>
+                <th>Total Price of Boxes </th>
+                <th>Image</th>
                 <th>Price</th>
+                <th></th>
             </tr>
         </thead>
-        <tbody id="productList">
+        <tbody id="productList" *ngFor="let cartItem of cart.items">
+                <td> {{cartItem.product.name}}</td>
+                <td> {{cartItem.product.product_key}}</td>
+                <td> {{cartItem.product.price_per_dozen | currency}}</td>
+                <td> {{cartItem.quantity}}</td>
+                <td> {{ cartItem.quantity * cartItem.product.price_per_dozen | currency}}</td>
+                <td> {{cartItem.product.price_box | currency}}</td>
+                <td> {{(cartItem.product.price_box || 0) * (cartItem.product.pieces_per_box || 0) | currency }} (Per Box of {{(cartItem.product.pieces_per_box || 0)}} Products)</td>
+                <td> {{cartItem.quantity_box}}</td>
+                <td> {{(cartItem.product.price_box || 0) * (cartItem.product.pieces_per_box || 0) * (cartItem.quantity_box || 0) | currency }}  </td>
+                <td> <img [src]="cartItem.product.imageUrl" [alt]="cartItem.product.name" class="img-cart"></td>
+                <td> {{ cartItem.quantity * cartItem.product.price_per_dozen  + ((cartItem.product.price_box || 0) * (cartItem.product.pieces_per_box || 0) * (cartItem.quantity_box || 0)) | currency}}</td>
+                <td><button (click)="removeFromCart(cartItem)">Remove</button></td>
             <!-- JavaScript will populate this section -->
         </tbody>
         <tfoot>
-            <tr class="total-row">
-                <td colspan="5" style="text-align: right;">Total:</td>
-                <td id="totalAmount">$0.00</td>
+            <tr>
+                <td colspan="4">Total</td>
+                <td>{{ getTotalPrice() | currency}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{getTotalPriceBox() | currency}}</td>
+                <td></td>
+                <td>{{getTotalPrice() + getTotalPriceBox() | currency}}</td>
             </tr>
         </tfoot>
     </table>
     <button class="proceed-button" onclick="proceedToPay()">Proceed to Pay</button>
+    
 </section>
 
-<footer>
-    <p>&copy; 2024 WholesaleConnect. All rights reserved.</p>
-</footer>
 
 <script>
-    const products = [
-        { id: "SSH-23O29", description: "Kitsch Stain Hair Softer Than Silk Scrunchies for Hair", boxesOrdered: 22, unitPerDozen: 8.33, amount: 10, price: 220 },
-        { id: "SSH-23V22", description: "Notebooks different colors", boxesOrdered: 15, unitPerDozen: 4.17, amount: 5, price: 75 },
-        { id: "SSH-23V23", description: "Hair Clip Non-Slip Metal Black Hair Softer Than Silk Scrunchies for Hair", boxesOrdered: 30, unitPerDozen: 6.25, amount: 75, price: 2250 },
-        // Add more products as needed
-    ];
-
-    const productList = document.getElementById('productList');
-    let totalAmount = 0;
-
-    products.forEach(product => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${product.id}</td>
-            <td>${product.description}</td>
-            <td>${product.boxesOrdered}</td>
-            <td>${product.unitPerDozen}</td>
-            <td>${product.amount}</td>
-            <td>$${(product.price).toFixed(2)}</td>
-        `;
-        productList.appendChild(row);
-        totalAmount += product.price; // Sum up the price in cents
-    });
-
-    // Convert the total amount to dollars and fix to 2 decimal places
-    document.getElementById('totalAmount').textContent = `$${(totalAmount).toFixed(2)}`;
-
-    function proceedToPay() {
-        // Implement the payment processing logic here
-        alert('Proceeding to payment...');
-    }
+    
 </script>

@@ -8,5 +8,6 @@ export interface IProductRegister{
     price_box:number;
     total_pieces:number;
     pieces_per_box: string;
+    total_boxes: number;
     imageUrl: string | undefined;
 }

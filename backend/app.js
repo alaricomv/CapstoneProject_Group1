@@ -89,9 +89,9 @@ app.get("/products/:id", async (req,res)=> {
 
 //Create new Product
 app.post("/newProduct", async (req,res)=> {
-    const {storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl} = req.body
+    const {storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl} = req.body
 
-        const users = await CreateProduct(storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,imageUrl);
+        const users = await CreateProduct(storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl);
 
         res.status(201).send(users)
     
