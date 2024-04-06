@@ -1,6 +1,6 @@
 // app.component.ts
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cart } from '../../../shared/models/Cart';
 import { CartService } from '../../../services/cart.service';
 import { CartItem } from '../../../shared/models/CartItem';
@@ -22,18 +22,25 @@ interface Product {
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.css']
 })
-export class CartPageComponent {
+export class CartPageComponent implements OnInit{
 
   user!: User;
 
   cart!: Cart;
   constructor(private cartService: CartService, private userService:UserService, private router: Router){
+
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
     })
     userService.userObservable.subscribe((newUser) =>{
       this.user = newUser;
     })
+  }
+
+  ngOnInit() {
+    this.router.navigate(['/dummy']).then(() => {
+      this.router.navigate(['/cart']);
+    });
   }
 
   removeFromCart(cartItem:CartItem){
