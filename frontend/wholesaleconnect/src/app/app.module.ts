@@ -22,6 +22,7 @@ import { ProductCreatePageComponent } from './components/pages/product-create-pa
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PurchasePageComponent } from './components/pages/purchase-page/purchase-page.component';
 
 registerLocaleData(en);
 
@@ -39,6 +40,7 @@ registerLocaleData(en);
     StorefrontListComponent,
     StorefrontPageComponent,
     ProductCreatePageComponent,
+    PurchasePageComponent,
     
   ],
   imports: [

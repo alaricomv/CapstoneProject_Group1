@@ -146,7 +146,8 @@
             </tr>
         </tfoot>
     </table>
-    <button class="proceed-button" onclick="proceedToPay()">Proceed to Pay</button>
+    <button *ngIf="user.token" class="proceed-button" (click)="proceedToPay()">Proceed to Pay</button>
+    <button *ngIf="!user.token" class="proceed-button" routerLink="/login">Proceed to Pay</button>
     
 </section>
 

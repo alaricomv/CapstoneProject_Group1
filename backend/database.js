@@ -68,6 +68,19 @@ export async function CreateStore(name,seller_id,logo,description,tags,address,r
     return rows
 }
 
+
+export async function CreateOrder(user_id,product_id,storefront_id,quantity_dozen,quantity_box,price){
+    const result = await db.query("INSERT INTO purchase (user_id,product_id,storefront_id,quantity_dozen,quantity_box,price) VALUES (?, ?, ?, ?, ?, ?)", [user_id,product_id,storefront_id,quantity_dozen,quantity_box,price])
+    const rows = result[0]
+    return rows
+}
+
+export async function getOrdersByStore(id){
+    const result = await db.query("SELECT * FROM purchase WHERE storefront_id = ?",[id])
+    const rows = result[0]
+    return rows
+}
+
 export async function getSingleStore(id){
     const result = await db.query("SELECT * FROM storefront WHERE id = ?", [id])
     const rows = result[0][0]
