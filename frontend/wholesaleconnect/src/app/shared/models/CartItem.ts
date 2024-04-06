@@ -8,4 +8,6 @@ export class CartItem{
     price_dozen: number = this.product.price_per_dozen;
     quantity_box: number = 0;
     user_id: number = 0;
+    address: string = "";
+    price: number = 0;
 }

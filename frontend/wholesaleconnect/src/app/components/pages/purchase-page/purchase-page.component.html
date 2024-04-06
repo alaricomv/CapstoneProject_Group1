@@ -1,1 +1,14 @@
-<p>purchase-page works!</p>
+<div class="address-selection">
+    <h2>Select Address</h2>
+    <div *ngIf="user.address; else noAddress" class="default-address">
+      <label>Default Address:</label>
+      <p>{{ user.address }}</p>
+    </div>
+    <ng-template #noAddress>
+      <p class="no-address">No default address set. Please provide an address:</p>
+      <input type="text" [(ngModel)]="send_address" placeholder="Enter your address" class="address-input">
+      <button (click)="saveAddress()" class="save-button">Save Address</button>
+    </ng-template>
+    <button (click)="pay()" class="pay-button">Pay</button>
+  </div>
+  

@@ -69,8 +69,8 @@ export async function CreateStore(name,seller_id,logo,description,tags,address,r
 }
 
 
-export async function CreateOrder(user_id,product_id,storefront_id,quantity_dozen,quantity_box,price){
-    const result = await db.query("INSERT INTO purchase (user_id,product_id,storefront_id,quantity_dozen,quantity_box,price) VALUES (?, ?, ?, ?, ?, ?)", [user_id,product_id,storefront_id,quantity_dozen,quantity_box,price])
+export async function CreateOrder(user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address){
+    const result = await db.query("INSERT INTO purchase (user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address) VALUES (?, ?, ?, ?, ?, ?, ?)", [user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address])
     const rows = result[0]
     return rows
 }

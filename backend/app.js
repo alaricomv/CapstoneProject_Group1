@@ -135,15 +135,20 @@ app.get("/ordersbystore/:id", async (req,res)=> {
 //Create new Product
 app.post("/newOrder", async (req,res)=> {
 
-    const orderData = req.body.data; // Assuming the array of orders is stored under the key "data"
+    const orderData = req.body.items; // Assuming the array of orders is stored under the key "data"
         
     if (!Array.isArray(orderData)) {
         return res.status(400).json({ error: "Invalid data format. Expected an array." });
     }
     
     const createdOrders = await Promise.all(orderData.map(async (order) => {
-        const { user_id, product_id, storefront_id, quantity_dozen, quantity_box, price } = order;
-        return await CreateOrder(user_id, product_id, storefront_id, quantity_dozen, quantity_box, price);
+
+        const { quantity,quantity_box,user_id,product,price,address } = order;
+
+        const {id: product_id} = product;
+
+        const {storefront_id: storefront_id} = product;
+        return await CreateOrder(user_id, product_id, storefront_id, quantity, quantity_box, price, address);
     }));
 
     res.status(201).send(createdOrders)

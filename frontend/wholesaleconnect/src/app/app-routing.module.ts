@@ -9,6 +9,7 @@ import { StoreCreatePageComponent } from './components/pages/store-create-page/s
 import { StorefrontListComponent } from './components/pages/storefront-list/storefront-list.component';
 import { StorefrontPageComponent } from './components/pages/storefront-page/storefront-page.component';
 import { ProductCreatePageComponent } from './components/pages/product-create-page/product-create-page.component';
+import { PurchasePageComponent } from './components/pages/purchase-page/purchase-page.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'store-create', component: StoreCreatePageComponent},
   {path: 'storefront-list', component: StorefrontListComponent},
   {path: 'storefront/:id', component: StorefrontPageComponent},
-  {path: 'product-create/:id', component: ProductCreatePageComponent}
+  {path: 'product-create/:id', component: ProductCreatePageComponent},
+  {path: 'purchase', component: PurchasePageComponent}
 ];
 
 @NgModule({

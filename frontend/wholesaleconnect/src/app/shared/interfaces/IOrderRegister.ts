@@ -1,5 +1,5 @@
 import { CartItem } from "../models/CartItem";
 
-export class Cart{
+export class IOrderRegister{
     items: CartItem[] = [];
 }

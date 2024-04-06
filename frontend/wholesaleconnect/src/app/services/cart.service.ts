@@ -3,6 +3,12 @@ import { Cart } from '../shared/models/Cart';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../shared/models/product';
 import { CartItem } from '../shared/models/CartItem';
+import { IOrderRegister } from '../shared/interfaces/IOrderRegister';
+import { tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { ORDER_REGISTER_URL } from '../shared/urls';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +18,7 @@ export class CartService {
   private cart:Cart = this.getCartFromLocalStorage();
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
 
-  constructor() { }
+  constructor(private http:HttpClient, private toastrService:ToastrService, private router: Router) { }
 
   addToCart(product:Product, quantity:number, quantity_box: number):void{
     let cartItem = this.cart.items.find(item => item.product.id === product.id);
@@ -87,5 +93,25 @@ export class CartService {
     private getCartFromLocalStorage():Cart{
       const cartJson = localStorage.getItem('Cart');
       return cartJson? JSON.parse(cartJson): new Cart()
+    }
+
+    register(orderRegister:IOrderRegister): Observable<Cart>{
+      return this.http.post<Cart>(ORDER_REGISTER_URL,orderRegister).pipe(
+        tap({
+          next: (user)=>{
+            this.toastrService.success(
+              'Order Succesfully made'
+            );
+            localStorage.removeItem('Cart');
+          },
+          error: (errorResponse) => {
+            this.toastrService.error(errorResponse.error, 'Order Failed' );
+          }
+        })
+      )
+    }
+
+    private reloadPage(): void {
+      window.location.reload();
     }
 }

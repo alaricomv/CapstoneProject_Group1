@@ -146,8 +146,9 @@
             </tr>
         </tfoot>
     </table>
-    <button *ngIf="user.token" class="proceed-button" (click)="proceedToPay()">Proceed to Pay</button>
-    <button *ngIf="!user.token" class="proceed-button" routerLink="/login">Proceed to Pay</button>
+    <button *ngIf="user.token && cart.totalCount !== 0" class="proceed-button" (click)="proceedToPay()">Proceed to Pay</button>
+    <button *ngIf="!user.token && cart.totalCount !== 0" class="proceed-button" routerLink="/login">Proceed to Pay</button>
+    <p *ngIf="cart.totalCount == 0"> No items in cart</p>
     
 </section>
 
