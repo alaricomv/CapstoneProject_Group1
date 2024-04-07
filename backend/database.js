@@ -91,7 +91,12 @@ export async function getOrdersByStore(id){
 }
 
 export async function getOrdersByUser(id){
-    const result = await db.query("SELECT * FROM purchase WHERE user_id = ?",[id])
+    const result = await db.query(`
+        SELECT p.*, pr.name AS product_name, pr.product_key 
+        FROM purchase p
+        JOIN product pr ON p.product_id = pr.id
+        WHERE p.user_id = ?
+    `, [id]);
     const rows = result[0]
     return rows
 }

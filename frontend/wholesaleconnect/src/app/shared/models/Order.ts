@@ -9,4 +9,6 @@ export class Order{
     price!: number;
     quantity_box!: number;
     address!: string;
+    product_name!:string;
+    product_key!:string;
 }
