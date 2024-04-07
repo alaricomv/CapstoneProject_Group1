@@ -10,6 +10,7 @@ import { StorefrontListComponent } from './components/pages/storefront-list/stor
 import { StorefrontPageComponent } from './components/pages/storefront-page/storefront-page.component';
 import { ProductCreatePageComponent } from './components/pages/product-create-page/product-create-page.component';
 import { PurchasePageComponent } from './components/pages/purchase-page/purchase-page.component';
+import { CustomerOrdersComponent } from './components/pages/customer-orders/customer-orders.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'storefront-list', component: StorefrontListComponent},
   {path: 'storefront/:id', component: StorefrontPageComponent},
   {path: 'product-create/:id', component: ProductCreatePageComponent},
-  {path: 'purchase', component: PurchasePageComponent}
+  {path: 'purchase', component: PurchasePageComponent},
+  {path: 'customerorders/:id', component: CustomerOrdersComponent}
 ];
 
 @NgModule({

@@ -90,6 +90,12 @@ export async function getOrdersByStore(id){
     return rows
 }
 
+export async function getOrdersByUser(id){
+    const result = await db.query("SELECT * FROM purchase WHERE user_id = ?",[id])
+    const rows = result[0]
+    return rows
+}
+
 export async function getSingleStore(id){
     const result = await db.query("SELECT * FROM storefront WHERE id = ?", [id])
     const rows = result[0][0]
