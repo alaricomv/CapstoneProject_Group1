@@ -56,6 +56,15 @@ export async function CreateProduct(storefront_id,product_key,name,description,t
     return rows
 }
 
+export async function ReduceQuantityProduct(product_id, quantity_dozen, quantity_box) {
+    const result = await db.query(
+        "UPDATE product SET total_pieces = (total_pieces - ?), total_boxes = (total_boxes - ?) WHERE id = ?",
+        [quantity_dozen, quantity_box, product_id]
+    );
+    
+    const rows = result[0];
+    return rows;
+}
 export async function findUser(email,password){
     const result = await db.query("SELECT * FROM users WHERE email = ? AND password = ?", [email,password])
     const rows = result[0][0]
@@ -64,6 +73,19 @@ export async function findUser(email,password){
 
 export async function CreateStore(name,seller_id,logo,description,tags,address,rating,number_ratings){
     const result = await db.query("INSERT INTO storefront (name,seller_id,logo,description,tags,address,rating,number_ratings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [name,seller_id,logo,description,tags,address,rating,number_ratings])
+    const rows = result[0]
+    return rows
+}
+
+
+export async function CreateOrder(user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address){
+    const result = await db.query("INSERT INTO purchase (user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address) VALUES (?, ?, ?, ?, ?, ?, ?)", [user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address])
+    const rows = result[0]
+    return rows
+}
+
+export async function getOrdersByStore(id){
+    const result = await db.query("SELECT * FROM purchase WHERE storefront_id = ?",[id])
     const rows = result[0]
     return rows
 }
