@@ -1,11 +1,22 @@
 import mysql from 'mysql2'
 
+import nodemailer from 'nodemailer';
+
 const db = mysql.createPool({
     host:'localhost',
     user: 'root',
     password: '',
     database: 'wholesaledb'
 }).promise()
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail', // Example: Gmail
+    host: "smtp.gmail.com",
+    auth: {
+        user: 'capstoneprojectfdugroup1@gmail.com', // Your email address
+        pass: 'pcqu ctiz vmcz knfm' // Your email password
+    }
+});
 
 
 export async function getUsers(){
@@ -63,8 +74,17 @@ export async function ReduceQuantityProduct(product_id, quantity_dozen, quantity
     );
     
     const rows = result[0];
+
     return rows;
 }
+
+export async function getUserEmailByStorefrontId(storefrontId) {
+    const result = await db.query("SELECT users.email FROM users INNER JOIN storefront ON users.id = storefront.seller_id WHERE storefront.id = ?", [storefrontId]);
+    const rows = result[0];
+    return rows.length > 0 ? rows[0].email : null;
+}
+
+
 export async function findUser(email,password){
     const result = await db.query("SELECT * FROM users WHERE email = ? AND password = ?", [email,password])
     const rows = result[0][0]
@@ -73,19 +93,39 @@ export async function findUser(email,password){
 
 export async function CreateStore(name,seller_id,logo,description,tags,address,rating,number_ratings){
     const result = await db.query("INSERT INTO storefront (name,seller_id,logo,description,tags,address,rating,number_ratings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [name,seller_id,logo,description,tags,address,rating,number_ratings])
+    
     const rows = result[0]
+
     return rows
+
 }
 
 
 export async function CreateOrder(user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address){
     const result = await db.query("INSERT INTO purchase (user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address) VALUES (?, ?, ?, ?, ?, ?, ?)", [user_id,product_id,storefront_id,quantity_dozen,quantity_box,price,address])
     const rows = result[0]
+
+    
+    const userEmail = await getUserEmailByStorefrontId(storefront_id);
+
+    const storefront = await getSingleStore(storefront_id);
+    const storefrontName = storefront ? storefront.name : '';
+
+    if(userEmail){
+        console.log(userEmail);
+        await sendEmail(userEmail, 'New Order', 'A new Order has been placed in store ' + storefrontName)
+    }
+    console.log("aqui");
     return rows
 }
 
 export async function getOrdersByStore(id){
-    const result = await db.query("SELECT * FROM purchase WHERE storefront_id = ?",[id])
+    const result = await db.query(`
+        SELECT p.*, pr.name AS product_name, pr.product_key 
+        FROM purchase p
+        JOIN product pr ON p.product_id = pr.id
+        WHERE p.storefront_id = ?
+    `, [id]);
     const rows = result[0]
     return rows
 }
@@ -113,6 +153,24 @@ export async function getStorefrontList(seller_id){
     return rows
 }
 
+// Function to send an email
+async function sendEmail(to, subject, text) {
+    // Define email options
+    const mailOptions = {
+        from: 'alarico.mercado@gmail.com', // Sender address (must be the same as authenticated user)
+        to: to, // Recipient address
+        subject: subject, // Email subject
+        text: text // Email body
+    };
 
-var users = await getUsers()
-console.log(users)
+    try {
+        // Send email
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Email sent: ' + info.response);
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+}
+
+export { sendEmail };
+
