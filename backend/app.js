@@ -1,5 +1,5 @@
 import express from 'express'
-import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore, CreateProduct, CreateOrder, getOrdersByStore} from './database.js'
+import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore, CreateProduct, CreateOrder, getOrdersByStore, ReduceQuantityProduct} from './database.js'
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import bodyParser from 'body-parser';
@@ -148,7 +148,12 @@ app.post("/newOrder", async (req,res)=> {
         const {id: product_id} = product;
 
         const {storefront_id: storefront_id} = product;
-        return await CreateOrder(user_id, product_id, storefront_id, quantity, quantity_box, price, address);
+        const createdOrder = await CreateOrder(user_id, product_id, storefront_id, quantity, quantity_box, price, address);
+
+        await ReduceQuantityProduct(product_id,quantity,quantity_box);
+
+        return createdOrder;
+
     }));
 
     res.status(201).send(createdOrders)

@@ -56,6 +56,15 @@ export async function CreateProduct(storefront_id,product_key,name,description,t
     return rows
 }
 
+export async function ReduceQuantityProduct(product_id, quantity_dozen, quantity_box) {
+    const result = await db.query(
+        "UPDATE product SET total_pieces = (total_pieces - ?), total_boxes = (total_boxes - ?) WHERE id = ?",
+        [quantity_dozen, quantity_box, product_id]
+    );
+    
+    const rows = result[0];
+    return rows;
+}
 export async function findUser(email,password){
     const result = await db.query("SELECT * FROM users WHERE email = ? AND password = ?", [email,password])
     const rows = result[0][0]
