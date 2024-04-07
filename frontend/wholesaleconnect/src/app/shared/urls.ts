@@ -11,3 +11,4 @@ export const PRODUCTS_BY_STORE_ID_URL = BASE_URL + '/productsbystore/';
 export const PRODUCT_REGISTER_URL = BASE_URL + '/newProduct'
 export const ORDER_REGISTER_URL = BASE_URL + '/newOrder'
 export const ORDER_BY_USER_URL = BASE_URL + '/ordersbyuser/'
+export const ORDER_BY_STORE_URL = BASE_URL + '/ordersbystore/'

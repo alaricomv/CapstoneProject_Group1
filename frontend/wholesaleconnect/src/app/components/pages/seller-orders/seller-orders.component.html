@@ -1,0 +1,35 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="seller-orders.component.css">
+</head>
+
+<section>
+    <h2 style="text-align: center;">Orders</h2> <!-- Added title -->
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <th>Product Name</th>
+            <th>Product Key</th>
+            <th>Status</th>
+            <th>Order Date</th>
+            <th>Quantity (dozens)</th>
+            <th>Quantity (boxes)</th>
+            <th>Total Price</th>
+            <th>Delivery Address</th>
+        </tr>
+        <tr *ngFor="let order of orders; let i = index">
+
+            <td>{{order.id}}</td>
+            <td>{{order.product_name}}</td>
+            <td>{{order.product_key}}</td>
+            <td>{{order.status}}</td>
+            <td>{{order.date | date:'short'}}</td>
+            <td>{{order.quantity_dozen}}</td>
+            <td>{{order.quantity_box}}</td>
+            <td>{{order.price | currency}}</td>
+            <td>{{order.address}}</td>
+        </tr>
+    </table>
+</section>
