@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     auth: {
         user: 'capstoneprojectfdugroup1@gmail.com', // Your email address
-        pass: 'pcqu ctiz vmcz knfm' // Your email password
+        pass: 'ndla ysbi vaoe fsxy' // Your email password
     }
 });
 
