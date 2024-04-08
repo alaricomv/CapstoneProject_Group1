@@ -1,5 +1,5 @@
 import express from 'express'
-import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore, CreateProduct, CreateOrder, getOrdersByStore, ReduceQuantityProduct, getOrdersByUser, ModifyOrder} from './database.js'
+import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore, CreateProduct, CreateOrder, getOrdersByStore, ReduceQuantityProduct, getOrdersByUser, ModifyOrder, EditProduct, DeleteProduct} from './database.js'
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import bodyParser from 'body-parser';
@@ -96,6 +96,26 @@ app.post("/newProduct", async (req,res)=> {
         res.status(201).send(users)
     
 })
+
+app.put("/editProduct", async (req,res)=> {
+
+    const {id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl} = req.body
+
+        const users = await EditProduct(id, product_key, name, description, tags, price_per_dozen, price_box, total_pieces, pieces_per_box, total_boxes, imageUrl);
+
+        res.status(201).send(users)
+    
+})
+
+app.delete("/deleteProduct/:id", async (req,res)=> {
+    const id = req.params.id
+
+    const users = await DeleteProduct(id);
+
+    res.status(201).send(users)
+    
+})
+
 
 //Create new Storefront
 app.post("/newStore", async (req,res)=> {

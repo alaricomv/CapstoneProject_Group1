@@ -67,6 +67,20 @@ export async function CreateProduct(storefront_id,product_key,name,description,t
     return rows
 }
 
+export async function EditProduct(id, product_key, name, description, tags, price_per_dozen, price_box, total_pieces, pieces_per_box, total_boxes, imageUrl) {
+    const result = await db.query("UPDATE product SET product_key=?, name=?, description=?, tags=?, price_per_dozen=?, price_box=?, total_pieces=?, pieces_per_box=?, total_boxes=?, imageUrl=? WHERE id=?", [product_key, name, description, tags, price_per_dozen, price_box, total_pieces, pieces_per_box, total_boxes, imageUrl, id]);
+    const rows = result[0];
+    return rows;
+}
+
+export async function DeleteProduct(id) {
+    const result = await db.query("DELETE FROM product WHERE id=?", [id]);
+    return result[0];
+}
+
+
+
+
 export async function ReduceQuantityProduct(product_id, quantity_dozen, quantity_box) {
     const result = await db.query(
         "UPDATE product SET total_pieces = (total_pieces - ?), total_boxes = (total_boxes - ?) WHERE id = ?",
