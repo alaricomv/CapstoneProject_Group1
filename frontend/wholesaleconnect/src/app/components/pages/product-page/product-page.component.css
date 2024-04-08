@@ -1,0 +1,28 @@
+.container{
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header{
+  margin-top: 8px;
+  text-align: center;
+}
+
+.price{
+  margin-top: 8px;
+
+}
+
+img{
+  display: flex;
+  margin: 0 auto;
+  width: 70vw;
+}
+
+.cartIcon{
+  cursor: pointer;
+  margin-top: 8px;
+}

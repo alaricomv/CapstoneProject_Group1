@@ -1,13 +1,28 @@
+
+
+<html>
+    
+
+<head>
+ 
+    <link rel="stylesheet" type="text/css" href="storefront-list.component.css">
+  
+  </head>
+<body>
+
 <style>
     .logo{
         max-width: 100px;
     }
 </style>
+<p>&nbsp;</p>
+<table align="center" >
+    <td align="center" *ngFor="let store of stores; let i = index" align="center" style="width:70px; background-color: rgb(184, 101, 101);">
 
-<td *ngFor="let store of stores; let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
 
-    <a routerLink="/storefront/{{store.id}}">
-      <img class="logo" [src]="store.logo" [alt]="store.name">
+
+        <a routerLink="/storefront/{{store.id}}">
+            <img class="logo" [src]="store.logo" [alt]="store.name">
       <div class="content">
           <div class="name">
               {{store.name}}
@@ -18,11 +33,16 @@
 </a>
 
 </td>
-
+<td>
 <a routerLink="/store-create">
     <div class="content">
+        
         <div class="name">
             <button>Create a new storefront</button>
         </div>
     </div>
 </a>
+</td>
+</table>
+</body>
+</html>

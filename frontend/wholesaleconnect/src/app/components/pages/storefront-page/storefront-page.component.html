@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body style="background-image: url('../../../../assets/img/bglogin.svg'); background-size:cover; background-position:center center;background-size:cover">
+
 
 <h1>{{storefront.name}}</h1>
+<a routerLink="/sellerorders/{{storefront.id}}">Orders</a>
 <div class = "container">
     <img class="logo" [src] = "storefront.logo"/>
 
@@ -60,10 +63,11 @@
 
     </div>
 </div>
+<a routerLink="/product-create/{{storefront.id}}">Add product</a>
 <h2> Products</h2>
 <td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
 
-    <a routerLink="/product/{{product.id}}">
+    <a routerLink="/product-edit/{{product.id}}">
       <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1" >
       <div class="content">
           <div class="name">

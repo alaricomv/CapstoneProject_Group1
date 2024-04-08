@@ -1,22 +1,46 @@
+<html>
+
+<head>
+ 
+    <link rel="stylesheet" type="text/css" href="store-create-page.component.css">
+  
+  </head>
+
+<body>
+
+    
+
 <style>
     .hidden {
     display: none;
 }
 </style>
+
+<p>&nbsp;</p>
+<table align="center" border="3">
+
+
 <div>
+
     <div>
+        
         <form [formGroup]="registerForm" (ngSubmit)="submit()">
+            
             <div class="input-container">
+
+                <p>&nbsp;</p>
                 <label>Name</label>
                 <div>
                     <input label ="name" type="name" placeholder="name" formControlName="name"/>
-                </div>
 
+                </div>
                 <div class="error-list" *ngIf="fc['name'].errors && isSubmitted">
                     <div *ngIf="fc['name'].errors['required']">Should not be empty</div>
                 </div>
-            </div>
-
+              
+              
+          </div>
+ 
             <div class="input-container">
                 <label>Description</label>
                 <div>
@@ -25,28 +49,28 @@
 
             </div>
 
-            
+          
             <div class="input-container">
                 <label>Tags</label>
                 <div>
-                    <input type="tags" placeholder="tags" formControlName="tags"/>
+                    <input type="tags" placeholder="tags" formControlName="tags" />
                 </div>
             </div>
-
+       
             <div class="input-container">
                 <label>Address</label>
                 <div>
                     <input type="address" placeholder="address" formControlName="address"/>
                 </div>
             </div>
-
+        
             <div class="input-container hidden">
                 <label>Seller ID</label>
                 <div>
                     <input type="text" formControlName="seller_id" readonly /> <!-- Set readonly to prevent user input -->
                 </div>
             </div>
-
+       
             <div class="input-container">
                 <label>Logo</label>
                 <div>
@@ -54,16 +78,20 @@
                     <img *ngIf="logoBase64" [src]="logoBase64" alt="Selected Logo" style="max-width: 100px;">
                 </div>
             </div>
-            
-
-
             <div class="button">
                 <button type="submit">Register</button>
             </div>
 
 
 
+         
 
         </form>
+       
     </div>
 </div>
+
+</table>
+</body>
+
+</html>

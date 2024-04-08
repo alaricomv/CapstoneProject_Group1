@@ -14,8 +14,10 @@ import { tap } from 'rxjs/operators';
 export class StoreService {
 
 
-  
+  private storeSubject = new BehaviorSubject<Storefront>(this.getStoreFromLocalStorage());
+  public storeObservable:Observable<Storefront>;
   constructor(private http:HttpClient, private toastrService:ToastrService) { 
+    this.storeObservable = this.storeSubject.asObservable();
   }
 
   register(storeRegister:IStoreRegister): Observable<Storefront>{
@@ -42,5 +44,18 @@ export class StoreService {
     const stringStoreId = sellerId.toString()
     return this.http.get<Storefront[]>(STOREFRONT_BY_SELLERID_URL + stringStoreId);
   }
+
+  private setStoreToLocalStorage(store:Storefront){
+    localStorage.setItem('Store', JSON.stringify(store));
+  }
+
+    //Gets the user from the local storage, if there is no user it sends an empty user
+  private getStoreFromLocalStorage():Storefront{
+      const userJson = localStorage.getItem('Store');
+      if(userJson){
+        return JSON.parse(userJson) as Storefront;
+      }
+      return new Storefront();
+    }
 
 }

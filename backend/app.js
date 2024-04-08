@@ -1,5 +1,5 @@
 import express from 'express'
-import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore} from './database.js'
+import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore, CreateProduct, CreateOrder, getOrdersByStore, ReduceQuantityProduct, getOrdersByUser, ModifyOrder, EditProduct, DeleteProduct, getProductsByName, getProductsByTag} from './database.js'
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import bodyParser from 'body-parser';
@@ -87,12 +87,40 @@ app.get("/products/:id", async (req,res)=> {
     res.send(users)
 })
 
+//Create new Product
+app.post("/newProduct", async (req,res)=> {
+    const {storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl} = req.body
+
+        const users = await CreateProduct(storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl);
+
+        res.status(201).send(users)
+    
+})
+
+app.put("/editProduct", async (req,res)=> {
+
+    const {id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl} = req.body
+
+        const users = await EditProduct(id, product_key, name, description, tags, price_per_dozen, price_box, total_pieces, pieces_per_box, total_boxes, imageUrl);
+
+        res.status(201).send(users)
+    
+})
+
+app.delete("/deleteProduct/:id", async (req,res)=> {
+    const id = req.params.id
+
+    const users = await DeleteProduct(id);
+
+    res.status(201).send(users)
+    
+})
+
 
 //Create new Storefront
 app.post("/newStore", async (req,res)=> {
     const {name,seller_id,logo,description,tags,address} = req.body
 
-    console.log("logo:", logo);
 
         const users = await CreateStore(name,seller_id,logo,description,tags,address,0,0);
 
@@ -116,6 +144,81 @@ app.get("/productsbystore/:id", async (req,res)=> {
     const id = req.params.id
     const users = await getProductsByStore(id)
     res.send(users)
+})
+
+app.get("/productsbyname/:string", async (req,res)=> {
+    const namestring = req.params.string
+    const users = await getProductsByName(namestring)
+    res.send(users)
+})
+
+app.get("/productsbytag/:string", async (req,res)=> {
+    const namestring = req.params.string
+    const users = await getProductsByTag(namestring)
+    res.send(users)
+})
+
+app.get("/ordersbystore/:id", async (req,res)=> {
+    const id = req.params.id
+    const users = await getOrdersByStore(id)
+    res.send(users)
+})
+
+app.get("/ordersbyuser/:id", async (req,res)=> {
+    const id = req.params.id
+    const users = await getOrdersByUser(id)
+    res.send(users)
+})
+
+//Create new Product
+app.post("/newOrder", async (req,res)=> {
+
+    const orderData = req.body.items; // Assuming the array of orders is stored under the key "data"
+        
+    if (!Array.isArray(orderData)) {
+        return res.status(400).json({ error: "Invalid data format. Expected an array." });
+    }
+    
+    const createdOrders = await Promise.all(orderData.map(async (order) => {
+
+        const { quantity,quantity_box,user_id,product,price,address } = order;
+
+        const {id: product_id} = product;
+
+        const {storefront_id: storefront_id} = product;
+        const createdOrder = await CreateOrder(user_id, product_id, storefront_id, quantity, quantity_box, price, address);
+
+        await ReduceQuantityProduct(product_id,quantity,quantity_box);
+
+        return createdOrder;
+
+    }));
+
+    res.status(201).send(createdOrders)
+    
+})
+
+//Create new Product
+app.put("/updateOrder", async (req,res)=> {
+
+    const orderData = req.body.items; // Assuming the array of orders is stored under the key "data"
+        
+    if (!Array.isArray(orderData)) {
+        return res.status(400).json({ error: "Invalid data format. Expected an array." });
+    }
+    
+    const createdOrders = await Promise.all(orderData.map(async (orders) => {
+
+        const { id, status } = orders;
+
+        const createdOrder = await ModifyOrder(id,status);
+
+        return createdOrder;
+
+    }));
+
+    res.status(201).send(createdOrders)
+    
 })
 
 app.use((err,req,res, next)=>{
