@@ -2,19 +2,11 @@
 
 <head>
  
-    <link rel="stylesheet" type="text/css" href="product-create-page.component.css">
+    <link rel="stylesheet" type="text/css" href="edit-product.component.css">
     
   </head>
-
 <body>
 
-<style>
-    .hidden {
-    display: none;
-}
-</style>
-
-<p>&nbsp;</p>
 <table align="center" border="3">
 
 
@@ -24,19 +16,12 @@
         
         <form [formGroup]="registerForm" (ngSubmit)="submit()">
 
-            <div class="input-container hidden">
-                <label>Storefront ID</label>
-                <div>
-                    <input type="text" formControlName="storefront_id" readonly /> <!-- Set readonly to prevent user input -->
-                </div>
-            </div>
-
             <div class="input-container">
 
                 <p>&nbsp;</p>
                 <label>Product Key</label>
                 <div>
-                    <input label ="product_key" type="product_key" placeholder="product_key" formControlName="product_key"/>
+                    <input label ="product_key" type="product_key" placeholder="product_key" formControlName="product_key" value="{{product.product_key}}" />
                 </div>
 
                 <div class="error-list" *ngIf="fc['product_key'].errors && isSubmitted">
@@ -50,7 +35,7 @@
                
                 <label>Name</label>
                 <div>
-                    <input label ="name" type="name" placeholder="name" formControlName="name"/>
+                    <input label ="name" type="name" placeholder="name" formControlName="name" value="{{product.name}}"/>
                 </div>
                 <div class="error-list" *ngIf="fc['name'].errors && isSubmitted">
                     <div *ngIf="fc['name'].errors['required']">Should not be empty</div>
@@ -61,7 +46,7 @@
             <div class="input-container">
                 <label>Description</label>
                 <div>
-                    <input label ="description" type="description" placeholder="description" formControlName="description"/>
+                    <textarea label ="description" type="description" placeholder="description" formControlName="description">{{product.description}}</textarea>
                 </div>
 
             </div>
@@ -71,6 +56,7 @@
                 <label>Tag</label>
                 <div>
                     <select formControlName="tags">
+                        <option [value]="product.tags" selected>{{ product.tags }}</option>
                         <option value="">Select Tag</option>
                         <option value="Toys">Toys</option>
                         <option value="Jewelry">Jewelry</option>
@@ -87,33 +73,55 @@
             <div class="input-container">
                 <label>Price per dozen</label>
                 <div>
-                    <input type="price_per_dozen" placeholder="price_per_dozen" formControlName="price_per_dozen"/>
+                    <input type="price_per_dozen" placeholder="price_per_dozen" formControlName="price_per_dozen" value="{{product.price_per_dozen}}"/>
                 </div>
                 <div class="error-list" *ngIf="fc['price_per_dozen'].errors && isSubmitted">
                     <div *ngIf="fc['price_per_dozen'].errors['required']">Should not be empty</div>
                 </div>
             </div>
 
-            <div class="input-container">
+            <div class="input-container" *ngIf="product.total_boxes == null ">
                 <label>Number of boxes available (If it applies)</label>
                 <div>
                     <input type="total_boxes" placeholder="0" formControlName="total_boxes"/>
                 </div>
             </div>
 
-            <div class="input-container">
+            <div class="input-container" *ngIf="product.total_boxes !== null ">
+                <label>Number of boxes available (If it applies)</label>
+                <div>
+                    <input type="total_boxes" placeholder="0" formControlName="total_boxes" value="{{product.total_boxes}}" />
+                </div>
+            </div>
+
+            <div class="input-container" *ngIf="product.price_box !== null">
+                <label>Price per dozen when purchasing a box (If it applies)</label>
+                <div>
+                    <input type="price_box" placeholder="price_box" formControlName="price_box" value="{{product.price_box}}"/>
+                </div>
+            </div>
+
+            <div class="input-container" *ngIf="product.price_box == null">
                 <label>Price per dozen when purchasing a box (If it applies)</label>
                 <div>
                     <input type="price_box" placeholder="price_box" formControlName="price_box"/>
                 </div>
             </div>
 
-            <div class="input-container">
+            <div class="input-container" *ngIf="product.pieces_per_box !== null">
+                <label>Number of dozens in box (If it applies)</label>
+                <div>
+                    <input type="pieces_per_box" placeholder="Pieces per Box" formControlName="pieces_per_box" value="{{product.price_box}}"/>
+                </div>
+            </div>
+
+            <div class="input-container" *ngIf="product.pieces_per_box == null">
                 <label>Number of dozens in box (If it applies)</label>
                 <div>
                     <input type="pieces_per_box" placeholder="Pieces per Box" formControlName="pieces_per_box"/>
                 </div>
             </div>
+
 
             <div class="input-container">
                 <label>Total number of dozens</label>
@@ -137,6 +145,10 @@
                 <button type="submit">Register</button>
             </div>
         </form>
+
+        <div class="button delete-button">
+            <button  (click)="deleteProduct()">Delete Product</button>
+        </div>
        
     </div>
 </div>

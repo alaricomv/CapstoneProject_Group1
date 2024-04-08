@@ -67,7 +67,7 @@
 <h2> Products</h2>
 <td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
 
-    <a routerLink="/product/{{product.id}}">
+    <a routerLink="/product-edit/{{product.id}}">
       <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1" >
       <div class="content">
           <div class="name">

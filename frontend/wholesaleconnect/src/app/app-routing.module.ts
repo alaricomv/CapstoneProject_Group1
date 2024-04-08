@@ -12,11 +12,13 @@ import { ProductCreatePageComponent } from './components/pages/product-create-pa
 import { PurchasePageComponent } from './components/pages/purchase-page/purchase-page.component';
 import { CustomerOrdersComponent } from './components/pages/customer-orders/customer-orders.component';
 import { SellerOrdersComponent } from './components/pages/seller-orders/seller-orders.component';
+import { EditProductComponent } from './components/pages/edit-product/edit-product.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'product/:id', component: ProductPageComponent},
+  {path: 'product-edit/:id', component: EditProductComponent},
   {path: 'cart', component: CartPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterPageComponent},
