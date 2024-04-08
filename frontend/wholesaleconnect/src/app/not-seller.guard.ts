@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SellerGuard implements CanActivate {
+export class NotSellerGuard implements CanActivate {
 
   constructor(private router: Router) {}
 
@@ -13,15 +13,15 @@ export class SellerGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    // Check if user is logged in and is a seller
+    // Check if user is logged in and is not a seller
     const user = JSON.parse(localStorage.getItem('User') || '{}');
-    const isSeller = user.seller === 1;
+    const isNotSeller = user.seller !== 1;
 
-    if (isSeller) {
+    if (isNotSeller) {
       return true; // Allow access to the route
     } else {
-      // Redirect to a different route (e.g., login) if the user is not a seller
-      return this.router.createUrlTree(['/login']); // Redirect to login page
+      // Redirect to a different route (e.g., dashboard) if the user is a seller
+      return this.router.createUrlTree(['/storefront-list']); // Redirect to dashboard page
     }
   }
 }

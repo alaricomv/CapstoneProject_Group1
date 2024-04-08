@@ -13,22 +13,24 @@ import { PurchasePageComponent } from './components/pages/purchase-page/purchase
 import { CustomerOrdersComponent } from './components/pages/customer-orders/customer-orders.component';
 import { SellerOrdersComponent } from './components/pages/seller-orders/seller-orders.component';
 import { EditProductComponent } from './components/pages/edit-product/edit-product.component';
+import { SellerGuard } from './seller.guard';
+import { NotSellerGuard } from './not-seller.guard';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'product/:id', component: ProductPageComponent},
-  {path: 'product-edit/:id', component: EditProductComponent},
-  {path: 'cart', component: CartPageComponent},
+  {path: '', component: HomeComponent, canActivate:[NotSellerGuard]},
+  {path: 'product/:id', component: ProductPageComponent, canActivate:[NotSellerGuard]},
+  {path: 'product-edit/:id', component: EditProductComponent, canActivate: [SellerGuard]},
+  {path: 'cart', component: CartPageComponent, canActivate:[NotSellerGuard]},
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterPageComponent},
-  {path: 'store-create', component: StoreCreatePageComponent},
-  {path: 'storefront-list', component: StorefrontListComponent},
-  {path: 'storefront/:id', component: StorefrontPageComponent},
-  {path: 'product-create/:id', component: ProductCreatePageComponent},
-  {path: 'purchase', component: PurchasePageComponent},
-  {path: 'customerorders/:id', component: CustomerOrdersComponent},
-  {path: 'sellerorders/:id', component: SellerOrdersComponent}
+  {path: 'store-create', component: StoreCreatePageComponent, canActivate: [SellerGuard]},
+  {path: 'storefront-list', component: StorefrontListComponent, canActivate: [SellerGuard]},
+  {path: 'storefront/:id', component: StorefrontPageComponent, canActivate: [SellerGuard]},
+  {path: 'product-create/:id', component: ProductCreatePageComponent, canActivate: [SellerGuard]},
+  {path: 'purchase', component: PurchasePageComponent, canActivate:[NotSellerGuard]},
+  {path: 'customerorders/:id', component: CustomerOrdersComponent, canActivate:[NotSellerGuard]},
+  {path: 'sellerorders/:id', component: SellerOrdersComponent, canActivate: [SellerGuard]}
 ];
 
 @NgModule({

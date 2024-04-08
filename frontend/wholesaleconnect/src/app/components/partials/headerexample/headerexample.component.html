@@ -34,7 +34,7 @@
     
     <div class="menu-container">
     <ul>
-    <li><b><a class="active" href="#home">Home</a></b></li>
+    <li><b><a *ngIf="user.seller !== 1" class="active" href="#home">Home</a></b></li>
     <li><b><a *ngIf="user.token && user.seller == 0" routerLink="/customerorders/{{user.id}}">Orders</a></b></li>
    
     <li ><b><a style="cursor: pointer;" routerLink="/storefront-list" *ngIf="user.seller == 1">Stores</a></b></li>
