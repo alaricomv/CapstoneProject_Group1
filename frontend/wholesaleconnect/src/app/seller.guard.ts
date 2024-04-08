@@ -21,7 +21,7 @@ export class SellerGuard implements CanActivate {
       return true; // Allow access to the route
     } else {
       // Redirect to a different route (e.g., login) if the user is not a seller
-      return this.router.createUrlTree(['/login']); // Redirect to login page
+      return this.router.createUrlTree(['']); // Redirect to login page
     }
   }
 }
