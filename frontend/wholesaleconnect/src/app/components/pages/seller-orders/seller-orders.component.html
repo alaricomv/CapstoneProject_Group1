@@ -24,7 +24,13 @@
             <td>{{order.id}}</td>
             <td>{{order.product_name}}</td>
             <td>{{order.product_key}}</td>
-            <td>{{order.status}}</td>
+            <td>
+                <select [(ngModel)]="orders[i].status">
+                    <option value="Received">Received</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+            </td>
             <td>{{order.date | date:'short'}}</td>
             <td>{{order.quantity_dozen}}</td>
             <td>{{order.quantity_box}}</td>
@@ -32,4 +38,6 @@
             <td>{{order.address}}</td>
         </tr>
     </table>
+
+    <button (click)="changeStatus()">Update Status</button>
 </section>

@@ -119,6 +119,16 @@ export async function CreateOrder(user_id,product_id,storefront_id,quantity_doze
     return rows
 }
 
+export async function ModifyOrder(id, status) {
+    const result = await db.query(
+        "UPDATE purchase SET status = ? WHERE id = ?",
+        [status, id]
+    );
+    const rowsAffected = result[0];
+    return rowsAffected; // Return the number of rows affected
+}
+
+
 export async function getOrdersByStore(id){
     const result = await db.query(`
         SELECT p.*, pr.name AS product_name, pr.product_key 

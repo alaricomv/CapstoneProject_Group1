@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Order } from '../../../shared/models/Order';
 import { User } from '../../../shared/models/User';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrdersService } from '../../../services/orders.service';
 import { UserService } from '../../../services/user.service';
 import { Observable } from 'rxjs';
+import { IOrderModify } from '../../../shared/interfaces/IOrderModify';
 
 @Component({
   selector: 'app-seller-orders',
@@ -16,7 +17,9 @@ export class SellerOrdersComponent {
   orders: Order[] = [];
   user!:User;
 
-  constructor(activatedRoute: ActivatedRoute, orderService:OrdersService, private userService:UserService) {
+  returnUrl= "";
+
+  constructor(private activatedRoute: ActivatedRoute, private orderService:OrdersService, private userService:UserService, private router:Router) {
 
     let orderObservable:Observable<Order[]>;
 
@@ -34,6 +37,26 @@ export class SellerOrdersComponent {
           this.orders = serverOrders;
         })
       });
+    });
+
+    
+  }
+
+  changeStatus(){
+    const orderRegister: IOrderModify = {
+      items: this.orders
+    };
+
+    const storeId = this.activatedRoute.snapshot.params['id'];
+    this.returnUrl = `/storefront/${storeId}`;
+
+    this.orderService.register(orderRegister).subscribe((updatedOrders) => {
+      // Handle success
+      console.log("Orders updated successfully:", updatedOrders);
+      this.router.navigateByUrl(this.returnUrl);
+    }, (error) => {
+      // Handle error
+      console.error("Error updating orders:", error);
     });
   }
 }

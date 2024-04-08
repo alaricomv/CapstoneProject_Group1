@@ -1,5 +1,5 @@
 import express from 'express'
-import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore, CreateProduct, CreateOrder, getOrdersByStore, ReduceQuantityProduct, getOrdersByUser} from './database.js'
+import{getUsers, getSingleUser,getSingleUserbyMail, CreateSingleUser, getProducts, getSingleProduct, findUser, CreateStore, getSingleStore, getStorefrontList, getProductsByStore, CreateProduct, CreateOrder, getOrdersByStore, ReduceQuantityProduct, getOrdersByUser, ModifyOrder} from './database.js'
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import bodyParser from 'body-parser';
@@ -157,6 +157,29 @@ app.post("/newOrder", async (req,res)=> {
         const createdOrder = await CreateOrder(user_id, product_id, storefront_id, quantity, quantity_box, price, address);
 
         await ReduceQuantityProduct(product_id,quantity,quantity_box);
+
+        return createdOrder;
+
+    }));
+
+    res.status(201).send(createdOrders)
+    
+})
+
+//Create new Product
+app.put("/updateOrder", async (req,res)=> {
+
+    const orderData = req.body.items; // Assuming the array of orders is stored under the key "data"
+        
+    if (!Array.isArray(orderData)) {
+        return res.status(400).json({ error: "Invalid data format. Expected an array." });
+    }
+    
+    const createdOrders = await Promise.all(orderData.map(async (orders) => {
+
+        const { id, status } = orders;
+
+        const createdOrder = await ModifyOrder(id,status);
 
         return createdOrder;
 
