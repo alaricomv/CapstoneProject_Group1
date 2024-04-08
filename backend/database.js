@@ -61,6 +61,18 @@ export async function getProductsByStore(id){
     return rows
 }
 
+export async function getProductsByName(searchString) {
+    const result = await db.query("SELECT * FROM product WHERE name LIKE ?", [`%${searchString}%`]);
+    const rows = result[0];
+    return rows;
+}
+
+export async function getProductsByTag(searchString) {
+    const result = await db.query("SELECT * FROM product WHERE tags LIKE ?", [`%${searchString}%`]);
+    const rows = result[0];
+    return rows;
+}
+
 export async function CreateProduct(storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl){
     const result = await db.query("INSERT INTO product (storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?)", [storefront_id,product_key,name,description,tags,price_per_dozen,price_box,total_pieces,pieces_per_box,total_boxes,imageUrl])
     const rows = result[0]
