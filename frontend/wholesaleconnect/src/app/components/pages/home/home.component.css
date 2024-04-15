@@ -1,11 +1,11 @@
 
 body {
-  
-  background-size: cover; 
-  
- 
+
+  background-size: cover;
+
+
   background-image: url('../../../../assets/img/bglogin.svg');
- 
+
   height: 60vh;
       margin: 1;
       top: 0%;
@@ -13,6 +13,27 @@ body {
 }
 
 
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+input[type="text"]:hover {
+  border-color: #aaa;
+}
 
 
 
@@ -22,8 +43,8 @@ height:100%;
     margin:0%;
     border-collapse: collapse;
     border: 0px solid;
-  
-  
+
+
      }
   td {
     padding:  5px 10px;
@@ -33,7 +54,7 @@ height:100%;
     background-size: cover;
     background-repeat: no-repeat;
     size: 121px;
- 
+
   }
   .background-red img {
     display: block;
