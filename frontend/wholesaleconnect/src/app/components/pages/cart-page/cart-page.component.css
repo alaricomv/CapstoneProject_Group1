@@ -1,13 +1,13 @@
 body {
     align-items: center;
     text-align: center;
-    background-image: url('../../../../assets/img/bglogin.svg');
-    background-repeat: no-repeat;
-    background-size:cover;
+    background-image:url('../../../../assets/img/bgwhole.jpg');
+    background-repeat:repeat;
+
         
         justify-content: center;
        
-        height: 52vh;
+        height: 82vh;
         margin: 1;
       }
     

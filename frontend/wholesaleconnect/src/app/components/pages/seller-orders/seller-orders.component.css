@@ -1,53 +1,36 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-section {
-    max-width: 1200px;
-    margin: 50px auto 20px;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #eee;
-}
-
-th, td {
-    padding: 12px;
+    align-items: center;
     text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #333;
-    color: white;
-}
-
-.total-row {
-    font-weight: bold;
-}
-
-.proceed-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-.img-cart {
-    max-width: 100px;
-}
+    background-image: url('../../../../assets/img/bgwhole.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+        
+        justify-content: center;
+       
+        height: 52vh;
+        margin: 1;
+      }
+    
+      table {
+        text-align: center;
+        justify-content: center;
+        border-collapse: collapse;
+        width: 30%;
+        border: 0;
+        align-items: flex-start;
+      }
+    
+      th, td {
+        background-color: #66111179;
+        align-content: center;
+        border: 5px solid #000000;
+        text-align: center;
+        padding: 3px;
+      }
+    
+              th {
+background-color: #f2f2f200;
+      }
+  
+  
+  
