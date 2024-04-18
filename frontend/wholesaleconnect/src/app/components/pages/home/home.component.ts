@@ -14,6 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 export class HomeComponent {
   products: Product[] = [];
   filteredProducts: Product[] = [];
+  tagsArr: Product[] = [];
+
+  productName: string = '';
+  productStore: string = '';
 
   onEnterPress(event: Event): void {
     const keyboardEvent = event as KeyboardEvent;
@@ -42,6 +46,16 @@ export class HomeComponent {
     );
   }
 
+  handleTagSearch(item: Product): void {
+    this.productService
+      .getProductByTag(item.tags)
+      .subscribe((serverProducts: any) => {
+        console.log('here');
+        console.log(serverProducts);
+        this.filteredProducts = serverProducts;
+      });
+  }
+
   searchProducts(searchTerm: string) {
     if (searchTerm.trim() === '') {
       this.filteredProducts = [];
@@ -53,6 +67,53 @@ export class HomeComponent {
     );
   }
 
+  handleSearch() {
+    if (this.productName) {
+      this.productService
+        .getProductByProductName(this.productName)
+        .subscribe((serverProducts: any) => {
+          console.log('here');
+          console.log(serverProducts);
+          this.filteredProducts = serverProducts;
+        });
+
+      return;
+    }
+
+    if (this.productStore) {
+      this.productService
+        .getProductByStore(Number(this.productStore))
+        .subscribe((serverProducts: any) => {
+          console.log('here');
+          console.log(serverProducts);
+          this.filteredProducts = serverProducts;
+        });
+      return;
+    }
+
+    let productsObservable: Observable<Product[]>;
+    productsObservable = this.productService.getAll();
+    productsObservable.subscribe((serverProducts: any) => {
+      console.log('here');
+      console.log(serverProducts);
+      this.products = serverProducts;
+      this.tagsArr = serverProducts;
+      this.filteredProducts = serverProducts;
+    });
+  }
+
+  handleSearchAll() {
+    let productsObservable: Observable<Product[]>;
+    productsObservable = this.productService.getAll();
+    productsObservable.subscribe((serverProducts: any) => {
+      console.log('here');
+      console.log(serverProducts);
+      this.products = serverProducts;
+      this.tagsArr = serverProducts;
+      this.filteredProducts = serverProducts;
+    });
+  }
+
   constructor(private productService: ProductService) {
     let productsObservable: Observable<Product[]>;
     productsObservable = productService.getAll();
@@ -61,6 +122,7 @@ export class HomeComponent {
       console.log('here');
       console.log(serverProducts);
       this.products = serverProducts;
+      this.tagsArr = serverProducts;
       this.filteredProducts = serverProducts;
     });
   }
