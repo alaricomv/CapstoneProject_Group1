@@ -1,77 +1,110 @@
 <!DOCTYPE html>
 <html>
-  <head>
- 
-    <link rel="stylesheet" type="text/css" href="home.component.css">
-    
-  </head>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="home.component.css">
+
+</head>
+
 <body>
-  
-  
+
+  <div style="display: flex; align-items: center; margin-bottom: 20px;padding-left: 20px;">
+    <div style="margin-right: 20px;">
+      <span>Name</span>
+      <input [(ngModel)]="productName"
+        style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"
+        type="text" placeholder="Enter product name">
+    </div>
+
+    <div>
+      <span>Store</span>
+      <input [(ngModel)]="productStore"
+        style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"
+        type="text" placeholder="Enter product store">
+    </div>
+
+    <button (click)="handleSearch()"
+      style="margin-left: 20px; padding: 10px 20px; background-color: #B0AAA8; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Search</button>
+  </div>
+
+
+
+
+
   <table align="left" style="width:100%;">
 
-   <tr align="left">
-    
+    <tr align="left">
+
       <td align="left" style="width:20%; border:0;" top="0%">
 
-        <ul>
-          <li><a href="#">&nbsp;Automotive</a></li>
-          <li><a href="#">&nbsp;Sports &amp; Outdoors</a></li>
-          <li><a href="#">&nbsp;Books &amp; Media</a></li>
-          <li><a href="#">&nbsp;Jewelry &amp; Watches</a></li>
-          <li><a href="#">&nbsp;Industrial &amp; Scientific</a></li>
-          <li><a href="#">&nbsp;Pet Supplie s</a></li>
-          <li><a href="#">&nbsp;Baby Products</a></li>
+        <ul
+          style="width: fit-content;list-style-type: none; padding: 0; display: inline-block;display: flex;flex-direction: column; ">
+          <li (click)="handleSearchAll()"
+            style="cursor: pointer; padding: 5px 10px; margin: 5px 5px; background-color: #f0f0f0; color: #333; border-radius: 15px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease-in-out;">
+            all
+          </li>
         </ul>
-        
-    </td>
-   
-    <td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:50%; ">
+
+        <ul *ngFor="let product of tagsArr; let i = index"
+          style="width: fit-content;list-style-type: none; padding: 0; display: inline-block;display: flex;flex-direction: column; ">
+          <li (click)="handleTagSearch(product)"
+            style="cursor: pointer; padding: 5px 10px; margin: 5px 5px; background-color: #f0f0f0; color: #333; border-radius: 15px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease-in-out;">
+            {{product.tags}}
+          </li>
+        </ul>
+
+
+      </td>
+
+      <td *ngFor="let product of filteredProducts; let i = index" align="center" style="width:50%; ">
 
         <a routerLink="/product/{{product.id}}">
-          <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1" >
+          <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1">
           <div class="container">
-              <div class="name">
-                  {{product.name}}
-                  {{product.description}}
-              </div>
-              <div class="name">
-                  <span>
-                      {{product.price_per_dozen | currency}}
-                  </span>
-              </div>
+            <div class="name">
+              {{product.name}}
+              {{product.description}}
+            </div>
+            <div class="name">
+              <span>
+                {{product.price_per_dozen | currency}}
+              </span>
+            </div>
           </div>
-      </a>
-    </td>
-    
-  </tr>
-  <td>
+        </a>
+      </td>
 
-  </td>
- 
-    <td *ngFor="let product of products.slice(4, 9); let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
+    </tr>
+    <td>
+
+    </td>
+
+    <td *ngFor="let product of filteredProducts.slice(4, 9); let i = index" align="center"
+      style="width:70px; background-color: rgb(255, 255, 255);">
 
       <a routerLink="/product/{{product.id}}">
         <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1">
         <div class="content">
-            <div class="name">
-                {{product.name}}
-                {{product.description}}
-            </div>
-            <div class="name">
-                <span>
-                    {{product.price_per_dozen | currency}}
-                </span>
-            </div>
+          <div class="name">
+            {{product.name}}
+            {{product.description}}
+          </div>
+          <div class="name">
+            <span>
+              {{product.price_per_dozen | currency}}
+            </span>
+          </div>
         </div>
-    </a>
-  
-  </td>
-  
+      </a>
+
+    </td>
 
 
 
-</table>
+
+  </table>
 
 </body>
+
 </html>
