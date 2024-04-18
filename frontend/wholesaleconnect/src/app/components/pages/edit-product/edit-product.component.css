@@ -1,60 +1,60 @@
 .input-container {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .input-container label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .input-container input[type="text"],
 .input-container input[type="number"],
 .input-container select,
 .input-container textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .input-container textarea {
-    height: 100px; /* Adjust the height as needed */
+  height: 100px; /* Adjust the height as needed */
 }
 
 .button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .button button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .button button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .delete-button button {
-    background-color: #dc3545; /* Red color */
+  background-color: #dc3545; /* Red color */
 }
 
 .delete-button button:hover {
-    background-color: #c82333; /* Darker red color on hover */
+  background-color: #c82333; /* Darker red color on hover */
 }
 
 
 .error-list {
-    color: red;
-    margin-top: 5px;
+  color: red;
+  margin-top: 5px;
 }
 
 img {
-    display: block;
-    margin-top: 10px;
-    max-width: 100px;
-    height: auto;
+  display: block;
+  margin-top: 10px;
+  max-width: 100px;
+  height: auto;
 }
