@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class HomeComponent {
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  tagsArr: Product[] = [];
+  tagsArr: string[] = ["Toys","Jewelry", "home Suppliers", "School Supplies", "Sports and Outdoors"];
 
   productName: string = '';
   productStore: string = '';
@@ -46,9 +46,9 @@ export class HomeComponent {
     );
   }
 
-  handleTagSearch(item: Product): void {
+  handleTagSearch(searchTag: string): void {
     this.productService
-      .getProductByTag(item.tags)
+      .getProductByTag(searchTag)
       .subscribe((serverProducts: any) => {
         console.log('here');
         console.log(serverProducts);
@@ -97,7 +97,7 @@ export class HomeComponent {
       console.log('here');
       console.log(serverProducts);
       this.products = serverProducts;
-      this.tagsArr = serverProducts;
+      //this.tagsArr = serverProducts;
       this.filteredProducts = serverProducts;
     });
   }
@@ -109,7 +109,7 @@ export class HomeComponent {
       console.log('here');
       console.log(serverProducts);
       this.products = serverProducts;
-      this.tagsArr = serverProducts;
+      //this.tagsArr = serverProducts;
       this.filteredProducts = serverProducts;
     });
   }
@@ -122,7 +122,7 @@ export class HomeComponent {
       console.log('here');
       console.log(serverProducts);
       this.products = serverProducts;
-      this.tagsArr = serverProducts;
+      //this.tagsArr = serverProducts;
       this.filteredProducts = serverProducts;
     });
   }
