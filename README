@@ -1,32 +1,47 @@
-Location of database sql file:
+# WholesaleConnect
 
-backend/database/wholesaledb.sql
+Welcome to WholesaleConnect, a platform designed for wholesale businesses to manage their operations efficiently. This repository contains both the backend and frontend components of the WholesaleConnect application.
 
-Database should be imported and running before attempting to run backend.
+## Getting Started
 
+Before you can run WholesaleConnect, make sure you have the following prerequisites installed on your system:
 
+- Node.js
+- npm (Node Package Manager)
 
-For running backend
+### Backend Setup
 
-cd backend/
+1. **Import the Database:**
+   - Locate the SQL file for the database: `backend/database/wholesaledb.sql`.
+   - Import this SQL file into your preferred database management system.
 
-In terminal run:
+2. **Run the Backend:**
+   - Open your terminal and navigate to the backend directory:
+     ```
+     cd backend/
+     ```
+   - Start the backend server by running:
+     ```
+     node app.js
+     ```
 
-node app.js
+### Frontend Setup
 
+1. **Install Angular CLI (First Time Only):**
+   - If you haven't installed Angular CLI globally before, do it by running:
+     ```
+     npm install -g @angular/cli
+     ```
+   - This step is required only the first time or if you haven't installed Angular CLI previously.
 
+2. **Run the Frontend:**
+   - Navigate to the frontend directory:
+     ```
+     cd frontend/wholesaleconnect/
+     ```
+   - Start the frontend server:
+     ```
+     ng serve --open
+     ```
+   - The `--open` flag automatically opens the application in your default web browser.
 
-For running frontend
-
-
-cd frontend/wholesaleconnect/
-
-
-In terminal run:
-
-1.- npm install -g @angular/cli
-
-(When first running the project. Must have nodejs installed beforehand)
-
-
-2.- ng serve --open
