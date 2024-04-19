@@ -20,6 +20,10 @@ Before you can run WholesaleConnect, make sure you have the following prerequisi
      ```
      cd backend/
      ```
+   - Install project dependencies:
+     ```
+     npm install
+     ```
    - Start the backend server by running:
      ```
      node app.js
