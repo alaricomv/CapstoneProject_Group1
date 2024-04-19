@@ -10,11 +10,11 @@ const db = mysql.createPool({
 }).promise()
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // Example: Gmail
+    service: 'gmail',
     host: "smtp.gmail.com",
     auth: {
-        user: 'capstoneprojectfdugroup1@gmail.com', // Your email address
-        pass: 'ndla ysbi vaoe fsxy' // Your email password
+        user: 'capstoneprojectfdugroup1@gmail.com', 
+        pass: 'ndla ysbi vaoe fsxy' 
     }
 });
 

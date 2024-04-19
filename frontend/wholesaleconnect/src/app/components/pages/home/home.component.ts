@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class HomeComponent {
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  tagsArr: string[] = ["Toys","Jewelry", "home Suppliers", "School Supplies", "Sports and Outdoors"];
+  tagsArr: string[] = ["Toys","Jewelry", "Home Supplies", "School Supplies", "Sports and Outdoors"];
 
   productName: string = '';
   productStore: string = '';

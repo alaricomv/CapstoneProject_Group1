@@ -10,7 +10,6 @@ app.use(bodyParser.json({ limit: '10mb' }));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    // You can also specify other headers and methods as needed
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
     next();
@@ -173,8 +172,7 @@ app.get("/ordersbyuser/:id", async (req,res)=> {
 //Create new Product
 app.post("/newOrder", async (req,res)=> {
 
-    const orderData = req.body.items; // Assuming the array of orders is stored under the key "data"
-        
+    const orderData = req.body.items; 
     if (!Array.isArray(orderData)) {
         return res.status(400).json({ error: "Invalid data format. Expected an array." });
     }
@@ -201,7 +199,7 @@ app.post("/newOrder", async (req,res)=> {
 //Create new Product
 app.put("/updateOrder", async (req,res)=> {
 
-    const orderData = req.body.items; // Assuming the array of orders is stored under the key "data"
+    const orderData = req.body.items; 
         
     if (!Array.isArray(orderData)) {
         return res.status(400).json({ error: "Invalid data format. Expected an array." });
