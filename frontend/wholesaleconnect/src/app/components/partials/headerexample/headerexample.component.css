@@ -4,19 +4,19 @@
        
       body
       {
-        background-color:#9a8e8ea5 ;
+        background-color:#fffbfb8e ;
       }
        
           .background-table {         
             border-collapse: collapse;
-            background-image: url('../../../../assets/img/bg2.svg');
+            background-image: url('../../../../assets/img/bg22.svg');
             margin-top: 0%;
           }
 
           
      
         .background-table tr, .background-table td {
-          border: 0px solid #dddddd00; 
+          border: 0px solid #fffbfb8e; 
        
         }
           .background-table td {

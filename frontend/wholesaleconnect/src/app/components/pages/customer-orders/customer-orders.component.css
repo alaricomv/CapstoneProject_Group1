@@ -1,15 +1,21 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+    align-items: center;
+    text-align: center;
+    background-image: url('../../../../assets/img/bgorder.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+        
+        justify-content: center;
+       
+        height: 92vh;
+        margin: 1;
+      }
 
 section {
     max-width: 1200px;
     margin: 50px auto 20px;
     padding: 20px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.048);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -18,12 +24,19 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     background-color: #eee;
+    align-content: center;
+    align-items: center;
+
+    margin-left:auto;
+    margin-right: auto;
+
 }
 
 th, td {
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;
+    align-items: center;
 }
 
 th {
