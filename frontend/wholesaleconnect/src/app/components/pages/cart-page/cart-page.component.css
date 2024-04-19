@@ -1,36 +1,18 @@
-body {
-    align-items: center;
-    text-align: center;
-    background-image: url('../../../../assets/img/bglogin.svg');
-    background-repeat: no-repeat;
-    background-size:cover;
-        
-        justify-content: center;
-       
-        height: 52vh;
-        margin: 1;
-      }
-    
-      table {
-        text-align: center;
-        justify-content: center;
-        border-collapse: collapse;
-        width: 30%;
-        border: 0;
-        align-items: flex-start;
-      }
-    
-      th, td {
-        background-color: #9b191979;
-        align-content: center;
-        border: 1px solid #ac1919;
-        text-align: center;
-        padding: 3px;
-      }
-    
-      th {
-        background-color: #f2f2f2;
-      }
-  
-  
-  
+section {
+  width: 100%;
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  width: 90%; 
+}
+
+table, th, td {
+  border: 1px solid black; 
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px; 
+}

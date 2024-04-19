@@ -1,51 +1,63 @@
-<div>
-  <img [src]="product.imageUrl" />
 
-  <div class="details">
-    <div class="header">
-      {{product.name}}
+
+<head>
+ 
+  <link rel="stylesheet" type="text/css" href="product-page.component.css">
+
+</head>
+<body>
+  <div class="container">
+    <div class="image-container">
+      <img src="{{ product.imageUrl }}" alt="Product Image" class="product-image">
     </div>
-    <div class="price">
-      <span>
-        Price per dozen: <strong>{{product.price_per_dozen | currency}} </strong>
-      </span>
-      <span *ngIf="product.total_boxes !== 0">
-        Price per dozen in box: <strong>{{product.price_box | currency}} (Box contains {{product.pieces_per_box}} dozens) </strong>
-      </span>
+    <div class="buy-info">
+      <div class="details">
+        <div class="header">
+          {{ product.name }}
+        </div>
+        <div class="price">
+          <span>
+            Price per dozen: <strong>{{ product.price_per_dozen | currency }}</strong>
+          </span>
+          <br>
+          <span *ngIf="product.total_boxes !== 0">
+            Price per dozen in box: <strong>{{ product.price_box | currency }} (Box contains {{ product.pieces_per_box }} dozens)</strong>
+          </span>
+        </div>
+      </div>
+      <div class="buy-options">
+        <div class="buy-option" *ngIf="product.total_pieces !== 0">
+          <label>
+            <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per dozen"> Buy per dozen
+          </label>
+        </div>
+        <div class="buy-option" *ngIf="product.total_boxes !== 0">
+          <label>
+            <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per Box"> Buy per Box
+          </label>
+        </div>
+      </div>
+      <div *ngIf="selectedOption === 'Buy per dozen'" class="quantity-select">
+        <label for="quantitySelect">Select Quantity:</label>
+        <select #quantitySelect>
+          <option *ngFor="let number of generateNumbers()">{{ number }}</option>
+        </select>
+        <button class="cartButton" (click)="addToCart(quantitySelect.value,'0')">Add to Cart</button>
+      </div>
+      <div *ngIf="selectedOption === 'Buy per Box'" class="quantity-select">
+        <label for="quantitySelectBox">Select Quantity of Boxes:</label>
+        <select #quantitySelectBox>
+          <option *ngFor="let number of generateNumbersBox()">{{ number }}</option>
+        </select>
+        <button class="cartButton" *ngIf="product.total_boxes !== 0 && product.total_pieces !== 0" (click)="addToCart('0',quantitySelectBox.value)">Add to Cart</button>
+        <p *ngIf="product.total_boxes == 0 && product.total_pieces == 0" class="out-of-stock">Out of Stock</p>
+      </div>
+      <div class="product-description">
+        <div class="description-title">About this product</div>
+        <div class="description-text">
+          {{ product.description }}
+        </div>
+      </div>
     </div>
   </div>
-
-  <div>
-    <div *ngIf="product.total_pieces !== 0">
-      <label>
-        <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per dozen"> Buy per dozen
-      </label>
-    </div>
-    <div *ngIf="product.total_boxes !== 0">
-      <label >
-        <input type="radio" name="buyOption" [(ngModel)]="selectedOption" value="Buy per Box"> Buy per Box
-      </label>
-    </div>
-  </div>
-
-  <div *ngIf="selectedOption === 'Buy per dozen'">
-    <label for="quantitySelect">Select Quantity:</label>
-    <select #quantitySelect>
-      <option *ngFor="let number of generateNumbers()">{{ number }}</option>
-    </select>
-
-    <img src="assets/img/cart.svg" width="40" height="30" class="cartIcon" (click)="addToCart(quantitySelect.value,'0')">
-  </div>
-
-  <div *ngIf="selectedOption === 'Buy per Box'">
-    <label for="quantitySelectBox">Select Quantity of Boxes:</label>
-    <select #quantitySelectBox>
-      <option *ngFor="let number of generateNumbersBox()">{{ number }}</option>
-    </select>
-
-    
-    <img *ngIf="product.total_boxes !== 0 && product.total_pieces !== 0  " src="assets/img/cart.svg" width="40" height="30" class="cartIcon" (click)="addToCart('0',quantitySelectBox.value)">
-    <p *ngIf="product.total_boxes == 0 && product.total_pieces == 0 "> Out of Stock </p>
-  </div>
-
-</div>
+</body>

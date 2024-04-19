@@ -1,77 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
- 
-    <link rel="stylesheet" type="text/css" href="home.component.css">
-    
-  </head>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="home.component.css">
+
+</head>
+
 <body>
-  
-  
-  <table align="left" style="width:100%;">
 
-   <tr align="left">
-    
-      <td align="left" style="width:20%; border:0;" top="0%">
+  <div class="container">
+    <div class="search-container">
+      <div style="margin-right: 20px;">
+        <span>Name</span>
+        <input [(ngModel)]="productName" style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);" type="text" placeholder="Enter product name">
+      </div>
 
-        <ul>
-          <li><a href="#">&nbsp;Automotive</a></li>
-          <li><a href="#">&nbsp;Sports &amp; Outdoors</a></li>
-          <li><a href="#">&nbsp;Books &amp; Media</a></li>
-          <li><a href="#">&nbsp;Jewelry &amp; Watches</a></li>
-          <li><a href="#">&nbsp;Industrial &amp; Scientific</a></li>
-          <li><a href="#">&nbsp;Pet Supplie s</a></li>
-          <li><a href="#">&nbsp;Baby Products</a></li>
-        </ul>
-        
-    </td>
-   
-    <td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:50%; ">
+      <div>
+        <span>Store</span>
+        <input [(ngModel)]="productStore" style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);" type="text" placeholder="Enter product store">
+      </div>
 
+      <button (click)="handleSearch()" style="margin-left: 20px; padding: 10px 20px; background-color: #f0c14b; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Search</button>
+    </div>
+
+    <div class="tag-container">
+      <div class="tag-item" (click)="handleSearchAll()">All</div>
+      <div *ngFor="let tags of tagsArr" class="tag-item" (click)="handleTagSearch(tags)">{{tags}}</div>
+    </div>
+
+    <div class="product-grid">
+      <div *ngFor="let product of filteredProducts" class="product-card">
         <a routerLink="/product/{{product.id}}">
-          <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1" >
+          <img [src]="product.imageUrl" [alt]="product.name">
           <div class="container">
-              <div class="name">
-                  {{product.name}}
-                  {{product.description}}
-              </div>
-              <div class="name">
-                  <span>
-                      {{product.price_per_dozen | currency}}
-                  </span>
-              </div>
+            <div class="name">{{product.name}}</div>
+            <div class="price">Price per box: {{product.price_box | currency}} <br> Price per dozen: {{product.price_per_dozen | currency}}</div>
           </div>
-      </a>
-    </td>
-    
-  </tr>
-  <td>
-
-  </td>
- 
-    <td *ngFor="let product of products.slice(4, 9); let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
-
-      <a routerLink="/product/{{product.id}}">
-        <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1">
-        <div class="content">
-            <div class="name">
-                {{product.name}}
-                {{product.description}}
-            </div>
-            <div class="name">
-                <span>
-                    {{product.price_per_dozen | currency}}
-                </span>
-            </div>
-        </div>
-    </a>
-  
-  </td>
-  
-
-
-
-</table>
+        </a>
+      </div>
+    </div>
+  </div>
 
 </body>
+
 </html>

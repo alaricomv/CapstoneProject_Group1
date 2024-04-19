@@ -1,84 +1,101 @@
+
+
+
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body style="background-image: url('../../../../assets/img/bglogin.svg'); background-size:cover; background-position:center center;background-size:cover">
-
-
-<h1>{{storefront.name}}</h1>
-<a routerLink="/sellerorders/{{storefront.id}}">Orders</a>
-<div class = "container">
-    <img class="logo" [src] = "storefront.logo"/>
-
-    <div class ="details">
-        <div class="description">
-            <span>
-                {{storefront.description}}
-            </span>
+<body style="background-image: url('../../../../assets/img/stores.jpg'); background-size:cover; background-position:center center;background-size:cover">
+<table>    <tr>
+    <h2><b> &nbsp;&nbsp;&nbsp; Products</b></h2>
+</tr></table>
+<table align="center">
+<tr>
+<td align="top"><h1>{{storefront.name}}</h1>
+    <a routerLink="/sellerorders/{{storefront.id}}"><h3>Orders</h3></a>
+    <div class = "container">
+        <img class="logo" [src] = "storefront.logo"/>
+    
+        <div class ="details">
+            <div class="description">
+                <span>
+                    {{storefront.description}}
+                </span>
+            </div>
+            <div *ngIf="storefront.rating == 0">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                {{storefront.rating}}
+            </div>
+            <div *ngIf="storefront.rating == 1">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+    
+            <div *ngIf="storefront.rating == 2">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+    
+            <div *ngIf="storefront.rating == 3">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </div>
+    
+            <div *ngIf="storefront.rating == 4">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+            </div>
+    
+            <div *ngIf="storefront.rating == 5">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+            </div>
+    
         </div>
-        <div *ngIf="storefront.rating == 0">
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            {{storefront.rating}}
-        </div>
-        <div *ngIf="storefront.rating == 1">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-        </div>
-
-        <div *ngIf="storefront.rating == 2">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-        </div>
-
-        <div *ngIf="storefront.rating == 3">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-        </div>
-
-        <div *ngIf="storefront.rating == 4">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-        </div>
-
-        <div *ngIf="storefront.rating == 5">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-        </div>
-
     </div>
-</div>
-<a routerLink="/product-create/{{storefront.id}}">Add product</a>
-<h2> Products</h2>
-<td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
+  
+     
+<tr align="left"><a routerLink="/product-create/{{storefront.id}}"><p><b> Add product</b> </p> </a></tr></td>
 
-    <a routerLink="/product-edit/{{product.id}}">
-      <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1" >
-      <div class="content">
-          <div class="name">
-              {{product.name}}
-              {{product.description}}
+    <td *ngFor="let product of products.slice(0, 4); let i = index" align="center" style="width:70px; background-color: rgb(255, 255, 255);">
+    
+        <a routerLink="/product-edit/{{product.id}}">
+          <img [src]="product.imageUrl" [alt]="product.name" width="200px" height="200px" border="1" >
+          <div class="content">
+              <div class="name">
+                  {{product.name}}
+              </div>
+              <div class="name">
+                  <span>
+                      {{product.price_per_dozen | currency}}
+                  </span>
+              </div>
           </div>
-          <div class="name">
-              <span>
-                  {{product.price_per_dozen | currency}}
-              </span>
-          </div>
-      </div>
-  </a>
-</td>
+      </a>
+    </td></tr>
+
+
+
+
+
+
+
+</table>

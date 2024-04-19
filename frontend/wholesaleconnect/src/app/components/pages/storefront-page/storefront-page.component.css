@@ -6,6 +6,11 @@ body {
     background-image: url('../../../../assets/img/bglogin.svg');
     background-size: cover;
     background-position: center;
+    font-size: larger;
+    font-style: normal;
+    height: 60vh;
+    font: optional;
+    
 }
 
     
@@ -23,7 +28,7 @@ body {
       th, td {
         background-color: #66111179;
         align-content: center;
-        border: 5px solid #0f0f0f;
+        border: 3px solid #0f0f0f;
         text-align: center;
         padding: 3px;
       }
@@ -32,5 +37,11 @@ body {
         background-color: #f2f2f200;
        
       }
-  
-  
+      p {
+        color: rgb(22, 255, 138);
+        align-content: center;
+        align-self: center;
+    }
+    h3 {
+      color: #b8ff03; 
+  }
