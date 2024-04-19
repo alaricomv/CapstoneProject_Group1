@@ -1,0 +1,32 @@
+Location of database sql file:
+
+backend/database/wholesaledb.sql
+
+Database should be imported and running before attempting to run backend.
+
+
+
+For running backend
+
+cd backend/
+
+In terminal run:
+
+node app.js
+
+
+
+For running frontend
+
+
+cd frontend/wholesaleconnect/
+
+
+In terminal run:
+
+1.- npm install -g @angular/cli
+
+(When first running the project. Must have nodejs installed beforehand)
+
+
+2.- ng serve --open
