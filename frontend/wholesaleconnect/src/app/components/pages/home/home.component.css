@@ -87,7 +87,7 @@ header {
 }
 
 .image-container {
-  height: 200px; /* Adjust the height as needed */
+  height: 210px;
   overflow: hidden;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
